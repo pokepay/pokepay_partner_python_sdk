@@ -36,7 +36,7 @@ class Client(object):
             self.ssl_cert_file = profile.get('SSL_CERT_FILE')
             self.session.cert = (self.ssl_cert_file, self.ssl_key_file)
 
-    def request(self, request_object):
+    def send(self, request_object):
         encrypt_data = {
             'request_data': request_object.body_params,
             'timestamp': _current_timestamp(self.timezone),

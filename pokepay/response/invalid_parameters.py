@@ -3,14 +3,19 @@
 from pokepay.response.response import PokepayResponse
 
 
-class Echo(PokepayResponse):
+class InvalidParameters(PokepayResponse):
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
-        self.status = response_body['status']
+        self.type = response_body['type']
         self.message = response_body['message']
+        self.errors = response_body['errors']
 
-    def status(self):
-        return self.status
+    def type(self):
+        return self.type
 
     def message(self):
         return self.message
+
+    def errors(self):
+        return self.errors
+

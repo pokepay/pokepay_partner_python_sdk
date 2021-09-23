@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+setup.py
+pokepay/__init__.py
+pokepay/client.py
+pokepay/crypto.py
+pokepay_partner_python_sdk.egg-info/PKG-INFO
+pokepay_partner_python_sdk.egg-info/SOURCES.txt
+pokepay_partner_python_sdk.egg-info/dependency_links.txt
+pokepay_partner_python_sdk.egg-info/requires.txt
+pokepay_partner_python_sdk.egg-info/top_level.txt

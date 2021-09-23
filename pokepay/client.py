@@ -7,9 +7,6 @@ from datetime import datetime
 from urllib.parse import urlparse
 from pokepay.crypto import AESCipher
 
-from pokepay.response.echo import Echo
-from pokepay.request.send_echo import SendEcho
-
 
 def _current_timestamp(tz='Asia/Tokyo'):
     timezone_obj = pytz.timezone(tz)

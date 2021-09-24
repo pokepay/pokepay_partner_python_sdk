@@ -1,1 +1,1 @@
-# pokepay-partner-python-sdk
+# pokepay_partner_python_sdk

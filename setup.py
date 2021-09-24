@@ -12,9 +12,9 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'pokepay-partner-python-sdk'
+NAME = 'pokepay_partner_python_sdk'
 DESCRIPTION = 'Pokepay Partner API SDK for Python'
-URL = 'https://github.com/pokepay/pokepay-partner-python-sdk'
+URL = 'https://github.com/pokepay/pokepay_partner_python_sdk'
 EMAIL = 'dev@pocket-change.jp'
 AUTHOR = 'Pocketchange'
 REQUIRES_PYTHON = '>=3.6.0'

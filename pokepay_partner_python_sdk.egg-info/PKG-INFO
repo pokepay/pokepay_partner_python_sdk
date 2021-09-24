@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
-Name: pokepay-partner-python-sdk
+Name: pokepay_partner_python_sdk
 Version: 0.1.0
 Summary: Pokepay Partner API SDK for Python
-Home-page: https://github.com/pokepay/pokepay-partner-python-sdk
+Home-page: https://github.com/pokepay/pokepay_partner_python_sdk
 Author: Pocketchange
 Author-email: dev@pocket-change.jp
 License: MIT
@@ -18,6 +18,6 @@ Description-Content-Type: text/markdown
 License-File: LICENSE.txt
 
 
-# pokepay-partner-python-sdk
+# pokepay_partner_python_sdk
 
 

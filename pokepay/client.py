@@ -5,7 +5,7 @@ import uuid
 import pytz
 from datetime import datetime
 from urllib.parse import urlparse
-from pokepay.crypto import AESCipher
+from .crypto import AESCipher
 
 
 def _current_timestamp(tz='Asia/Tokyo'):
@@ -53,7 +53,6 @@ class Client(object):
             decrypt_data = json.loads(decrypt_data_str)
             return request_object.response_class(response, decrypt_data)
         else:
-            # return self.cipher.decrypt(res_dict['response_data'])
             return response
 
 

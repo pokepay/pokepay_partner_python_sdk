@@ -1,7 +1,6 @@
 import base64
 # pip install pycryptodomex
 from Cryptodome.Cipher import AES
-from Cryptodome.Hash import SHA256
 from Cryptodome import Random
 from Cryptodome.Util import Padding
 
@@ -22,15 +21,12 @@ def _encrypt(plaintext, key, block_size=16):
     plaintext_bytes = Padding.pad(plaintext.encode(encoding='utf-8'),
                                   block_size,
                                   style='pkcs7')
-    print('plaintext_bytes', plaintext_bytes)
     ciphertext_bytes = cipher.encrypt(b'0' * block_size + plaintext_bytes)
     return _base64_url_encode(ciphertext_bytes)
 
 
 def _decrypt(ciphertext, key, block_size=16):
     ciphertext_bytes = _base64_url_decode(ciphertext)
-    print('ciphertext_bytes', ciphertext_bytes)
-    print('len(ciphertext_bytes)', len(ciphertext_bytes))
     body = ciphertext_bytes[16:]
     iv = ciphertext_bytes[:16]
     key = _base64_url_decode(key)

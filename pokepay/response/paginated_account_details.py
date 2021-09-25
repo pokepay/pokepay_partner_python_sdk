@@ -3,7 +3,7 @@
 from pokepay_partner_python_sdk.pokepay.response.response import PokepayResponse
 
 
-class PaginatedAccountBalance(PokepayResponse):
+class PaginatedAccountDetails(PokepayResponse):
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
         self.rows = response_body['rows']

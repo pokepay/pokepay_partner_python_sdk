@@ -1,4 +1,4 @@
-from pokepay.response.response import PokepayResponse
+from pokepay_partner_python_sdk.pokepay.response.response import PokepayResponse
 
 
 class PokepayRequest(object):

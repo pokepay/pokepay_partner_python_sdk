@@ -18,6 +18,7 @@ class PrivateMoney(PokepayResponse):
         self.type = response_body['type']
         self.expiration_type = response_body['expiration_type']
         self.enable_topup_by_member = response_body['enable_topup_by_member']
+        self.display_money_and_point = response_body['display_money_and_point']
 
     def id(self):
         return self.id
@@ -54,4 +55,7 @@ class PrivateMoney(PokepayResponse):
 
     def enable_topup_by_member(self):
         return self.enable_topup_by_member
+
+    def display_money_and_point(self):
+        return self.display_money_and_point
 

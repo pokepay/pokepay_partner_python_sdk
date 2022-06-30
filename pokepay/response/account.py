@@ -9,6 +9,7 @@ class Account(PokepayResponse):
         self.id = response_body['id']
         self.name = response_body['name']
         self.is_suspended = response_body['is_suspended']
+        self.status = response_body['status']
         self.private_money = response_body['private_money']
 
     def id(self):
@@ -19,6 +20,9 @@ class Account(PokepayResponse):
 
     def is_suspended(self):
         return self.is_suspended
+
+    def status(self):
+        return self.status
 
     def private_money(self):
         return self.private_money

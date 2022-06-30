@@ -5,9 +5,9 @@ from pokepay_partner_python_sdk.pokepay.response.paginated_account_details impor
 
 
 class ListUserAccounts(PokepayRequest):
-    def __init__(self, user_id):
+    def __init__(self, user_id, **rest_args):
         self.path = "/users" + "/" + user_id + "/accounts"
         self.method = "GET"
         self.body_params = {}
-        
+        self.body_params.update(rest_args)
         self.response_class = PaginatedAccountDetails

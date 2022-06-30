@@ -9,11 +9,13 @@ class AccountDetail(PokepayResponse):
         self.id = response_body['id']
         self.name = response_body['name']
         self.is_suspended = response_body['is_suspended']
+        self.status = response_body['status']
         self.balance = response_body['balance']
         self.money_balance = response_body['money_balance']
         self.point_balance = response_body['point_balance']
         self.private_money = response_body['private_money']
         self.user = response_body['user']
+        self.external_id = response_body['external_id']
 
     def id(self):
         return self.id
@@ -23,6 +25,9 @@ class AccountDetail(PokepayResponse):
 
     def is_suspended(self):
         return self.is_suspended
+
+    def status(self):
+        return self.status
 
     def balance(self):
         return self.balance
@@ -38,4 +43,7 @@ class AccountDetail(PokepayResponse):
 
     def user(self):
         return self.user
+
+    def external_id(self):
+        return self.external_id
 

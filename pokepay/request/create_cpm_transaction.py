@@ -4,13 +4,12 @@ from pokepay_partner_python_sdk.pokepay.request.request import PokepayRequest
 from pokepay_partner_python_sdk.pokepay.response.transaction_detail import TransactionDetail
 
 
-class CreatePaymentTransaction(PokepayRequest):
-    def __init__(self, shop_id, customer_id, private_money_id, amount, **rest_args):
-        self.path = "/transactions" + "/payment"
+class CreateCpmTransaction(PokepayRequest):
+    def __init__(self, cpm_token, shop_id, amount, **rest_args):
+        self.path = "/transactions" + "/cpm"
         self.method = "POST"
-        self.body_params = {"shop_id": shop_id,
-                            "customer_id": customer_id,
-                            "private_money_id": private_money_id,
+        self.body_params = {"cpm_token": cpm_token,
+                            "shop_id": shop_id,
                             "amount": amount}
         self.body_params.update(rest_args)
         self.response_class = TransactionDetail

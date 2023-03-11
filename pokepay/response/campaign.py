@@ -19,6 +19,7 @@ class Campaign(PokepayResponse):
         self.bear_point_shop = response_body['bear_point_shop']
         self.private_money = response_body['private_money']
         self.dest_private_money = response_body['dest_private_money']
+        self.max_total_point_amount = response_body['max_total_point_amount']
         self.point_calculation_rule = response_body['point_calculation_rule']
         self.point_calculation_rule_object = response_body['point_calculation_rule_object']
         self.status = response_body['status']
@@ -61,6 +62,9 @@ class Campaign(PokepayResponse):
 
     def dest_private_money(self):
         return self.dest_private_money
+
+    def max_total_point_amount(self):
+        return self.max_total_point_amount
 
     def point_calculation_rule(self):
         return self.point_calculation_rule

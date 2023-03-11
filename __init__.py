@@ -16,6 +16,7 @@ from pokepay.request.delete_account import *
 from pokepay.request.list_account_balances import *
 from pokepay.request.list_account_expired_balances import *
 from pokepay.request.update_customer_account import *
+from pokepay.request.get_account_transfer_summary import *
 from pokepay.request.get_customer_accounts import *
 from pokepay.request.create_customer_account import *
 from pokepay.request.get_shop_accounts import *
@@ -36,9 +37,11 @@ from pokepay.request.create_exchange_transaction import *
 from pokepay.request.bulk_create_transaction import *
 from pokepay.request.get_transaction import *
 from pokepay.request.refund_transaction import *
+from pokepay.request.get_transaction_by_request_id import *
 from pokepay.request.create_external_transaction import *
 from pokepay.request.refund_external_transaction import *
 from pokepay.request.list_transfers import *
+from pokepay.request.list_transfers_v2 import *
 from pokepay.request.create_organization import *
 from pokepay.request.list_shops import *
 from pokepay.request.create_shop import *
@@ -50,6 +53,7 @@ from pokepay.request.get_private_money_organization_summaries import *
 from pokepay.request.get_private_money_summary import *
 from pokepay.request.list_customer_transactions import *
 from pokepay.request.get_bulk_transaction import *
+from pokepay.request.list_bulk_transaction_jobs import *
 from pokepay.request.create_cashtray import *
 from pokepay.request.get_cashtray import *
 from pokepay.request.cancel_cashtray import *
@@ -58,6 +62,7 @@ from pokepay.request.create_campaign import *
 from pokepay.request.list_campaigns import *
 from pokepay.request.get_campaign import *
 from pokepay.request.update_campaign import *
+from pokepay.request.request_user_stats import *
 from pokepay.response.pong import *
 from pokepay.response.echo import *
 from pokepay.response.pagination import *
@@ -83,6 +88,8 @@ from pokepay.response.shop_with_metadata import *
 from pokepay.response.shop_with_accounts import *
 from pokepay.response.user_transaction import *
 from pokepay.response.bulk_transaction import *
+from pokepay.response.bulk_transaction_job import *
+from pokepay.response.paginated_bulk_transaction_job import *
 from pokepay.response.account_without_private_money_detail import *
 from pokepay.response.transfer import *
 from pokepay.response.external_transaction import *
@@ -91,9 +98,11 @@ from pokepay.response.organization_summary import *
 from pokepay.response.private_money_organization_summary import *
 from pokepay.response.paginated_private_money_organization_summaries import *
 from pokepay.response.private_money_summary import *
+from pokepay.response.user_stats_operation import *
 from pokepay.response.paginated_transaction import *
 from pokepay.response.paginated_transaction_v2 import *
 from pokepay.response.paginated_transfers import *
+from pokepay.response.paginated_transfers_v2 import *
 from pokepay.response.paginated_accounts import *
 from pokepay.response.paginated_account_with_users import *
 from pokepay.response.paginated_account_details import *
@@ -103,9 +112,13 @@ from pokepay.response.paginated_bills import *
 from pokepay.response.paginated_private_moneys import *
 from pokepay.response.campaign import *
 from pokepay.response.paginated_campaigns import *
+from pokepay.response.account_transfer_summary_element import *
+from pokepay.response.account_transfer_summary import *
 from pokepay.response.bad_request import *
 from pokepay.response.partner_client_not_found import *
 from pokepay.response.partner_decryption_failed import *
 from pokepay.response.partner_request_expired import *
 from pokepay.response.partner_request_already_done import *
 from pokepay.response.invalid_parameters import *
+from pokepay.response.unpermitted_admin_user import *
+from pokepay.response.user_stats_operation_service_unavailable import *

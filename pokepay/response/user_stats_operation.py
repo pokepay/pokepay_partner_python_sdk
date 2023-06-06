@@ -4,7 +4,6 @@ from pokepay.response.response import PokepayResponse
 
 
 class UserStatsOperation(PokepayResponse):
-
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
         self.id = response_body['id']
@@ -39,3 +38,4 @@ class UserStatsOperation(PokepayResponse):
 
     def requested_at(self):
         return self.requested_at
+

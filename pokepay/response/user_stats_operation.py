@@ -4,10 +4,11 @@ from pokepay.response.response import PokepayResponse
 
 
 class UserStatsOperation(PokepayResponse):
+
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
         self.id = response_body['id']
-        self.from = response_body['from']
+        self.start = response_body['from']
         self.to = response_body['to']
         self.status = response_body['status']
         self.error_reason = response_body['error_reason']
@@ -18,8 +19,8 @@ class UserStatsOperation(PokepayResponse):
     def id(self):
         return self.id
 
-    def from(self):
-        return self.from
+    def start(self):
+        return self.start
 
     def to(self):
         return self.to
@@ -38,4 +39,3 @@ class UserStatsOperation(PokepayResponse):
 
     def requested_at(self):
         return self.requested_at
-

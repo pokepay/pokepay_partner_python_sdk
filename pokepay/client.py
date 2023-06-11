@@ -67,30 +67,3 @@ class Client(object):
             return request_object.response_class(response, decrypt_data)
         else:
             return response
-
-
-# =============================
-
-# c = Client('/home/wiz/.pokepay/config.ini')
-# req = SendEcho('hello3')
-# res = c.request(req)
-# res.status_code
-
-# >>> res
-# <pokepay.response.echo.Echo object at 0x7f0d3b057fd0>
-# >>> res.status
-# 'ok'
-# >>> res.message
-# 'hello3'
-# >>> res.body
-# {'status': 'ok', 'message': 'hello3'}
-# >>> res.elapsed
-# datetime.timedelta(microseconds=115728)
-# >>> res.status_code
-# 200
-# >>> res.ok
-# True
-# >>> res.headers
-# {'Server': 'nginx/1.10.3 (Ubuntu)', 'Date': 'Sun, 12 Sep 2021 17:10:01 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'private', 'X-Frame-Options': 'DENY', 'X-Content-Type-Options': 'nosniff', 'Content-Encoding': 'gzip'}
-# >>> res.url
-# 'https://partnerapi-qa.pokepay.jp/echo'

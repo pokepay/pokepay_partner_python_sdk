@@ -6,7 +6,7 @@
 import pokepay
 from pokepay.client import Client
 
-c = Client('/home/user/.pokepay/config.ini')
+c = Client('/path/to/config.ini')
 req = pokepay.SendEcho('Hello, world!')
 res = c.send(req)
 res.body

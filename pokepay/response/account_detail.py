@@ -13,6 +13,7 @@ class AccountDetail(PokepayResponse):
         self.balance = response_body['balance']
         self.money_balance = response_body['money_balance']
         self.point_balance = response_body['point_balance']
+        self.point_debt = response_body['point_debt']
         self.private_money = response_body['private_money']
         self.user = response_body['user']
         self.external_id = response_body['external_id']
@@ -37,6 +38,9 @@ class AccountDetail(PokepayResponse):
 
     def point_balance(self):
         return self.point_balance
+
+    def point_debt(self):
+        return self.point_debt
 
     def private_money(self):
         return self.private_money

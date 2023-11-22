@@ -1,6 +1,14 @@
 .DS_Store
 
+env/
+build/
+dist/
+pokepay_partner_python_sdk.egg-info/
+
+config.ini
+
 *.pyc
+*.pyo
 
 *~
 .#*

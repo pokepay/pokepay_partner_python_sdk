@@ -7,6 +7,7 @@ class Check(PokepayResponse):
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
         self.id = response_body['id']
+        self.created_at = response_body['created_at']
         self.amount = response_body['amount']
         self.money_amount = response_body['money_amount']
         self.point_amount = response_body['point_amount']
@@ -18,10 +19,15 @@ class Check(PokepayResponse):
         self.private_money = response_body['private_money']
         self.usage_limit = response_body['usage_limit']
         self.usage_count = response_body['usage_count']
+        self.point_expires_at = response_body['point_expires_at']
+        self.point_expires_in_days = response_body['point_expires_in_days']
         self.token = response_body['token']
 
     def id(self):
         return self.id
+
+    def created_at(self):
+        return self.created_at
 
     def amount(self):
         return self.amount
@@ -55,6 +61,12 @@ class Check(PokepayResponse):
 
     def usage_count(self):
         return self.usage_count
+
+    def point_expires_at(self):
+        return self.point_expires_at
+
+    def point_expires_in_days(self):
+        return self.point_expires_in_days
 
     def token(self):
         return self.token

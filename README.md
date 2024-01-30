@@ -17,5 +17,5 @@ res.elapsed
 ## Run test
 
 ```
-python tests/request_validation_test.py
+python3 -m unittest discover tests/
 ```

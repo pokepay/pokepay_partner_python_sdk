@@ -104,6 +104,9 @@ TIMEOUT          = 10
 - [ListTransfers](#list-transfers): 
 - [ListTransfersV2](#list-transfers-v2): 
 - [CreateCheck](#create-check): チャージQRコードの発行
+- [ListChecks](#list-checks): チャージQRコード一覧の取得
+- [GetCheck](#get-check): チャージQRコードの表示
+- [UpdateCheck](#update-check): チャージQRコードの更新
 - [CreateTopupTransactionWithCheck](#create-topup-transaction-with-check): チャージQRコードを読み取ることでチャージする
 - [ListBills](#list-bills): 支払いQRコード一覧を表示する
 - [CreateBill](#create-bill): 支払いQRコードの発行
@@ -139,13 +142,27 @@ TIMEOUT          = 10
 - [ListCampaigns](#list-campaigns): キャンペーン一覧を取得する
 - [GetCampaign](#get-campaign): キャンペーンを取得する
 - [UpdateCampaign](#update-campaign): ポイント付与キャンペーンを更新する
+- [CreateWebhook](#create-webhook): webhookの作成
+- [ListWebhooks](#list-webhooks): 作成したWebhookの一覧を返す
+- [UpdateWebhook](#update-webhook): Webhookの更新
+- [DeleteWebhook](#delete-webhook): Webhookの削除
+- [ListCoupons](#list-coupons): クーポン一覧の取得
+- [CreateCoupon](#create-coupon): クーポンの登録
+- [GetCoupon](#get-coupon): クーポンの取得
+- [UpdateCoupon](#update-coupon): クーポンの更新
+- [CreateUserDevice](#create-user-device): ユーザーのデバイス登録
+- [GetUserDevice](#get-user-device): ユーザーのデバイスを取得
+- [ActivateUserDevice](#activate-user-device): デバイスの有効化
+- [CreateBank](#create-bank): 銀行口座の登録
+- [ListBanks](#list-banks): 登録した銀行の一覧
+- [CreateBankTopupTransaction](#create-bank-topup-transaction): 銀行からのチャージ
 ### Transaction
 <a name="get-cpm-token"></a>
 #### CPMトークンの状態取得
 CPMトークンの現在の状態を取得します。CPMトークンの有効期限やCPM取引の状態を返します。
 ```python
 response = client.send(pp.GetCpmToken(
-                          "2SpDoeGryI5OQQ9GoRehaS"                              # cpm_token: CPMトークン
+                          "WfSQd6CbYMTeBCk7PfnQS3"                              # cpm_token: CPMトークン
 ))
 ```
 
@@ -167,18 +184,18 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 取引一覧を返します。
 ```python
 response = client.send(pp.ListTransactions(
-                          start="2019-04-02T14:57:33.000000+09:00",             # 開始日時
-                          to="2019-03-08T20:00:15.000000+09:00",                # 終了日時
+                          start="2024-01-10T12:52:04.000000+09:00",             # 開始日時
+                          to="2022-04-25T10:52:49.000000+09:00",                # 終了日時
                           page=1,                                               # ページ番号
                           per_page=50,                                          # 1ページ分の取引数
                           shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
                           customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # エンドユーザーID
                           customer_name="太郎",                                   # エンドユーザー名
                           terminal_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # 端末ID
-                          transaction_id="M3f",                                 # 取引ID
+                          transaction_id="rM9oY",                               # 取引ID
                           organization_code="pocketchange",                     # 組織コード
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
-                          is_modified=False,                                    # キャンセルフラグ
+                          is_modified=True,                                     # キャンセルフラグ
                           types=["topup", "payment"],                           # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
                           description="店頭QRコードによる支払い"                           # 取引説明文
 ))
@@ -279,7 +296,9 @@ response = client.send(pp.ListTransactions(
 ---
 `transaction_id`  
 ```json
-{ "type": "string" }
+{
+  "type": "string"
+}
 ```
 取引IDです。
 
@@ -313,7 +332,9 @@ response = client.send(pp.ListTransactions(
 ---
 `is_modified`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンセルフラグです。
 
@@ -327,11 +348,14 @@ response = client.send(pp.ListTransactions(
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "topup": "payment",
-      "exchange_outflow": "exchange_inflow",
-      "cashback": "expire"
-    }
+    "enum": [
+      "topup",
+      "payment",
+      "exchange_outflow",
+      "exchange_inflow",
+      "cashback",
+      "expire"
+    ]
   }
 }
 ```
@@ -379,10 +403,10 @@ response = client.send(pp.CreateTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                          money_amount=8811,
-                          point_amount=8586,
-                          point_expires_at="2024-01-19T19:14:01.000000+09:00",  # ポイント有効期限
-                          description="WbkxbWTp66iGj1lRR9XuMVcs2zeQQbQwb51zUDjfyGpNkIiUDvsd07Li3GyEdt6GGJ1GXo5UPiFJuScrEGcY5I6vYJqEcansSsP2ceIvKP9bgYanQbVQM9Z6RG0kCsPdzwEr5mXGzuLW3FkWi9ZhIojVZoApe0VcAXVJNN81LI44xL3mfrFPuEOVK"
+                          money_amount=5149,
+                          point_amount=8096,
+                          point_expires_at="2021-09-06T04:28:21.000000+09:00",  # ポイント有効期限
+                          description="mzHkA5TQae4GzvGsfk0rNMcWP2D8Smig7W88GiCPAWFoKpgdRnpUfBy4vrr2wbFahoOugv6uxwZ9jGTkNZSU32N4OZ9xablsyOxq"
 ))
 ```
 
@@ -411,11 +435,11 @@ response = client.send(pp.ListTransactionsV2(
                           customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # エンドユーザーID
                           customer_name="太郎",                                   # エンドユーザー名
                           description="店頭QRコードによる支払い",                          # 取引説明文
-                          transaction_id="P",                                   # 取引ID
-                          is_modified=False,                                    # キャンセルフラグ
+                          transaction_id="g0l",                                 # 取引ID
+                          is_modified=True,                                     # キャンセルフラグ
                           types=["topup", "payment"],                           # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-                          start="2020-08-12T10:28:28.000000+09:00",             # 開始日時
-                          to="2023-04-13T13:20:02.000000+09:00",                # 終了日時
+                          start="2020-06-24T13:59:21.000000+09:00",             # 開始日時
+                          to="2022-04-05T17:04:12.000000+09:00",                # 終了日時
                           next_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 次ページへ遷移する際に起点となるtransactionのID
                           prev_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 前ページへ遷移する際に起点となるtransactionのID
                           per_page=50                                           # 1ページ分の取引数
@@ -510,7 +534,9 @@ response = client.send(pp.ListTransactionsV2(
 ---
 `transaction_id`  
 ```json
-{ "type": "string" }
+{
+  "type": "string"
+}
 ```
 取引IDです。
 
@@ -519,7 +545,9 @@ response = client.send(pp.ListTransactionsV2(
 ---
 `is_modified`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンセルフラグです。
 
@@ -533,11 +561,14 @@ response = client.send(pp.ListTransactionsV2(
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "topup": "payment",
-      "exchange_outflow": "exchange_inflow",
-      "cashback": "expire"
-    }
+    "enum": [
+      "topup",
+      "payment",
+      "exchange_outflow",
+      "exchange_inflow",
+      "cashback",
+      "expire"
+    ]
   }
 }
 ```
@@ -644,9 +675,9 @@ response = client.send(pp.CreateTopupTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーのID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
                           bear_point_shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # ポイント支払時の負担店舗ID
-                          money_amount=4222,                                    # マネー額
-                          point_amount=1572,                                    # ポイント額
-                          point_expires_at="2016-06-25T02:37:30.000000+09:00",  # ポイント有効期限
+                          money_amount=6456,                                    # マネー額
+                          point_amount=590,                                     # ポイント額
+                          point_expires_at="2022-11-14T15:03:02.000000+09:00",  # ポイント有効期限
                           description="初夏のチャージキャンペーン",                          # 取引履歴に表示する説明文
                           metadata="{\"key\":\"value\"}",                       # 取引メタデータ
                           request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # リクエストID
@@ -788,10 +819,15 @@ response = client.send(pp.CreatePaymentTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          435,                                                  # amount: 支払い額
+                          2920,                                                 # amount: 支払い額
                           description="たい焼き(小倉)",                               # 取引履歴に表示する説明文
                           metadata="{\"key\":\"value\"}",                       # 取引メタデータ
                           products=[{"jan_code":"abc",
+ "name":"name1",
+ "unit_price":100,
+ "price": 100,
+ "is_discounted": False,
+ "other":"{}"}, {"jan_code":"abc",
  "name":"name1",
  "unit_price":100,
  "price": 100,
@@ -883,7 +919,9 @@ response = client.send(pp.CreatePaymentTransaction(
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 一つの取引に含まれる商品情報データです。
@@ -919,22 +957,12 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```python
 response = client.send(pp.CreateCpmTransaction(
-                          "VaVg5lQKirhrBQImBbFTGr",                             # cpm_token: CPMトークン
+                          "ce8PoRAgDEhsNxsINfmrkh",                             # cpm_token: CPMトークン
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ID
-                          5300.0,                                               # amount: 取引金額
+                          8426.0,                                               # amount: 取引金額
                           description="たい焼き(小倉)",                               # 取引説明文
                           metadata="{\"key\":\"value\"}",                       # 店舗側メタデータ
                           products=[{"jan_code":"abc",
- "name":"name1",
- "unit_price":100,
- "price": 100,
- "is_discounted": False,
- "other":"{}"}, {"jan_code":"abc",
- "name":"name1",
- "unit_price":100,
- "price": 100,
- "is_discounted": False,
- "other":"{}"}, {"jan_code":"abc",
  "name":"name1",
  "unit_price":100,
  "price": 100,
@@ -972,7 +1000,9 @@ response = client.send(pp.CreateCpmTransaction(
 ---
 `amount`  
 ```json
-{ "type": "number" }
+{
+  "type": "number"
+}
 ```
 取引金額を指定します。
 
@@ -1007,7 +1037,9 @@ response = client.send(pp.CreateCpmTransaction(
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 一つの取引に含まれる商品情報データです。
@@ -1046,7 +1078,7 @@ response = client.send(pp.CreateTransferTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # sender_id: 送金元ユーザーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # receiver_id: 受取ユーザーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          3958.0,                                               # amount: 送金額
+                          4137.0,                                               # amount: 送金額
                           metadata="{\"key\":\"value\"}",                       # 取引メタデータ
                           description="たい焼き(小倉)",                               # 取引履歴に表示する説明文
                           request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # リクエストID
@@ -1148,8 +1180,8 @@ response = client.send(pp.CreateExchangeTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                          5677.0,
-                          description="n0V1KmKqNhpuD1AS4IxvpFPGaTF6gXtd3nJyyNe74Q2bvFtDokudzPS7PJ09whlF6CVlMKFHkTHEGRWUBVU",
+                          9044,
+                          description="1gezOooUC5uU8mRckD17vwGBVj6",
                           request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # リクエストID
 ))
 ```
@@ -1206,7 +1238,7 @@ response = client.send(pp.GetTransaction(
 response = client.send(pp.RefundTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # transaction_id: 取引ID
                           description="返品対応のため",                                # 取引履歴に表示する返金事由
-                          returning_point_expires_at="2020-05-15T02:42:53.000000+09:00" # 返却ポイントの有効期限
+                          returning_point_expires_at="2022-05-15T02:07:45.000000+09:00" # 返却ポイントの有効期限
 ))
 ```
 
@@ -1265,8 +1297,8 @@ CSVの作成は非同期で行われるため完了まで少しの間待つ必�
 また、指定期間より前の決済を時間をおいてキャンセルした場合などには payment_money_amount, payment_point_amount, payment_transaction_count が負の値になることもあることに留意してください。
 ```python
 response = client.send(pp.RequestUserStats(
-                          "2019-12-07T10:49:59.000000+09:00",                   # from: 集計期間の開始時刻
-                          "2023-03-22T22:26:15.000000+09:00"                    # to: 集計期間の終了時刻
+                          "2022-05-20T17:56:49.000000+09:00",                   # from: 集計期間の開始時刻
+                          "2023-12-10T01:16:11.000000+09:00"                    # to: 集計期間の終了時刻
 ))
 ```
 
@@ -1301,8 +1333,8 @@ response = client.send(pp.RequestUserStats(
 ```python
 response = client.send(pp.GetAccountTransferSummary(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
-                          start="2024-07-13T19:55:53.000000+09:00",             # 集計期間の開始時刻
-                          to="2017-05-16T05:26:01.000000+09:00",                # 集計期間の終了時刻
+                          start="2023-01-06T14:41:34.000000+09:00",             # 集計期間の開始時刻
+                          to="2020-03-11T07:17:54.000000+09:00",                # 集計期間の終了時刻
                           transfer_types=["topup", "payment"]                   # 取引明細種別 (複数指定可)
 ))
 ```
@@ -1326,14 +1358,20 @@ response = client.send(pp.GetAccountTransferSummary(
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "payment": "topup",
-      "campaign-topup": "use-coupon",
-      "refund-payment": "refund-topup",
-      "refund-campaign": "refund-coupon",
-      "exchange-inflow": "exchange-outflow",
-      "refund-exchange-inflow": "refund-exchange-outflow"
-    }
+    "enum": [
+      "payment",
+      "topup",
+      "campaign-topup",
+      "use-coupon",
+      "refund-payment",
+      "refund-topup",
+      "refund-campaign",
+      "refund-coupon",
+      "exchange-inflow",
+      "exchange-outflow",
+      "refund-exchange-inflow",
+      "refund-exchange-outflow"
+    ]
   }
 }
 ```
@@ -1371,19 +1409,19 @@ response = client.send(pp.GetAccountTransferSummary(
 #### 
 ```python
 response = client.send(pp.ListTransfers(
-                          start="2021-09-06T01:57:54.000000+09:00",
-                          to="2017-11-10T18:35:32.000000+09:00",
-                          page=4791,
-                          per_page=105,
+                          start="2020-02-20T18:04:39.000000+09:00",
+                          to="2020-11-19T15:14:33.000000+09:00",
+                          page=4922,
+                          per_page=1259,
                           shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                          shop_name="vlI4uoOEnKraNjpsN9SjDxtxrgs7e0dkiAAa8jwX6FLCB",
+                          shop_name="yJLxbf2bF7JDM6BrJTieXZlAquo6B2OoFVxul45DwStHCI6q3zDENuEvYGzVKjjuXqL264WqTEj7ZL9FUnon9uRhWd1C6gXW5chMZ2r438ALf5hjFIPLKUGEK1D1Da4JliAfzTJ5U0d01v4lSsVdvrTLCL5fgtKGPY2vE8AOV26AvcyN2kv",
                           customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                          customer_name="1XlvzBazSCE1hEG2EkkP2VIPy7HW7Ee7skB9BB1YNClE0n87A30l6vspNWH9u8x4Yq2mxjIub5W9d4fa79SnOHSfjKkp3QkI11kPUOWIOCC9XRXSkWvgwMdC6YsQVBM615BSLRTB4phpjbt6QHeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6kpXiCTiSBUIe5iqIMOcjyqBKlSFGLuqDn2oMYRFh8cqnV2spF",
+                          customer_name="yNGAV5alMPeyACgqSErG3yv44B4mTpVH3vsRdVlL12CQQYqwF4rLBNvZW6pSTI5Ea52DwrJ0UttYZ0HuzokHHo6xZIClZ4XzV0NOKYmWvWLVERdnGkVwCXU0L3ttW",
                           transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                           is_modified=False,
-                          transaction_types=["exchange", "topup", "cashback"],
-                          transfer_types=["payment", "topup", "transfer"],      # 取引明細の種類でフィルターします。
+                          transaction_types=["exchange"],
+                          transfer_types=["exchange", "payment", "topup", "transfer", "campaign"], # 取引明細の種類でフィルターします。
                           description="店頭QRコードによる支払い"                           # 取引詳細説明文
 ))
 ```
@@ -1395,12 +1433,16 @@ response = client.send(pp.ListTransfers(
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "topup": "payment",
-      "exchange": "transfer",
-      "coupon": "campaign",
-      "cashback": "expire"
-    }
+    "enum": [
+      "topup",
+      "payment",
+      "exchange",
+      "transfer",
+      "coupon",
+      "campaign",
+      "cashback",
+      "expire"
+    ]
   }
 }
 ```
@@ -1448,20 +1490,20 @@ response = client.send(pp.ListTransfers(
 ```python
 response = client.send(pp.ListTransfersV2(
                           shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
-                          shop_name="y6dBb3ykYYVRZ4jdyfDGYQa0QPCC60HT399N8hkxoSQFYDUU0HuG332kYdREQC39nZBUv4F8J7UzyDYEv7bctcmIqdmvTV8RBzp0gixsKZWoUeORL98QDv9TW3tonru5DxxR1kiR4daTST401zYU9O5bmxo5R8HDeIrg38UDixRQOsOxJyiut30oRsSLi4FAWjvNFlMGhO7M", # 店舗名
+                          shop_name="HyRUvCbxwoTuVJf0MMogpJPwzLAJH3L2PbGM7oHYimoNmJ5lNJ8Jr8QldQfyN2lcRlcMAeWmRCdLs3shehdDqjWq7Im0wwgh14WT82kQJEGa5C4KmuD0Nmy9QHvUyCchiy1yck8YYvHgy7b57ytVAwiN3DxS9bHCCgPTgu1NGYTyrVRytBVZh1xjbw2eQso8YWzQFPEnhdMgEGFqar5WUl", # 店舗名
                           customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # エンドユーザーID
-                          customer_name="oFiHLtN9Yqy7R5Sel4rqjqD6mB2gz0FIdNSbIrXOBo1I3rdkLB5vuUQlHHWHdfJKJGJOe4o3A7Ast7GZKKewMQbpvWdRIf0j2NcGpd9kTg7", # エンドユーザー名
+                          customer_name="I0PXzaYGjO0K4DgFbFvHTwqKzghhVBRPb9vuZg0uF", # エンドユーザー名
                           transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 取引ID
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
                           is_modified=True,                                     # キャンセルフラグ
-                          transaction_types=["topup", "exchange", "transfer"],  # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+                          transaction_types=["expire", "exchange", "transfer"], # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
                           next_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 次ページへ遷移する際に起点となるtransferのID
                           prev_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 前ページへ遷移する際に起点となるtransferのID
                           per_page=50,                                          # 1ページ分の取引数
-                          transfer_types=["payment", "cashback", "coupon"],     # 取引明細種別 (複数指定可)
+                          transfer_types=["campaign", "topup", "exchange", "payment", "expire", "coupon", "transfer"], # 取引明細種別 (複数指定可)
                           description="店頭QRコードによる支払い",                          # 取引詳細説明文
-                          start="2016-06-10T19:56:26.000000+09:00",             # 開始日時
-                          to="2021-01-10T20:58:11.000000+09:00"                 # 終了日時
+                          start="2020-10-05T15:00:58.000000+09:00",             # 開始日時
+                          to="2020-02-18T00:49:06.000000+09:00"                 # 終了日時
 ))
 ```
 
@@ -1540,7 +1582,9 @@ response = client.send(pp.ListTransfersV2(
 ---
 `is_modified`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンセルフラグです。
 
@@ -1554,11 +1598,14 @@ response = client.send(pp.ListTransfersV2(
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "topup": "payment",
-      "transfer": "exchange",
-      "cashback": "expire"
-    }
+    "enum": [
+      "topup",
+      "payment",
+      "transfer",
+      "exchange",
+      "cashback",
+      "expire"
+    ]
   }
 }
 ```
@@ -1637,12 +1684,16 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
   "type": "array",
   "items": {
     "type": "string",
-    "enum": {
-      "topup": "payment",
-      "exchange": "transfer",
-      "coupon": "campaign",
-      "cashback": "expire"
-    }
+    "enum": [
+      "topup",
+      "payment",
+      "exchange",
+      "transfer",
+      "coupon",
+      "campaign",
+      "cashback",
+      "expire"
+    ]
   }
 }
 ```
@@ -1723,37 +1774,445 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 ```python
 response = client.send(pp.CreateCheck(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: 送金元の店舗アカウントID
-                          money_amount=4920.0,                                  # 付与マネー額
-                          point_amount=6626.0,                                  # 付与ポイント額
+                          money_amount=5644.0,                                  # 付与マネー額
+                          point_amount=5706.0,                                  # 付与ポイント額
                           description="test check",                             # 説明文(アプリ上で取引の説明文として表示される)
-                          is_onetime=False,                                     # ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
-                          usage_limit=2307,                                     # ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
-                          expires_at="2025-04-26T21:22:12.000000+09:00",        # チャージQR自体の失効日時
-                          point_expires_at="2022-10-27T01:02:15.000000+09:00",  # チャージQRによって付与されるポイントの失効日時
-                          point_expires_in_days=60,                             # チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
-                          bear_point_account="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # ポイント額を負担する店舗アカウントのID
+                          is_onetime=True,                                      # ワンタイムかどうかのフラグ
+                          usage_limit=7190,                                     # ワンタイムでない場合の最大読み取り回数
+                          expires_at="2024-01-17T10:52:59.000000+09:00",        # チャージQRコード自体の失効日時
+                          point_expires_at="2020-10-07T01:34:35.000000+09:00",  # チャージQRコードによって付与されるポイント残高の有効期限
+                          point_expires_in_days=60,                             # チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
+                          bear_point_account="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # ポイント額を負担する店舗のウォレットID
 ))
 ```
 `money_amount`と`point_amount`の少なくとも一方は指定する必要があります。
 
 
 ---
+`money_amount`  
+```json
+{
+  "type": "number",
+  "format": "decimal",
+  "minimum": 0
+}
+```
+チャージQRコードによって付与されるマネー額です。
+`money_amount`と`point_amount`の少なくともどちらかは指定する必要があります。
+
+
+---
+`point_amount`  
+```json
+{
+  "type": "number",
+  "format": "decimal",
+  "minimum": 0
+}
+```
+チャージQRコードによって付与されるポイント額です。
+`money_amount`と`point_amount`の少なくともどちらかは指定する必要があります。
+
+
+---
 `is_onetime`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 チャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
-`false`の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
+`false`の場合、複数ユーザによって読み取り可能なQRコードになります。
+ただし、その場合も1ユーザにつき1回のみしか読み取れません。
 
 
 ---
 `usage_limit`  
 ```json
-{ "type": "integer" }
+{
+  "type": "integer"
+}
 ```
-複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。
-省略すると無制限に読み取り可能なチャージQRコードになります。
-チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
+複数ユーザによって読み取り可能なチャージQRコードの最大読み取り回数を指定します。
+NULLに設定すると無制限に読み取り可能なチャージQRコードになります。
+デフォルト値はNULLです。
+ワンタイム指定(`is_onetime`)がされているときは、本パラメータはNULLである必要があります。
+
+
+---
+`expires_at`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。デフォルトでは作成日時から3ヶ月後になります。
+
+チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
+
+
+---
+`point_expires_at`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+チャージQRコードによって付与されるポイント残高の有効起源を指定します。デフォルトではマネー残高の有効期限と同じものが指定されます。
+
+チャージQRコードにより付与されるマネー残高の有効期限はQRコード毎には指定できませんが、ポイント残高の有効期限は本パラメータにより、QRコード毎に個別に指定することができます。
+
+
+---
+`point_expires_in_days`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+チャージQRコードによって付与されるポイント残高の有効期限を相対日数で指定します。
+1を指定すると、チャージQRコード作成日の当日中に失効します(翌日0時に失効)。
+`point_expires_at`と`point_expires_in_days`が両方指定されている場合は、チャージQRコードによるチャージ取引ができた時点からより近い方が採用されます。
+
+
+---
+`bear_point_account`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+ポイントチャージをする場合、ポイント額を負担する店舗のウォレットIDを指定することができます。
+デフォルトではマネー発行体のデフォルト店舗(本店)がポイント負担先となります。
+
+
+---
+成功したときは[Check](#check)オブジェクトを返します
+<a name="list-checks"></a>
+#### チャージQRコード一覧の取得
+```python
+response = client.send(pp.ListChecks(
+                          page=6808,                                            # ページ番号
+                          per_page=50,                                          # 1ページの表示数
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
+                          organization_code="pE6xQAOlPyp637q",                  # 組織コード
+                          expires_from="2024-01-03T13:48:12.000000+09:00",      # 有効期限の期間によるフィルター(開始時点)
+                          expires_to="2021-12-17T16:28:17.000000+09:00",        # 有効期限の期間によるフィルター(終了時点)
+                          created_from="2023-10-03T01:45:36.000000+09:00",      # 作成日時の期間によるフィルター(開始時点)
+                          created_to="2023-12-04T10:39:44.000000+09:00",        # 作成日時の期間によるフィルター(終了時点)
+                          issuer_shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 発行店舗ID
+                          description="Fl81H3E",                                # チャージQRコードの説明文
+                          is_onetime=False,                                     # ワンタイムのチャージQRコードかどうか
+                          is_disabled=True                                      # 無効化されたチャージQRコードかどうか
+))
+```
+
+---
+`per_page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+1ページ当たり表示数です。デフォルト値は50です。
+
+---
+`private_money_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+チャージQRコードのチャージ対象のマネーIDで結果をフィルターします。
+
+
+---
+`organization_code`  
+```json
+{
+  "type": "string",
+  "maxLength": 32
+}
+```
+チャージQRコードの発行店舗の所属組織の組織コードで結果をフィルターします。
+デフォルトでは未指定です。
+
+---
+`expires_from`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+有効期限の期間によるフィルターの開始時点のタイムスタンプです。
+デフォルトでは未指定です。
+
+
+---
+`expires_to`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+有効期限の期間によるフィルターの終了時点のタイムスタンプです。
+デフォルトでは未指定です。
+
+
+---
+`created_from`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+作成日時の期間によるフィルターの開始時点のタイムスタンプです。
+デフォルトでは未指定です。
+
+
+---
+`created_to`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+作成日時の期間によるフィルターの終了時点のタイムスタンプです。
+デフォルトでは未指定です。
+
+
+---
+`issuer_shop_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+チャージQRコードを発行した店舗IDによってフィルターします。
+デフォルトでは未指定です。
+
+
+---
+`description`  
+```json
+{
+  "type": "string"
+}
+```
+チャージQRコードの説明文(description)によってフィルターします。
+部分一致(前方一致)したものを表示します。
+デフォルトでは未指定です。
+
+
+---
+`is_onetime`  
+```json
+{
+  "type": "boolean"
+}
+```
+チャージQRコードがワンタイムに設定されているかどうかでフィルターします。
+`true` の場合はワンタイムかどうかでフィルターし、`false`の場合はワンタイムでないものをフィルターします。
+未指定の場合はフィルターしません。
+デフォルトでは未指定です。
+
+
+---
+`is_disabled`  
+```json
+{
+  "type": "boolean"
+}
+```
+チャージQRコードが無効化されているかどうかでフィルターします。
+`true` の場合は無効なものをフィルターし、`false`の場合は有効なものをフィルターします。
+未指定の場合はフィルターしません。
+デフォルトでは未指定です。
+
+
+---
+成功したときは[PaginatedChecks](#paginated-checks)オブジェクトを返します
+<a name="get-check"></a>
+#### チャージQRコードの表示
+```python
+response = client.send(pp.GetCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # check_id: チャージQRコードのID
+))
+```
+
+---
+`check_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+表示対象のチャージQRコードのIDです。
+
+---
+成功したときは[Check](#check)オブジェクトを返します
+<a name="update-check"></a>
+#### チャージQRコードの更新
+```python
+response = client.send(pp.UpdateCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # check_id: チャージQRコードのID
+                          money_amount=8370.0,                                  # 付与マネー額
+                          point_amount=5213.0,                                  # 付与ポイント額
+                          description="test check",                             # チャージQRコードの説明文
+                          is_onetime=True,                                      # ワンタイムかどうかのフラグ
+                          usage_limit=858,                                      # ワンタイムでない場合の最大読み取り回数
+                          expires_at="2021-10-28T16:25:04.000000+09:00",        # チャージQRコード自体の失効日時
+                          point_expires_at="2021-01-12T22:15:57.000000+09:00",  # チャージQRコードによって付与されるポイント残高の有効期限
+                          point_expires_in_days=60,                             # チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
+                          bear_point_account="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # ポイント額を負担する店舗のウォレットID
+                          is_disabled=True                                      # 無効化されているかどうかのフラグ
+))
+```
+
+---
+`check_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+更新対象のチャージQRコードのIDです。
+
+---
+`money_amount`  
+```json
+{
+  "type": "number",
+  "format": "decimal",
+  "minimum": 0
+}
+```
+チャージQRコードによって付与されるマネー額です。
+`money_amount`と`point_amount`が両方0になるような更新リクエストはエラーになります。
+
+
+---
+`point_amount`  
+```json
+{
+  "type": "number",
+  "format": "decimal",
+  "minimum": 0
+}
+```
+チャージQRコードによって付与されるポイント額です。
+`money_amount`と`point_amount`が両方0になるような更新リクエストはエラーになります。
+
+
+---
+`description`  
+```json
+{
+  "type": "string",
+  "maxLength": 200
+}
+```
+チャージQRコードの説明文です。
+チャージ取引後は、取引の説明文に転記され、取引履歴などに表示されます。
+
+
+---
+`is_onetime`  
+```json
+{
+  "type": "boolean"
+}
+```
+チャージQRコードが一度の読み取りで失効するときに`true`にします。
+`false`の場合、複数ユーザによって読み取り可能なQRコードになります。
+ただし、その場合も1ユーザにつき1回のみしか読み取れません。
+
+
+---
+`usage_limit`  
+```json
+{
+  "type": "integer"
+}
+```
+複数ユーザによって読み取り可能なチャージQRコードの最大読み取り回数を指定します。
+NULLに設定すると無制限に読み取り可能なチャージQRコードになります。
+ワンタイム指定(`is_onetime`)がされているときは、本パラメータはNULLである必要があります。
+
+
+---
+`expires_at`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。
+
+チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
+
+
+---
+`point_expires_at`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+チャージQRコードによって付与されるポイント残高の有効起源を指定します。
+
+チャージQRコードにより付与されるマネー残高の有効期限はQRコード毎には指定できませんが、ポイント残高の有効期限は本パラメータにより、QRコード毎に個別に指定することができます。
+
+
+---
+`point_expires_in_days`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+チャージQRコードによって付与されるポイント残高の有効期限を相対日数で指定します。
+1を指定すると、チャージQRコード作成日の当日中に失効します(翌日0時に失効)。
+`point_expires_at`と`point_expires_in_days`が両方指定されている場合は、チャージQRコードによるチャージ取引ができた時点からより近い方が採用されます。
+`point_expires_at`と`point_expires_in_days`が両方NULLに設定されている場合は、マネーに設定されている残高の有効期限と同じになります。
+
+
+---
+`bear_point_account`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+ポイントチャージをする場合、ポイント額を負担する店舗のウォレットIDを指定することができます。
+
+
+---
+`is_disabled`  
+```json
+{
+  "type": "boolean"
+}
+```
+チャージQRコードを無効化するときに`true`にします。
+`false`の場合は無効化されているチャージQRコードを再有効化します。
 
 
 ---
@@ -1767,7 +2226,8 @@ response = client.send(pp.CreateCheck(
 ```python
 response = client.send(pp.CreateTopupTransactionWithCheck(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # check_id: チャージ用QRコードのID
-                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # customer_id: エンドユーザーのID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーのID
+                          request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # リクエストID
 ))
 ```
 
@@ -1796,6 +2256,20 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 送金先のエンドユーザーを指定します。
 
 ---
+`request_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+
+---
 成功したときは[TransactionDetail](#transaction-detail)オブジェクトを返します
 ### Bill
 支払いQRコード
@@ -1804,18 +2278,18 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 支払いQRコード一覧を表示します。
 ```python
 response = client.send(pp.ListBills(
-                          page=2928,                                            # ページ番号
-                          per_page=334,                                         # 1ページの表示数
-                          bill_id="k",                                          # 支払いQRコードのID
+                          page=2217,                                            # ページ番号
+                          per_page=7866,                                        # 1ページの表示数
+                          bill_id="uxFRCF",                                     # 支払いQRコードのID
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
-                          organization_code="--M5MUz3-O-kA-d-vVP24",            # 組織コード
+                          organization_code="F96-pT-D0j-dZ---vh6I-B",           # 組織コード
                           description="test bill",                              # 取引説明文
-                          created_from="2019-05-21T15:43:38.000000+09:00",      # 作成日時(起点)
-                          created_to="2019-06-08T04:17:00.000000+09:00",        # 作成日時(終点)
+                          created_from="2021-06-24T01:54:55.000000+09:00",      # 作成日時(起点)
+                          created_to="2023-10-17T16:30:28.000000+09:00",        # 作成日時(終点)
                           shop_name="bill test shop1",                          # 店舗名
                           shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
-                          lower_limit_amount=826,                               # 金額の範囲によるフィルタ(下限)
-                          upper_limit_amount=8341,                              # 金額の範囲によるフィルタ(上限)
+                          lower_limit_amount=4318,                              # 金額の範囲によるフィルタ(下限)
+                          upper_limit_amount=6639,                              # 金額の範囲によるフィルタ(上限)
                           is_disabled=True                                      # 支払いQRコードが無効化されているかどうか
 ))
 ```
@@ -1843,7 +2317,9 @@ response = client.send(pp.ListBills(
 ---
 `bill_id`  
 ```json
-{ "type": "string" }
+{
+  "type": "string"
+}
 ```
 支払いQRコードのIDを指定して検索します。IDは前方一致で検索されます。
 
@@ -1947,7 +2423,9 @@ response = client.send(pp.ListBills(
 ---
 `is_disabled`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 支払いQRコードが無効化されているかどうかを表します。デフォルト値は偽(有効)です。
 
@@ -1960,7 +2438,7 @@ response = client.send(pp.ListBills(
 response = client.send(pp.CreateBill(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: 支払いマネーのマネーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 支払い先(受け取り人)の店舗ID
-                          amount=6180.0,                                        # 支払い額
+                          amount=8053.0,                                        # 支払い額
                           description="test bill"                               # 説明文(アプリ上で取引の説明文として表示される)
 ))
 ```
@@ -1984,9 +2462,9 @@ response = client.send(pp.CreateBill(
 ```python
 response = client.send(pp.UpdateBill(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # bill_id: 支払いQRコードのID
-                          amount=7003.0,                                        # 支払い額
+                          amount=2506.0,                                        # 支払い額
                           description="test bill",                              # 説明文
-                          is_disabled=True                                      # 無効化されているかどうか
+                          is_disabled=False                                     # 無効化されているかどうか
 ))
 ```
 
@@ -2024,7 +2502,9 @@ response = client.send(pp.UpdateBill(
 ---
 `is_disabled`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 支払いQRコードが無効化されているかどうかを指定します。真にすると無効化され、偽にすると有効化します。
 
@@ -2049,9 +2529,9 @@ Cashtrayを作成します。
 response = client.send(pp.CreateCashtray(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ユーザーID
-                          5903.0,                                               # amount: 金額
+                          3801.0,                                               # amount: 金額
                           description="たい焼き(小倉)",                               # 取引履歴に表示する説明文
-                          expires_in=1198                                       # 失効時間(秒)
+                          expires_in=7143                                       # 失効時間(秒)
 ))
 ```
 
@@ -2078,7 +2558,9 @@ response = client.send(pp.CreateCashtray(
 ---
 `amount`  
 ```json
-{ "type": "number" }
+{
+  "type": "number"
+}
 ```
 マネー額です(必須項目)。
 正の値を与えるとチャージになり、負の値を与えると支払いとなります。
@@ -2132,6 +2614,8 @@ Cashtrayの現在の状態に加え、エンドユーザーのCashtray読み取�
   - チャージ時に、エンドユーザーのウォレット上限を超えて取引が完了できなかったときに返されます
 - `account_transfer_limit_exceeded (422)`
   - マネーに設定されている一度の取引金額の上限を超えたため、取引が完了できなかったときに返されます
+- `account_money_topup_transfer_limit_exceeded (422)`
+  - マネーに設定されている一度のマネーチャージ金額の上限を超えたため、取引が完了できなかったときに返されます
 - `account_not_found (422)`
   - Cashtrayに設定されたマネーのウォレットをエンドユーザーが持っていなかったときに返されます
 
@@ -2212,9 +2696,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 ```python
 response = client.send(pp.UpdateCashtray(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # cashtray_id: CashtrayのID
-                          amount=5372.0,                                        # 金額
+                          amount=4394.0,                                        # 金額
                           description="たい焼き(小倉)",                               # 取引履歴に表示する説明文
-                          expires_in=1225                                       # 失効時間(秒)
+                          expires_in=4709                                       # 失効時間(秒)
 ))
 ```
 
@@ -2231,7 +2715,9 @@ response = client.send(pp.UpdateCashtray(
 ---
 `amount`  
 ```json
-{ "type": "number" }
+{
+  "type": "number"
+}
 ```
 マネー額です(任意項目)。
 正の値を与えるとチャージになり、負の値を与えると支払いとなります。
@@ -2295,9 +2781,9 @@ response = client.send(pp.GetAccount(
 ```python
 response = client.send(pp.UpdateAccount(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
-                          is_suspended=False,                                   # ウォレットが凍結されているかどうか
+                          is_suspended=True,                                    # ウォレットが凍結されているかどうか
                           status="pre-closed",                                  # ウォレット状態
-                          can_transfer_topup=False                              # チャージ可能かどうか
+                          can_transfer_topup=True                               # チャージ可能かどうか
 ))
 ```
 
@@ -2316,7 +2802,9 @@ response = client.send(pp.UpdateAccount(
 ---
 `is_suspended`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 ウォレットの凍結状態です。真にするとウォレットが凍結され、そのウォレットでは新規取引ができなくなります。偽にすると凍結解除されます。
 
@@ -2325,7 +2813,11 @@ response = client.send(pp.UpdateAccount(
 ```json
 {
   "type": "string",
-  "enum": [ "active", "suspended", "pre-closed" ]
+  "enum": [
+    "active",
+    "suspended",
+    "pre-closed"
+  ]
 }
 ```
 ウォレットの状態です。
@@ -2333,7 +2825,9 @@ response = client.send(pp.UpdateAccount(
 ---
 `can_transfer_topup`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 店舗ユーザーがエンドユーザーにチャージ可能かどうかです。真にするとチャージ可能となり、偽にするとチャージ不可能となります。
 
@@ -2364,7 +2858,9 @@ response = client.send(pp.DeleteAccount(
 ---
 `cashback`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 退会時の返金有無です。エンドユーザに返金を行う場合、真を指定して下さい。現在のマネー残高を全て現金で返金したものとして記録されます。
 
@@ -2376,10 +2872,10 @@ response = client.send(pp.DeleteAccount(
 ```python
 response = client.send(pp.ListAccountBalances(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
-                          page=4522,                                            # ページ番号
-                          per_page=2449,                                        # 1ページ分の取引数
-                          expires_at_from="2017-04-14T07:07:41.000000+09:00",   # 有効期限の期間によるフィルター(開始時点)
-                          expires_at_to="2023-09-18T23:32:30.000000+09:00",     # 有効期限の期間によるフィルター(終了時点)
+                          page=8856,                                            # ページ番号
+                          per_page=3656,                                        # 1ページ分の取引数
+                          expires_at_from="2024-01-03T23:33:04.000000+09:00",   # 有効期限の期間によるフィルター(開始時点)
+                          expires_at_to="2022-11-20T11:15:05.000000+09:00",     # 有効期限の期間によるフィルター(終了時点)
                           direction="desc"                                      # 有効期限によるソート順序
 ))
 ```
@@ -2441,7 +2937,10 @@ response = client.send(pp.ListAccountBalances(
 ```json
 {
   "type": "string",
-  "enum": { "asc": "desc" }
+  "enum": [
+    "asc",
+    "desc"
+  ]
 }
 ```
 有効期限によるソートの順序を指定します。デフォルト値はasc (昇順)です。
@@ -2454,11 +2953,11 @@ response = client.send(pp.ListAccountBalances(
 ```python
 response = client.send(pp.ListAccountExpiredBalances(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
-                          page=9814,                                            # ページ番号
-                          per_page=2562,                                        # 1ページ分の取引数
-                          expires_at_from="2020-10-10T13:52:53.000000+09:00",   # 有効期限の期間によるフィルター(開始時点)
-                          expires_at_to="2024-03-02T12:53:21.000000+09:00",     # 有効期限の期間によるフィルター(終了時点)
-                          direction="asc"                                       # 有効期限によるソート順序
+                          page=6569,                                            # ページ番号
+                          per_page=669,                                         # 1ページ分の取引数
+                          expires_at_from="2023-12-31T01:05:06.000000+09:00",   # 有効期限の期間によるフィルター(開始時点)
+                          expires_at_to="2021-09-28T14:44:03.000000+09:00",     # 有効期限の期間によるフィルター(終了時点)
+                          direction="desc"                                      # 有効期限によるソート順序
 ))
 ```
 
@@ -2519,7 +3018,10 @@ response = client.send(pp.ListAccountExpiredBalances(
 ```json
 {
   "type": "string",
-  "enum": { "asc": "desc" }
+  "enum": [
+    "asc",
+    "desc"
+  ]
 }
 ```
 有効期限によるソートの順序を指定します。デフォルト値はdesc (降順)です。
@@ -2533,8 +3035,8 @@ response = client.send(pp.ListAccountExpiredBalances(
 response = client.send(pp.UpdateCustomerAccount(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
                           status="suspended",                                   # ウォレット状態
-                          account_name="2ThdFR4ZGmC3lYSdkRdIHlBo7iMGslQeLzTg9FCP6boJkANEWZ0xko5rtXdkjCZ6KXkiMx1kHTVbpRx79qoFTViWGk7rsKgu2ihoMxDsfU3TC1A8fV5nkzyaMo6HNFjN16Mt1NNT0LSnWyLCIiaSmxOiabyCFBUZkKwMvzRhZdC9PIbxRIokrSMcAe6DLpfhwjho9qAj035em2B0e1zQxL4LWrEkUrKU", # アカウント名
-                          external_id="ADYaUMS4V1",                             # 外部ID
+                          account_name="UJPdIlUSFGcALOoiXWZwUXALsfjg1JhvNP2Dy8DZeE1AnA47tYXZGpLs77iQOzDAvko6nzClo5Yf3H1E1KAPMEbcHYVKXsvrH6tSb3nTy0mX4fyupt4JCoBoE3MSL3OM6bTkL1PMVCokZXQLk3bQ71a50pvBV0CVCCuKJ0BuwoaRtVXAFjGW4lKSROU2q4u3DqBL9oyShV23oUr27pkotFv8hA563nGqqMF0wC8OHgo0Dt1hf", # アカウント名
+                          external_id="7L",                                     # 外部ID
                           metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"        # ウォレットに付加するメタデータ
 ))
 ```
@@ -2556,7 +3058,11 @@ response = client.send(pp.UpdateCustomerAccount(
 ```json
 {
   "type": "string",
-  "enum": [ "active", "suspended", "pre-closed" ]
+  "enum": [
+    "active",
+    "suspended",
+    "pre-closed"
+  ]
 }
 ```
 ウォレットの状態です。
@@ -2614,15 +3120,15 @@ response = client.send(pp.UpdateCustomerAccount(
 ```python
 response = client.send(pp.GetCustomerAccounts(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          page=4060,                                            # ページ番号
-                          per_page=2564,                                        # 1ページ分のウォレット数
-                          created_at_from="2022-12-06T00:04:18.000000+09:00",   # ウォレット作成日によるフィルター(開始時点)
-                          created_at_to="2018-02-12T04:05:18.000000+09:00",     # ウォレット作成日によるフィルター(終了時点)
-                          is_suspended=True,                                    # ウォレットが凍結状態かどうかでフィルターする
-                          status="active",                                      # ウォレット状態
-                          external_id="iuqOBINm4Q77ByqizVQoe2X9mQJiEELVlycfdA0sn1Jp9", # 外部ID
-                          tel="09835724",                                       # エンドユーザーの電話番号
-                          email="Jofbfd8lI7@ca3o.com"                           # エンドユーザーのメールアドレス
+                          page=6817,                                            # ページ番号
+                          per_page=7862,                                        # 1ページ分のウォレット数
+                          created_at_from="2022-06-02T06:05:51.000000+09:00",   # ウォレット作成日によるフィルター(開始時点)
+                          created_at_to="2023-03-17T17:58:08.000000+09:00",     # ウォレット作成日によるフィルター(終了時点)
+                          is_suspended=False,                                   # ウォレットが凍結状態かどうかでフィルターする
+                          status="suspended",                                   # ウォレット状態
+                          external_id="ibM",                                    # 外部ID
+                          tel="06-163-100",                                     # エンドユーザーの電話番号
+                          email="mVsg1QoQlG@5nhr.com"                           # エンドユーザーのメールアドレス
 ))
 ```
 
@@ -2681,7 +3187,9 @@ response = client.send(pp.GetCustomerAccounts(
 ---
 `is_suspended`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 このパラメータが指定されている場合、ウォレットの凍結状態で結果がフィルターされます。デフォルトでは未指定です。
 
@@ -2690,7 +3198,11 @@ response = client.send(pp.GetCustomerAccounts(
 ```json
 {
   "type": "string",
-  "enum": [ "active", "suspended", "pre-closed" ]
+  "enum": [
+    "active",
+    "suspended",
+    "pre-closed"
+  ]
 }
 ```
 このパラメータが指定されている場合、ウォレットの状態で結果がフィルターされます。デフォルトでは未指定です。
@@ -2738,7 +3250,7 @@ response = client.send(pp.CreateCustomerAccount(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
                           user_name="ポケペイ太郎",                                   # ユーザー名
                           account_name="ポケペイ太郎のアカウント",                          # アカウント名
-                          external_id="QIsUl3rCM2ZMpE4WDo"                      # 外部ID
+                          external_id="ldy9prkAsFXQAcPbOinGKYQcLox7vDm72r4RbeZdF" # 外部ID
 ))
 ```
 
@@ -2792,11 +3304,11 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 ```python
 response = client.send(pp.GetShopAccounts(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          page=6515,                                            # ページ番号
-                          per_page=2556,                                        # 1ページ分のウォレット数
-                          created_at_from="2024-03-23T00:01:00.000000+09:00",   # ウォレット作成日によるフィルター(開始時点)
-                          created_at_to="2019-08-19T02:00:31.000000+09:00",     # ウォレット作成日によるフィルター(終了時点)
-                          is_suspended=True                                     # ウォレットが凍結状態かどうかでフィルターする
+                          page=170,                                             # ページ番号
+                          per_page=2067,                                        # 1ページ分のウォレット数
+                          created_at_from="2022-07-23T09:24:37.000000+09:00",   # ウォレット作成日によるフィルター(開始時点)
+                          created_at_to="2023-04-14T11:49:56.000000+09:00",     # ウォレット作成日によるフィルター(終了時点)
+                          is_suspended=False                                    # ウォレットが凍結状態かどうかでフィルターする
 ))
 ```
 
@@ -2855,7 +3367,9 @@ response = client.send(pp.GetShopAccounts(
 ---
 `is_suspended`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 このパラメータが指定されている場合、ウォレットの凍結状態で結果がフィルターされます。デフォルトでは未指定です。
 
@@ -2869,10 +3383,10 @@ response = client.send(pp.ListCustomerTransactions(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
                           sender_customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 送金エンドユーザーID
                           receiver_customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 受取エンドユーザーID
-                          type="cashback",                                      # 取引種別
+                          type="payment",                                       # 取引種別
                           is_modified=True,                                     # キャンセル済みかどうか
-                          start="2017-02-24T20:56:29.000000+09:00",             # 開始日時
-                          to="2020-11-21T02:48:12.000000+09:00",                # 終了日時
+                          start="2020-12-26T10:19:18.000000+09:00",             # 開始日時
+                          to="2023-12-06T18:23:29.000000+09:00",                # 終了日時
                           page=1,                                               # ページ番号
                           per_page=50                                           # 1ページ分の取引数
 ))
@@ -2918,11 +3432,14 @@ response = client.send(pp.ListCustomerTransactions(
 ```json
 {
   "type": "string",
-  "enum": {
-    "topup": "payment",
-    "exchange": "transfer",
-    "cashback": "expire"
-  }
+  "enum": [
+    "topup",
+    "payment",
+    "exchange",
+    "transfer",
+    "cashback",
+    "expire"
+  ]
 }
 ```
 取引の種類でフィルターします。
@@ -2945,7 +3462,9 @@ response = client.send(pp.ListCustomerTransactions(
 ---
 `is_modified`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンセル済みかどうかを判定するフラグです。
 
@@ -3008,11 +3527,12 @@ response = client.send(pp.ListShops(
                           organization_code="pocketchange",                     # 組織コード
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
                           name="oxスーパー三田店",                                     # 店舗名
-                          postal_code="0308543",                                # 店舗の郵便番号
+                          postal_code="668-1896",                               # 店舗の郵便番号
                           address="東京都港区芝...",                                  # 店舗の住所
-                          tel="02552956-860",                                   # 店舗の電話番号
-                          email="vobOclFXKf@vdQi.com",                          # 店舗のメールアドレス
-                          external_id="3hjtD1VYnThEQOLtlkRPIAe",                # 店舗の外部ID
+                          tel="0147020-0492",                                   # 店舗の電話番号
+                          email="Bwkm05CZ0h@foUw.com",                          # 店舗のメールアドレス
+                          external_id="KxC7ZAH",                                # 店舗の外部ID
+                          with_disabled=True,                                   # 無効な店舗を含める
                           page=1,                                               # ページ番号
                           per_page=50                                           # 1ページ分の取引数
 ))
@@ -3110,6 +3630,16 @@ response = client.send(pp.ListShops(
 
 
 ---
+`with_disabled`  
+```json
+{
+  "type": "boolean"
+}
+```
+このパラメータを渡すと無効にされた店舗を含めて返されます。デフォルトでは無効にされた店舗は返されません。
+
+
+---
 `page`  
 ```json
 {
@@ -3137,11 +3667,11 @@ response = client.send(pp.ListShops(
 ```python
 response = client.send(pp.CreateShop(
                           "oxスーパー三田店",                                          # shop_name: 店舗名
-                          shop_postal_code="9681312",                           # 店舗の郵便番号
+                          shop_postal_code="770-5204",                          # 店舗の郵便番号
                           shop_address="東京都港区芝...",                             # 店舗の住所
-                          shop_tel="097-7407877",                               # 店舗の電話番号
-                          shop_email="zgZ3SAsjpA@uPQw.com",                     # 店舗のメールアドレス
-                          shop_external_id="MExC1w6ifl9ZUstq",                  # 店舗の外部ID
+                          shop_tel="04998670-095",                              # 店舗の電話番号
+                          shop_email="1f4oK6Su71@Cb72.com",                     # 店舗のメールアドレス
+                          shop_external_id="36QEQ4qb0bujAZYxdklznbNJ0",         # 店舗の外部ID
                           organization_code="ox-supermarket"                    # 組織コード
 ))
 ```
@@ -3151,11 +3681,11 @@ response = client.send(pp.CreateShop(
 ```python
 response = client.send(pp.CreateShopV2(
                           "oxスーパー三田店",                                          # name: 店舗名
-                          postal_code="7381888",                                # 店舗の郵便番号
+                          postal_code="511-3150",                               # 店舗の郵便番号
                           address="東京都港区芝...",                                  # 店舗の住所
-                          tel="040-70-5582",                                    # 店舗の電話番号
-                          email="si7WktomTS@Is3s.com",                          # 店舗のメールアドレス
-                          external_id="ss0bSZ1",                                # 店舗の外部ID
+                          tel="0457-6611",                                      # 店舗の電話番号
+                          email="te2ygPT6oL@AXVX.com",                          # 店舗のメールアドレス
+                          external_id="z6CkKL",                                 # 店舗の外部ID
                           organization_code="ox-supermarket",                   # 組織コード
                           private_money_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # 店舗で有効にするマネーIDの配列
                           can_topup_private_money_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] # 店舗でチャージ可能にするマネーIDの配列
@@ -3229,13 +3759,14 @@ response = client.send(pp.GetShop(
 response = client.send(pp.UpdateShop(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ユーザーID
                           name="oxスーパー三田店",                                     # 店舗名
-                          postal_code="027-2404",                               # 店舗の郵便番号
+                          postal_code="7364714",                                # 店舗の郵便番号
                           address="東京都港区芝...",                                  # 店舗の住所
-                          tel="076478-442",                                     # 店舗の電話番号
-                          email="2et6R89vRe@hYIZ.com",                          # 店舗のメールアドレス
-                          external_id="Mh6MfShA8D4Ev7O7TGT70LQ2epxhXvfJrqw",    # 店舗の外部ID
-                          private_money_ids=[],                                 # 店舗で有効にするマネーIDの配列
-                          can_topup_private_money_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] # 店舗でチャージ可能にするマネーIDの配列
+                          tel="017-6822-147",                                   # 店舗の電話番号
+                          email="h2XgTDGCzz@5Quz.com",                          # 店舗のメールアドレス
+                          external_id="uQ6W",                                   # 店舗の外部ID
+                          private_money_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # 店舗で有効にするマネーIDの配列
+                          can_topup_private_money_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # 店舗でチャージ可能にするマネーIDの配列
+                          status="active"                                       # 店舗の状態
 ))
 ```
 
@@ -3328,6 +3859,19 @@ response = client.send(pp.UpdateShop(
 省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
 
 ---
+`status`  
+```json
+{
+  "type": "string",
+  "enum": [
+    "active",
+    "disabled"
+  ]
+}
+```
+店舗の状態です。activeを指定すると有効となり、disabledを指定するとリスト表示から除外されます。
+
+---
 成功したときは[ShopWithAccounts](#shop-with-accounts)オブジェクトを返します
 ### Account
 <a name="list-user-accounts"></a>
@@ -3336,8 +3880,8 @@ response = client.send(pp.UpdateShop(
 ```python
 response = client.send(pp.ListUserAccounts(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
-                          page=9643,                                            # ページ番号
-                          per_page=9606                                         # 1ページ分の取引数
+                          page=6388,                                            # ページ番号
+                          per_page=8442                                         # 1ページ分の取引数
 ))
 ```
 
@@ -3382,8 +3926,8 @@ response = client.send(pp.ListUserAccounts(
 response = client.send(pp.CreateUserAccount(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          name="wzvGv5tXB9341AdQSvr2jD2CPBEg6qDXhSH8hafJy0sDTnMPtA7T3E2nC8JZcqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv", # ウォレット名
-                          external_id="9",                                      # 外部ID
+                          name="E6an5McLtsa4ffyJBGqy0q",                        # ウォレット名
+                          external_id="nuxMV9w5mJUuIoskWZ6Ai35ObwLgT3kCtgRnqnEGJ71oVwMq4", # 外部ID
                           metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"        # ウォレットに付加するメタデータ
 ))
 ```
@@ -3458,8 +4002,8 @@ response = client.send(pp.GetPrivateMoneys(
 ```python
 response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          start="2023-03-06T09:17:27.000000+09:00",             # 開始日時(toと同時に指定する必要有)
-                          to="2020-02-09T01:46:03.000000+09:00",                # 終了日時(fromと同時に指定する必要有)
+                          start="2023-05-04T00:45:31.000000+09:00",             # 開始日時(toと同時に指定する必要有)
+                          to="2022-03-01T05:31:14.000000+09:00",                # 終了日時(fromと同時に指定する必要有)
                           page=1,                                               # ページ番号
                           per_page=50                                           # 1ページ分の取引数
 ))
@@ -3472,8 +4016,8 @@ response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
 ```python
 response = client.send(pp.GetPrivateMoneySummary(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          start="2020-03-28T14:58:35.000000+09:00",             # 開始日時
-                          to="2017-04-08T06:02:38.000000+09:00"                 # 終了日時
+                          start="2024-01-04T15:22:48.000000+09:00",             # 開始日時
+                          to="2020-06-23T19:12:22.000000+09:00"                 # 終了日時
 ))
 ```
 成功したときは[PrivateMoneySummary](#private-money-summary)オブジェクトを返します
@@ -3483,10 +4027,10 @@ response = client.send(pp.GetPrivateMoneySummary(
 CSVファイルから一括取引をします。
 ```python
 response = client.send(pp.BulkCreateTransaction(
-                          "Y62Bc0n",                                            # name: 一括取引タスク名
-                          "yxxXvK",                                             # content: 取引する情報のCSV
-                          "Da0c2v5NvERR1ovUoSMxuwois43hKOtAoX7o",               # request_id: リクエストID
-                          description="uae7lO58Ae6hTnrFSjbB1hiRjTNSU46DKPvyktKcWCyKm4tG2FzeWXxPN6RiMVhZmmGj0TMjPFLM0DLdwVX1nfPZtzGunVJbtCnsdFVcjFxpkr7nB", # 一括取引の説明
+                          "5VRHOTYOdPLLzjf2XDMFOw",                             # name: 一括取引タスク名
+                          "1R08Am",                                             # content: 取引する情報のCSV
+                          "Bs3eyZ9jRbtfMgqL4CYkbqjQPcvrzHqRGYf5",               # request_id: リクエストID
+                          description="bPTJ82eaXSgPnP",                         # 一括取引の説明
                           private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # マネーID
 ))
 ```
@@ -3514,7 +4058,9 @@ response = client.send(pp.BulkCreateTransaction(
 ---
 `content`  
 ```json
-{ "type": "string" }
+{
+  "type": "string"
+}
 ```
 一括取引する情報を書いたCSVの文字列です。
 1行目はヘッダ行で、2行目以降の各行にカンマ区切りの取引データを含みます。
@@ -3574,15 +4120,10 @@ response = client.send(pp.CreateExternalTransaction(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーID
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          5865,                                                 # amount: 取引額
+                          7532,                                                 # amount: 取引額
                           description="たい焼き(小倉)",                               # 取引説明文
                           metadata="{\"key\":\"value\"}",                       # ポケペイ外部取引メタデータ
                           products=[{"jan_code":"abc",
- "name":"name1",
- "unit_price":100,
- "price": 100,
- "is_discounted": False,
- "other":"{}"}, {"jan_code":"abc",
  "name":"name1",
  "unit_price":100,
  "price": 100,
@@ -3672,7 +4213,9 @@ response = client.send(pp.CreateExternalTransaction(
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 一つの取引に含まれる商品情報データです。
@@ -3700,7 +4243,7 @@ response = client.send(pp.CreateExternalTransaction(
 リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
 
 ---
-成功したときは[ExternalTransaction](#external-transaction)オブジェクトを返します
+成功したときは[ExternalTransactionDetail](#external-transaction-detail)オブジェクトを返します
 <a name="refund-external-transaction"></a>
 #### ポケペイ外部取引をキャンセルする
 取引IDを指定して取引をキャンセルします。
@@ -3715,7 +4258,7 @@ response = client.send(pp.RefundExternalTransaction(
                           description="返品対応のため"                                 # 取引履歴に表示する返金事由
 ))
 ```
-成功したときは[ExternalTransaction](#external-transaction)オブジェクトを返します
+成功したときは[ExternalTransactionDetail](#external-transaction-detail)オブジェクトを返します
 ### Campaign
 <a name="create-campaign"></a>
 #### ポイント付与キャンペーンを作る
@@ -3723,25 +4266,20 @@ response = client.send(pp.RefundExternalTransaction(
 
 ```python
 response = client.send(pp.CreateCampaign(
-                          "jaa4uqZKlbpHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTXvJ9APWVf0nkI2cpiZrwht02dhTsSxNXBuhLAxPxLgPF7PH9jsPo3qRbXC06hH5q5N6rSqlhclxbbI1pwNVNkX1wbtHq7h4XHkBbxR0RnLtirGJS2N5S6EEO5Bp0TaBrmnd", # name: キャンペーン名
+                          "HgHmOcXlokuAWdL4kT58oAMWzXJzpTQT1MC6XWFLdA9tvJRKn3PGW8WpF6zkNpTUlKy5J4hcLnlsap53vQi8L5yoWQuKjqAlygen3zGmq6NvbWWiKPC4TlgDxilWTbDCDegzXi6tXV8wb8JGMzpyuV92x9LbXw4elvLSUOT", # name: キャンペーン名
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
-                          "2025-04-05T23:21:21.000000+09:00",                   # starts_at: キャンペーン開始日時
-                          "2022-08-24T19:23:01.000000+09:00",                   # ends_at: キャンペーン終了日時
-                          1102,                                                 # priority: キャンペーンの適用優先度
-                          "payment",                                            # event: イベント種別
+                          "2020-07-07T15:31:24.000000+09:00",                   # starts_at: キャンペーン開始日時
+                          "2023-08-23T06:01:29.000000+09:00",                   # ends_at: キャンペーン終了日時
+                          2342,                                                 # priority: キャンペーンの適用優先度
+                          "topup",                                              # event: イベント種別
                           bear_point_shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # ポイント負担先店舗ID
-                          description="XXwjFaRAeTxfe0YQCHzm8OG8zcqkOxIGcWZjjM6j3edDcpZu9iiEwcokneeQ36NR2IjhyB4vKQ7cGlo7SrCjimdlgwn9qvauQ2kDhj5HLJcSNTCm30yK3y8WI", # キャンペーンの説明文
+                          description="OTZlUTJ0Afgg3q41z19l2fQMLyfqgIISMXW9P603pe6MKmJ", # キャンペーンの説明文
                           status="enabled",                                     # キャンペーン作成時の状態
-                          point_expires_at="2015-11-30T15:18:29.000000+09:00",  # ポイント有効期限(絶対日時指定)
-                          point_expires_in_days=5178,                           # ポイント有効期限(相対日数指定)
-                          is_exclusive=True,                                    # キャンペーンの重複設定
+                          point_expires_at="2022-07-23T14:05:33.000000+09:00",  # ポイント有効期限(絶対日時指定)
+                          point_expires_in_days=323,                            # ポイント有効期限(相対日数指定)
+                          is_exclusive=False,                                   # キャンペーンの重複設定
                           subject="money",                                      # ポイント付与の対象金額の種別
                           amount_based_point_rules=[{
-  "point_amount": 5,
-  "point_amount_unit": "percent",
-  "subject_more_than_or_equal": 1000,
-  "subject_less_than": 5000
-}, {
   "point_amount": 5,
   "point_amount_unit": "percent",
   "subject_more_than_or_equal": 1000,
@@ -3753,22 +4291,35 @@ response = client.send(pp.CreateCampaign(
   "product_code": "4912345678904",
   "is_multiply_by_count": True,
   "required_count": 2
+}, {
+  "point_amount": 5,
+  "point_amount_unit": "percent",
+  "product_code": "4912345678904",
+  "is_multiply_by_count": True,
+  "required_count": 2
+}, {
+  "point_amount": 5,
+  "point_amount_unit": "percent",
+  "product_code": "4912345678904",
+  "is_multiply_by_count": True,
+  "required_count": 2
 }],                                                                             # 商品情報ベースのポイント付与ルール
-                          applicable_days_of_week=[0, 0, 0],                    # キャンペーンを適用する曜日 (複数指定)
+                          applicable_days_of_week=[3, 2],                       # キャンペーンを適用する曜日 (複数指定)
                           applicable_time_ranges=[{
   "from": "12:00",
   "to": "23:59"
 }],                                                                             # キャンペーンを適用する時間帯 (複数指定)
-                          applicable_shop_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # キャンペーン適用対象となる店舗IDのリスト
-                          minimum_number_for_combination_purchase=616,          # 複数種類の商品を同時購入するときの商品種別数の下限
+                          applicable_shop_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # キャンペーン適用対象となる店舗IDのリスト
+                          minimum_number_for_combination_purchase=870,          # 複数種類の商品を同時購入するときの商品種別数の下限
                           exist_in_each_product_groups=False,                   # 複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ
-                          max_point_amount=1812,                                # キャンペーンによって付与されるポイントの上限
-                          max_total_point_amount=7977,                          # キャンペーンによって付与されるの1人当たりの累計ポイントの上限
+                          max_point_amount=7092,                                # キャンペーンによって付与されるポイントの上限
+                          max_total_point_amount=8935,                          # キャンペーンによって付与されるの1人当たりの累計ポイントの上限
                           dest_private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # ポイント付与先となるマネーID
                           applicable_account_metadata={
   "key": "sex",
   "value": "male"
-}                                                                               # ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+},                                                                              # ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                          budget_caps_amount=1787470893                         # キャンペーン予算上限
 ))
 ```
 
@@ -3821,7 +4372,9 @@ response = client.send(pp.CreateCampaign(
 ---
 `priority`  
 ```json
-{ "type": "integer" }
+{
+  "type": "integer"
+}
 ```
 キャンペーンの適用優先度です。
 
@@ -3833,7 +4386,11 @@ response = client.send(pp.CreateCampaign(
 ```json
 {
   "type": "string",
-  "enum": [ "topup", "payment", "external-transaction" ]
+  "enum": [
+    "topup",
+    "payment",
+    "external-transaction"
+  ]
 }
 ```
 キャンペーンのトリガーとなるイベントの種類を指定します(必須項目)。
@@ -3873,7 +4430,10 @@ response = client.send(pp.CreateCampaign(
 ```json
 {
   "type": "string",
-  "enum": { "enabled": "disabled" }
+  "enum": [
+    "enabled",
+    "disabled"
+  ]
 }
 ```
 キャンペーン作成時の状態を指定します。デフォルトではenabledです。
@@ -3910,7 +4470,9 @@ response = client.send(pp.CreateCampaign(
 ---
 `is_exclusive`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンペーンの重ね掛けを行うかどうかのフラグです。
 
@@ -3922,7 +4484,10 @@ falseを指定すると次の優先度の重ね掛け可能なキャンペーン
 ```json
 {
   "type": "string",
-  "enum": { "money": "all" }
+  "enum": [
+    "money",
+    "all"
+  ]
 }
 ```
 ポイント付与額を計算する対象となる金額の種類を指定します。デフォルト値はallです。
@@ -3942,7 +4507,9 @@ all を指定すると決済額全体を対象にします (「ポイント」�
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 金額をベースとしてポイント付与を行うルールを指定します。
@@ -3973,7 +4540,9 @@ amount_based_point_rules と product_based_point_rules はどちらか一方し�
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 商品情報をベースとしてポイント付与を行うルールを指定します。
@@ -4105,7 +4674,9 @@ event が payment か external-transaction の時のみ有効です。
 ---
 `exist_in_each_product_groups`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 複数の商品グループの各グループにつき1種類以上の商品が購入されることによって発火するキャンペーンであるときに真を指定します。デフォルトは偽です。
 
@@ -4233,7 +4804,9 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 ---
 `applicable_account_metadata`  
 ```json
-{ "type": "object" }
+{
+  "type": "object"
+}
 ```
 ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
 メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
@@ -4262,6 +4835,20 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 ```
 
 ---
+`budget_caps_amount`  
+```json
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 10000000000
+}
+```
+キャンペーンの予算上限を指定します。デフォルトは未指定です。
+
+このパラメータが指定されている場合、このキャンペーンの適用により付与されたポイント全体を定期的に集計し、その合計が上限を越えていた場合にはキャンペーンを無効にします。
+一度この値を越えて無効となったキャンペーンを再度有効にすることは出来ません。
+
+---
 成功したときは[Campaign](#campaign)オブジェクトを返します
 <a name="list-campaigns"></a>
 #### キャンペーン一覧を取得する
@@ -4272,8 +4859,10 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 response = client.send(pp.ListCampaigns(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
                           is_ongoing=False,                                     # 現在適用可能なキャンペーンかどうか
+                          available_from="2023-06-16T10:34:25.000000+09:00",    # 指定された日時以降に適用可能期間が含まれているか
+                          available_to="2023-08-21T09:31:46.000000+09:00",      # 指定された日時以前に適用可能期間が含まれているか
                           page=1,                                               # ページ番号
-                          per_page=50                                           # 1ページ分の取得数
+                          per_page=20                                           # 1ページ分の取得数
 ))
 ```
 
@@ -4292,10 +4881,34 @@ response = client.send(pp.ListCampaigns(
 ---
 `is_ongoing`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 有効化されており、現在キャンペーン期間内にあるキャンペーンをフィルターするために使われます。
 真であれば適用可能なもののみを抽出し、偽であれば適用不可なもののみを抽出します。
+デフォルトでは未指定(フィルターなし)です。
+
+---
+`available_from`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+キャンペーン終了日時が指定された日時以降であるキャンペーンをフィルターするために使われます。
+デフォルトでは未指定(フィルターなし)です。
+
+---
+`available_to`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+キャンペーン開始日時が指定された日時以前であるキャンペーンをフィルターするために使われます。
 デフォルトでは未指定(フィルターなし)です。
 
 ---
@@ -4313,7 +4926,8 @@ response = client.send(pp.ListCampaigns(
 ```json
 {
   "type": "integer",
-  "minimum": 1
+  "minimum": 1,
+  "maximum": 50
 }
 ```
 1ページ分の取得数です。デフォルトでは 20 になっています。
@@ -4352,17 +4966,17 @@ response = client.send(pp.GetCampaign(
 ```python
 response = client.send(pp.UpdateCampaign(
                           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # campaign_id: キャンペーンID
-                          name="EalG76qE4T1vOrKA4IwgS5AgijWRyxneekV8cIDT0hnm8h8evW68NKpdkq0PMSo6iR11TAHpgNTXOxFwqhkpZVaDhpFPp5bfKVt9DPYJAVzV6vyI6ywfpyKilj5zg8pn57kF0DYbPLXjuwrpeD0A9IDYP4sAiFNwaac9r9GBqh0SVIl9M1spjv4mKXU1rVLf6U0K44BovHKqYzk7GBG1DZKj2tBRFerhSuL22", # キャンペーン名
-                          starts_at="2016-11-29T17:18:31.000000+09:00",         # キャンペーン開始日時
-                          ends_at="2022-02-23T10:05:03.000000+09:00",           # キャンペーン終了日時
-                          priority=4670,                                        # キャンペーンの適用優先度
-                          event="payment",                                      # イベント種別
-                          description="pF0nmLMfnIYTQdqHJZ8WnDHEVfpIBtEOMP2U7IkYygmkkDxd3MzpkzvP", # キャンペーンの説明文
-                          status="enabled",                                     # キャンペーン作成時の状態
-                          point_expires_at="2022-06-12T17:08:11.000000+09:00",  # ポイント有効期限(絶対日時指定)
-                          point_expires_in_days=7859,                           # ポイント有効期限(相対日数指定)
-                          is_exclusive=True,                                    # キャンペーンの重複設定
-                          subject="all",                                        # ポイント付与の対象金額の種別
+                          name="3AA2HfUviEGxNl7geHUN2xl3DdhTl3zAocsW1S2lBjFwBGovnnDKytXK6bpA3zF38WMOlxmCfMvxPkDbcDFiC8sxvvRkdqCzDES8vQChp8JVC5McyDaNtGx57VS6K79qztXeOlElAiD2OfwU9bF9UcLRz", # キャンペーン名
+                          starts_at="2020-07-14T00:25:55.000000+09:00",         # キャンペーン開始日時
+                          ends_at="2023-03-06T02:00:00.000000+09:00",           # キャンペーン終了日時
+                          priority=3464,                                        # キャンペーンの適用優先度
+                          event="external-transaction",                         # イベント種別
+                          description="3RadjjMSW8VJj9l3DkkuAmx4Vw2H9gfCJnY2DBsUVvgfB2paumJxbB5k5JpeCXpmBbCSASHqmdGdFNV6oxpHbsUyUzy93L648VPcGCA1reLcvzfStYOcDF1n5eBBxkqbBn84B6Eb7GWgsh8p3axVULXvDfEwvXXI7kvwoSB4aBP6PeNTUp", # キャンペーンの説明文
+                          status="disabled",                                    # キャンペーン作成時の状態
+                          point_expires_at="2023-05-09T04:44:24.000000+09:00",  # ポイント有効期限(絶対日時指定)
+                          point_expires_in_days=7739,                           # ポイント有効期限(相対日数指定)
+                          is_exclusive=False,                                   # キャンペーンの重複設定
+                          subject="money",                                      # ポイント付与の対象金額の種別
                           amount_based_point_rules=[{
   "point_amount": 5,
   "point_amount_unit": "percent",
@@ -4391,14 +5005,8 @@ response = client.send(pp.UpdateCampaign(
   "product_code": "4912345678904",
   "is_multiply_by_count": True,
   "required_count": 2
-}, {
-  "point_amount": 5,
-  "point_amount_unit": "percent",
-  "product_code": "4912345678904",
-  "is_multiply_by_count": True,
-  "required_count": 2
 }],                                                                             # 商品情報ベースのポイント付与ルール
-                          applicable_days_of_week=[0],                          # キャンペーンを適用する曜日 (複数指定)
+                          applicable_days_of_week=[2],                          # キャンペーンを適用する曜日 (複数指定)
                           applicable_time_ranges=[{
   "from": "12:00",
   "to": "23:59"
@@ -4407,14 +5015,15 @@ response = client.send(pp.UpdateCampaign(
   "to": "23:59"
 }],                                                                             # キャンペーンを適用する時間帯 (複数指定)
                           applicable_shop_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # キャンペーン適用対象となる店舗IDのリスト
-                          minimum_number_for_combination_purchase=1127,         # 複数種類の商品を同時購入するときの商品種別数の下限
-                          exist_in_each_product_groups=True,                    # 複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ
-                          max_point_amount=4152,                                # キャンペーンによって付与されるポイントの上限
-                          max_total_point_amount=5390,                          # キャンペーンによって付与されるの1人当たりの累計ポイントの上限
+                          minimum_number_for_combination_purchase=5408,         # 複数種類の商品を同時購入するときの商品種別数の下限
+                          exist_in_each_product_groups=False,                   # 複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ
+                          max_point_amount=7891,                                # キャンペーンによって付与されるポイントの上限
+                          max_total_point_amount=8471,                          # キャンペーンによって付与されるの1人当たりの累計ポイントの上限
                           applicable_account_metadata={
   "key": "sex",
   "value": "male"
-}                                                                               # ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+},                                                                              # ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                          budget_caps_amount=636794642                          # キャンペーン予算上限
 ))
 ```
 
@@ -4469,7 +5078,9 @@ response = client.send(pp.UpdateCampaign(
 ---
 `priority`  
 ```json
-{ "type": "integer" }
+{
+  "type": "integer"
+}
 ```
 キャンペーンの適用優先度です。
 
@@ -4481,7 +5092,11 @@ response = client.send(pp.UpdateCampaign(
 ```json
 {
   "type": "string",
-  "enum": [ "topup", "payment", "external-transaction" ]
+  "enum": [
+    "topup",
+    "payment",
+    "external-transaction"
+  ]
 }
 ```
 キャンペーンのトリガーとなるイベントの種類を指定します。
@@ -4510,7 +5125,10 @@ response = client.send(pp.UpdateCampaign(
 ```json
 {
   "type": "string",
-  "enum": { "enabled": "disabled" }
+  "enum": [
+    "enabled",
+    "disabled"
+  ]
 }
 ```
 キャンペーン作成時の状態を指定します。デフォルトではenabledです。
@@ -4547,7 +5165,9 @@ response = client.send(pp.UpdateCampaign(
 ---
 `is_exclusive`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 キャンペーンの重ね掛けを行うかどうかのフラグです。
 
@@ -4559,7 +5179,10 @@ falseを指定すると次の優先度の重ね掛け可能なキャンペーン
 ```json
 {
   "type": "string",
-  "enum": { "money": "all" }
+  "enum": [
+    "money",
+    "all"
+  ]
 }
 ```
 ポイント付与額を計算する対象となる金額の種類を指定します。デフォルト値はallです。
@@ -4579,7 +5202,9 @@ all を指定すると決済額全体を対象にします (「ポイント」�
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 金額をベースとしてポイント付与を行うルールを指定します。
@@ -4610,7 +5235,9 @@ amount_based_point_rules と product_based_point_rules はどちらか一方し�
 ```json
 {
   "type": "array",
-  "items": { "type": "object" }
+  "items": {
+    "type": "object"
+  }
 }
 ```
 商品情報をベースとしてポイント付与を行うルールを指定します。
@@ -4639,7 +5266,7 @@ event が payment か external-transaction の時のみ有効です。
   // 対象商品を2つ以上購入したら500ポイント付与(固定額付与)
   {
     "point_amount": 500,
-    "point_amount_unit": absolute",
+    "point_amount_unit": "absolute",
     "product_code": "4912345678904",
     "required_count": 2
   },
@@ -4742,7 +5369,9 @@ event が payment か external-transaction の時のみ有効です。
 ---
 `exist_in_each_product_groups`  
 ```json
-{ "type": "boolean" }
+{
+  "type": "boolean"
+}
 ```
 複数の商品グループの各グループにつき1種類以上の商品が購入されることによって発火するキャンペーンであるときに真を指定します。デフォルトは偽です。
 
@@ -4852,7 +5481,9 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 ---
 `applicable_account_metadata`  
 ```json
-{ "type": "object" }
+{
+  "type": "object"
+}
 ```
 ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
 メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
@@ -4881,7 +5512,509 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 ```
 
 ---
+`budget_caps_amount`  
+```json
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 10000000000
+}
+```
+キャンペーンの予算上限を指定します。
+
+キャンペーン予算上限が設定されておらずこのパラメータに数値が指定されている場合、このキャンペーンの適用により付与されたポイント全体を定期的に集計し、その合計が上限を越えていた場合にはキャンペーンを無効にします。
+一度この値を越えて無効となったキャンペーンを再度有効にすることは出来ません。
+キャンペーン予算上限が設定されておらずこのパラメータにnullが指定されている場合、何も発生しない。
+キャンペーン予算上限が設定されておりこのパラメータにnullが指定された場合、キャンペーン予算上限は止まります。
+
+---
 成功したときは[Campaign](#campaign)オブジェクトを返します
+### Webhook
+Webhookは特定のワーカータスクでの処理が完了した事を通知します。
+WebHookにはURLとタスク名、有効化されているかを設定することが出来ます。
+通知はタスク完了時、事前に設定したURLにPOSTリクエストを行います。
+
+<a name="create-webhook"></a>
+#### webhookの作成
+ワーカータスクの処理が終了したことを通知するためのWebhookを登録します
+このAPIにより指定したタスクの終了時に、指定したURLにPOSTリクエストを送信します。
+このとき、リクエストボディは `{"task": <タスク名>}` という値になります。
+```python
+response = client.send(pp.CreateWebhook(
+                          "process_user_stats_operation",                       # task: タスク名
+                          "WlZqeYi0"                                            # url: URL
+))
+```
+
+---
+`task`  
+```json
+{
+  "type": "string",
+  "enum": [
+    "bulk_shops",
+    "process_user_stats_operation"
+  ]
+}
+```
+ワーカータスク名を指定します
+
+---
+`url`  
+```json
+{
+  "type": "string"
+}
+```
+通知先のURLを指定します
+
+---
+成功したときは[OrganizationWorkerTaskWebhook](#organization-worker-task-webhook)オブジェクトを返します
+<a name="list-webhooks"></a>
+#### 作成したWebhookの一覧を返す
+```python
+response = client.send(pp.ListWebhooks(
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
+```
+
+---
+`page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+取得したいページ番号です。
+
+---
+`per_page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+1ページ分の取得数です。デフォルトでは 50 になっています。
+
+---
+成功したときは[PaginatedOrganizationWorkerTaskWebhook](#paginated-organization-worker-task-webhook)オブジェクトを返します
+<a name="update-webhook"></a>
+#### Webhookの更新
+指定したWebhookの内容を更新します
+```python
+response = client.send(pp.UpdateWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # webhook_id: Webhook ID
+                          url="us",                                             # URL
+                          is_active=False,                                      # 有効/無効
+                          task="bulk_shops"                                     # タスク名
+))
+```
+
+---
+`webhook_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+更新するWebhookのIDです。
+
+---
+`url`  
+```json
+{
+  "type": "string"
+}
+```
+変更するURLを指定します
+
+---
+`is_active`  
+```json
+{
+  "type": "boolean"
+}
+```
+trueならWebhookによる通知が有効になり、falseなら無効になります
+
+---
+`task`  
+```json
+{
+  "type": "string",
+  "enum": [
+    "bulk_shops",
+    "process_user_stats_operation"
+  ]
+}
+```
+指定したタスクが終了したときにWebhookによる通知がされます
+
+---
+成功したときは[OrganizationWorkerTaskWebhook](#organization-worker-task-webhook)オブジェクトを返します
+<a name="delete-webhook"></a>
+#### Webhookの削除
+指定したWebhookを削除します
+```python
+response = client.send(pp.DeleteWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # webhook_id: Webhook ID
+))
+```
+
+---
+`webhook_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+削除するWebhookのIDです。
+
+---
+成功したときは[OrganizationWorkerTaskWebhook](#organization-worker-task-webhook)オブジェクトを返します
+### Coupon
+Couponは支払い時に指定し、支払い処理の前にCouponに指定の方法で値引き処理を行います。
+Couponは特定店舗で利用できるものや利用可能期間、配信条件などを設定できます。
+
+<a name="list-coupons"></a>
+#### クーポン一覧の取得
+指定したマネーのクーポン一覧を取得します
+```python
+response = client.send(pp.ListCoupons(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: 対象クーポンのマネーID
+                          coupon_id="nwEaiLyA5",                                # クーポンID
+                          coupon_name="BbRiZ5",                                 # クーポン名
+                          issued_shop_name="K",                                 # 発行店舗名
+                          available_shop_name="rgD",                            # 利用可能店舗名
+                          available_from="2023-04-20T20:43:55.000000+09:00",    # 利用可能期間 (開始日時)
+                          available_to="2023-10-22T16:00:54.000000+09:00",      # 利用可能期間 (終了日時)
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
+```
+
+---
+`private_money_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+対象クーポンのマネーIDです(必須項目)。
+存在しないマネーIDを指定した場合はprivate_money_not_foundエラー(422)が返ります。
+
+
+---
+`coupon_id`  
+```json
+{
+  "type": "string"
+}
+```
+指定されたクーポンIDで結果をフィルターします。
+部分一致(前方一致)します。
+
+
+---
+`coupon_name`  
+```json
+{
+  "type": "string"
+}
+```
+指定されたクーポン名で結果をフィルターします。
+
+
+---
+`issued_shop_name`  
+```json
+{
+  "type": "string"
+}
+```
+指定された発行店舗で結果をフィルターします。
+
+
+---
+`available_shop_name`  
+```json
+{
+  "type": "string"
+}
+```
+指定された利用可能店舗で結果をフィルターします。
+
+
+---
+`available_from`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+利用可能期間でフィルターします。フィルターの開始日時をISO8601形式で指定します。
+
+
+---
+`available_to`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+利用可能期間でフィルターします。フィルターの終了日時をISO8601形式で指定します。
+
+
+---
+`page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+取得したいページ番号です。
+
+---
+`per_page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+1ページ分の取得数です。デフォルトでは 50 になっています。
+
+---
+成功したときは[PaginatedCoupons](#paginated-coupons)オブジェクトを返します
+<a name="create-coupon"></a>
+#### クーポンの登録
+新しいクーポンを登録します
+```python
+response = client.send(pp.CreateCoupon(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          "UN28wOhIHwF2UJNIr2qzTOcXMMKPZ9CFVIK4cPD0J62fnkMjx7HS6pB4401obJgwqB0mD7UXFCFqYaOWah0qr3I9HHQJur1ukEsp0dGP10cgAsmr",
+                          "2020-12-08T16:05:00.000000+09:00",
+                          "2023-06-14T10:40:25.000000+09:00",
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # issued_shop_id: 発行元の店舗ID
+                          description="BVkjtailUkt1blVjd3Nb7HrSjMlXpUPxwBhSBjvKMWc8GtyRTdzqDzxNUH1D5frCPuRagZOp50vDmhgpFO152PJrrmXgus9IhgQ3TtBNvRDIhHI07JwoMjFsPDAvgFobPb4u1Qvqg3T1HPMuEgmsLLnsMDa14afMba5TtmSDLqwJjd3m0eYuCs2e5fhSAD42OQHXermNCchRvQIE2L4CaVcTYJ1U6",
+                          discount_amount=8846,
+                          discount_percentage=4378.0,
+                          discount_upper_limit=4641,
+                          display_starts_at="2022-03-13T15:47:36.000000+09:00", # クーポンの掲載期間(開始日時)
+                          display_ends_at="2022-07-29T18:29:09.000000+09:00",   # クーポンの掲載期間(終了日時)
+                          is_disabled=False,                                    # 無効化フラグ
+                          is_hidden=False,                                      # クーポン一覧に掲載されるかどうか
+                          is_public=False,                                      # アプリ配信なしで受け取れるかどうか
+                          code="n",                                             # クーポン受け取りコード
+                          usage_limit=3531,                                     # ユーザごとの利用可能回数(NULLの場合は無制限)
+                          min_amount=6847,                                      # クーポン適用可能な最小取引額
+                          is_shop_specified=False,                              # 特定店舗限定のクーポンかどうか
+                          available_shop_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # 利用可能店舗リスト
+                          storage_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # ストレージID
+))
+```
+`is_shop_specified`と`available_shop_ids`は同時に指定する必要があります。
+
+
+---
+`is_hidden`  
+```json
+{
+  "type": "boolean"
+}
+```
+アプリに表示されるクーポン一覧に掲載されるかどうか。
+主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
+
+
+---
+`storage_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+Storage APIでアップロードしたクーポン画像のStorage IDを指定します
+
+---
+成功したときは[CouponDetail](#coupon-detail)オブジェクトを返します
+<a name="get-coupon"></a>
+#### クーポンの取得
+指定したIDを持つクーポンを取得します
+```python
+response = client.send(pp.GetCoupon(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # coupon_id: クーポンID
+))
+```
+
+---
+`coupon_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+取得するクーポンのIDです。
+UUIDv4フォーマットである必要があり、フォーマットが異なる場合は InvalidParametersエラー(400)が返ります。
+指定したIDのクーポンが存在しない場合はCouponNotFoundエラー(422)が返ります。
+
+---
+成功したときは[CouponDetail](#coupon-detail)オブジェクトを返します
+<a name="update-coupon"></a>
+#### クーポンの更新
+指定したクーポンを更新します
+```python
+response = client.send(pp.UpdateCoupon(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # coupon_id: クーポンID
+                          name="YBNe58Th2ANby0H3hGO2DnDi1aBAVufQfSU8a9heUT7Nyo",
+                          description="pFGD9L4iGixiOPnGAgOK1uvieVHe",
+                          discount_amount=2242,
+                          discount_percentage=121.0,
+                          discount_upper_limit=845,
+                          starts_at="2023-04-01T03:43:24.000000+09:00",
+                          ends_at="2022-11-30T10:58:18.000000+09:00",
+                          display_starts_at="2022-09-10T17:57:52.000000+09:00", # クーポンの掲載期間(開始日時)
+                          display_ends_at="2023-03-04T06:32:57.000000+09:00",   # クーポンの掲載期間(終了日時)
+                          is_disabled=False,                                    # 無効化フラグ
+                          is_hidden=False,                                      # クーポン一覧に掲載されるかどうか
+                          is_public=False,                                      # アプリ配信なしで受け取れるかどうか
+                          code="WmROYD0",                                       # クーポン受け取りコード
+                          usage_limit=9927,                                     # ユーザごとの利用可能回数(NULLの場合は無制限)
+                          min_amount=6000,                                      # クーポン適用可能な最小取引額
+                          is_shop_specified=False,                              # 特定店舗限定のクーポンかどうか
+                          available_shop_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], # 利用可能店舗リスト
+                          storage_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # ストレージID
+))
+```
+`discount_amount`と`discount_percentage`の少なくとも一方は指定する必要があります。
+
+
+---
+`is_hidden`  
+```json
+{
+  "type": "boolean"
+}
+```
+アプリに表示されるクーポン一覧に掲載されるかどうか。
+主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
+
+
+---
+`storage_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+Storage APIでアップロードしたクーポン画像のStorage IDを指定します
+
+---
+成功したときは[CouponDetail](#coupon-detail)オブジェクトを返します
+### UserDevice
+UserDeviceはユーザー毎のデバイスを管理します。
+あるユーザーが使っている端末を区別する必要がある場合に用いられます。
+これが必要な理由はBank Payを用いたチャージを行う場合は端末を区別できることが要件としてあるためです。
+
+<a name="create-user-device"></a>
+#### ユーザーのデバイス登録
+ユーザーのデバイスを新規に登録します
+```python
+response = client.send(pp.CreateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
+                          metadata="{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}" # ユーザーデバイスのメタデータ
+))
+```
+
+---
+`metadata`  
+```json
+{
+  "type": "string",
+  "format": "json"
+}
+```
+ユーザーのデバイス用の情報をメタデータを保持するために用います。
+例: 端末の固有情報やブラウザのUser-Agent
+
+
+---
+成功したときは[UserDevice](#user-device)オブジェクトを返します
+<a name="get-user-device"></a>
+#### ユーザーのデバイスを取得
+ユーザーのデバイスの情報を取得します
+```python
+response = client.send(pp.GetUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
+```
+成功したときは[UserDevice](#user-device)オブジェクトを返します
+<a name="activate-user-device"></a>
+#### デバイスの有効化
+指定のデバイスを有効化し、それ以外の同一ユーザーのデバイスを無効化します。
+
+```python
+response = client.send(pp.ActivateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
+```
+成功したときは[UserDevice](#user-device)オブジェクトを返します
+### BankPay
+BankPayを用いた銀行からのチャージ取引などのAPIを提供しています。
+
+<a name="create-bank"></a>
+#### 銀行口座の登録
+銀行口座の登録を始めるAPIです。レスポンスに含まれるredirect_urlをユーザーの端末で開き銀行を登録します。
+
+ユーザーが銀行口座の登録に成功すると、callback_urlにリクエストが行われます。
+アプリの場合はDeep Linkを使うことを想定しています。
+
+```python
+response = client.send(pp.CreateBank(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_device_id: デバイスID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          "<Deep Link>",                                        # callback_url: コールバックURL
+                          "ポケペイタロウ",                                            # kana: ユーザーの氏名 (片仮名で指定)
+                          email="9GQgGfgKtM@dxxn.com",                          # ユーザーのメールアドレス
+                          birthdate="19901142"                                  # 生年月日
+))
+```
+成功したときは[BankRegisteringInfo](#bank-registering-info)オブジェクトを返します
+<a name="list-banks"></a>
+#### 登録した銀行の一覧
+登録した銀行を一覧します
+```python
+response = client.send(pp.ListBanks(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_device_id: デバイスID
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+))
+```
+成功したときは[Banks](#banks)オブジェクトを返します
+<a name="create-bank-topup-transaction"></a>
+#### 銀行からのチャージ
+指定のマネーのアカウントにbank_idの口座を用いてチャージを行います。
+```python
+response = client.send(pp.CreateBankTopupTransaction(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_device_id: デバイスID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          1836,                                                 # amount: チャージ金額
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # bank_id: 銀行ID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # request_id: リクエストID
+))
+```
+成功したときは[TransactionDetail](#transaction-detail)オブジェクトを返します
 ## Responses
 
 
@@ -4944,6 +6077,7 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `is_onetime (bool)`: 使用回数が一回限りかどうか
 * `is_disabled (bool)`: 無効化されているかどうか
 * `expires_at (str)`: チャージQRコード自体の失効日時
+* `last_used_at (str)`: 
 * `private_money (PrivateMoney)`: 対象マネー情報
 * `usage_limit (int)`: 一回限りでない場合の最大読み取り回数
 * `usage_count (float)`: 一回限りでない場合の現在までに読み取られた回数
@@ -4954,6 +6088,16 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 `user`は [User](#user) オブジェクトを返します。
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="paginated-checks"></a>
+## PaginatedChecks
+* `rows (list of Checks)`: 
+* `count (int)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [Check](#check) オブジェクトのリストを返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
 
 <a name="cpm-token"></a>
 ## CpmToken
@@ -5010,15 +6154,17 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 <a name="transaction-detail"></a>
 ## TransactionDetail
 * `id (str)`: 取引ID
-* `type (str)`: 取引種別 (チャージ=topup, 支払い=payment)
+* `type (str)`: 取引種別
 * `is_modified (bool)`: 返金された取引かどうか
 * `sender (User)`: 送金者情報
 * `sender_account (Account)`: 送金ウォレット情報
 * `receiver (User)`: 受取者情報
 * `receiver_account (Account)`: 受取ウォレット情報
-* `amount (float)`: 決済総額 (マネー額 + ポイント額)
-* `money_amount (float)`: 決済マネー額
-* `point_amount (float)`: 決済ポイント額
+* `amount (float)`: 取引総額 (マネー額 + ポイント額)
+* `money_amount (float)`: 取引マネー額
+* `point_amount (float)`: 取引ポイント額(キャンペーン付与ポイント合算)
+* `raw_point_amount (float)`: 取引ポイント額
+* `campaign_point_amount (float)`: キャンペーンによるポイント付与額
 * `done_at (str)`: 取引日時
 * `description (str)`: 取引説明文
 * `transfers (list of Transfers)`: 
@@ -5034,6 +6180,7 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `id (str)`: 店舗ID
 * `name (str)`: 店舗名
 * `organization_code (str)`: 組織コード
+* `status (str)`: 店舗の状態
 * `postal_code (str)`: 店舗の郵便番号
 * `address (str)`: 店舗の住所
 * `tel (str)`: 店舗の電話番号
@@ -5055,8 +6202,8 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `submitted_at (str)`: バルク取引が登録された日時
 * `updated_at (str)`: バルク取引が更新された日時
 
-<a name="external-transaction"></a>
-## ExternalTransaction
+<a name="external-transaction-detail"></a>
+## ExternalTransactionDetail
 * `id (str)`: ポケペイ外部取引ID
 * `is_modified (bool)`: 返金された取引かどうか
 * `sender (User)`: 送金者情報
@@ -5066,10 +6213,13 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `amount (float)`: 決済額
 * `done_at (str)`: 取引日時
 * `description (str)`: 取引説明文
+* `transaction (TransactionDetail)`: 関連ポケペイ取引詳細
 
 `receiver`と`sender`は [User](#user) オブジェクトを返します。
 
 `receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
+
+`transaction`は [TransactionDetail](#transaction-detail) オブジェクトを返します。
 
 <a name="paginated-private-money-organization-summaries"></a>
 ## PaginatedPrivateMoneyOrganizationSummaries
@@ -5088,6 +6238,8 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `payment_amount (float)`: 
 * `refunded_payment_amount (float)`: 
 * `added_point_amount (float)`: 
+* `topup_point_amount (float)`: 
+* `campaign_point_amount (float)`: 
 * `refunded_added_point_amount (float)`: 
 * `exchange_inflow_amount (float)`: 
 * `exchange_outflow_amount (float)`: 
@@ -5103,6 +6255,27 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `done_at (str)`: 集計処理の完了時刻
 * `file_url (str)`: 集計結果のCSVのダウンロードURL
 * `requested_at (str)`: 集計リクエストを行った時刻
+
+<a name="user-device"></a>
+## UserDevice
+* `id (str)`: デバイスID
+* `user (User)`: デバイスを使用するユーザ
+* `is_active (bool)`: デバイスが有効か
+* `metadata (str)`: デバイスのメタデータ
+
+`user`は [User](#user) オブジェクトを返します。
+
+<a name="bank-registering-info"></a>
+## BankRegisteringInfo
+* `redirect_url (str)`: 
+* `paytree_customer_number (str)`: 
+
+<a name="banks"></a>
+## Banks
+* `rows (list of Banks)`: 
+* `count (int)`: 
+
+`rows`は [Bank](#bank) オブジェクトのリストを返します。
 
 <a name="paginated-transaction"></a>
 ## PaginatedTransaction
@@ -5223,6 +6396,9 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `point_calculation_rule (str)`: ポイント計算ルール (banklisp表記)
 * `point_calculation_rule_object (str)`: ポイント計算ルール (JSON文字列による表記)
 * `status (str)`: キャンペーンの現在の状態
+* `budget_caps_amount (int)`: キャンペーンの予算上限額
+* `budget_current_amount (int)`: キャンペーンの付与合計額
+* `budget_current_time (str)`: キャンペーンの付与集計日時
 
 `applicable-shops`は [User](#user) オブジェクトのリストを返します。
 
@@ -5246,6 +6422,66 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 
 `summaries`は [AccountTransferSummaryElement](#account-transfer-summary-element) オブジェクトのリストを返します。
 
+<a name="organization-worker-task-webhook"></a>
+## OrganizationWorkerTaskWebhook
+* `id (str)`: 
+* `organization_code (str)`: 
+* `task (str)`: 
+* `url (str)`: 
+* `content_type (str)`: 
+* `is_active (bool)`: 
+
+<a name="paginated-organization-worker-task-webhook"></a>
+## PaginatedOrganizationWorkerTaskWebhook
+* `rows (list of OrganizationWorkerTaskWebhooks)`: 
+* `count (int)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [OrganizationWorkerTaskWebhook](#organization-worker-task-webhook) オブジェクトのリストを返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="coupon-detail"></a>
+## CouponDetail
+* `id (str)`: クーポンID
+* `name (str)`: クーポン名
+* `issued_shop (User)`: クーポン発行店舗
+* `description (str)`: クーポンの説明文
+* `discount_amount (int)`: クーポンによる値引き額(絶対値指定)
+* `discount_percentage (float)`: クーポンによる値引き率
+* `discount_upper_limit (int)`: クーポンによる値引き上限(値引き率が指定された場合の値引き上限額)
+* `starts_at (str)`: クーポンの利用可能期間(開始日時)
+* `ends_at (str)`: クーポンの利用可能期間(終了日時)
+* `display_starts_at (str)`: クーポンの掲載期間(開始日時)
+* `display_ends_at (str)`: クーポンの掲載期間(終了日時)
+* `usage_limit (int)`: ユーザごとの利用可能回数(NULLの場合は無制限)
+* `min_amount (int)`: クーポン適用可能な最小取引額
+* `is_shop_specified (bool)`: 特定店舗限定のクーポンかどうか
+* `is_hidden (bool)`: クーポン一覧に掲載されるかどうか
+* `is_public (bool)`: アプリ配信なしで受け取れるかどうか
+* `code (str)`: クーポン受け取りコード
+* `is_disabled (bool)`: 無効化フラグ
+* `token (str)`: クーポンを特定するためのトークン
+* `coupon_image (str)`: クーポン画像のURL
+* `available_shops (list of Users)`: 利用可能店舗リスト
+* `private_money (PrivateMoney)`: クーポンのマネー
+
+`issued_shop`は [User](#user) オブジェクトを返します。
+
+`available-shops`は [User](#user) オブジェクトのリストを返します。
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="paginated-coupons"></a>
+## PaginatedCoupons
+* `rows (list of Coupons)`: 
+* `count (int)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [Coupon](#coupon) オブジェクトのリストを返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
 <a name="private-money"></a>
 ## PrivateMoney
 * `id (str)`: マネーID
@@ -5257,25 +6493,52 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `organization (Organization)`: マネーを発行した組織
 * `max_balance (float)`: ウォレットの上限金額
 * `transfer_limit (float)`: マネーの取引上限額
+* `money_topup_transfer_limit (float)`: マネーチャージ取引上限額
 * `type (str)`: マネー種別 (自家型=own, 第三者型=third-party)
 * `expiration_type (str)`: 有効期限種別 (チャージ日起算=static, 最終利用日起算=last-update, 最終チャージ日起算=last-topup-update)
-* `enable_topup_by_member (bool)`: 加盟店によるチャージが有効かどうか
+* `enable_topup_by_member (bool)`:  (deprecated)
 * `display_money_and_point (str)`: 
 
 `organization`は [Organization](#organization) オブジェクトを返します。
 
+<a name="pagination"></a>
+## Pagination
+* `current (int)`: 
+* `per_page (int)`: 
+* `max_page (int)`: 
+* `has_prev (bool)`: 
+* `has_next (bool)`: 
+
 <a name="transaction"></a>
 ## Transaction
 * `id (str)`: 取引ID
-* `type (str)`: 取引種別 (チャージ=topup, 支払い=payment)
+* `type (str)`: 取引種別
 * `is_modified (bool)`: 返金された取引かどうか
 * `sender (User)`: 送金者情報
 * `sender_account (Account)`: 送金ウォレット情報
 * `receiver (User)`: 受取者情報
 * `receiver_account (Account)`: 受取ウォレット情報
-* `amount (float)`: 決済総額 (マネー額 + ポイント額)
-* `money_amount (float)`: 決済マネー額
-* `point_amount (float)`: 決済ポイント額
+* `amount (float)`: 取引総額 (マネー額 + ポイント額)
+* `money_amount (float)`: 取引マネー額
+* `point_amount (float)`: 取引ポイント額(キャンペーン付与ポイント合算)
+* `raw_point_amount (float)`: 取引ポイント額
+* `campaign_point_amount (float)`: キャンペーンによるポイント付与額
+* `done_at (str)`: 取引日時
+* `description (str)`: 取引説明文
+
+`receiver`と`sender`は [User](#user) オブジェクトを返します。
+
+`receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
+
+<a name="external-transaction"></a>
+## ExternalTransaction
+* `id (str)`: ポケペイ外部取引ID
+* `is_modified (bool)`: 返金された取引かどうか
+* `sender (User)`: 送金者情報
+* `sender_account (Account)`: 送金ウォレット情報
+* `receiver (User)`: 受取者情報
+* `receiver_account (Account)`: 受取ウォレット情報
+* `amount (float)`: 決済額
 * `done_at (str)`: 取引日時
 * `description (str)`: 取引説明文
 
@@ -5336,13 +6599,19 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 
 `payment`と`topup`は [OrganizationSummary](#organization-summary) オブジェクトを返します。
 
-<a name="pagination"></a>
-## Pagination
-* `current (int)`: 
-* `per_page (int)`: 
-* `max_page (int)`: 
-* `has_prev (bool)`: 
-* `has_next (bool)`: 
+<a name="bank"></a>
+## Bank
+* `id (str)`: 
+* `private_money (PrivateMoney)`: 
+* `bank_name (str)`: 
+* `bank_code (str)`: 
+* `branch_number (str)`: 
+* `branch_name (str)`: 
+* `deposit_type (str)`: 
+* `masked_account_number (str)`: 
+* `account_name (str)`: 
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
 <a name="account-balance"></a>
 ## AccountBalance
@@ -5355,6 +6624,7 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `id (str)`: 店舗ID
 * `name (str)`: 店舗名
 * `organization_code (str)`: 組織コード
+* `status (str)`: 店舗の状態
 * `postal_code (str)`: 店舗の郵便番号
 * `address (str)`: 店舗の住所
 * `tel (str)`: 店舗の電話番号
@@ -5367,6 +6637,30 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `money_amount (float)`: 
 * `point_amount (float)`: 
 * `count (float)`: 
+
+<a name="coupon"></a>
+## Coupon
+* `id (str)`: クーポンID
+* `name (str)`: クーポン名
+* `issued_shop (User)`: クーポン発行店舗
+* `description (str)`: クーポンの説明文
+* `discount_amount (int)`: クーポンによる値引き額(絶対値指定)
+* `discount_percentage (float)`: クーポンによる値引き率
+* `discount_upper_limit (int)`: クーポンによる値引き上限(値引き率が指定された場合の値引き上限額)
+* `starts_at (str)`: クーポンの利用可能期間(開始日時)
+* `ends_at (str)`: クーポンの利用可能期間(終了日時)
+* `display_starts_at (str)`: クーポンの掲載期間(開始日時)
+* `display_ends_at (str)`: クーポンの掲載期間(終了日時)
+* `usage_limit (int)`: ユーザごとの利用可能回数(NULLの場合は無制限)
+* `min_amount (int)`: クーポン適用可能な最小取引額
+* `is_shop_specified (bool)`: 特定店舗限定のクーポンかどうか
+* `is_hidden (bool)`: クーポン一覧に掲載されるかどうか
+* `is_public (bool)`: アプリ配信なしで受け取れるかどうか
+* `code (str)`: クーポン受け取りコード
+* `is_disabled (bool)`: 無効化フラグ
+* `token (str)`: クーポンを特定するためのトークン
+
+`issued_shop`は [User](#user) オブジェクトを返します。
 
 <a name="organization"></a>
 ## Organization
@@ -5390,4 +6684,6 @@ exist_in_each_product_groupsが指定されているにも関わらず商品毎�
 * `money_amount (float)`: 
 * `money_count (int)`: 
 * `point_amount (float)`: 
+* `raw_point_amount (float)`: 
+* `campaign_point_amount (float)`: 
 * `point_count (int)`: 

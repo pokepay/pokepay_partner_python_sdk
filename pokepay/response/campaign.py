@@ -23,6 +23,9 @@ class Campaign(PokepayResponse):
         self.point_calculation_rule = response_body['point_calculation_rule']
         self.point_calculation_rule_object = response_body['point_calculation_rule_object']
         self.status = response_body['status']
+        self.budget_caps_amount = response_body['budget_caps_amount']
+        self.budget_current_amount = response_body['budget_current_amount']
+        self.budget_current_time = response_body['budget_current_time']
 
     def id(self):
         return self.id
@@ -74,4 +77,13 @@ class Campaign(PokepayResponse):
 
     def status(self):
         return self.status
+
+    def budget_caps_amount(self):
+        return self.budget_caps_amount
+
+    def budget_current_amount(self):
+        return self.budget_current_amount
+
+    def budget_current_time(self):
+        return self.budget_current_time
 

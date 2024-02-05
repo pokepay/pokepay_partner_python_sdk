@@ -16,6 +16,7 @@ class Check(PokepayResponse):
         self.is_onetime = response_body['is_onetime']
         self.is_disabled = response_body['is_disabled']
         self.expires_at = response_body['expires_at']
+        self.last_used_at = response_body['last_used_at']
         self.private_money = response_body['private_money']
         self.usage_limit = response_body['usage_limit']
         self.usage_count = response_body['usage_count']
@@ -52,6 +53,9 @@ class Check(PokepayResponse):
 
     def expires_at(self):
         return self.expires_at
+
+    def last_used_at(self):
+        return self.last_used_at
 
     def private_money(self):
         return self.private_money

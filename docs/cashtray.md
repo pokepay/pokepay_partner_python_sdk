@@ -19,9 +19,9 @@ Cashtrayを作成します。
 const response: Response<Cashtray> = await client.send(new CreateCashtray({
   private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
   shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ユーザーID
-  amount: 1704.0, // 金額
+  amount: 2174.0, // 金額
   description: "たい焼き(小倉)", // 取引履歴に表示する説明文
-  expires_in: 9821 // 失効時間(秒)
+  expires_in: 2651 // 失効時間(秒)
 }));
 ```
 
@@ -94,6 +94,53 @@ Cashtrayが失効するまでの時間を秒単位で指定します(任意項�
 成功したときは
 [Cashtray](./responses.md#cashtray)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|account_not_found|アカウントが見つかりません|The account is not found|
+|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
+
+
+
+---
+
+
+<a name="cancel-cashtray"></a>
+## CancelCashtray: Cashtrayを無効化する
+Cashtrayを無効化します。
+
+これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
+エンドユーザーが無効化されたQRコードを読み取ると `cashtray_already_canceled` エラーとなり、取引は失敗します。
+
+```typescript
+const response: Response<Cashtray> = await client.send(new CancelCashtray({
+  cashtray_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // CashtrayのID
+}));
+```
+
+
+
+### Parameters
+**`cashtray_id`** 
+  
+
+無効化するCashtrayのIDです。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+
+
+成功したときは
+[Cashtray](./responses.md#cashtray)
+を返します
+
 
 
 ---
@@ -188,43 +235,6 @@ const response: Response<CashtrayWithResult> = await client.send(new GetCashtray
 を返します
 
 
----
-
-
-<a name="cancel-cashtray"></a>
-## CancelCashtray: Cashtrayを無効化する
-Cashtrayを無効化します。
-
-これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
-エンドユーザーが無効化されたQRコードを読み取ると `cashtray_already_canceled` エラーとなり、取引は失敗します。
-
-```typescript
-const response: Response<Cashtray> = await client.send(new CancelCashtray({
-  cashtray_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // CashtrayのID
-}));
-```
-
-
-
-### Parameters
-**`cashtray_id`** 
-  
-
-無効化するCashtrayのIDです。
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-
-
-成功したときは
-[Cashtray](./responses.md#cashtray)
-を返します
-
 
 ---
 
@@ -236,9 +246,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 ```typescript
 const response: Response<Cashtray> = await client.send(new UpdateCashtray({
   cashtray_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // CashtrayのID
-  amount: 3126.0, // 金額
+  amount: 4502.0, // 金額
   description: "たい焼き(小倉)", // 取引履歴に表示する説明文
-  expires_in: 5432 // 失効時間(秒)
+  expires_in: 5907 // 失効時間(秒)
 }));
 ```
 
@@ -299,6 +309,7 @@ Cashtrayが失効するまでの時間を秒で指定します(任意項目、�
 成功したときは
 [Cashtray](./responses.md#cashtray)
 を返します
+
 
 
 ---

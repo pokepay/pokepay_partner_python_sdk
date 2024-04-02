@@ -13,7 +13,7 @@ class CreateCpmTransaction implements Request<TransactionDetail> {
     amount: number,
     description?: string,
     metadata?: string,
-    products?: Object[],
+    products: Products,
     request_id?: string
   };
   public constructor(params: {
@@ -22,21 +22,22 @@ class CreateCpmTransaction implements Request<TransactionDetail> {
     amount: number,
     description?: string,
     metadata?: string,
-    products?: Object[],
+    products: Products,
     request_id?: string
   }) {
     if (params.cpm_token === void 0) throw new Error('"cpm_token" is required');
     if (params.shop_id === void 0) throw new Error('"shop_id" is required');
     if (params.amount === void 0) throw new Error('"amount" is required');
+    if (params.products === void 0) throw new Error('"products" is required');
     this.path = "/transactions" + "/cpm";
     this.bodyParams = {
       cpm_token: params.cpm_token,
       shop_id: params.shop_id,
       amount: params.amount,
+      products: params.products,
     };
     if (params.description !== void 0) this.bodyParams.description = params.description;
     if (params.metadata !== void 0) this.bodyParams.metadata = params.metadata;
-    if (params.products !== void 0) this.bodyParams.products = params.products;
     if (params.request_id !== void 0) this.bodyParams.request_id = params.request_id;
   }
 }

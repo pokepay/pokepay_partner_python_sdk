@@ -1,5 +1,55 @@
 # Customer
 
+<a name="delete-account"></a>
+## DeleteAccount: ウォレットを退会する
+ウォレットを退会します。一度ウォレットを退会した後は、そのウォレットを再び利用可能な状態に戻すことは出来ません。
+
+```typescript
+const response: Response<AccountDeleted> = await client.send(new DeleteAccount({
+  account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
+  cashback: false // 返金有無
+}));
+```
+
+
+
+### Parameters
+**`account_id`** 
+  
+
+ウォレットIDです。
+
+指定したウォレットIDのウォレットを退会します。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`cashback`** 
+  
+
+退会時の返金有無です。エンドユーザに返金を行う場合、真を指定して下さい。現在のマネー残高を全て現金で返金したものとして記録されます。
+
+```json
+{
+  "type": "boolean"
+}
+```
+
+
+
+成功したときは
+[AccountDeleted](./responses.md#account-deleted)
+を返します
+
+
+
+---
+
+
 <a name="get-account"></a>
 ## GetAccount: ウォレット情報を表示する
 ウォレットを取得します。
@@ -34,6 +84,7 @@ const response: Response<AccountDetail> = await client.send(new GetAccount({
 を返します
 
 
+
 ---
 
 
@@ -51,8 +102,8 @@ const response: Response<AccountDetail> = await client.send(new GetAccount({
 const response: Response<AccountDetail> = await client.send(new UpdateAccount({
   account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
   is_suspended: true, // ウォレットが凍結されているかどうか
-  status: "active", // ウォレット状態
-  can_transfer_topup: true // チャージ可能かどうか
+  status: "suspended", // ウォレット状態
+  can_transfer_topup: false // チャージ可能かどうか
 }));
 ```
 
@@ -118,54 +169,6 @@ const response: Response<AccountDetail> = await client.send(new UpdateAccount({
 を返します
 
 
----
-
-
-<a name="delete-account"></a>
-## DeleteAccount: ウォレットを退会する
-ウォレットを退会します。一度ウォレットを退会した後は、そのウォレットを再び利用可能な状態に戻すことは出来ません。
-
-```typescript
-const response: Response<AccountDeleted> = await client.send(new DeleteAccount({
-  account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  cashback: false // 返金有無
-}));
-```
-
-
-
-### Parameters
-**`account_id`** 
-  
-
-ウォレットIDです。
-
-指定したウォレットIDのウォレットを退会します。
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`cashback`** 
-  
-
-退会時の返金有無です。エンドユーザに返金を行う場合、真を指定して下さい。現在のマネー残高を全て現金で返金したものとして記録されます。
-
-```json
-{
-  "type": "boolean"
-}
-```
-
-
-
-成功したときは
-[AccountDeleted](./responses.md#account-deleted)
-を返します
-
 
 ---
 
@@ -177,11 +180,11 @@ const response: Response<AccountDeleted> = await client.send(new DeleteAccount({
 ```typescript
 const response: Response<PaginatedAccountBalance> = await client.send(new ListAccountBalances({
   account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  page: 4864, // ページ番号
-  per_page: 2363, // 1ページ分の取引数
-  expires_at_from: "2022-10-29T13:58:49.000000Z", // 有効期限の期間によるフィルター(開始時点)
-  expires_at_to: "2022-12-20T05:38:25.000000Z", // 有効期限の期間によるフィルター(終了時点)
-  direction: "desc" // 有効期限によるソート順序
+  page: 9466, // ページ番号
+  per_page: 2486, // 1ページ分の取引数
+  expires_at_from: "2021-05-09T05:12:58.000000Z", // 有効期限の期間によるフィルター(開始時点)
+  expires_at_to: "2021-07-24T06:37:04.000000Z", // 有効期限の期間によるフィルター(終了時点)
+  direction: "asc" // 有効期限によるソート順序
 }));
 ```
 
@@ -272,6 +275,7 @@ const response: Response<PaginatedAccountBalance> = await client.send(new ListAc
 を返します
 
 
+
 ---
 
 
@@ -282,11 +286,11 @@ const response: Response<PaginatedAccountBalance> = await client.send(new ListAc
 ```typescript
 const response: Response<PaginatedAccountBalance> = await client.send(new ListAccountExpiredBalances({
   account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  page: 9610, // ページ番号
-  per_page: 2603, // 1ページ分の取引数
-  expires_at_from: "2020-05-11T07:12:37.000000Z", // 有効期限の期間によるフィルター(開始時点)
-  expires_at_to: "2022-01-18T11:04:15.000000Z", // 有効期限の期間によるフィルター(終了時点)
-  direction: "asc" // 有効期限によるソート順序
+  page: 5299, // ページ番号
+  per_page: 9652, // 1ページ分の取引数
+  expires_at_from: "2021-09-30T16:39:14.000000Z", // 有効期限の期間によるフィルター(開始時点)
+  expires_at_to: "2021-04-29T19:55:24.000000Z", // 有効期限の期間によるフィルター(終了時点)
+  direction: "desc" // 有効期限によるソート順序
 }));
 ```
 
@@ -377,6 +381,7 @@ const response: Response<PaginatedAccountBalance> = await client.send(new ListAc
 を返します
 
 
+
 ---
 
 
@@ -387,9 +392,9 @@ const response: Response<PaginatedAccountBalance> = await client.send(new ListAc
 ```typescript
 const response: Response<AccountWithUser> = await client.send(new UpdateCustomerAccount({
   account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  status: "pre-closed", // ウォレット状態
-  account_name: "kLnY7y5P2vTc2kTDF85U9g31HpRLtjhMxgRT9FEddBtVan5HyW6Uan9MoYMbee", // アカウント名
-  external_id: "KUX", // 外部ID
+  status: "suspended", // ウォレット状態
+  account_name: "DDPPtMusem1WSPOdAkWLCHhP7q7jyjEo8V3Di9DtzhzAGKUtsDdhPal5eEvQkTNVI1DbDv2ICSa1fLqeRzwnNnU8Hy7seU6TPp7YTcvCbmuWQvyjmdKhWFzroFJfg0zCih9qHu842U5SnXNqipKVsIIUjVYx3ZiMVPZEq0xgguEtAXJ6WozfUGo1oVRA1PV2JD5SjzUvS2Jlq6P89tC2Mi1PRe6ex8zQnoMXPxIs0d6X24reGHeQvAP", // アカウント名
+  external_id: "GMsA1rgfPu4olvC1KDDE1G2mGU9YeDH5Tysjz5v4HW6eqkSknj", // 外部ID
   metadata: "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
 }));
 ```
@@ -485,6 +490,7 @@ const response: Response<AccountWithUser> = await client.send(new UpdateCustomer
 を返します
 
 
+
 ---
 
 
@@ -495,15 +501,15 @@ const response: Response<AccountWithUser> = await client.send(new UpdateCustomer
 ```typescript
 const response: Response<PaginatedAccountWithUsers> = await client.send(new GetCustomerAccounts({
   private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  page: 8901, // ページ番号
-  per_page: 9982, // 1ページ分のウォレット数
-  created_at_from: "2022-05-12T14:01:20.000000Z", // ウォレット作成日によるフィルター(開始時点)
-  created_at_to: "2021-08-01T07:54:25.000000Z", // ウォレット作成日によるフィルター(終了時点)
+  page: 7384, // ページ番号
+  per_page: 5429, // 1ページ分のウォレット数
+  created_at_from: "2023-10-11T21:03:00.000000Z", // ウォレット作成日によるフィルター(開始時点)
+  created_at_to: "2024-03-15T06:32:01.000000Z", // ウォレット作成日によるフィルター(終了時点)
   is_suspended: true, // ウォレットが凍結状態かどうかでフィルターする
   status: "active", // ウォレット状態
-  external_id: "vqgIch5W6XuTL0vlIdvd", // 外部ID
-  tel: "072777-896", // エンドユーザーの電話番号
-  email: "BXoKUl0tR0@7369.com" // エンドユーザーのメールアドレス
+  external_id: "W80Xp5YCo9TXEMx6Q3N4lydCpBzThmgOIjIatpE7", // 外部ID
+  tel: "078988131", // エンドユーザーの電話番号
+  email: "qkfWLu8Wbq@qwjf.com" // エンドユーザーのメールアドレス
 }));
 ```
 
@@ -641,6 +647,13 @@ const response: Response<PaginatedAccountWithUsers> = await client.send(new GetC
 [PaginatedAccountWithUsers](./responses.md#paginated-account-with-users)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|private_money_not_found||Private money not found|
+
+
 
 ---
 
@@ -657,7 +670,7 @@ const response: Response<AccountWithUser> = await client.send(new CreateCustomer
   private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
   user_name: "ポケペイ太郎", // ユーザー名
   account_name: "ポケペイ太郎のアカウント", // アカウント名
-  external_id: "BiPR32MXZafz3jf" // 外部ID
+  external_id: "PVeBo88egFulBO0" // 外部ID
 }));
 ```
 
@@ -720,6 +733,19 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 [AccountWithUser](./responses.md#account-with-user)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|user_not_found||The user is not found|
+|422|private_money_not_found||Private money not found|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|user_attributes_external_id_not_match|ユーザー属性情報の外部IDが一致しません|Not match external id of user attributes|
+|422|user_attributes_not_found|ユーザー属性情報が存在しません|Not found the user attrubtes|
+|422|account_closed|アカウントは退会しています|The account is closed|
+|422|account_can_not_create|このマネーに新規アカウントを作る事は出来ません|Can not create an account with this money|
+
+
 
 ---
 
@@ -731,10 +757,10 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 ```typescript
 const response: Response<PaginatedAccountWithUsers> = await client.send(new GetShopAccounts({
   private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  page: 5375, // ページ番号
-  per_page: 7186, // 1ページ分のウォレット数
-  created_at_from: "2020-02-09T06:31:25.000000Z", // ウォレット作成日によるフィルター(開始時点)
-  created_at_to: "2020-04-03T10:25:10.000000Z", // ウォレット作成日によるフィルター(終了時点)
+  page: 8229, // ページ番号
+  per_page: 6517, // 1ページ分のウォレット数
+  created_at_from: "2024-01-23T15:43:54.000000Z", // ウォレット作成日によるフィルター(開始時点)
+  created_at_to: "2022-06-04T22:42:35.000000Z", // ウォレット作成日によるフィルター(終了時点)
   is_suspended: false // ウォレットが凍結状態かどうかでフィルターする
 }));
 ```
@@ -821,6 +847,13 @@ const response: Response<PaginatedAccountWithUsers> = await client.send(new GetS
 [PaginatedAccountWithUsers](./responses.md#paginated-account-with-users)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|private_money_not_found||Private money not found|
+
+
 
 ---
 
@@ -834,10 +867,10 @@ const response: Response<PaginatedTransaction> = await client.send(new ListCusto
   private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
   sender_customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
   receiver_customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-  type: "topup", // 取引種別
-  is_modified: false, // キャンセル済みかどうか
-  from: "2021-06-10T14:16:07.000000Z", // 開始日時
-  to: "2022-04-02T20:02:52.000000Z", // 終了日時
+  type: "expire", // 取引種別
+  is_modified: true, // キャンセル済みかどうか
+  from: "2020-09-27T18:26:40.000000Z", // 開始日時
+  to: "2022-09-05T11:19:04.000000Z", // 終了日時
   page: 1, // ページ番号
   per_page: 50 // 1ページ分の取引数
 }));
@@ -993,6 +1026,14 @@ falseを指定するとキャンセルされていない取引のみ一覧に表
 成功したときは
 [PaginatedTransaction](./responses.md#paginated-transaction)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|customer_user_not_found||The customer user is not found|
+|422|private_money_not_found||Private money not found|
+
 
 
 ---

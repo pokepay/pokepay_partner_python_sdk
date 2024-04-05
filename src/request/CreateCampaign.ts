@@ -35,6 +35,7 @@ class CreateCampaign implements Request<Campaign> {
     max_total_point_amount?: number,
     dest_private_money_id?: string,
     applicable_account_metadata?: Object,
+    applicable_transaction_metadata?: Object,
     budget_caps_amount?: number
   };
   public constructor(params: {
@@ -65,6 +66,7 @@ class CreateCampaign implements Request<Campaign> {
     max_total_point_amount?: number,
     dest_private_money_id?: string,
     applicable_account_metadata?: Object,
+    applicable_transaction_metadata?: Object,
     budget_caps_amount?: number
   }) {
     if (params.name === void 0) throw new Error('"name" is required');
@@ -103,6 +105,7 @@ class CreateCampaign implements Request<Campaign> {
     if (params.max_total_point_amount !== void 0) this.bodyParams.max_total_point_amount = params.max_total_point_amount;
     if (params.dest_private_money_id !== void 0) this.bodyParams.dest_private_money_id = params.dest_private_money_id;
     if (params.applicable_account_metadata !== void 0) this.bodyParams.applicable_account_metadata = params.applicable_account_metadata;
+    if (params.applicable_transaction_metadata !== void 0) this.bodyParams.applicable_transaction_metadata = params.applicable_transaction_metadata;
     if (params.budget_caps_amount !== void 0) this.bodyParams.budget_caps_amount = params.budget_caps_amount;
   }
 }

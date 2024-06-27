@@ -4,14 +4,14 @@
 ## BulkCreateTransaction: CSVファイル一括取引
 CSVファイルから一括取引をします。
 
-```typescript
-const response: Response<BulkTransaction> = await client.send(new BulkCreateTransaction({
-  name: "GSOhV764tKT9oH", // 一括取引タスク名
-  content: "jnPne51Y", // 取引する情報のCSV
-  request_id: "ZOU0zGq4PpZBc0rJPOstD7C9IM7suB5w40dZ", // リクエストID
-  description: "TsuKZGsFElmQpA4RSTaTlLaqlkU49OXmcM1eYLCIvDzYzwAtEksQWSl6Am3gCBrhM35Efmr", // 一括取引の説明
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // マネーID
-}));
+```PYTHON
+response = client.send(pp.BulkCreateTransaction(
+                          "Yy85d5RKAlbrP",                                      # name: 一括取引タスク名
+                          "Q0st",                                               # content: 取引する情報のCSV
+                          "0t7yJcv8GqBqgGEHafl1jNP9k7uydClg9A7a",               # request_id: リクエストID
+                          description="n27PrVxBqiE9YW",                         # 一括取引の説明
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # マネーID
+))
 ```
 
 

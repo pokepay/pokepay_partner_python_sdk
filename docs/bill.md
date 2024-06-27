@@ -5,22 +5,22 @@
 ## ListBills: 支払いQRコード一覧を表示する
 支払いQRコード一覧を表示します。
 
-```typescript
-const response: Response<PaginatedBills> = await client.send(new ListBills({
-  page: 6268, // ページ番号
-  per_page: 5896, // 1ページの表示数
-  bill_id: "Lw9", // 支払いQRコードのID
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  organization_code: "PX", // 組織コード
-  description: "test bill", // 取引説明文
-  created_from: "2020-04-24T11:52:40.000000Z", // 作成日時(起点)
-  created_to: "2023-06-14T18:59:50.000000Z", // 作成日時(終点)
-  shop_name: "bill test shop1", // 店舗名
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-  lower_limit_amount: 5836, // 金額の範囲によるフィルタ(下限)
-  upper_limit_amount: 6006, // 金額の範囲によるフィルタ(上限)
-  is_disabled: false // 支払いQRコードが無効化されているかどうか
-}));
+```PYTHON
+response = client.send(pp.ListBills(
+                          page=258,                                             # ページ番号
+                          per_page=8721,                                        # 1ページの表示数
+                          bill_id="7OnX",                                       # 支払いQRコードのID
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
+                          organization_code="J0Gd9t",                           # 組織コード
+                          description="test bill",                              # 取引説明文
+                          created_from="2022-05-16T02:06:42.000000Z",           # 作成日時(起点)
+                          created_to="2023-11-14T20:15:58.000000Z",             # 作成日時(終点)
+                          shop_name="bill test shop1",                          # 店舗名
+                          shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
+                          lower_limit_amount=1377,                              # 金額の範囲によるフィルタ(下限)
+                          upper_limit_amount=9868,                              # 金額の範囲によるフィルタ(上限)
+                          is_disabled=False                                     # 支払いQRコードが無効化されているかどうか
+))
 ```
 
 
@@ -207,13 +207,13 @@ const response: Response<PaginatedBills> = await client.send(new ListBills({
 ## CreateBill: 支払いQRコードの発行
 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
 
-```typescript
-const response: Response<Bill> = await client.send(new CreateBill({
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いマネーのマネーID
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払い先(受け取り人)の店舗ID
-  amount: 990.0, // 支払い額
-  description: "test bill" // 説明文(アプリ上で取引の説明文として表示される)
-}));
+```PYTHON
+response = client.send(pp.CreateBill(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: 支払いマネーのマネーID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 支払い先(受け取り人)の店舗ID
+                          amount=2255.0,                                        # 支払い額
+                          description="test bill"                               # 説明文(アプリ上で取引の説明文として表示される)
+))
 ```
 
 
@@ -291,13 +291,13 @@ const response: Response<Bill> = await client.send(new CreateBill({
 ## UpdateBill: 支払いQRコードの更新
 支払いQRコードの内容を更新します。パラメータは全て省略可能で、指定したもののみ更新されます。
 
-```typescript
-const response: Response<Bill> = await client.send(new UpdateBill({
-  bill_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いQRコードのID
-  amount: 4136.0, // 支払い額
-  description: "test bill", // 説明文
-  is_disabled: false // 無効化されているかどうか
-}));
+```PYTHON
+response = client.send(pp.UpdateBill(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # bill_id: 支払いQRコードのID
+                          amount=7115.0,                                        # 支払い額
+                          description="test bill",                              # 説明文
+                          is_disabled=False                                     # 無効化されているかどうか
+))
 ```
 
 

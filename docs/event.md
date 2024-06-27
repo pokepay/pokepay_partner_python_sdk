@@ -7,35 +7,30 @@
 ポケペイ外の現金決済やクレジットカード決済に対してポケペイのポイントを付けたいというときに使用します。
 
 
-```typescript
-const response: Response<ExternalTransactionDetail> = await client.send(new CreateExternalTransaction({
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  amount: 2106, // 取引額
-  products: [{"jan_code":"abc",
+```PYTHON
+response = client.send(pp.CreateExternalTransaction(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # shop_id: 店舗ID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          5389,                                                 # amount: 取引額
+                          description="たい焼き(小倉)",                               # 取引説明文
+                          metadata="{\"key\":\"value\"}",                       # ポケペイ外部取引メタデータ
+                          products=[{"jan_code":"abc",
  "name":"name1",
  "unit_price":100,
  "price": 100,
  "quantity": 1,
- "is_discounted": false,
+ "is_discounted": False,
  "other":"{}"}, {"jan_code":"abc",
  "name":"name1",
  "unit_price":100,
  "price": 100,
  "quantity": 1,
- "is_discounted": false,
- "other":"{}"}, {"jan_code":"abc",
- "name":"name1",
- "unit_price":100,
- "price": 100,
- "quantity": 1,
- "is_discounted": false,
- "other":"{}"}], // 商品情報データ
-  description: "たい焼き(小倉)", // 取引説明文
-  metadata: "{\"key\":\"value\"}", // ポケペイ外部取引メタデータ
-  request_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
-}));
+ "is_discounted": False,
+ "other":"{}"}],                                                                # 商品情報データ
+                          request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",    # リクエストID
+                          done_at="2023-12-22T04:30:39.000000Z"                 # ポケペイ外部取引の実施時間
+))
 ```
 
 
@@ -162,6 +157,20 @@ const response: Response<ExternalTransactionDetail> = await client.send(new Crea
 }
 ```
 
+**`done_at`** 
+  
+
+ポケペイ外部取引が実際に起こった時間です。
+時間帯指定のポイント付与キャンペーンでの取引時間の計算に使われます。
+デフォルトではCreateExternalTransactionがリクエストされた時間になります。
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
 
 
 成功したときは
@@ -173,7 +182,6 @@ const response: Response<ExternalTransactionDetail> = await client.send(new Crea
 |---|---|---|---|
 |400|invalid_parameters|項目が無効です|Invalid parameters|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|410|transaction_canceled|取引がキャンセルされました|Transaction was canceled|
 |422|customer_user_not_found||The customer user is not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|private_money_not_found||Private money not found|
@@ -222,11 +230,11 @@ const response: Response<ExternalTransactionDetail> = await client.send(new Crea
 
 取引をキャンセルできるのは1回きりです。既にキャンセルされた取引を重ねてキャンセルしようとすると `transaction_already_refunded (422)` エラーが返ります。
 
-```typescript
-const response: Response<ExternalTransactionDetail> = await client.send(new RefundExternalTransaction({
-  event_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
-  description: "返品対応のため" // 取引履歴に表示する返金事由
-}));
+```PYTHON
+response = client.send(pp.RefundExternalTransaction(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # event_id: 取引ID
+                          description="返品対応のため"                                 # 取引履歴に表示する返金事由
+))
 ```
 
 
@@ -271,10 +279,10 @@ const response: Response<ExternalTransactionDetail> = await client.send(new Refu
 
 発行体の管理者は自組織発行のマネーに紐付くポケペイ外部取引を取得できます。
 
-```typescript
-const response: Response<ExternalTransactionDetail> = await client.send(new GetExternalTransactionByRequestId({
-  request_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
-}));
+```PYTHON
+response = client.send(pp.GetExternalTransactionByRequestId(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # request_id: リクエストID
+))
 ```
 
 

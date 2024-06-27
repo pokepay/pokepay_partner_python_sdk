@@ -5,10 +5,12 @@ from pokepay.response.user_stats_operation import UserStatsOperation
 
 
 class RequestUserStats(PokepayRequest):
-    def __init__(self, start, to):
+    def __init__(self, from_, to):
         self.path = "/user-stats"
         self.method = "POST"
-        self.body_params = {"from": start,
+        self.body_params = {"from": from_,
                             "to": to}
         
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = UserStatsOperation

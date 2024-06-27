@@ -7,11 +7,11 @@ WebHookにはURLとタスク名、有効化されているかを設定するこ�
 <a name="list-webhooks"></a>
 ## ListWebhooks: 作成したWebhookの一覧を返す
 
-```typescript
-const response: Response<PaginatedOrganizationWorkerTaskWebhook> = await client.send(new ListWebhooks({
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取得数
-}));
+```PYTHON
+response = client.send(pp.ListWebhooks(
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
 ```
 
 
@@ -63,11 +63,11 @@ const response: Response<PaginatedOrganizationWorkerTaskWebhook> = await client.
 このAPIにより指定したタスクの終了時に、指定したURLにPOSTリクエストを送信します。
 このとき、リクエストボディは `{"task": <タスク名>}` という値になります。
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new CreateWebhook({
-  task: "bulk_shops", // タスク名
-  url: "D8" // URL
-}));
+```PYTHON
+response = client.send(pp.CreateWebhook(
+                          "bulk_shops",                                         # task: タスク名
+                          "aBwAHAu"                                             # url: URL
+))
 ```
 
 
@@ -120,10 +120,10 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 ## DeleteWebhook: Webhookの削除
 指定したWebhookを削除します
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new DeleteWebhook({
-  webhook_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // Webhook ID
-}));
+```PYTHON
+response = client.send(pp.DeleteWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # webhook_id: Webhook ID
+))
 ```
 
 
@@ -156,13 +156,13 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 ## UpdateWebhook: Webhookの更新
 指定したWebhookの内容を更新します
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new UpdateWebhook({
-  webhook_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // Webhook ID
-  url: "Qrp", // URL
-  is_active: false, // 有効/無効
-  task: "process_user_stats_operation" // タスク名
-}));
+```PYTHON
+response = client.send(pp.UpdateWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # webhook_id: Webhook ID
+                          url="bJ1KgmPI",                                       # URL
+                          is_active=False,                                      # 有効/無効
+                          task="bulk_shops"                                     # タスク名
+))
 ```
 
 

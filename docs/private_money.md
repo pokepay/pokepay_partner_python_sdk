@@ -6,12 +6,12 @@
 パートナーキーの管理者が発行体組織に属している場合、自組織が加盟または発行しているマネーの一覧を返します。また、`organization_code`として決済加盟店の組織コードを指定した場合、発行マネーのうち、その決済加盟店組織が加盟しているマネーの一覧を返します。
 パートナーキーの管理者が決済加盟店組織に属している場合は、自組織が加盟しているマネーの一覧を返します。
 
-```typescript
-const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPrivateMoneys({
-  organization_code: "ox-supermarket", // 組織コード
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取得数
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneys(
+                          organization_code="ox-supermarket",                   # 組織コード
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
 ```
 
 
@@ -72,14 +72,14 @@ const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPriv
 <a name="get-private-money-organization-summaries"></a>
 ## GetPrivateMoneyOrganizationSummaries: 決済加盟店の取引サマリを取得する
 
-```typescript
-const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await client.send(new GetPrivateMoneyOrganizationSummaries({
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  from: "2021-06-04T07:32:54.000000Z", // 開始日時(toと同時に指定する必要有)
-  to: "2022-05-22T18:27:54.000000Z", // 終了日時(fromと同時に指定する必要有)
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取引数
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          start="2021-11-05T13:59:07.000000Z",                  # 開始日時(toと同時に指定する必要有)
+                          to="2023-03-03T13:52:47.000000Z",                     # 終了日時(fromと同時に指定する必要有)
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取引数
+))
 ```
 
 `from`と`to`は同時に指定する必要があります。
@@ -155,12 +155,12 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
 <a name="get-private-money-summary"></a>
 ## GetPrivateMoneySummary: 取引サマリを取得する
 
-```typescript
-const response: Response<PrivateMoneySummary> = await client.send(new GetPrivateMoneySummary({
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  from: "2020-02-09T19:52:16.000000Z", // 開始日時
-  to: "2024-03-20T18:36:22.000000Z" // 終了日時
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneySummary(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          start="2020-02-22T21:59:12.000000Z",                  # 開始日時
+                          to="2023-08-28T12:22:34.000000Z"                      # 終了日時
+))
 ```
 
 

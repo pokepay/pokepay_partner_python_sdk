@@ -11,6 +11,8 @@ class PrivateMoneySummary(PokepayResponse):
         self.payment_amount = response_body['payment_amount']
         self.refunded_payment_amount = response_body['refunded_payment_amount']
         self.added_point_amount = response_body['added_point_amount']
+        self.topup_point_amount = response_body['topup_point_amount']
+        self.campaign_point_amount = response_body['campaign_point_amount']
         self.refunded_added_point_amount = response_body['refunded_added_point_amount']
         self.exchange_inflow_amount = response_body['exchange_inflow_amount']
         self.exchange_outflow_amount = response_body['exchange_outflow_amount']
@@ -30,6 +32,12 @@ class PrivateMoneySummary(PokepayResponse):
 
     def added_point_amount(self):
         return self.added_point_amount
+
+    def topup_point_amount(self):
+        return self.topup_point_amount
+
+    def campaign_point_amount(self):
+        return self.campaign_point_amount
 
     def refunded_added_point_amount(self):
         return self.refunded_added_point_amount

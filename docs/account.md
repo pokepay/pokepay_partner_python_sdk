@@ -4,12 +4,12 @@
 ## ListUserAccounts: エンドユーザー、店舗ユーザーのウォレット一覧を表示する
 ユーザーIDを指定してそのユーザーのウォレット一覧を取得します。
 
-```typescript
-const response: Response<PaginatedAccountDetails> = await client.send(new ListUserAccounts({
-  user_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ユーザーID
-  page: 637, // ページ番号
-  per_page: 5874 // 1ページ分の取引数
-}));
+```PYTHON
+response = client.send(pp.ListUserAccounts(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
+                          page=5913,                                            # ページ番号
+                          per_page=6125                                         # 1ページ分の取引数
+))
 ```
 
 
@@ -68,14 +68,14 @@ const response: Response<PaginatedAccountDetails> = await client.send(new ListUs
 ## CreateUserAccount: エンドユーザーのウォレットを作成する
 既存のエンドユーザーに対して、指定したマネーのウォレットを新規作成します
 
-```typescript
-const response: Response<AccountDetail> = await client.send(new CreateUserAccount({
-  user_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ユーザーID
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  name: "IP", // ウォレット名
-  external_id: "oWhsZ81p0D8THD4dpuhxNvhxjPfdLCM", // 外部ID
-  metadata: "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
-}));
+```PYTHON
+response = client.send(pp.CreateUserAccount(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          name="U",                                             # ウォレット名
+                          external_id="rE8EACTMWkW53gnqE0TT1",                  # 外部ID
+                          metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"        # ウォレットに付加するメタデータ
+))
 ```
 
 

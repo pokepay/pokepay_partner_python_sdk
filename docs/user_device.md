@@ -8,11 +8,11 @@ UserDeviceはユーザー毎のデバイスを管理します。
 ## CreateUserDevice: ユーザーのデバイス登録
 ユーザーのデバイスを新規に登録します
 
-```typescript
-const response: Response<UserDevice> = await client.send(new CreateUserDevice({
-  user_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ユーザーID
-  metadata: "{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}" // ユーザーデバイスのメタデータ
-}));
+```PYTHON
+response = client.send(pp.CreateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
+                          metadata="{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}" # ユーザーデバイスのメタデータ
+))
 ```
 
 
@@ -64,10 +64,10 @@ const response: Response<UserDevice> = await client.send(new CreateUserDevice({
 ## GetUserDevice: ユーザーのデバイスを取得
 ユーザーのデバイスの情報を取得します
 
-```typescript
-const response: Response<UserDevice> = await client.send(new GetUserDevice({
-  user_device_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ユーザーデバイスID
-}));
+```PYTHON
+response = client.send(pp.GetUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
 ```
 
 
@@ -100,10 +100,10 @@ const response: Response<UserDevice> = await client.send(new GetUserDevice({
 指定のデバイスを有効化し、それ以外の同一ユーザーのデバイスを無効化します。
 
 
-```typescript
-const response: Response<UserDevice> = await client.send(new ActivateUserDevice({
-  user_device_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ユーザーデバイスID
-}));
+```PYTHON
+response = client.send(pp.ActivateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
 ```
 
 

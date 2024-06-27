@@ -11,21 +11,21 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 <a name="list-checks"></a>
 ## ListChecks: チャージQRコード一覧の取得
 
-```typescript
-const response: Response<PaginatedChecks> = await client.send(new ListChecks({
-  page: 7019, // ページ番号
-  per_page: 50, // 1ページの表示数
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  organization_code: "N9K7EVH4f0IDf80jI5hM", // 組織コード
-  expires_from: "2023-08-24T10:24:13.000000Z", // 有効期限の期間によるフィルター(開始時点)
-  expires_to: "2021-12-12T10:58:03.000000Z", // 有効期限の期間によるフィルター(終了時点)
-  created_from: "2021-10-01T09:55:54.000000Z", // 作成日時の期間によるフィルター(開始時点)
-  created_to: "2020-07-27T23:18:31.000000Z", // 作成日時の期間によるフィルター(終了時点)
-  issuer_shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 発行店舗ID
-  description: "a", // チャージQRコードの説明文
-  is_onetime: false, // ワンタイムのチャージQRコードかどうか
-  is_disabled: false // 無効化されたチャージQRコードかどうか
-}));
+```PYTHON
+response = client.send(pp.ListChecks(
+                          page=4774,                                            # ページ番号
+                          per_page=50,                                          # 1ページの表示数
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
+                          organization_code="OdsQM2IVUV93tsgT",                 # 組織コード
+                          expires_from="2022-12-31T07:11:44.000000Z",           # 有効期限の期間によるフィルター(開始時点)
+                          expires_to="2023-07-06T02:13:30.000000Z",             # 有効期限の期間によるフィルター(終了時点)
+                          created_from="2023-12-05T11:42:27.000000Z",           # 作成日時の期間によるフィルター(開始時点)
+                          created_to="2022-09-02T10:02:45.000000Z",             # 作成日時の期間によるフィルター(終了時点)
+                          issuer_shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 発行店舗ID
+                          description="ew3ek7732w",                             # チャージQRコードの説明文
+                          is_onetime=False,                                     # ワンタイムのチャージQRコードかどうか
+                          is_disabled=True                                      # 無効化されたチャージQRコードかどうか
+))
 ```
 
 
@@ -206,6 +206,7 @@ const response: Response<PaginatedChecks> = await client.send(new ListChecks({
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |422|organization_not_found||Organization not found|
 |422|private_money_not_found||Private money not found|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 
@@ -215,19 +216,19 @@ const response: Response<PaginatedChecks> = await client.send(new ListChecks({
 <a name="create-check"></a>
 ## CreateCheck: チャージQRコードの発行
 
-```typescript
-const response: Response<Check> = await client.send(new CreateCheck({
-  account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金元の店舗アカウントID
-  money_amount: 1376.0, // 付与マネー額
-  point_amount: 1264.0, // 付与ポイント額
-  description: "test check", // 説明文(アプリ上で取引の説明文として表示される)
-  is_onetime: false, // ワンタイムかどうかのフラグ
-  usage_limit: 396, // ワンタイムでない場合の最大読み取り回数
-  expires_at: "2020-07-16T13:54:51.000000Z", // チャージQRコード自体の失効日時
-  point_expires_at: "2024-03-08T20:32:06.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
-  point_expires_in_days: 60, // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
-  bear_point_account: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗のウォレットID
-}));
+```PYTHON
+response = client.send(pp.CreateCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: 送金元の店舗アカウントID
+                          money_amount=4897.0,                                  # 付与マネー額
+                          point_amount=4976.0,                                  # 付与ポイント額
+                          description="test check",                             # 説明文(アプリ上で取引の説明文として表示される)
+                          is_onetime=False,                                     # ワンタイムかどうかのフラグ
+                          usage_limit=662,                                      # ワンタイムでない場合の最大読み取り回数
+                          expires_at="2020-04-17T14:22:02.000000Z",             # チャージQRコード自体の失効日時
+                          point_expires_at="2024-02-14T19:55:45.000000Z",       # チャージQRコードによって付与されるポイント残高の有効期限
+                          point_expires_in_days=60,                             # チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
+                          bear_point_account="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # ポイント額を負担する店舗のウォレットID
+))
 ```
 
 
@@ -406,10 +407,10 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 <a name="get-check"></a>
 ## GetCheck: チャージQRコードの表示
 
-```typescript
-const response: Response<Check> = await client.send(new GetCheck({
-  check_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // チャージQRコードのID
-}));
+```PYTHON
+response = client.send(pp.GetCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # check_id: チャージQRコードのID
+))
 ```
 
 
@@ -441,20 +442,20 @@ const response: Response<Check> = await client.send(new GetCheck({
 <a name="update-check"></a>
 ## UpdateCheck: チャージQRコードの更新
 
-```typescript
-const response: Response<Check> = await client.send(new UpdateCheck({
-  check_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージQRコードのID
-  money_amount: 4707.0, // 付与マネー額
-  point_amount: 5296.0, // 付与ポイント額
-  description: "test check", // チャージQRコードの説明文
-  is_onetime: false, // ワンタイムかどうかのフラグ
-  usage_limit: 8397, // ワンタイムでない場合の最大読み取り回数
-  expires_at: "2023-07-16T17:37:41.000000Z", // チャージQRコード自体の失効日時
-  point_expires_at: "2023-09-28T23:55:20.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
-  point_expires_in_days: 60, // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
-  bear_point_account: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント額を負担する店舗のウォレットID
-  is_disabled: false // 無効化されているかどうかのフラグ
-}));
+```PYTHON
+response = client.send(pp.UpdateCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # check_id: チャージQRコードのID
+                          money_amount=494.0,                                   # 付与マネー額
+                          point_amount=9481.0,                                  # 付与ポイント額
+                          description="test check",                             # チャージQRコードの説明文
+                          is_onetime=False,                                     # ワンタイムかどうかのフラグ
+                          usage_limit=4095,                                     # ワンタイムでない場合の最大読み取り回数
+                          expires_at="2022-07-05T02:15:16.000000Z",             # チャージQRコード自体の失効日時
+                          point_expires_at="2020-03-09T17:29:09.000000Z",       # チャージQRコードによって付与されるポイント残高の有効期限
+                          point_expires_in_days=60,                             # チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
+                          bear_point_account="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # ポイント額を負担する店舗のウォレットID
+                          is_disabled=True                                      # 無効化されているかどうかのフラグ
+))
 ```
 
 
@@ -634,12 +635,12 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 エンドユーザーから受け取ったチャージ用QRコードのIDをエンドユーザーIDと共に渡すことでチャージ取引が作られます。
 
 
-```typescript
-const response: Response<TransactionDetail> = await client.send(new CreateTopupTransactionWithCheck({
-  check_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ用QRコードのID
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーのID
-  request_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
-}));
+```PYTHON
+response = client.send(pp.CreateTopupTransactionWithCheck(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # check_id: チャージ用QRコードのID
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # customer_id: エンドユーザーのID
+                          request_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"     # リクエストID
+))
 ```
 
 
@@ -681,6 +682,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
 
 リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
 
 ```json
 {
@@ -698,9 +700,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 ### Error Responses
 |status|type|ja|en|
 |---|---|---|---|
-|400|invalid_parameters|項目が無効です|Invalid parameters|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|410|transaction_canceled|取引がキャンセルされました|Transaction was canceled|
 |422|customer_user_not_found||The customer user is not found|
 |422|check_not_found|これはチャージQRコードではありません|This is not a topup QR code|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
@@ -732,6 +732,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 |422|same_account_transaction|同じアカウントに送信しています|Sending to the same account|
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|
+|422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
 |422|check_already_received|このチャージQRコードは既に受取済みの為、チャージ出来ませんでした|Check is already received|
 |422|check_unavailable|このチャージQRコードは利用できません|The topup QR code is not available|
 |503|temporarily_unavailable||Service Unavailable|

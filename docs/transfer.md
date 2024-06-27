@@ -4,13 +4,13 @@
 ## GetAccountTransferSummary: 
 ウォレットを指定して取引明細種別毎の集計を返す
 
-```typescript
-const response: Response<AccountTransferSummary> = await client.send(new GetAccountTransferSummary({
-  account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  from: "2023-04-22T08:46:24.000000Z", // 集計期間の開始時刻
-  to: "2020-09-13T23:17:15.000000Z", // 集計期間の終了時刻
-  transfer_types: ["topup", "payment"] // 取引明細種別 (複数指定可)
-}));
+```PYTHON
+response = client.send(pp.GetAccountTransferSummary(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
+                          start="2021-05-09T01:58:52.000000Z",                  # 集計期間の開始時刻
+                          to="2023-05-07T01:59:42.000000Z",                     # 集計期間の終了時刻
+                          transfer_types=["topup", "payment"]                   # 取引明細種別 (複数指定可)
+))
 ```
 
 
@@ -120,23 +120,23 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 <a name="list-transfers"></a>
 ## ListTransfers
 
-```typescript
-const response: Response<PaginatedTransfers> = await client.send(new ListTransfers({
-  from: "2023-11-06T15:31:02.000000Z",
-  to: "2023-04-27T15:13:46.000000Z",
-  page: 2519,
-  per_page: 2166,
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  shop_name: "m4rhE7PkEzPYVXfzwtjxI8n9Z0CQKMUdsLKbKLcaV6nH18WcZidvZ",
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  customer_name: "55mAgOE16AnmYbzCLHYWconVaiJFwoOHJhs1D1kk2Z65xpUZ28FCmVx3QLXn5K0ujHfTEebumDwnUvtTuwE1P6w3jvuc6WVynWZlMwTGtLKHNv0GHMA8YNVctqn0HylBEaWFtKmGqTMRGGhLK4md8CvDRXJmyMUq3nONdNUldEz",
-  transaction_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  is_modified: false,
-  transaction_types: ["transfer", "exchange", "payment", "expire", "topup"],
-  transfer_types: ["exchange", "expire", "topup", "payment", "coupon"], // 取引明細の種類でフィルターします。
-  description: "店頭QRコードによる支払い" // 取引詳細説明文
-}));
+```PYTHON
+response = client.send(pp.ListTransfers(
+                          start="2023-06-21T19:34:51.000000Z",
+                          to="2021-01-30T20:46:41.000000Z",
+                          page=5857,
+                          per_page=7442,
+                          shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          shop_name="GVpuNthlN8cTNxtClPPAh3ydu7juMaO7kqGjaASQkqyw2Q45pim16jWY8Li2yJuAILC9WmiQzTAP0hsvYk94ECXfwyrT6FNWSeiPJDkaNGUUFy37fVBCxguWkgEaSRxikajDhky1e9MUM8ZY9eEBDTjFI18oRpgCoDiEOfsuO3LMtzPm5pmHiztzTLcjSeNyveotr1SbLY9f9RM3h2SXQaAm6iMSYVoPQWfV62UhTGJS1L9KLOsA2Q2Z23Mwd98i",
+                          customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          customer_name="pOldTUQCXPcZtLDZ6t1d7NhS3tIbiaQ9UqJHQZFkEmVia7WMZwoONY9mYcjUD",
+                          transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          is_modified=False,
+                          transaction_types=["transfer", "expire", "cashback", "payment", "topup"],
+                          transfer_types=["cashback", "exchange", "campaign", "transfer", "expire", "payment", "coupon", "topup"], # 取引明細の種類でフィルターします。
+                          description="店頭QRコードによる支払い"                           # 取引詳細説明文
+))
 ```
 
 
@@ -354,6 +354,7 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 |status|type|ja|en|
 |---|---|---|---|
 |403|NULL|NULL|NULL|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 
@@ -363,24 +364,24 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 <a name="list-transfers-v2"></a>
 ## ListTransfersV2
 
-```typescript
-const response: Response<PaginatedTransfersV2> = await client.send(new ListTransfersV2({
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-  shop_name: "YwHPZ5GyoYYcgPPK3Dchqik562nQJ7JN9nEMDfH9ZULXMKOjFu2fGiShoySflnRPKvTH4Qb4HK1DE5zpHipftSBuuUyajKD4UG1MO97nrik73QyiaNKms0iFYGrWxxlKwOlCibtq2e0nqtXLNITG9Gffmmox8hwqx5x", // 店舗名
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-  customer_name: "fQZGPMXFo6oIvZGxUJAAeHeUyg78eCpqwfbVaGI8MUg6pkTJeF4LA5VGWmlO55tLRhXfPthFrTbvP80JDs4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRiHbftN77E9sKP2LWTHQkvbYQTkmfSmGSFmTTeLGAy7h6m", // エンドユーザー名
-  transaction_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  is_modified: true, // キャンセルフラグ
-  transaction_types: ["payment", "topup"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-  next_page_cursor_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransferのID
-  prev_page_cursor_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransferのID
-  per_page: 50, // 1ページ分の取引数
-  transfer_types: ["transfer"], // 取引明細種別 (複数指定可)
-  description: "店頭QRコードによる支払い", // 取引詳細説明文
-  from: "2021-03-13T08:53:43.000000Z", // 開始日時
-  to: "2023-03-05T13:08:25.000000Z" // 終了日時
-}));
+```PYTHON
+response = client.send(pp.ListTransfersV2(
+                          shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
+                          shop_name="Bbd0WPCuqh90wnUEefdvvGn56xgqcINC0MaOVTzOYUS4YiFzadS1dG4VhCAXdvLcusNkP92lEHAtBr5uMSg7mI2h9L5UgNjF9pGXPoR6V6EH9oG2E8mJwg74tJdyJ5Llab29gfUQ6hTQL306GhITMLHDmfb2965KcWooPsLAa0LofoeILq2j1JbokM11iel9SifEKQQKEl5jTOYEn550ChTMJy5Ri4zQipR", # 店舗名
+                          customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # エンドユーザーID
+                          customer_name="66DYXbWwtCBK4yI7b7ruIn1DQefV0LKmn0D6u1aqXUgLXLPq2aRw08aQ0rfHosccmXhG1yeE5aq4GKVSCfP0aoPIG5NuiBMU7rfLf6FhpORYw57l88LjJn33RIRSOmlXSQfzzTwn3Dxt4Xew7Y", # エンドユーザー名
+                          transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 取引ID
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
+                          is_modified=False,                                    # キャンセルフラグ
+                          transaction_types=["transfer", "expire", "topup", "payment"], # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+                          next_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 次ページへ遷移する際に起点となるtransferのID
+                          prev_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 前ページへ遷移する際に起点となるtransferのID
+                          per_page=50,                                          # 1ページ分の取引数
+                          transfer_types=["exchange", "coupon", "topup", "payment", "cashback", "transfer", "campaign"], # 取引明細種別 (複数指定可)
+                          description="店頭QRコードによる支払い",                          # 取引詳細説明文
+                          start="2024-02-11T11:31:15.000000Z",                  # 開始日時
+                          to="2021-11-29T21:00:51.000000Z"                      # 終了日時
+))
 ```
 
 
@@ -677,6 +678,7 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 |status|type|ja|en|
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 

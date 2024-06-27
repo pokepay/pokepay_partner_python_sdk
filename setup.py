@@ -18,7 +18,7 @@ URL = 'https://github.com/pokepay/pokepay_partner_python_sdk'
 EMAIL = 'dev@pocket-change.jp'
 AUTHOR = 'Pocket Change inc.'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '1.0.4'
+VERSION = '1.0.5'
 
 # What packages are required for this module to be executed?
 REQUIRED = ['requests', 'configparser', 'uuid', 'pytz', 'pycryptodomex']

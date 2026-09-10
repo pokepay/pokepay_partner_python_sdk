@@ -1,27 +1,34 @@
 # Transfer
+送金取引明細を表すデータです。
+マネー(Private Money)のウォレット間の送金記録を取得します。
+取引(Transaction)は複数の送金明細(Transfer)で構成されています。
+送金明細には送金元・送金先のアカウント情報、マネー額、ポイント額などが含まれます。
+取引種別として、payment, topup, campaign-topup, transfer, exchange, refund-payment, refund-topup, cashback, expire等があります。
+
 
 <a name="get-account-transfer-summary"></a>
 ## GetAccountTransferSummary: 
 ウォレットを指定して取引明細種別毎の集計を返す
 
-```typescript
-const response: Response<AccountTransferSummary> = await client.send(new GetAccountTransferSummary({
-  account_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ウォレットID
-  from: "2023-04-22T08:46:24.000000Z", // 集計期間の開始時刻
-  to: "2020-09-13T23:17:15.000000Z", // 集計期間の終了時刻
-  transfer_types: ["topup", "payment"] // 取引明細種別 (複数指定可)
-}));
+```PYTHON
+response = client.send(pp.GetAccountTransferSummary(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # account_id: ウォレットID
+                          start="2024-02-03T20:00:03.000000Z",                  # 集計期間の開始時刻
+                          to="2022-01-08T00:55:41.000000Z",                     # 集計期間の終了時刻
+                          transfer_types=["topup", "payment"]                   # 取引明細種別 (複数指定可)
+))
 ```
 
 
 
 ### Parameters
-**`account_id`** 
-  
-
+#### `account_id`
 ウォレットIDです。
 
 ここで指定したウォレットIDの取引明細レベルでの集計を取得します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -30,20 +37,12 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`to`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -52,9 +51,23 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 }
 ```
 
-**`transfer_types`** 
-  
+</details>
 
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `transfer_types`
 取引明細の種別でフィルターします。
 以下の種別を指定できます。
 
@@ -83,6 +96,9 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 - refund-exchange-outflow
   交換による他マネーへの流出取引に対するキャンセル取引
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -106,6 +122,8 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 }
 ```
 
+</details>
+
 
 
 成功したときは
@@ -120,42 +138,32 @@ const response: Response<AccountTransferSummary> = await client.send(new GetAcco
 <a name="list-transfers"></a>
 ## ListTransfers
 
-```typescript
-const response: Response<PaginatedTransfers> = await client.send(new ListTransfers({
-  from: "2023-11-06T15:31:02.000000Z",
-  to: "2023-04-27T15:13:46.000000Z",
-  page: 2519,
-  per_page: 2166,
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  shop_name: "m4rhE7PkEzPYVXfzwtjxI8n9Z0CQKMUdsLKbKLcaV6nH18WcZidvZ",
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  customer_name: "55mAgOE16AnmYbzCLHYWconVaiJFwoOHJhs1D1kk2Z65xpUZ28FCmVx3QLXn5K0ujHfTEebumDwnUvtTuwE1P6w3jvuc6WVynWZlMwTGtLKHNv0GHMA8YNVctqn0HylBEaWFtKmGqTMRGGhLK4md8CvDRXJmyMUq3nONdNUldEz",
-  transaction_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  is_modified: false,
-  transaction_types: ["transfer", "exchange", "payment", "expire", "topup"],
-  transfer_types: ["exchange", "expire", "topup", "payment", "coupon"], // 取引明細の種類でフィルターします。
-  description: "店頭QRコードによる支払い" // 取引詳細説明文
-}));
+```PYTHON
+response = client.send(pp.ListTransfers(
+                          start="2025-10-22T08:01:21.000000Z",
+                          to="2025-04-12T19:24:02.000000Z",
+                          page=8463,
+                          per_page=5753,
+                          shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          shop_name="FEGzWXdbWzamEGXFO5PHpjsIS4SoPDOBVrOHFo8xzE1tgCZyMtCfVQXKeHEaCm6v4bOQPdSecOojChLhuEaRbGgSXO57u6cTOWbPpHzT8SBHVxA4uTsQXNQLVTsa7Enw9cnxOrtkyrYkFM2fsUIFcBc3xUhfvCQABU9yhdPlghv2VJu1lljCVVYSC",
+                          customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          customer_name="GNIDxlSztThgX67n2PgbzVLVHAuqNRKSFbkQwzExi4cSpvsggIAlYenv9bZPRWKzkKRFsQ10G0TlaGn12vl36ewyKaB6SHyKZZn5jR7G8GZiBnTaUgy7N3mTLemMZeIt74bhbcXSO6mPwoW10WefOcGtzUdCSHPXTvrjAoBOkNuRh5LysIScuFPNL3GzqnMP5NZDifqWbMDgjD68XvQQECUSjutOo",
+                          transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                          is_modified=False,
+                          transaction_types=["cashback", "topup", "expire", "exchange", "payment"],
+                          transfer_types=["exchange", "payment", "campaign", "cashback", "topup"], # 取引明細の種類でフィルターします。
+                          description="店頭QRコードによる支払い"                           # 取引詳細説明文
+))
 ```
 
 
 
 ### Parameters
-**`from`** 
-  
+#### `from`
 
-
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`to`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -164,9 +172,26 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -175,9 +200,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -186,9 +214,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`shop_id`** 
-  
+</details>
 
+#### `shop_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -197,9 +228,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`shop_name`** 
-  
+</details>
 
+#### `shop_name`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -208,9 +242,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -219,9 +256,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`customer_name`** 
-  
+</details>
 
+#### `customer_name`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -230,20 +270,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`transaction_id`** 
-  
+</details>
 
+#### `transaction_id`
 
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`private_money_id`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -252,9 +284,26 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`is_modified`** 
-  
+</details>
 
+#### `private_money_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `is_modified`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -262,9 +311,12 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`transaction_types`** 
-  
+</details>
 
+#### `transaction_types`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -283,9 +335,9 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`transfer_types`** 
-  
+</details>
 
+#### `transfer_types`
 取引明細の種類でフィルターします。
 
 以下の種類を指定できます。
@@ -311,6 +363,9 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 7. expire
 退会時失効取引
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -330,12 +385,15 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 取引詳細を指定の取引詳細説明文でフィルターします。
 
 取引詳細説明文が完全一致する取引のみ抽出されます。取引詳細説明文は最大200文字で記録されています。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -343,6 +401,8 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
   "maxLength": 200
 }
 ```
+
+</details>
 
 
 
@@ -354,6 +414,7 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 |status|type|ja|en|
 |---|---|---|---|
 |403|NULL|NULL|NULL|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 
@@ -363,36 +424,37 @@ const response: Response<PaginatedTransfers> = await client.send(new ListTransfe
 <a name="list-transfers-v2"></a>
 ## ListTransfersV2
 
-```typescript
-const response: Response<PaginatedTransfersV2> = await client.send(new ListTransfersV2({
-  shop_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-  shop_name: "YwHPZ5GyoYYcgPPK3Dchqik562nQJ7JN9nEMDfH9ZULXMKOjFu2fGiShoySflnRPKvTH4Qb4HK1DE5zpHipftSBuuUyajKD4UG1MO97nrik73QyiaNKms0iFYGrWxxlKwOlCibtq2e0nqtXLNITG9Gffmmox8hwqx5x", // 店舗名
-  customer_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-  customer_name: "fQZGPMXFo6oIvZGxUJAAeHeUyg78eCpqwfbVaGI8MUg6pkTJeF4LA5VGWmlO55tLRhXfPthFrTbvP80JDs4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRiHbftN77E9sKP2LWTHQkvbYQTkmfSmGSFmTTeLGAy7h6m", // エンドユーザー名
-  transaction_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  is_modified: true, // キャンセルフラグ
-  transaction_types: ["payment", "topup"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-  next_page_cursor_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransferのID
-  prev_page_cursor_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransferのID
-  per_page: 50, // 1ページ分の取引数
-  transfer_types: ["transfer"], // 取引明細種別 (複数指定可)
-  description: "店頭QRコードによる支払い", // 取引詳細説明文
-  from: "2021-03-13T08:53:43.000000Z", // 開始日時
-  to: "2023-03-05T13:08:25.000000Z" // 終了日時
-}));
+```PYTHON
+response = client.send(pp.ListTransfersV2(
+                          shop_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       # 店舗ID
+                          shop_name="ZHJPKApv7OfARAe3RnFd9nT02p1eaStaJkR7kpHzHVrWIJ1LETykZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ", # 店舗名
+                          customer_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",   # エンドユーザーID
+                          customer_name="3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQjabCuZA7I27PPKAWnF0PA", # エンドユーザー名
+                          transaction_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 取引ID
+                          private_money_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # マネーID
+                          is_modified=True,                                     # キャンセルフラグ
+                          transaction_types=["topup", "exchange"],              # 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+                          next_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 次ページへ遷移する際に起点となるtransferのID
+                          prev_page_cursor_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # 前ページへ遷移する際に起点となるtransferのID
+                          per_page=50,                                          # 1ページ分の取引数
+                          transfer_types=["topup", "coupon", "transfer", "exchange", "expire", "campaign"], # 取引明細種別 (複数指定可)
+                          description="店頭QRコードによる支払い",                          # 取引詳細説明文
+                          start="2020-05-26T19:08:03.000000Z",                  # 開始日時
+                          to="2026-06-13T07:11:15.000000Z"                      # 終了日時
+))
 ```
 
 
 
 ### Parameters
-**`shop_id`** 
-  
-
+#### `shop_id`
 店舗IDです。
 
 フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -400,13 +462,16 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`shop_name`** 
-  
+</details>
 
+#### `shop_name`
 店舗名です。
 
 フィルターとして使われ、入力された名前に部分一致する店舗での取引のみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -414,13 +479,16 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
 エンドユーザーIDです。
 
 フィルターとして使われ、指定されたエンドユーザーの取引のみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -428,12 +496,15 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`customer_name`** 
-  
+</details>
 
+#### `customer_name`
 エンドユーザー名です。
 
 フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -442,13 +513,16 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`transaction_id`** 
-  
+</details>
 
+#### `transaction_id`
 取引IDです。
 
 フィルターとして使われ、指定された取引IDに部分一致(前方一致)する取引のみが一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -456,13 +530,16 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 マネーIDです。
 
 指定したマネーでの取引が一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -470,13 +547,16 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`is_modified`** 
-  
+</details>
 
+#### `is_modified`
 キャンセルフラグです。
 
 これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
 デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -484,9 +564,9 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`transaction_types`** 
-  
+</details>
 
+#### `transaction_types`
 取引の種類でフィルターします。
 
 以下の種類を指定できます。
@@ -513,6 +593,9 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 6. expire
    退会時失効取引
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -530,14 +613,17 @@ const response: Response<PaginatedTransfersV2> = await client.send(new ListTrans
 }
 ```
 
-**`next_page_cursor_id`** 
-  
+</details>
 
+#### `next_page_cursor_id`
 次ページへ遷移する際に起点となるtransferのID(前ページの末尾要素のID)です。
 本APIのレスポンスにもnext_page_cursor_idが含まれており、これがnull値の場合は最後のページであることを意味します。
 UUIDである場合は次のページが存在することを意味し、このnext_page_cursor_idをリクエストパラメータに含めることで次ページに遷移します。
 
 next_page_cursor_idのtransfer自体は次のページには含まれません。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -546,9 +632,9 @@ next_page_cursor_idのtransfer自体は次のページには含まれません�
 }
 ```
 
-**`prev_page_cursor_id`** 
-  
+</details>
 
+#### `prev_page_cursor_id`
 前ページへ遷移する際に起点となるtransferのID(次ページの先頭要素のID)です。
 
 本APIのレスポンスにもprev_page_cursor_idが含まれており、これがnull値の場合は先頭のページであることを意味します。
@@ -556,6 +642,9 @@ UUIDである場合は前のページが存在することを意味し、このp
 
 prev_page_cursor_idのtransfer自体は前のページには含まれません。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -563,12 +652,15 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ分の取引数です。
 
 デフォルト値は50です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -578,9 +670,9 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 }
 ```
 
-**`transfer_types`** 
-  
+</details>
 
+#### `transfer_types`
 取引明細の種類でフィルターします。
 
 以下の種類を指定できます。
@@ -606,6 +698,9 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 7. expire
 退会時失効取引
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -625,12 +720,15 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 取引詳細を指定の取引詳細説明文でフィルターします。
 
 取引詳細説明文が完全一致する取引のみ抽出されます。取引詳細説明文は最大200文字で記録されています。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -639,13 +737,16 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
 抽出期間の開始日時です。
 
 フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -653,19 +754,24 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 }
 ```
 
-**`to`** 
-  
+</details>
 
+#### `to`
 抽出期間の終了日時です。
 
 フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
   "format": "date-time"
 }
 ```
+
+</details>
 
 
 
@@ -677,6 +783,7 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 |status|type|ja|en|
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 

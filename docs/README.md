@@ -1,17 +1,18 @@
-# Partner API SDK for NodeJS
+# Partner API SDK for Python
 ## Installation
 
-npmからインストールすることができます。
+pipからインストールすることができます。
 ```
-$ npm install --save pokepay-partner-sdk
+$ gem install pokepay_partner_python_sdk
+
+# ローカルからインストールする場合
+$ gem install -e /path/to/pokepay_partner_python_sdk
 ```
 
-プロジェクトにて、以下のようにロードできます。
+ロードパスの通ったところにライブラリが配置されていれば、以下のようにロードできます。
 
-```typescript
-import ppsdk from "pokepay-partner-sdk";
-// もしくは
-import { Client, SendEcho } from "pokepay-partner-sdk";
+```python
+import pokepay
 ```
 
 ## Getting started
@@ -23,14 +24,27 @@ import { Client, SendEcho } from "pokepay-partner-sdk";
 - リクエストオブジェクトを作り、`Client` オブジェクトの `send` メソッドに対して渡す
 - レスポンスオブジェクトを得る
 
-```typescript
-import { Client, SendEcho } from "pokepay-partner-sdk";
-const client = new Client("/path/to/config.ini");
-const request = new SendEcho({ message: 'hello' });
-const response = await client.send(request);
+```python
+import pokepay
+from pokepay.client import Client
+
+c = Client('/path/to/config.ini')
+req = pokepay.SendEcho('Hello, world!')
+res = c.send(req)
 ```
 
-レスポンスオブジェクト内にステータスコード、JSONをパースしたハッシュマップ、さらにレスポンス内容のオブジェクトが含まれています。
+レスポンスオブジェクト内にステータスコード、レスポンスのJSONをパースした辞書オブジェクト、実行時間などが含まれています。
+
+```python
+res.status_code
+# => 200
+
+res.body
+# => {'status': 'ok', 'message': 'Hello, world!'}
+
+res.elapsed.microseconds
+# => 800750
+```
 
 ## Settings
 
@@ -49,126 +63,26 @@ SDKプロジェクトルートに `config.ini.sample` というファイルが�
 
 また、この設定ファイルには認証に必要な情報が含まれるため、ファイルの管理・取り扱いに十分注意してください。
 
+さらに、オプショナルでタイムゾーン、タイムアウト時間を設定できます。
+
+- `TIMEZONE`: タイムゾーンID。デフォルト値は`Asia/Tokyo`
+- `CONNECTTIMEOUT`: 接続タイムアウト時間(秒)。デフォルトは5秒
+- `TIMEOUT`: 読み込みタイムアウト時間(秒)。デフォルトは5秒
+
 設定ファイル記述例(`config.ini.sample`)
 
 ```
+[global]
+
 CLIENT_ID        = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CLIENT_SECRET    = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 API_BASE_URL     = https://partnerapi-sandbox.pokepay.jp
 SSL_KEY_FILE     = /path/to/key.pem
 SSL_CERT_FILE    = /path/to/cert.pem
-```
 
-## Overview
-
-### APIリクエスト
-
-Partner APIへの通信はリクエストオブジェクトを作り、`Client.send` メソッドに渡すことで行われます。
-また `Client.send` は `async function` で `Promise` を返します。`await` することができます。
-たとえば `SendEcho` は送信した内容をそのまま返す処理です。
-
-```typescript
-const request = new SendEcho({ message: 'hello' });
-const response = await client.send(request);
-# => Response 200 OK
-```
-
-通信の結果として、レスポンスオブジェクトが得られます。  
-これはステータスコードとレスポンスボディ、各レスポンスクラスのオブジェクトをインスタンス変数に持つオブジェクトです。
-
-```typescript
-response.code
-# => 200
-
-response.body
-# => {
-  response_data: 'T7hZYdaXYRC0oC8oRrowte89690bYL3Ly05V-IiSzTCslQG-TH0e1i9QYNTySwVS9hiTD6u2---xojelG-66rA',
-  timestamp: '2021-07-20T02:03:07.835Z',
-  partner_call_id: '7cd52e4a-b9a2-48e4-b921-80dcbc6b7f4c'
-}
-
-response.object
-# => { status: 'ok', message: 'hello' }
-
-response.object.message
-# => 'hello'
-```
-
-利用可能なAPI操作については [API Operations](#api-operations) で紹介します。
-
-<a name="paging"></a>
-### ページング
-
-API操作によっては、大量のデータがある場合に備えてページング処理があります。
-その処理では以下のようなプロパティを持つレスポンスオブジェクトを返します。
-
-- rows : 列挙するレスポンスクラスのオブジェクトの配列
-- count : 全体の要素数
-- pagination : 以下のインスタンス変数を持つオブジェクト
-  - current : 現在のページ位置(1からスタート)
-  - per_page : 1ページ当たりの要素数
-  - max_page : 最後のページ番号
-  - has_prev : 前ページを持つかどうかの真理値
-  - has_next : 次ページを持つかどうかの真理値
-
-ページングクラスは `Pagination` で定義されています。
-
-以下にコード例を示します。
-
-```typescript
-const request = new ListTransactions({ "page": 1, "per_page": 50 });
-const response = await client.send(request);
-
-if (response.object.pagination.has_next) {
-  const next_page = response.object.pagination.current + 1;
-  const request = new ListTransactions({ "page": next_page, "per_page": 50 });
-  const response = await client.send(request);
-}
-```
-
-### エラーハンドリング
-
-JavaScript をご使用の場合、必須パラメーターがチェックされます。
-TypeScript は型通りにお使いいただけます。
-
-```javascript
-const request = new SendEcho({});
-=> Error: "message" is required;
-```
-
-API呼び出し時のエラーの場合は `axios` ライブラリのエラーが `throw` されます。
-エラーレスポンスもステータスコードとレスポンスボディを持ちます。
-参考: [axios handling errors](https://github.com/axios/axios#handling-errors)
-
-```typescript
-const axios = require('axios');
-
-const request = SendEcho.new({ message: "hello" });
-
-try {
-  const response = await client.send(request);
-} catch (error) {
-  if (axios.isAxiosError(error)) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      // APIサーバーがエラーレスポンス (2xx 以外) を返した場合
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of http.ClientRequest
-      // リクエストは作られたが、レスポンスが受け取れなかった場合
-      // `error.request` に `http.ClientRequest` が入ります
-      console.log(error.request);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      // リクエストを作る際に何かが起こった場合
-      console.log('Error', error.message);
-    }
-  }
-}
+TIMEZONE         = Asia/Tokyo
+CONNECTTIMEOUT   = 10
+TIMEOUT          = 10
 ```
 <a name="api-operations"></a>
 ## API Operations
@@ -177,7 +91,10 @@ try {
 - [GetCpmToken](./transaction.md#get-cpm-token): CPMトークンの状態取得
 - [ListTransactions](./transaction.md#list-transactions): 【廃止】取引履歴を取得する
 - [CreateTransaction](./transaction.md#create-transaction): 【廃止】チャージする
+- [CreateTransactionGroup](./transaction.md#create-transaction-group): トランザクショングループを作成する
+- [ShowTransactionGroup](./transaction.md#show-transaction-group): トランザクショングループを取得する
 - [ListTransactionsV2](./transaction.md#list-transactions-v2): 取引履歴を取得する
+- [ListBillTransactions](./transaction.md#list-bill-transactions): 支払い取引履歴を取得する
 - [CreateTopupTransaction](./transaction.md#create-topup-transaction): チャージする
 - [CreatePaymentTransaction](./transaction.md#create-payment-transaction): 支払いする
 - [CreateCpmTransaction](./transaction.md#create-cpm-transaction): CPMトークンによる取引作成
@@ -188,7 +105,10 @@ try {
 - [GetTransactionByRequestId](./transaction.md#get-transaction-by-request-id): リクエストIDから取引情報を取得する
 - [GetBulkTransaction](./transaction.md#get-bulk-transaction): バルク取引ジョブの実行状況を取得する
 - [ListBulkTransactionJobs](./transaction.md#list-bulk-transaction-jobs): バルク取引ジョブの詳細情報一覧を取得する
+- [CancelBulkTransaction](./transaction.md#cancel-bulk-transaction): バルク取引をキャンセルする
+- [ResumeBulkTransaction](./transaction.md#resume-bulk-transaction): バルク取引を再開する
 - [RequestUserStats](./transaction.md#request-user-stats): 指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする
+- [TerminateUserStats](./transaction.md#terminate-user-stats): RequestUserStatsのタスクを強制終了する
 
 ### Transfer
 - [GetAccountTransferSummary](./transfer.md#get-account-transfer-summary): 
@@ -205,9 +125,12 @@ try {
 ### Bill
 - [ListBills](./bill.md#list-bills): 支払いQRコード一覧を表示する
 - [CreateBill](./bill.md#create-bill): 支払いQRコードの発行
+- [GetBill](./bill.md#get-bill): 支払いQRコードの表示
 - [UpdateBill](./bill.md#update-bill): 支払いQRコードの更新
+- [CreatePaymentTransactionWithBill](./bill.md#create-payment-transaction-with-bill): 支払いQRコードを読み取ることで支払いをする
 
 ### Cashtray
+- [CreateTransactionWithCashtray](./cashtray.md#create-transaction-with-cashtray): CashtrayQRコードを読み取ることで取引する
 - [CreateCashtray](./cashtray.md#create-cashtray): Cashtrayを作る
 - [CancelCashtray](./cashtray.md#cancel-cashtray): Cashtrayを無効化する
 - [GetCashtray](./cashtray.md#get-cashtray): Cashtrayの情報を取得する
@@ -223,7 +146,23 @@ try {
 - [GetCustomerAccounts](./customer.md#get-customer-accounts): エンドユーザーのウォレット一覧を表示する
 - [CreateCustomerAccount](./customer.md#create-customer-account): 新規エンドユーザーをウォレットと共に追加する
 - [GetShopAccounts](./customer.md#get-shop-accounts): 店舗ユーザーのウォレット一覧を表示する
+- [GetCustomerCards](./customer.md#get-customer-cards): エンドユーザーのクレジットカード一覧を取得する
+- [CreateCustomerCard](./customer.md#create-customer-card): エンドユーザーのクレジットカードを登録する
+- [DeleteCustomerCard](./customer.md#delete-customer-card): エンドユーザーのクレジットカードを削除する
+- [CreditCardTopupWithMembership](./customer.md#credit-card-topup-with-membership): 登録済みクレジットカードでチャージする（3Dセキュア）
+- [CreditCardTopupWithMdkToken](./customer.md#credit-card-topup-with-mdk-token): 未登録クレジットカード（MDKトークン）でチャージする（3Dセキュア）
 - [ListCustomerTransactions](./customer.md#list-customer-transactions): 取引履歴を取得する
+
+### CreditSession
+- [PostCreditSession](./credit_session.md#post-credit-session): Create credit session
+- [CreateCreditSessionTransaction](./credit_session.md#create-credit-session-transaction): Create transaction with credit session
+- [CaptureCreditSession](./credit_session.md#capture-credit-session): Capture credit session
+
+### CVS
+- [GetCvsAuthorizations](./cvs.md#get-cvs-authorizations): コンビニ決済の申し込み情報一覧取得
+- [CreateCvsAuthorization](./cvs.md#create-cvs-authorization): コンビニ決済申込
+- [CancelCvsAuthorization](./cvs.md#cancel-cvs-authorization): コンビニ決済の申し込みキャンセル
+- [GetCvsAuthorization](./cvs.md#get-cvs-authorization): コンビニ決済の申し込み情報取得
 
 ### Organization
 - [ListOrganizations](./organization.md#list-organizations): 加盟店組織の一覧を取得する
@@ -237,7 +176,6 @@ try {
 - [UpdateShop](./shop.md#update-shop): 店舗情報を更新する
 
 ### User
-- [GetUser](./user.md#get-user): 
 
 ### Account
 - [ListUserAccounts](./account.md#list-user-accounts): エンドユーザー、店舗ユーザーのウォレット一覧を表示する
@@ -280,7 +218,11 @@ try {
 - [ActivateUserDevice](./user_device.md#activate-user-device): デバイスの有効化
 
 ### BankPay
+- [DeleteBank](./bank_pay.md#delete-bank): 銀行口座の削除
 - [ListBanks](./bank_pay.md#list-banks): 登録した銀行の一覧
 - [CreateBank](./bank_pay.md#create-bank): 銀行口座の登録
 - [CreateBankTopupTransaction](./bank_pay.md#create-bank-topup-transaction): 銀行からのチャージ
+
+### SevenBankATMSession
+- [GetSevenBankATMSession](./seven_bank_atm_session.md#get-seven-bank-atm-session): セブン銀行ATMセッションの取得
 

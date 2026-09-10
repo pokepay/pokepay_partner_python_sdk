@@ -9,6 +9,7 @@ class Campaign(PokepayResponse):
         self.id = response_body['id']
         self.name = response_body['name']
         self.applicable_shops = response_body['applicable_shops']
+        self.applicable_shop_labels = response_body['applicable_shop_labels']
         self.is_exclusive = response_body['is_exclusive']
         self.starts_at = response_body['starts_at']
         self.ends_at = response_body['ends_at']
@@ -23,6 +24,9 @@ class Campaign(PokepayResponse):
         self.point_calculation_rule = response_body['point_calculation_rule']
         self.point_calculation_rule_object = response_body['point_calculation_rule_object']
         self.status = response_body['status']
+        self.budget_caps_amount = response_body['budget_caps_amount']
+        self.budget_current_amount = response_body['budget_current_amount']
+        self.budget_current_time = response_body['budget_current_time']
 
     def id(self):
         return self.id
@@ -32,6 +36,9 @@ class Campaign(PokepayResponse):
 
     def applicable_shops(self):
         return self.applicable_shops
+
+    def applicable_shop_labels(self):
+        return self.applicable_shop_labels
 
     def is_exclusive(self):
         return self.is_exclusive
@@ -74,4 +81,13 @@ class Campaign(PokepayResponse):
 
     def status(self):
         return self.status
+
+    def budget_caps_amount(self):
+        return self.budget_caps_amount
+
+    def budget_current_amount(self):
+        return self.budget_current_amount
+
+    def budget_current_time(self):
+        return self.budget_current_time
 

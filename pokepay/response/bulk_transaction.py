@@ -15,6 +15,7 @@ class BulkTransaction(PokepayResponse):
         self.error_lineno = response_body['error_lineno']
         self.submitted_at = response_body['submitted_at']
         self.updated_at = response_body['updated_at']
+        self.scheduled_at = response_body['scheduled_at']
 
     def id(self):
         return self.id
@@ -42,4 +43,7 @@ class BulkTransaction(PokepayResponse):
 
     def updated_at(self):
         return self.updated_at
+
+    def scheduled_at(self):
+        return self.scheduled_at
 

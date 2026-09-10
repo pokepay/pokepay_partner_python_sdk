@@ -5,10 +5,12 @@ from pokepay.response.transaction_detail import TransactionDetail
 
 
 class CreateTopupTransactionWithCheck(PokepayRequest):
-    def __init__(self, check_id, customer_id):
+    def __init__(self, check_id, customer_id, **rest_args):
         self.path = "/transactions" + "/topup" + "/check"
         self.method = "POST"
         self.body_params = {"check_id": check_id,
                             "customer_id": customer_id}
-        
+        self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = TransactionDetail

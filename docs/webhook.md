@@ -3,25 +3,25 @@ Webhookは特定のワーカータスクでの処理が完了した事を通知�
 WebHookにはURLとタスク名、有効化されているかを設定することが出来ます。
 通知はタスク完了時、事前に設定したURLにPOSTリクエストを行います。
 
-
 <a name="list-webhooks"></a>
 ## ListWebhooks: 作成したWebhookの一覧を返す
 
-```typescript
-const response: Response<PaginatedOrganizationWorkerTaskWebhook> = await client.send(new ListWebhooks({
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取得数
-}));
+```PYTHON
+response = client.send(pp.ListWebhooks(
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
 ```
 
 
 
 ### Parameters
-**`page`** 
-  
-
+#### `page`
 取得したいページ番号です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -29,17 +29,22 @@ const response: Response<PaginatedOrganizationWorkerTaskWebhook> = await client.
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ分の取得数です。デフォルトでは 50 になっています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -63,20 +68,21 @@ const response: Response<PaginatedOrganizationWorkerTaskWebhook> = await client.
 このAPIにより指定したタスクの終了時に、指定したURLにPOSTリクエストを送信します。
 このとき、リクエストボディは `{"task": <タスク名>}` という値になります。
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new CreateWebhook({
-  task: "bulk_shops", // タスク名
-  url: "D8" // URL
-}));
+```PYTHON
+response = client.send(pp.CreateWebhook(
+                          "bulk_shops",                                         # task: タスク名
+                          "j4Zir7"                                              # url: URL
+))
 ```
 
 
 
 ### Parameters
-**`task`** 
-  
-
+#### `task`
 ワーカータスク名を指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -88,16 +94,21 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 }
 ```
 
-**`url`** 
-  
+</details>
 
+#### `url`
 通知先のURLを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "string"
 }
 ```
+
+</details>
 
 
 
@@ -120,19 +131,20 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 ## DeleteWebhook: Webhookの削除
 指定したWebhookを削除します
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new DeleteWebhook({
-  webhook_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // Webhook ID
-}));
+```PYTHON
+response = client.send(pp.DeleteWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # webhook_id: Webhook ID
+))
 ```
 
 
 
 ### Parameters
-**`webhook_id`** 
-  
-
+#### `webhook_id`
 削除するWebhookのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -140,6 +152,8 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -156,22 +170,23 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 ## UpdateWebhook: Webhookの更新
 指定したWebhookの内容を更新します
 
-```typescript
-const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new UpdateWebhook({
-  webhook_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // Webhook ID
-  url: "Qrp", // URL
-  is_active: false, // 有効/無効
-  task: "process_user_stats_operation" // タスク名
-}));
+```PYTHON
+response = client.send(pp.UpdateWebhook(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # webhook_id: Webhook ID
+                          url="POVCpM",                                         # URL
+                          is_active=True,                                       # 有効/無効
+                          task="bulk_shops"                                     # タスク名
+))
 ```
 
 
 
 ### Parameters
-**`webhook_id`** 
-  
-
+#### `webhook_id`
 更新するWebhookのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -180,10 +195,13 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 }
 ```
 
-**`url`** 
-  
+</details>
 
+#### `url`
 変更するURLを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -191,10 +209,13 @@ const response: Response<OrganizationWorkerTaskWebhook> = await client.send(new 
 }
 ```
 
-**`is_active`** 
-  
+</details>
 
+#### `is_active`
 trueならWebhookによる通知が有効になり、falseなら無効になります
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -202,10 +223,13 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
 }
 ```
 
-**`task`** 
-  
+</details>
 
+#### `task`
 指定したタスクが終了したときにWebhookによる通知がされます
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -216,6 +240,8 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
   ]
 }
 ```
+
+</details>
 
 
 

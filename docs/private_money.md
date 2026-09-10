@@ -1,4 +1,10 @@
 # Private Money
+Pokepay上で発行する電子マネーを表すデータです。
+電子マネーは１つの発行体(Organization)によって発行されます。
+電子マネーはCustomerやMerchantが所有するウォレット間を送金されます。
+電子マネー残高はユーザが有償で購入するマネーと無償で付与されるポイントの2種類のバリューで構成され、
+それぞれ有効期限決定ロジックは電子マネーの設定に依存します。
+
 
 <a name="get-private-moneys"></a>
 ## GetPrivateMoneys: マネー一覧を取得する
@@ -6,21 +12,22 @@
 パートナーキーの管理者が発行体組織に属している場合、自組織が加盟または発行しているマネーの一覧を返します。また、`organization_code`として決済加盟店の組織コードを指定した場合、発行マネーのうち、その決済加盟店組織が加盟しているマネーの一覧を返します。
 パートナーキーの管理者が決済加盟店組織に属している場合は、自組織が加盟しているマネーの一覧を返します。
 
-```typescript
-const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPrivateMoneys({
-  organization_code: "ox-supermarket", // 組織コード
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取得数
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneys(
+                          organization_code="ox-supermarket",                   # 組織コード
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取得数
+))
 ```
 
 
 
 ### Parameters
-**`organization_code`** 
-  
-
+#### `organization_code`
 パートナーキーの管理者が発行体組織に属している場合、発行マネーのうち、この組織コードで指定した決済加盟店組織が加盟しているマネーの一覧を返します。決済加盟店組織の管理者は自組織以外を指定することはできません。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -30,9 +37,26 @@ const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPriv
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `page`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+
+</details>
+
+#### `per_page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -41,16 +65,7 @@ const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPriv
 }
 ```
 
-**`per_page`** 
-  
-
-
-```json
-{
-  "type": "integer",
-  "minimum": 1
-}
-```
+</details>
 
 
 
@@ -72,23 +87,24 @@ const response: Response<PaginatedPrivateMoneys> = await client.send(new GetPriv
 <a name="get-private-money-organization-summaries"></a>
 ## GetPrivateMoneyOrganizationSummaries: 決済加盟店の取引サマリを取得する
 
-```typescript
-const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await client.send(new GetPrivateMoneyOrganizationSummaries({
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  from: "2021-06-04T07:32:54.000000Z", // 開始日時(toと同時に指定する必要有)
-  to: "2022-05-22T18:27:54.000000Z", // 終了日時(fromと同時に指定する必要有)
-  page: 1, // ページ番号
-  per_page: 50 // 1ページ分の取引数
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          start="2024-06-19T11:15:47.000000Z",                  # 開始日時(toと同時に指定する必要有)
+                          to="2020-01-16T17:31:32.000000Z",                     # 終了日時(fromと同時に指定する必要有)
+                          page=1,                                               # ページ番号
+                          per_page=50                                           # 1ページ分の取引数
+))
 ```
 
 `from`と`to`は同時に指定する必要があります。
 
 
 ### Parameters
-**`private_money_id`** 
-  
+#### `private_money_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -97,20 +113,12 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`to`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -119,9 +127,26 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -130,9 +155,12 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -140,6 +168,8 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -155,20 +185,21 @@ const response: Response<PaginatedPrivateMoneyOrganizationSummaries> = await cli
 <a name="get-private-money-summary"></a>
 ## GetPrivateMoneySummary: 取引サマリを取得する
 
-```typescript
-const response: Response<PrivateMoneySummary> = await client.send(new GetPrivateMoneySummary({
-  private_money_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-  from: "2020-02-09T19:52:16.000000Z", // 開始日時
-  to: "2024-03-20T18:36:22.000000Z" // 終了日時
-}));
+```PYTHON
+response = client.send(pp.GetPrivateMoneySummary(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # private_money_id: マネーID
+                          start="2020-03-20T09:09:57.000000Z",                  # 開始日時
+                          to="2024-12-16T01:23:28.000000Z"                      # 終了日時
+))
 ```
 
 
 
 ### Parameters
-**`private_money_id`** 
-  
+#### `private_money_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -177,9 +208,26 @@ const response: Response<PrivateMoneySummary> = await client.send(new GetPrivate
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -188,16 +236,7 @@ const response: Response<PrivateMoneySummary> = await client.send(new GetPrivate
 }
 ```
 
-**`to`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
+</details>
 
 
 

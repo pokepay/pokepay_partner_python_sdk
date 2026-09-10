@@ -10,4 +10,6 @@ class CancelCashtray(PokepayRequest):
         self.method = "DELETE"
         self.body_params = {}
         
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = Cashtray

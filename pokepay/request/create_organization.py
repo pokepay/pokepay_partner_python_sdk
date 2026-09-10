@@ -14,4 +14,6 @@ class CreateOrganization(PokepayRequest):
                             "issuer_admin_user_email": issuer_admin_user_email,
                             "member_admin_user_email": member_admin_user_email}
         self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = Organization

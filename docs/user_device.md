@@ -3,24 +3,24 @@ UserDeviceはユーザー毎のデバイスを管理します。
 あるユーザーが使っている端末を区別する必要がある場合に用いられます。
 これが必要な理由はBank Payを用いたチャージを行う場合は端末を区別できることが要件としてあるためです。
 
-
 <a name="create-user-device"></a>
 ## CreateUserDevice: ユーザーのデバイス登録
 ユーザーのデバイスを新規に登録します
 
-```typescript
-const response: Response<UserDevice> = await client.send(new CreateUserDevice({
-  user_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ユーザーID
-  metadata: "{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}" // ユーザーデバイスのメタデータ
-}));
+```PYTHON
+response = client.send(pp.CreateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",               # user_id: ユーザーID
+                          metadata="{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}" # ユーザーデバイスのメタデータ
+))
 ```
 
 
 
 ### Parameters
-**`user_id`** 
-  
+#### `user_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -29,12 +29,14 @@ const response: Response<UserDevice> = await client.send(new CreateUserDevice({
 }
 ```
 
-**`metadata`** 
-  
+</details>
 
+#### `metadata`
 ユーザーのデバイス用の情報をメタデータを保持するために用います。
 例: 端末の固有情報やブラウザのUser-Agent
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -42,6 +44,8 @@ const response: Response<UserDevice> = await client.send(new CreateUserDevice({
   "format": "json"
 }
 ```
+
+</details>
 
 
 
@@ -53,7 +57,7 @@ const response: Response<UserDevice> = await client.send(new CreateUserDevice({
 |status|type|ja|en|
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|user_not_found||The user is not found|
+|422|user_not_found|ユーザーが見つかりません|The user is not found|
 
 
 
@@ -64,18 +68,19 @@ const response: Response<UserDevice> = await client.send(new CreateUserDevice({
 ## GetUserDevice: ユーザーのデバイスを取得
 ユーザーのデバイスの情報を取得します
 
-```typescript
-const response: Response<UserDevice> = await client.send(new GetUserDevice({
-  user_device_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ユーザーデバイスID
-}));
+```PYTHON
+response = client.send(pp.GetUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
 ```
 
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -83,6 +88,8 @@ const response: Response<UserDevice> = await client.send(new GetUserDevice({
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -99,19 +106,19 @@ const response: Response<UserDevice> = await client.send(new GetUserDevice({
 ## ActivateUserDevice: デバイスの有効化
 指定のデバイスを有効化し、それ以外の同一ユーザーのデバイスを無効化します。
 
-
-```typescript
-const response: Response<UserDevice> = await client.send(new ActivateUserDevice({
-  user_device_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ユーザーデバイスID
-}));
+```PYTHON
+response = client.send(pp.ActivateUserDevice(
+                          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"                # user_device_id: ユーザーデバイスID
+))
 ```
 
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -119,6 +126,8 @@ const response: Response<UserDevice> = await client.send(new ActivateUserDevice(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 

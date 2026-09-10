@@ -10,6 +10,7 @@ class Product(PokepayResponse):
         self.name = response_body['name']
         self.unit_price = response_body['unit_price']
         self.price = response_body['price']
+        self.quantity = response_body['quantity']
         self.is_discounted = response_body['is_discounted']
         self.other = response_body['other']
 
@@ -24,6 +25,9 @@ class Product(PokepayResponse):
 
     def price(self):
         return self.price
+
+    def quantity(self):
+        return self.quantity
 
     def is_discounted(self):
         return self.is_discounted

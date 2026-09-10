@@ -9,6 +9,7 @@ class ShopWithMetadata(PokepayResponse):
         self.id = response_body['id']
         self.name = response_body['name']
         self.organization_code = response_body['organization_code']
+        self.status = response_body['status']
         self.postal_code = response_body['postal_code']
         self.address = response_body['address']
         self.tel = response_body['tel']
@@ -23,6 +24,9 @@ class ShopWithMetadata(PokepayResponse):
 
     def organization_code(self):
         return self.organization_code
+
+    def status(self):
+        return self.status
 
     def postal_code(self):
         return self.postal_code

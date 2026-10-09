@@ -14,6 +14,7 @@ class Bill(PokepayResponse):
         self.account = response_body['account']
         self.is_disabled = response_body['is_disabled']
         self.token = response_body['token']
+        self.created_at = response_body['created_at']
 
     def id(self):
         return self.id
@@ -38,4 +39,7 @@ class Bill(PokepayResponse):
 
     def token(self):
         return self.token
+
+    def created_at(self):
+        return self.created_at
 

@@ -7,7 +7,7 @@ class UserStatsOperation(PokepayResponse):
     def __init__(self, response, response_body):
         super().__init__(response, response_body)
         self.id = response_body['id']
-        self.start = response_body['from']
+        self.from_ = response_body['from']
         self.to = response_body['to']
         self.status = response_body['status']
         self.error_reason = response_body['error_reason']
@@ -18,8 +18,8 @@ class UserStatsOperation(PokepayResponse):
     def id(self):
         return self.id
 
-    def start(self):
-        return self.start
+    def from_(self):
+        return self.from_
 
     def to(self):
         return self.to

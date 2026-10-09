@@ -13,4 +13,6 @@ class CreateExchangeTransaction(PokepayRequest):
                             "receiver_private_money_id": receiver_private_money_id,
                             "amount": amount}
         self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = TransactionDetail

@@ -15,6 +15,7 @@ class PrivateMoney(PokepayResponse):
         self.organization = response_body['organization']
         self.max_balance = response_body['max_balance']
         self.transfer_limit = response_body['transfer_limit']
+        self.money_topup_transfer_limit = response_body['money_topup_transfer_limit']
         self.type = response_body['type']
         self.expiration_type = response_body['expiration_type']
         self.enable_topup_by_member = response_body['enable_topup_by_member']
@@ -46,6 +47,9 @@ class PrivateMoney(PokepayResponse):
 
     def transfer_limit(self):
         return self.transfer_limit
+
+    def money_topup_transfer_limit(self):
+        return self.money_topup_transfer_limit
 
     def type(self):
         return self.type

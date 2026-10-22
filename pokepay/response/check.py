@@ -16,12 +16,15 @@ class Check(PokepayResponse):
         self.is_onetime = response_body['is_onetime']
         self.is_disabled = response_body['is_disabled']
         self.expires_at = response_body['expires_at']
+        self.starts_at = response_body['starts_at']
+        self.last_used_at = response_body['last_used_at']
         self.private_money = response_body['private_money']
         self.usage_limit = response_body['usage_limit']
         self.usage_count = response_body['usage_count']
         self.point_expires_at = response_body['point_expires_at']
         self.point_expires_in_days = response_body['point_expires_in_days']
         self.token = response_body['token']
+        self.serial_code = response_body['serial_code']
 
     def id(self):
         return self.id
@@ -53,6 +56,12 @@ class Check(PokepayResponse):
     def expires_at(self):
         return self.expires_at
 
+    def starts_at(self):
+        return self.starts_at
+
+    def last_used_at(self):
+        return self.last_used_at
+
     def private_money(self):
         return self.private_money
 
@@ -70,4 +79,7 @@ class Check(PokepayResponse):
 
     def token(self):
         return self.token
+
+    def serial_code(self):
+        return self.serial_code
 

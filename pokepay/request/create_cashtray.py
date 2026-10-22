@@ -12,4 +12,6 @@ class CreateCashtray(PokepayRequest):
                             "shop_id": shop_id,
                             "amount": amount}
         self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = Cashtray

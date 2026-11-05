@@ -10,4 +10,6 @@ class GetShopAccounts(PokepayRequest):
         self.method = "GET"
         self.body_params = {"private_money_id": private_money_id}
         self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = PaginatedAccountWithUsers

@@ -12,4 +12,6 @@ class CreateTopupTransaction(PokepayRequest):
                             "customer_id": customer_id,
                             "private_money_id": private_money_id}
         self.body_params.update(rest_args)
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = TransactionDetail

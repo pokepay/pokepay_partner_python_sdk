@@ -16,6 +16,8 @@ class Transaction(PokepayResponse):
         self.amount = response_body['amount']
         self.money_amount = response_body['money_amount']
         self.point_amount = response_body['point_amount']
+        self.raw_point_amount = response_body['raw_point_amount']
+        self.campaign_point_amount = response_body['campaign_point_amount']
         self.done_at = response_body['done_at']
         self.description = response_body['description']
 
@@ -48,6 +50,12 @@ class Transaction(PokepayResponse):
 
     def point_amount(self):
         return self.point_amount
+
+    def raw_point_amount(self):
+        return self.raw_point_amount
+
+    def campaign_point_amount(self):
+        return self.campaign_point_amount
 
     def done_at(self):
         return self.done_at

@@ -13,6 +13,8 @@ class CpmToken(PokepayResponse):
         self.scopes = response_body['scopes']
         self.expires_at = response_body['expires_at']
         self.metadata = response_body['metadata']
+        self.strategy = response_body['strategy']
+        self.coupon_id = response_body['coupon_id']
 
     def cpm_token(self):
         return self.cpm_token
@@ -34,4 +36,10 @@ class CpmToken(PokepayResponse):
 
     def metadata(self):
         return self.metadata
+
+    def strategy(self):
+        return self.strategy
+
+    def coupon_id(self):
+        return self.coupon_id
 

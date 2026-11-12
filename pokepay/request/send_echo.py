@@ -10,4 +10,6 @@ class SendEcho(PokepayRequest):
         self.method = "POST"
         self.body_params = {"message": message}
         
+        if 'start' in self.body_params:
+            self.body_params['from'] = self.body_params.pop('start')
         self.response_class = Echo

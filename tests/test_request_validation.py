@@ -20,7 +20,73 @@ class PokepayTest(unittest.TestCase):
 
     def test_send_echo_0(self):
         response = client.send(pp.SendEcho(
-                                  "AIRkH"
+                                  "DgdY"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_post_credit_session_0(self):
+        response = client.send(pp.PostCreditSession(
+                                  "f7badafa-54a1-4511-b337-e4aa1c1fe652",
+                                  "7c419418-aa59-4e5c-bbdc-7d8d6bf88c31",
+                                  "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+                                  "2024-03-08T03:04:44.000000Z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_post_credit_session_1(self):
+        response = client.send(pp.PostCreditSession(
+                                  "f7badafa-54a1-4511-b337-e4aa1c1fe652",
+                                  "7c419418-aa59-4e5c-bbdc-7d8d6bf88c31",
+                                  "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+                                  "2024-03-08T03:04:44.000000Z",
+                                  request_id="cc450cba-668f-4380-854c-2e6dae6d9426"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_credit_session_transaction_0(self):
+        response = client.send(pp.CreateCreditSessionTransaction(
+                                  "adc1965b-ba46-41c2-8dfc-c8ee6468fd6e",
+                                  9780.0
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_credit_session_transaction_1(self):
+        response = client.send(pp.CreateCreditSessionTransaction(
+                                  "adc1965b-ba46-41c2-8dfc-c8ee6468fd6e",
+                                  9780.0,
+                                  request_id="2c826d8b-e412-4dbe-a759-328251097330"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_credit_session_transaction_2(self):
+        response = client.send(pp.CreateCreditSessionTransaction(
+                                  "adc1965b-ba46-41c2-8dfc-c8ee6468fd6e",
+                                  9780.0,
+                                  description="BddIYIaGsnHTfyj3vGhpYs6lE3PVxThCRcEAVa4JmfjoJZ9ajsO39BqxPDSP5BpfA0dYcuMmHpa4aDHWm32hBFhI0DxRhz83lKq4Wp1hKlNvpHM0s7Dd9Uu6qWqC0qUtLag9adxARTcCtKjz1M2kusM3cVDMOGMtpxWNvKR6Gcp6PWCiN",
+                                  request_id="637c48af-86f9-48ed-82e1-99558a467bfe"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_credit_session_transaction_3(self):
+        response = client.send(pp.CreateCreditSessionTransaction(
+                                  "adc1965b-ba46-41c2-8dfc-c8ee6468fd6e",
+                                  9780.0,
+                                  shop_id="4d1e7adb-31c9-4ea0-b5b6-7310d8249eec",
+                                  description="IyVNDYRttS46oTXBYnbHbMuAdnXANiixumuncg7egxc7L05i8jkZ1Waa6h6AAgB9jXehhbgsnyiHZ1n3qwk3r3QhfSXAhy6Q6NsE0G4ETHn0hBw4No1YXyGaN9eZjSIQORsTn19Lt83IRfp6apsZzwHUg",
+                                  request_id="3c19993c-6f8f-4de2-b2ae-9871bf5118f1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_capture_credit_session_0(self):
+        response = client.send(pp.CaptureCreditSession(
+                                  "40765da0-f6f2-41cc-b413-655243e97309"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_capture_credit_session_1(self):
+        response = client.send(pp.CaptureCreditSession(
+                                  "40765da0-f6f2-41cc-b413-655243e97309",
+                                  request_id="ff18fd70-52a7-4b0f-9227-95a7c5dcd5cd"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -31,462 +97,462 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_user_accounts_0(self):
         response = client.send(pp.ListUserAccounts(
-                                  "a0cca592-bf22-4263-8ecd-026754ff855d"
+                                  "580852da-986e-4146-8a04-b74de803cf9c"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_user_accounts_1(self):
         response = client.send(pp.ListUserAccounts(
-                                  "a0cca592-bf22-4263-8ecd-026754ff855d",
-                                  per_page=3358
+                                  "580852da-986e-4146-8a04-b74de803cf9c",
+                                  per_page=6774
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_user_accounts_2(self):
         response = client.send(pp.ListUserAccounts(
-                                  "a0cca592-bf22-4263-8ecd-026754ff855d",
-                                  page=5271,
-                                  per_page=8562
+                                  "580852da-986e-4146-8a04-b74de803cf9c",
+                                  page=4049,
+                                  per_page=405
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_user_account_0(self):
         response = client.send(pp.CreateUserAccount(
-                                  "4790f39c-f3ce-4a37-b7c6-ca019185d723",
-                                  "9f527c51-9a7e-4677-87ab-ae21ff187cf5"
+                                  "53a50385-11f5-46f5-a3d9-62a90c8a29c4",
+                                  "6cddcb78-7848-485a-a46e-a0ab2dc39ee9"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_user_account_1(self):
         response = client.send(pp.CreateUserAccount(
-                                  "4790f39c-f3ce-4a37-b7c6-ca019185d723",
-                                  "9f527c51-9a7e-4677-87ab-ae21ff187cf5",
+                                  "53a50385-11f5-46f5-a3d9-62a90c8a29c4",
+                                  "6cddcb78-7848-485a-a46e-a0ab2dc39ee9",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_user_account_2(self):
         response = client.send(pp.CreateUserAccount(
-                                  "4790f39c-f3ce-4a37-b7c6-ca019185d723",
-                                  "9f527c51-9a7e-4677-87ab-ae21ff187cf5",
-                                  external_id="iGtQW4pnFSkfz0ZA",
+                                  "53a50385-11f5-46f5-a3d9-62a90c8a29c4",
+                                  "6cddcb78-7848-485a-a46e-a0ab2dc39ee9",
+                                  external_id="kAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_user_account_3(self):
         response = client.send(pp.CreateUserAccount(
-                                  "4790f39c-f3ce-4a37-b7c6-ca019185d723",
-                                  "9f527c51-9a7e-4677-87ab-ae21ff187cf5",
-                                  name="uHKErS89ga8rAwXpAiqwTxt1HL4wWzmkMDA4SVfWD13Zj3L9DQPYajb0tVdWEdtL2ujHbA770c9iXi2Q1VWdznJovLhT0BrHHw3tEdBOJZocfpIFBg2EP1IMpzVlOR0ZjHbJ4pIYeH1mIjK91BovJNiyan2Rg9xEgMUhIRyB0Lq7z8Ljil9JSMA7rA7mkLLtmKfguDK2IgQjODYIDOJbPEulQI",
-                                  external_id="vNSkQALktsxpQNr6y6a28m0nRuldHpS",
+                                  "53a50385-11f5-46f5-a3d9-62a90c8a29c4",
+                                  "6cddcb78-7848-485a-a46e-a0ab2dc39ee9",
+                                  name="Qi2f3OojTDEk0fitYgKzfXu0N7ZPQ6Ey6Tu3BU56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyNDcuWxfr4xKRRC5UPfddKJfLPJmxAhDpkltxfpGBgKzLBW",
+                                  external_id="M",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_delete_account_0(self):
+        response = client.send(pp.DeleteAccount(
+                                  "6e0f5443-faad-451b-9992-5ce9c4e4ae3a"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_delete_account_1(self):
+        response = client.send(pp.DeleteAccount(
+                                  "6e0f5443-faad-451b-9992-5ce9c4e4ae3a",
+                                  cashback=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_account_0(self):
         response = client.send(pp.GetAccount(
-                                  "ce82075e-0d91-419b-b5bc-31458306bc55"
+                                  "659420e6-ccd8-47bd-9f80-4444609cfe97"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_account_0(self):
         response = client.send(pp.UpdateAccount(
-                                  "9d4a4a80-c7f0-40db-a450-36e946e1971a"
+                                  "95c86f58-0405-4529-92d0-94c33ae0c1e2"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_account_1(self):
         response = client.send(pp.UpdateAccount(
-                                  "9d4a4a80-c7f0-40db-a450-36e946e1971a",
+                                  "95c86f58-0405-4529-92d0-94c33ae0c1e2",
                                   can_transfer_topup=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_account_2(self):
         response = client.send(pp.UpdateAccount(
-                                  "9d4a4a80-c7f0-40db-a450-36e946e1971a",
-                                  status="suspended",
+                                  "95c86f58-0405-4529-92d0-94c33ae0c1e2",
+                                  status="pre-closed",
                                   can_transfer_topup=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_account_3(self):
         response = client.send(pp.UpdateAccount(
-                                  "9d4a4a80-c7f0-40db-a450-36e946e1971a",
+                                  "95c86f58-0405-4529-92d0-94c33ae0c1e2",
                                   is_suspended=True,
-                                  status="suspended",
+                                  status="active",
                                   can_transfer_topup=False
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_delete_account_0(self):
-        response = client.send(pp.DeleteAccount(
-                                  "3f9092d1-1997-4132-869d-a7c75a5d798b"
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_delete_account_1(self):
-        response = client.send(pp.DeleteAccount(
-                                  "3f9092d1-1997-4132-869d-a7c75a5d798b",
-                                  cashback=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_0(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe"
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_1(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe",
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf",
                                   direction="asc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_2(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe",
-                                  expires_at_to="2019-01-29T08:31:34.000000+09:00",
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf",
+                                  expires_at_to="2024-07-17T16:43:47.000000Z",
                                   direction="asc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_3(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe",
-                                  expires_at_from="2025-01-12T13:40:21.000000+09:00",
-                                  expires_at_to="2023-01-11T21:31:56.000000+09:00",
-                                  direction="asc"
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf",
+                                  expires_at_from="2021-04-06T08:41:06.000000Z",
+                                  expires_at_to="2023-06-02T11:51:13.000000Z",
+                                  direction="desc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_4(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe",
-                                  per_page=1016,
-                                  expires_at_from="2024-09-04T17:10:42.000000+09:00",
-                                  expires_at_to="2018-06-16T11:20:58.000000+09:00",
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf",
+                                  per_page=4634,
+                                  expires_at_from="2024-01-18T23:56:06.000000Z",
+                                  expires_at_to="2021-12-10T18:32:08.000000Z",
                                   direction="desc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_balances_5(self):
         response = client.send(pp.ListAccountBalances(
-                                  "fe9ba5e6-5a43-4eb0-a1f4-973999643afe",
-                                  page=218,
-                                  per_page=2182,
-                                  expires_at_from="2024-06-22T12:06:55.000000+09:00",
-                                  expires_at_to="2024-12-24T09:24:19.000000+09:00",
+                                  "d5604b93-65ee-41d4-b3d2-ab9edcaac0bf",
+                                  page=5372,
+                                  per_page=1503,
+                                  expires_at_from="2021-10-12T09:36:01.000000Z",
+                                  expires_at_to="2023-11-12T04:37:14.000000Z",
                                   direction="asc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_0(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432"
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_1(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432",
-                                  direction="asc"
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
+                                  direction="desc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_2(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432",
-                                  expires_at_to="2024-06-30T13:46:34.000000+09:00",
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
+                                  expires_at_to="2020-05-12T06:39:28.000000Z",
                                   direction="desc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_3(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432",
-                                  expires_at_from="2016-12-02T09:27:57.000000+09:00",
-                                  expires_at_to="2024-02-13T02:34:31.000000+09:00",
-                                  direction="desc"
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
+                                  expires_at_from="2021-08-10T22:28:30.000000Z",
+                                  expires_at_to="2022-01-02T23:11:37.000000Z",
+                                  direction="asc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_4(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432",
-                                  per_page=5871,
-                                  expires_at_from="2019-07-12T13:14:21.000000+09:00",
-                                  expires_at_to="2016-08-23T18:23:34.000000+09:00",
-                                  direction="asc"
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
+                                  per_page=4714,
+                                  expires_at_from="2020-04-19T21:07:10.000000Z",
+                                  expires_at_to="2026-08-14T18:22:19.000000Z",
+                                  direction="desc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_account_expired_balances_5(self):
         response = client.send(pp.ListAccountExpiredBalances(
-                                  "36c55dae-a763-48a7-a91e-94db92494432",
-                                  page=4236,
-                                  per_page=3454,
-                                  expires_at_from="2018-03-08T11:42:37.000000+09:00",
-                                  expires_at_to="2016-04-28T02:09:16.000000+09:00",
+                                  "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
+                                  page=3051,
+                                  per_page=9993,
+                                  expires_at_from="2020-01-17T10:42:07.000000Z",
+                                  expires_at_to="2024-08-16T11:50:48.000000Z",
                                   direction="asc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_customer_account_0(self):
         response = client.send(pp.UpdateCustomerAccount(
-                                  "84b859aa-f0d3-4f6c-a841-282e9f5ab662"
+                                  "52e9723d-d443-4465-8be1-c807d4a504c5"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_customer_account_1(self):
         response = client.send(pp.UpdateCustomerAccount(
-                                  "84b859aa-f0d3-4f6c-a841-282e9f5ab662",
+                                  "52e9723d-d443-4465-8be1-c807d4a504c5",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_customer_account_2(self):
         response = client.send(pp.UpdateCustomerAccount(
-                                  "84b859aa-f0d3-4f6c-a841-282e9f5ab662",
-                                  external_id="rppUqGdxMolEMce2oIWkzh6xh3kO5wXHuEli1NcEVyTrbdyJqm",
+                                  "52e9723d-d443-4465-8be1-c807d4a504c5",
+                                  external_id="wIngTct5VctC8ahSG576Yk267hNuqsd2aOEu5ugI0fcKmGRU",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_customer_account_3(self):
         response = client.send(pp.UpdateCustomerAccount(
-                                  "84b859aa-f0d3-4f6c-a841-282e9f5ab662",
-                                  account_name="h3W",
-                                  external_id="fGT9d54NzUibZax1gbE",
+                                  "52e9723d-d443-4465-8be1-c807d4a504c5",
+                                  account_name="7sMhCFW8ODbHkZSUPXBsmObvnHUjDTSSciw3PX7IImkvl5vCAHh7QD95u0YIcm0Sp2RluFOAxJTKKlkJp5ENq52OLTcJlnsa7zuy1tusdwen7Z1wrrgdxWfKkMLwrBpORQ9LHlnKRmCd4nadmeyKnqGyqpn3W7S36l34SSSOxW72gqSjd8QPzbjt0rt7UmerReZGbvGgvAZbyLJ1Lea6an4P1AnQALadFsAzgfKjbtuXgZDedIJqTHGg",
+                                  external_id="OhGiwZBj5AvHdO2AtfcLabY2vDzXzQx3sP8V6IT9VFC5bo0",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_customer_account_4(self):
         response = client.send(pp.UpdateCustomerAccount(
-                                  "84b859aa-f0d3-4f6c-a841-282e9f5ab662",
-                                  status="suspended",
-                                  account_name="tEhHNUjZJEl7H6aHeFVmJSAKrLNuNDUQhJfNq76RxAuxSVrnur4Ju4ayidm5BuCe0yTSEIanUYTV2eUYLa0Qhqw2R1myjYzFL4j0HTXKtxMi6tvMf7GbuKVO",
-                                  external_id="o81owGN6i0XTT33lqYdKQ0h3ghVZk7eO",
+                                  "52e9723d-d443-4465-8be1-c807d4a504c5",
+                                  status="pre-closed",
+                                  account_name="KXfPASw8jPQ0hMJ4nPgNJOUuVI3xkUSOX0vTgyFK1FOp7pl9MWii2exAarzlUllr",
+                                  external_id="sQZQAnUYeKIbZQuPYAKNLvTyMcIYlLoYSz5jRHNP",
                                   metadata="{\"key1\":\"foo\",\"key2\":\"bar\"}"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_account_transfer_summary_0(self):
         response = client.send(pp.GetAccountTransferSummary(
-                                  "b9de1b01-2893-4024-85a2-263d27f20e39"
+                                  "95626e10-7ff6-4628-b94c-565d8306a14f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_account_transfer_summary_1(self):
         response = client.send(pp.GetAccountTransferSummary(
-                                  "b9de1b01-2893-4024-85a2-263d27f20e39",
-                                  transfer_types=["refund-payment", "refund-topup", "topup", "refund-exchange-inflow", "payment", "campaign-topup", "refund-exchange-outflow", "exchange-outflow", "refund-campaign", "refund-coupon", "exchange-inflow"]
+                                  "95626e10-7ff6-4628-b94c-565d8306a14f",
+                                  transfer_types=["use-coupon", "refund-exchange-outflow", "refund-campaign", "payment", "refund-coupon", "campaign-topup", "refund-payment", "topup", "exchange-outflow", "exchange-inflow", "refund-exchange-inflow", "refund-topup"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_account_transfer_summary_2(self):
         response = client.send(pp.GetAccountTransferSummary(
-                                  "b9de1b01-2893-4024-85a2-263d27f20e39",
-                                  to="2016-10-27T21:00:49.000000+09:00",
-                                  transfer_types=["refund-exchange-outflow", "use-coupon", "refund-topup", "refund-payment", "campaign-topup", "topup", "payment", "exchange-inflow", "exchange-outflow", "refund-coupon", "refund-campaign", "refund-exchange-inflow"]
+                                  "95626e10-7ff6-4628-b94c-565d8306a14f",
+                                  to="2024-02-11T20:15:48.000000Z",
+                                  transfer_types=["exchange-inflow", "campaign-topup", "refund-exchange-outflow", "use-coupon", "refund-campaign", "refund-topup", "payment", "refund-coupon"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_account_transfer_summary_3(self):
         response = client.send(pp.GetAccountTransferSummary(
-                                  "b9de1b01-2893-4024-85a2-263d27f20e39",
-                                  start="2022-08-16T01:04:09.000000+09:00",
-                                  to="2024-11-25T15:55:46.000000+09:00",
-                                  transfer_types=["refund-campaign", "topup", "refund-topup", "refund-exchange-outflow", "exchange-inflow", "refund-exchange-inflow", "exchange-outflow", "use-coupon", "campaign-topup", "payment", "refund-payment"]
+                                  "95626e10-7ff6-4628-b94c-565d8306a14f",
+                                  start="2022-07-04T12:30:27.000000Z",
+                                  to="2022-11-07T15:21:05.000000Z",
+                                  transfer_types=["campaign-topup", "payment", "exchange-outflow", "exchange-inflow", "refund-payment", "refund-topup", "refund-exchange-inflow"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_0(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3"
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_1(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  email="hUtXGZ9lfp@9Twg.com"
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  email="2pUTWzADND@e87o.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_2(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  tel="0099877969",
-                                  email="qdhqoMR6oA@dT5y.com"
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  tel="045226365",
+                                  email="Usk6umIdkj@ysmB.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_3(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  external_id="PsPRTmUYdZdYDDGZDuZn0XgqQIqTu1",
-                                  tel="03131471",
-                                  email="YdRTWbMgZi@B4q5.com"
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  external_id="oCy1Ud1e5PrxfXmPZX1VlVfqe",
+                                  tel="060032739459",
+                                  email="e0pY47yGoA@wg28.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_4(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  status="pre-closed",
-                                  external_id="IKvcyeytZUeCOzn479Q7e7CQ6",
-                                  tel="073-94-711",
-                                  email="6jQwMdVQzE@T3CT.com"
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  status="suspended",
+                                  external_id="Msl4sq96mAewFZHEg2RF0uEHwK5Jbwu9JRSn5a7ymUxn4mfv",
+                                  tel="07693552",
+                                  email="86BZW4IWD5@GZy4.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_5(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
                                   is_suspended=True,
                                   status="pre-closed",
-                                  external_id="aadmHoO937wRncWgLEMvwuXtyGneCNJhR9grzsET9HHziGJ",
-                                  tel="0915-585-847",
-                                  email="EnNvZa51B6@RuNH.com"
+                                  external_id="5w0ovSrq2HjQnZoVWhOdLDSpe9mEjTApY38vZyrfHaX2ePxiTI",
+                                  tel="063937-3077",
+                                  email="Q3onqPmyIz@FPAF.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_6(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  created_at_to="2018-07-26T02:42:57.000000+09:00",
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  created_at_to="2020-01-16T21:59:19.000000Z",
                                   is_suspended=False,
-                                  status="pre-closed",
-                                  external_id="kkEIImb7878ag0GpEoXRZP9Tuo6i",
-                                  tel="0402-724",
-                                  email="2arbhJouxW@Q6Fl.com"
+                                  status="suspended",
+                                  external_id="HME8Dl",
+                                  tel="030565-274",
+                                  email="Wsj7MinGr0@IGEe.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_7(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  created_at_from="2017-05-13T13:51:02.000000+09:00",
-                                  created_at_to="2017-01-23T16:21:15.000000+09:00",
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  created_at_from="2022-02-07T10:39:08.000000Z",
+                                  created_at_to="2022-06-22T20:03:06.000000Z",
                                   is_suspended=False,
                                   status="suspended",
-                                  external_id="k1iTzlm9ILQGKVJoUCSY35cdkgvsbAY",
-                                  tel="0584488892",
-                                  email="yLz0xsJRhR@VsB9.com"
+                                  external_id="5ms0HjwVmUqLVvuFmzvx3MioePO7gkONNAjBCYm",
+                                  tel="047-459078",
+                                  email="jITuRCVadP@y2Bb.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_8(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  per_page=6828,
-                                  created_at_from="2021-07-13T22:31:44.000000+09:00",
-                                  created_at_to="2021-01-25T13:11:30.000000+09:00",
-                                  is_suspended=False,
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  per_page=3778,
+                                  created_at_from="2024-10-15T16:45:19.000000Z",
+                                  created_at_to="2025-11-30T08:24:53.000000Z",
+                                  is_suspended=True,
                                   status="pre-closed",
-                                  external_id="fWzO75yHWR5FLMa9CO3GmqQepv7",
-                                  tel="080779634",
-                                  email="vLJkkZMMdE@ANfW.com"
+                                  external_id="tCT3aJmzxxuQUVBryDZD3LHlYNS3c0MUvvhZyFdp",
+                                  tel="0023702-587",
+                                  email="3GCZjYfwcS@TcjO.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_customer_accounts_9(self):
         response = client.send(pp.GetCustomerAccounts(
-                                  "c41f5bb2-749b-44ef-829d-581a94e833f3",
-                                  page=6145,
-                                  per_page=1495,
-                                  created_at_from="2022-09-03T18:18:14.000000+09:00",
-                                  created_at_to="2020-01-02T09:52:45.000000+09:00",
+                                  "ac4bc52d-4086-4db8-8bea-b2653c87a7ab",
+                                  page=4415,
+                                  per_page=3746,
+                                  created_at_from="2023-07-19T08:17:13.000000Z",
+                                  created_at_to="2023-01-07T06:16:44.000000Z",
                                   is_suspended=True,
-                                  status="suspended",
-                                  external_id="Aje3PJg4zkA5dwRQrAEDCEBzCTk0p",
-                                  tel="07714864-9146",
-                                  email="6QjLE9oTv9@S3Zg.com"
+                                  status="active",
+                                  external_id="y0KR",
+                                  tel="00525065-039",
+                                  email="DVyQoaELlr@Jk6M.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_customer_account_0(self):
         response = client.send(pp.CreateCustomerAccount(
-                                  "45dccf34-6a82-40cf-8035-99e4f021f54b"
+                                  "9772bb29-fb26-4652-90cb-cd8d7140fd12"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_customer_account_1(self):
         response = client.send(pp.CreateCustomerAccount(
-                                  "45dccf34-6a82-40cf-8035-99e4f021f54b",
-                                  external_id="9OBT"
+                                  "9772bb29-fb26-4652-90cb-cd8d7140fd12",
+                                  external_id="62IzWH9emhQ0CqvNNBrhyRg9xxzNXJhnMZrEqyRqPC"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_customer_account_2(self):
         response = client.send(pp.CreateCustomerAccount(
-                                  "45dccf34-6a82-40cf-8035-99e4f021f54b",
-                                  account_name="n3gY0HIwJr5Xn6R9PIw5eC52tvIBnMyMg4CnT2dj7ORUTt4jEgn4792da7QYy7V605lzcBixerwgOsZo2yFQXiifPwyEPkMTjwK5UmBamQcUvvHD25XYGaGoRmlkWp",
-                                  external_id="VKSQYACWhdJgT5"
+                                  "9772bb29-fb26-4652-90cb-cd8d7140fd12",
+                                  account_name="zbSmOoYCMUQNjvF4AYLzd022rwQVNfYYCfZZWpAcyBWwWi1DgvTt4hTTZowFPycMflfcbIeOIKes05558vbabHcGuqU0Zpo5LBba7yo5q8iSiTBSZQPeDSY9S36TscHpgaN0j8ZeP1HDPDTHzzRIdWxHjKy82N74miDUcOuIVqRIEU93kljq1Q8TjukgNdosrcsbqXkW",
+                                  external_id="qVhxkWkSbCcQV2KWKaXCJgJ38wW32AKvIL"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_customer_account_3(self):
         response = client.send(pp.CreateCustomerAccount(
-                                  "45dccf34-6a82-40cf-8035-99e4f021f54b",
-                                  user_name="XIAxp1c5Q2vG7By91KC2xkwbMvROWfUAhh6XnZz0yJYgRGAM6oTzljbZYS9b6qmrSFaDiVxdn1z0TuA7dLQ8GnuuGnm3um0ZKYlqHYAPfacx4ba4pxXiFCicQd3QQrdtpp5IlW8KnTaroT8w3801ZxeZpTa0FFkkUFLVCDKp9TvCsVFg3Dy6t9FVfvRBKOl2QQeBI5NM6J7EhkzGk22yYle2ZOPXJOiEYcNwwBKhoxCdqw8S",
-                                  account_name="S6L7O6ohLm8HBuYz7E9ZuYBAHz0vH45u4SHdXpfYeqMtcfd8wxcygIW1kAzyAHjkW0eFs",
-                                  external_id="lSf8NaBTyV6GBT8tD"
+                                  "9772bb29-fb26-4652-90cb-cd8d7140fd12",
+                                  user_name="X828FihWZQyqSbK0FMXzQI3K0up",
+                                  account_name="8cYYAuEa7VHyo1Pr6ZXG8JSWzel5X6ggilnbIikjMsDtvgyHs8kXaVldBOvstCOu5vNtx3bBib1BS1IIGWD4m",
+                                  external_id="TYqNNFPcbcfJ8JMK49acleVRspcldtQ5tmURvImdniels4ZrQ"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_0(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa"
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_1(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa",
-                                  is_suspended=False
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
+                                  is_suspended=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_2(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa",
-                                  created_at_to="2022-08-03T04:31:21.000000+09:00",
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
+                                  created_at_to="2026-05-14T15:53:20.000000Z",
                                   is_suspended=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_3(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa",
-                                  created_at_from="2017-08-07T10:46:15.000000+09:00",
-                                  created_at_to="2025-07-22T01:28:13.000000+09:00",
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
+                                  created_at_from="2025-06-12T01:11:15.000000Z",
+                                  created_at_to="2023-05-08T13:24:13.000000Z",
                                   is_suspended=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_4(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa",
-                                  per_page=2846,
-                                  created_at_from="2019-11-04T14:53:12.000000+09:00",
-                                  created_at_to="2024-09-23T03:45:25.000000+09:00",
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
+                                  per_page=644,
+                                  created_at_from="2021-12-12T13:57:58.000000Z",
+                                  created_at_to="2020-05-21T00:15:54.000000Z",
                                   is_suspended=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_accounts_5(self):
         response = client.send(pp.GetShopAccounts(
-                                  "3418e411-a25d-4ec8-9b49-3e30dff9f6fa",
-                                  page=7568,
-                                  per_page=1670,
-                                  created_at_from="2021-03-12T15:40:19.000000+09:00",
-                                  created_at_to="2022-08-13T20:07:48.000000+09:00",
+                                  "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
+                                  page=7075,
+                                  per_page=5144,
+                                  created_at_from="2026-07-04T12:00:10.000000Z",
+                                  created_at_to="2022-11-05T06:14:30.000000Z",
                                   is_suspended=False
         ))
         self.assertNotEqual(response.status_code, 400)
@@ -504,471 +570,1054 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_bills_2(self):
         response = client.send(pp.ListBills(
-                                  upper_limit_amount=3835,
+                                  upper_limit_amount=7252,
                                   is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_3(self):
         response = client.send(pp.ListBills(
-                                  lower_limit_amount=1487,
-                                  upper_limit_amount=2295,
-                                  is_disabled=False
+                                  lower_limit_amount=3473,
+                                  upper_limit_amount=1408,
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_4(self):
         response = client.send(pp.ListBills(
-                                  shop_id="a3337384-6b0e-467b-951c-478ccdf43586",
-                                  lower_limit_amount=8300,
-                                  upper_limit_amount=5052,
-                                  is_disabled=False
+                                  shop_id="f4099f6e-a1dd-4c91-b9d7-cdd0bae16c27",
+                                  lower_limit_amount=3379,
+                                  upper_limit_amount=9069,
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_5(self):
         response = client.send(pp.ListBills(
-                                  shop_name="IQiAP4UplfuFUQK5yc0JqyEbk4xV1ElwOVpwOgCs3REJLXlOpH9qH3TntlxmPSv0sqeMHVeJGZnQaE4lp3S7TMyfZKpPybiZ1Lwce18e7Eq5OqWuTabdRaaHOyfGqVUncXzhjskeGyZxmbEy050Zlv3tzVr8aTPDqMKbxS0Vs3OlIrdnx7rU9Fte9Z959oBy13mtel3d8TfJ3Ol39ScasZnA58jo0hnztlMdM7BVfn4iFYyJJXfrDUn2Z",
-                                  shop_id="0b13f435-a4e4-4e54-823d-f14d3d6621e8",
-                                  lower_limit_amount=7968,
-                                  upper_limit_amount=7137,
-                                  is_disabled=True
+                                  shop_name="VyuReCXx5WTYs7Yv5KDLwBcz7zjgazophuiC1VR8XiXW8JGdOuAk94khcXRAwlFr4tlYuwMI02c6YHU8uGe8qGNvTmA6H2tH06f3cpkGDNNhHR4jcwCrCwplpzKOK41muEKIO2q9f6dQ5BvDAnz25uvrmGGKjRYVWTh4n3trK0bvzHyQJ1u0mKrSXl5b4zkB",
+                                  shop_id="a2f429e8-0848-4bd8-a0a3-67c9bc687ae9",
+                                  lower_limit_amount=8655,
+                                  upper_limit_amount=4011,
+                                  is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_6(self):
         response = client.send(pp.ListBills(
-                                  created_to="2016-09-02T11:19:30.000000+09:00",
-                                  shop_name="QqsldJHk3l4cpZ7fJl29A3O6y0fQnXOgwkIth5yMWiTVYzb9YasuIp7v4EzACicWq4Ul0bBBFnJwjrPufrwL",
-                                  shop_id="19a57c35-abda-45b4-b1aa-9c3c70c8922e",
-                                  lower_limit_amount=6733,
-                                  upper_limit_amount=4789,
-                                  is_disabled=False
+                                  created_to="2021-09-19T16:24:13.000000Z",
+                                  shop_name="N14umNbs9HzTMz",
+                                  shop_id="d3bf9967-6c9a-460f-a8b2-13863efe6a5f",
+                                  lower_limit_amount=7233,
+                                  upper_limit_amount=4782,
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_7(self):
         response = client.send(pp.ListBills(
-                                  created_from="2025-03-09T03:05:10.000000+09:00",
-                                  created_to="2023-04-15T12:14:30.000000+09:00",
-                                  shop_name="hJuNsCdqVbAgLZQKQXblhvdQVC38rMOaKHSf5htPpycWdWsbduWBxtfg1Kliu47KITpvwbo61t0xPHohZAfXS5WAq97VI0kJjyO9S00lRKqhRSKyv4aeUNiX5kIXisF2lvLdWFAH9CECfmZyvOgcw2bcIoYI3B409EBsOM5mHn7CA1SM3xNEFCgQheyCbSnP7P0SqnjQBF0gNpyvaBHzjlAdXU9",
-                                  shop_id="bd0643a7-06e6-4ae2-ac34-114293457d45",
-                                  lower_limit_amount=2117,
-                                  upper_limit_amount=9958,
-                                  is_disabled=False
+                                  created_from="2026-07-03T12:27:13.000000Z",
+                                  created_to="2023-08-14T16:28:31.000000Z",
+                                  shop_name="GgoFwChMKyFjnp6NWuVTvukHEJJxjvwAaS",
+                                  shop_id="3ad00613-d46b-4972-acd0-fdbe3b32e5f3",
+                                  lower_limit_amount=3811,
+                                  upper_limit_amount=8511,
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_8(self):
         response = client.send(pp.ListBills(
-                                  description="TmiRof0lbldCRsSSTgoxqh3aCnDQum7xlHp8mSoN73gaH3XPjunt8NgffostplBJ13qPcXVXQ9E7OqefuC0zsB8aQbgel1VXLZNh",
-                                  created_from="2016-10-27T18:39:04.000000+09:00",
-                                  created_to="2020-04-19T11:21:31.000000+09:00",
-                                  shop_name="VCGfzH0EqAidHGV4baZPNRUSJ9iQNhB3KMhlAuhO2DrrEN6v7h6DIeIXBVaS0Zi07XrJykFEWCqS7fIGsgSUetvzhcyY8O4aW8dVGclxW2nJI1LDT3BhMLUADblZz6ydgd6gveWK49xDzlQxtC3xLL1ERUl6NhqKkDSvghab5bsImY7PcHPZH7mH",
-                                  shop_id="02e6d5fd-fe03-4700-86db-2d49d3ec9fa6",
-                                  lower_limit_amount=3593,
-                                  upper_limit_amount=9203,
+                                  description="FZA7kgmnQGh0g7xEy0gjIfqsy3qqeO2uL3gmJXocI00jDfhi9nkYKzlD45lOs5FqPThDPFGAn6g717B9KAWVHYRkMJaQT0YWfQtgxVhq",
+                                  created_from="2024-02-19T15:31:05.000000Z",
+                                  created_to="2023-04-29T19:38:58.000000Z",
+                                  shop_name="VZQG",
+                                  shop_id="8eaabba6-4636-47a9-a289-b5dc6b658323",
+                                  lower_limit_amount=6506,
+                                  upper_limit_amount=3253,
                                   is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_9(self):
         response = client.send(pp.ListBills(
-                                  organization_code="",
-                                  description="NgoBzsuiKajpcQf4nuECfdVUoATZ0pZ1FEusk3svdOIWNVHFftM1EZPsd7jOCTvYgQYDODNTX3YU3qGQBWGDfb1wlkuiN7kKWKFo",
-                                  created_from="2024-02-23T19:10:44.000000+09:00",
-                                  created_to="2017-10-30T02:54:59.000000+09:00",
-                                  shop_name="9tuL5LH4EHPGJy8ZSoJ1krFHQyhzGXerHPOPDvrwRgeSOaGF6stofVWAQmmxPEjbZK4rVxAUW7FWHkKwdg6799FNaTUuVqVNtvvxMPy8uYVQrlAwBlTLDHylYVoU0Lud9b",
-                                  shop_id="76813135-bc26-424d-88e4-438136936dbf",
-                                  lower_limit_amount=3512,
-                                  upper_limit_amount=7259,
-                                  is_disabled=True
+                                  organization_code="--w-uWdfm-8-N-fI8m6yK1Wqzvc4-Y",
+                                  description="FvQ1skGDixXFJczCMVyjlRecAjobCopZKVFLb9UiV0XEmtc9iB2syyuELfawMoOZtkTktpas3rTKhS7CSUreJUtTC5W6xtdNcZmGzg6LOAwdB03Wi69g5bppku3R9lJVdDaUu8gKI7uxlsX8tJTVN1o4Avhi0fX5dozKzovfXQ3",
+                                  created_from="2025-01-07T19:15:28.000000Z",
+                                  created_to="2021-01-17T09:28:40.000000Z",
+                                  shop_name="hjHLVEtSIaxZ8O9N2SLzG35Urh2rbZx2aArvrKFEW0caD1nqOzKQjZCyx1Ep4VkAmGgvgI7YgVKC9RfQiSpTWZ",
+                                  shop_id="0bcdd82a-320e-4b72-9f84-428a0c5b8064",
+                                  lower_limit_amount=5936,
+                                  upper_limit_amount=9960,
+                                  is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_10(self):
         response = client.send(pp.ListBills(
-                                  private_money_id="69b26d55-eeee-4bf5-bb98-2f1a29611482",
-                                  organization_code="q-Td-90tz6o18bTME",
-                                  description="ruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwuCknsFuOeDw3ETEoYbDEhr0AwKkiQOHCQ",
-                                  created_from="2019-04-23T00:27:44.000000+09:00",
-                                  created_to="2016-12-11T02:13:34.000000+09:00",
-                                  shop_name="IIRDiJ5EWSps1CcPm4CujuDviyaRPbQTt1c2CSzS35RxVGrM7sDhsRor5EZrBgBnWdBpXW3vXZAsIGmxl3OdV3odlFFoKvu4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLtrR0H47hbbDvB2dkQWYC4RW",
-                                  shop_id="8e8f4a02-78f1-42ca-b720-84f336e5ea71",
-                                  lower_limit_amount=4658,
-                                  upper_limit_amount=6184,
+                                  private_money_id="a7050d56-e484-4100-a42a-4981813b44d3",
+                                  organization_code="--6-WX0z-64b50d-mzO5vzt-Z",
+                                  description="xIWGujcTxFFrrXyLyMOsteVH8YLvoUoraYyVUvoHuS",
+                                  created_from="2024-04-16T17:25:48.000000Z",
+                                  created_to="2026-11-01T13:19:32.000000Z",
+                                  shop_name="144X7ZEq8UGlMat7Q5BMcC1v73v60y8DMLWrlnr061xWZsz1ogogHitDMic7XGDhIwoiIw8buBfBCDG7j4DoWkpZIbqBi9TROGFtlR9rLj2Y1ER9gKdUSrcKHlFd3Ur1MCMIUROIYftW7QMs",
+                                  shop_id="8c4a540c-459f-4a9b-89bb-6ea95f12aa89",
+                                  lower_limit_amount=3066,
+                                  upper_limit_amount=2822,
                                   is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_11(self):
         response = client.send(pp.ListBills(
-                                  bill_id="7AWpC",
-                                  private_money_id="05cd6fa3-f4c4-4584-abf9-a19a5bc696cc",
-                                  organization_code="9TFI8-q-o-ZW4-bU",
-                                  description="y2EMgPVlahlWYdbEevpLkzdUFCwG4QGOnpUXmwhMFkO9ufFPOzF9Lvv7JJIkMwpNGlwPY7w3AePumXzLvyF75pQlwzsKLA3j0RsOTGgnfI7tlICoQDpnLAiZiYSVIBpBUCCSgk4gnk7sP6E17lkMgQrA88yuG2X4KRlpHewo2",
-                                  created_from="2022-10-13T17:58:30.000000+09:00",
-                                  created_to="2025-03-12T02:32:46.000000+09:00",
-                                  shop_name="QkdX",
-                                  shop_id="f9a98cd0-f696-4b40-9e46-9b2733ec1f34",
-                                  lower_limit_amount=4515,
-                                  upper_limit_amount=3614,
+                                  bill_id="Aj1G",
+                                  private_money_id="be0c1d0a-ab85-41f3-a160-3a9c3dabefd3",
+                                  organization_code="gY3T1--v-G724-7qs-0fqD1J46-L1",
+                                  description="mGpF3omDB92rueqlmfnAfu7erS3gFr3FTdQ8rwckpkfwdxwxZ95sfTG55oAI4VCG4sTwcYeFwcP7ZmLygXYRtjxN2aIco6xNkWo0aYr1y1KHCmQGL0IM3EaCDd87kJG01a7GOWj7LV4v5yotPxhlRj2vkjikjfOo5Zy9zD8cfycxdjXF6cmwiKve",
+                                  created_from="2026-07-15T18:12:18.000000Z",
+                                  created_to="2020-01-04T22:32:40.000000Z",
+                                  shop_name="zAx7rHin0MHYFpvhqZUg2yG4Wo0L4evFZLjpsodOQD43fZ5T5bk20dIuBp2e25agSXyEGickpeze5Yn7vyzhltNB5edjt157B8n6abEccTMUOFUG9Fme9wlEEj2gZC8ckmFOzWRdKb11QTIHM0x5oJQ4O2Nwel4rHJTDGFvqXggC9Tcy7ogKmUw0VnsFyzfyt6Bg95FB1a7IFTBkW9tPubyeqITUoc54HWI6lY3NxA2Qq6LVyn2dOGJ",
+                                  shop_id="aa60910a-a06a-4e09-863e-5121431dec87",
+                                  lower_limit_amount=1346,
+                                  upper_limit_amount=7334,
                                   is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_12(self):
         response = client.send(pp.ListBills(
-                                  per_page=2526,
-                                  bill_id="V9XHbL",
-                                  private_money_id="c3194636-5918-439e-bad9-d4be4bb692a2",
-                                  organization_code="-IR8--7--ERjkpP---0r4-Qj",
-                                  description="wTGLR8ci2cIIE66fhj2n6iiZ64HpvFGkJr1uo4NLstnS7EAbDgQaYkUrDsQyk3kwOisNW9XsMHBVPsrsYBnLGXRYzu4noxPXNWpdUvBBp2Jsu",
-                                  created_from="2017-09-03T20:30:27.000000+09:00",
-                                  created_to="2025-04-24T15:48:33.000000+09:00",
-                                  shop_name="INCRpxja7me48LNXqpqJ",
-                                  shop_id="5bf84d98-de21-4daf-b46a-89da69ccd9e0",
-                                  lower_limit_amount=1911,
-                                  upper_limit_amount=3624,
-                                  is_disabled=True
+                                  per_page=2544,
+                                  bill_id="L1Mgjctfis",
+                                  private_money_id="3f5fc400-b92f-444c-b559-e4050c1c6b3c",
+                                  organization_code="oS-Ob6o-nef8---6-h9A-B04pr7qE03",
+                                  description="XqQRpkGArTGUPugetKJLdESdgB4DMlPhuAgx6J23S5a4KJH2dJnXOeAy8xYgmSSWd6nFdHza9f0TF30iljDxgSpyfoekUtYXnQ6dyRqDXbojqilSXXfgL13rI1kMYSkzLYWcqyBEPqq6jXoMPoI5dYhtAEAC8MN1MIRbysguh0xXqdkQK8VGfHRzulBqoPAVuBC2EUlu",
+                                  created_from="2025-12-01T03:01:25.000000Z",
+                                  created_to="2024-03-05T17:44:42.000000Z",
+                                  shop_name="b81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62EyfrAyRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdhT65YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pLnur36TYPgxIzfeirgwWn",
+                                  shop_id="ab8dc875-badf-43ca-984b-65f524a4ba67",
+                                  lower_limit_amount=1997,
+                                  upper_limit_amount=9267,
+                                  is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bills_13(self):
         response = client.send(pp.ListBills(
-                                  page=140,
-                                  per_page=8266,
-                                  bill_id="uUBm",
-                                  private_money_id="24dc5c38-1511-4a3f-8a5d-5c10562ae630",
-                                  organization_code="-OIPO8f--5J--ZEmK893-r0",
-                                  description="zongKg5SFSpcaiWqMVEyXiabD2fPkrS1NvYbmwucdTPjBOMyHVeFGY5vB7gjE0J3rzoZQgeuXW4rw3Ob3VUIWbzDljJ6klDtciJUcw1w",
-                                  created_from="2024-10-08T13:54:55.000000+09:00",
-                                  created_to="2022-12-22T02:16:07.000000+09:00",
-                                  shop_name="r",
-                                  shop_id="5e81bd98-f8b4-420f-aadc-6cf9683ae759",
-                                  lower_limit_amount=2035,
-                                  upper_limit_amount=9757,
-                                  is_disabled=True
+                                  page=7634,
+                                  per_page=4073,
+                                  bill_id="JHB",
+                                  private_money_id="0048d06e-211f-4e78-a22c-067ee7d7781a",
+                                  organization_code="",
+                                  description="mLerHweV6yDqMFurm2HyY5rxBRsFTyEvnewbYd4rNZJsCq7m7arw2NKYH12xHXaAOFqIwxrvxkxwVYBDQiRCyVTR3czNdwQ9LziqjK5MdQ1lZMyARXVB9A32ESqV",
+                                  created_from="2025-06-29T22:42:29.000000Z",
+                                  created_to="2026-06-20T19:08:59.000000Z",
+                                  shop_name="E1GN9JqLEvyRdA5j20ws4Z1pnjZ8xWKeN3WKGyHXCKDfS0S9olxtCG8sS34enFyHhIbteE1tQOMttUhD0OiwEvovxL7L6kZ3KaNub1zwaCdHgj8ik3dmsSURUNaSg6OcHEmOeQFO3Ox8qDzSQ0YVNC6SfrLsEgbwDrafzykU4qQWwEl9RBh7JkqQ2DDr8e6Qf",
+                                  shop_id="21812018-7238-4766-8b37-641e670c38bb",
+                                  lower_limit_amount=8509,
+                                  upper_limit_amount=222,
+                                  is_disabled=False
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_bill_0(self):
         response = client.send(pp.CreateBill(
-                                  "ee649014-14df-4bce-9571-065bb6b55c95",
-                                  "23be838b-7020-4801-af0f-6f65c939ded8"
+                                  "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+                                  "aa38f265-18fc-4b3d-b468-5b43b1521775"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_bill_1(self):
         response = client.send(pp.CreateBill(
-                                  "ee649014-14df-4bce-9571-065bb6b55c95",
-                                  "23be838b-7020-4801-af0f-6f65c939ded8",
-                                  description="bzzGADkOfMAKTboQcaiYXr4rnNnjCoeQHMuXiGNUysmU86lvAOTbcLzXO1sbMRuBNUlL6"
+                                  "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+                                  "aa38f265-18fc-4b3d-b468-5b43b1521775",
+                                  description="Cr4dBSWzD3agMTAvZtCmtviHLHOBHoLH"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_bill_2(self):
         response = client.send(pp.CreateBill(
-                                  "ee649014-14df-4bce-9571-065bb6b55c95",
-                                  "23be838b-7020-4801-af0f-6f65c939ded8",
-                                  amount=3376.0,
-                                  description="ReLv75kg6qcs3cEpI1m3wABqtL3bdaVTKdkTjUxGpAh3awQssfAXqJYYr4ARYbJcmLujs894lRg4qB30GRMkbzDn742v8m6fDAksXCcjSnMwkyUVD7CNlqSrG8bUcu2404OwW2YlKo3D8R7F9uqtTYDUe0c6WMBb0vMyr"
+                                  "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+                                  "aa38f265-18fc-4b3d-b468-5b43b1521775",
+                                  additional_private_money_ids=["1f400f17-d748-4b17-893d-e579cd4c8773", "801b78e0-1b6f-4fb5-b508-f0160bbf1eb9", "5712113a-c34f-4c29-b3ea-319b52a9a0a4", "a8d4befd-6ce9-4d13-9b82-476164205cde", "57c0e1b9-cce8-4e01-9583-effd8f7d26df", "ebdcb41a-cc24-44aa-b36f-93f6e57450f7"],
+                                  description="p1QqOYhJfTJv9"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bill_3(self):
+        response = client.send(pp.CreateBill(
+                                  "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+                                  "aa38f265-18fc-4b3d-b468-5b43b1521775",
+                                  amount=140.0,
+                                  additional_private_money_ids=["a1893025-7334-40aa-bbbe-41ba7fa9193b", "d9484a62-7280-4eee-87a6-6d3b99a909bb", "93925044-e279-40c8-8bac-b8a8e0d39367", "dc343f37-e96a-473f-9f66-edb7b58f1754", "ca7d6152-c142-4ebb-ae11-c6c44cca8ff5", "6fc1af73-36f2-4862-b697-3a3235403004", "c860ec92-14e9-470d-bced-f712122a1465"],
+                                  description="aN035TYhQYVT6897JBIT98Ea3vOiHnJbC3RzxMsGYTRQVbbDGQ3KFvfr7wcTIqfZGa8VmM7LxaafZsEiZ4h1kUtLESZUqCMHUv6WI9WlLqAjFFVtovIA3w7if4YoZJ6xmZ8N4p4uCNZaugRp11iMcrfILo"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_bill_0(self):
+        response = client.send(pp.GetBill(
+                                  "eda02500-664e-4e38-97fb-26bf47759f9c"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_bill_0(self):
         response = client.send(pp.UpdateBill(
-                                  "c16a938b-9ef2-44bd-8e6f-2b8a65b0e2b2"
+                                  "02e740da-988b-41d0-9d37-63b26298e2aa"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_bill_1(self):
         response = client.send(pp.UpdateBill(
-                                  "c16a938b-9ef2-44bd-8e6f-2b8a65b0e2b2",
-                                  is_disabled=False
+                                  "02e740da-988b-41d0-9d37-63b26298e2aa",
+                                  additional_private_money_ids=["a638a8b7-802a-4d83-bf0c-91fea1c57406", "6b7b4bca-60aa-43e1-9aef-0e590eb0fa1f", "a1b2011f-e49a-479d-80e2-1138669ae089", "3094cbf3-a10a-4af0-b623-69e081864331", "be8fc617-5946-4c63-9361-1e11098a0559", "7db900f8-e1b8-4c63-bc29-82b70c4f72e3", "621c8933-9fa7-4637-929e-ec4be8b77d81", "6ca05cb2-e9c2-4da4-af25-4f8499da23ac", "914e0e51-79c5-4b1c-86ef-f2ed00fce9f8"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_bill_2(self):
         response = client.send(pp.UpdateBill(
-                                  "c16a938b-9ef2-44bd-8e6f-2b8a65b0e2b2",
-                                  description="CtAij6bFWlBc9nMouBh",
-                                  is_disabled=True
+                                  "02e740da-988b-41d0-9d37-63b26298e2aa",
+                                  is_disabled=False,
+                                  additional_private_money_ids=["04c2c0e4-ee76-4c1c-aefa-23874afee603", "4df550f8-50cb-42bc-8f7d-2ed6f203f65e"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_bill_3(self):
         response = client.send(pp.UpdateBill(
-                                  "c16a938b-9ef2-44bd-8e6f-2b8a65b0e2b2",
-                                  amount=9011.0,
-                                  description="x",
+                                  "02e740da-988b-41d0-9d37-63b26298e2aa",
+                                  description="xdoit0nsRdkY0a6T9IRy95uKnYj6aDVb3qDkr4zFWttvA7t4NS9wkdOXwioDpfXuzoNbRpuKefj9znX2XonFzQcO5QEOmdgUm73I2kFchNQksZB6ByT3lVRQ7O823WFeXCsAD",
+                                  is_disabled=False,
+                                  additional_private_money_ids=["83d3e1aa-c05c-4e66-b62a-6f65ff338f57", "3651128d-617b-4576-b527-ab0bc0080c40", "01f62a9d-2753-4b1a-a5ac-4cf43f2ce74a", "00fb1511-064c-468c-a92a-1b40513502f5", "50fa615d-03a3-4d1d-9fda-86e396228292", "786c319b-e1bf-44c2-a22c-120ede48deb6", "aa2435bf-5174-4f64-aae3-64f766002be9"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_bill_4(self):
+        response = client.send(pp.UpdateBill(
+                                  "02e740da-988b-41d0-9d37-63b26298e2aa",
+                                  amount=5522.0,
+                                  description="byPvTHbjOWbqqVGNOP2f7Fmc6XS",
+                                  is_disabled=True,
+                                  additional_private_money_ids=["92a4482e-b14d-4910-bbb3-08871cfea9d9", "f02bdeb5-3c58-4efc-bf5f-395001e21003", "5f50c0f8-69fd-4dee-aaa4-dbbfcb5b60af", "3d56ee2a-12c6-44e8-a6eb-a8666316a59f", "d592ffd9-2bab-4867-b6c1-1242b5baca78", "451e5ad2-d106-4a5b-abe8-42ead37b6ad6", "adfabd04-26ab-46b7-b285-ea2f770a7ba9", "b398f708-a0d8-4a6d-8a60-27b6990ba246", "a47f16b6-79ef-4592-ae94-575f42c14f68"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_0(self):
+        response = client.send(pp.ListChecks(
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_1(self):
+        response = client.send(pp.ListChecks(
                                   is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_2(self):
+        response = client.send(pp.ListChecks(
+                                  is_onetime=True,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_3(self):
+        response = client.send(pp.ListChecks(
+                                  description="gkbe1",
+                                  is_onetime=True,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_4(self):
+        response = client.send(pp.ListChecks(
+                                  issuer_shop_id="a56eada9-9382-4449-af5f-7b333f93799b",
+                                  description="nSrAjiM",
+                                  is_onetime=True,
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_5(self):
+        response = client.send(pp.ListChecks(
+                                  created_to="2023-08-22T03:05:25.000000Z",
+                                  issuer_shop_id="dabd43a7-3251-4a9c-a7d1-e43ce67e8b4e",
+                                  description="ZWqLAF",
+                                  is_onetime=False,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_6(self):
+        response = client.send(pp.ListChecks(
+                                  created_from="2020-01-27T12:34:57.000000Z",
+                                  created_to="2022-08-25T17:41:46.000000Z",
+                                  issuer_shop_id="c3cdd5c2-0871-4f85-af79-e46a27beb386",
+                                  description="43AA",
+                                  is_onetime=True,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_7(self):
+        response = client.send(pp.ListChecks(
+                                  starts_to="2021-08-14T02:01:14.000000Z",
+                                  created_from="2025-05-24T05:37:07.000000Z",
+                                  created_to="2026-06-25T02:34:54.000000Z",
+                                  issuer_shop_id="a748242b-1743-453d-a8cd-278c13918945",
+                                  description="BnJ",
+                                  is_onetime=False,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_8(self):
+        response = client.send(pp.ListChecks(
+                                  starts_from="2025-02-28T17:33:06.000000Z",
+                                  starts_to="2021-12-17T18:28:06.000000Z",
+                                  created_from="2025-11-28T12:35:22.000000Z",
+                                  created_to="2023-11-25T20:00:44.000000Z",
+                                  issuer_shop_id="66e5e99f-2513-4a4f-8042-410010209d98",
+                                  description="QBwAgsT",
+                                  is_onetime=False,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_9(self):
+        response = client.send(pp.ListChecks(
+                                  expires_to="2021-09-27T18:06:50.000000Z",
+                                  starts_from="2025-09-05T18:50:49.000000Z",
+                                  starts_to="2026-03-15T11:11:51.000000Z",
+                                  created_from="2026-08-01T19:59:58.000000Z",
+                                  created_to="2021-05-16T00:06:50.000000Z",
+                                  issuer_shop_id="28180d81-3c32-4d96-9a33-6d555c23086b",
+                                  description="1w",
+                                  is_onetime=False,
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_10(self):
+        response = client.send(pp.ListChecks(
+                                  expires_from="2020-12-16T16:33:55.000000Z",
+                                  expires_to="2023-11-28T10:38:49.000000Z",
+                                  starts_from="2021-08-27T05:17:54.000000Z",
+                                  starts_to="2023-06-10T12:37:18.000000Z",
+                                  created_from="2026-08-03T05:18:03.000000Z",
+                                  created_to="2023-03-18T20:11:00.000000Z",
+                                  issuer_shop_id="2ec67e1c-6cd9-422c-b9c2-6e90227eb6f0",
+                                  description="5",
+                                  is_onetime=True,
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_11(self):
+        response = client.send(pp.ListChecks(
+                                  organization_code="DJiBPB1X",
+                                  expires_from="2022-09-05T12:56:47.000000Z",
+                                  expires_to="2024-04-24T15:45:26.000000Z",
+                                  starts_from="2023-10-28T16:46:29.000000Z",
+                                  starts_to="2024-02-27T14:11:45.000000Z",
+                                  created_from="2023-09-14T11:10:12.000000Z",
+                                  created_to="2021-05-03T12:50:51.000000Z",
+                                  issuer_shop_id="d1327920-bf3f-46ce-9a0b-bd079af628be",
+                                  description="IKtW",
+                                  is_onetime=False,
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_12(self):
+        response = client.send(pp.ListChecks(
+                                  private_money_id="f70ab602-4065-46dd-8e63-b831ee1dfa7a",
+                                  organization_code="zlxW2hgOK8NI225RAsUHuuLFS4058hKD",
+                                  expires_from="2022-02-18T09:43:35.000000Z",
+                                  expires_to="2026-05-21T04:34:54.000000Z",
+                                  starts_from="2025-10-17T18:48:25.000000Z",
+                                  starts_to="2022-09-15T17:27:06.000000Z",
+                                  created_from="2021-08-13T19:22:32.000000Z",
+                                  created_to="2025-12-11T15:27:55.000000Z",
+                                  issuer_shop_id="a67af80d-5c9f-4072-868e-5c82841ea1b6",
+                                  description="zxkmTZe",
+                                  is_onetime=False,
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_13(self):
+        response = client.send(pp.ListChecks(
+                                  per_page=3677,
+                                  private_money_id="ca33730d-8705-471a-96fc-8a96d25377ba",
+                                  organization_code="dVWeLbSdWlORFkWxf1fgII7vrhxHZrOE",
+                                  expires_from="2023-08-07T21:02:01.000000Z",
+                                  expires_to="2022-03-12T22:55:56.000000Z",
+                                  starts_from="2023-03-21T23:29:12.000000Z",
+                                  starts_to="2025-06-18T19:48:37.000000Z",
+                                  created_from="2020-10-28T20:41:52.000000Z",
+                                  created_to="2023-05-21T06:33:26.000000Z",
+                                  issuer_shop_id="49ca01dd-a2c8-4aaf-8e1d-2964d89d70ad",
+                                  description="lfIrf",
+                                  is_onetime=True,
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_checks_14(self):
+        response = client.send(pp.ListChecks(
+                                  page=7623,
+                                  per_page=8228,
+                                  private_money_id="3f75750c-98ac-40d5-a4d8-f29401c508e8",
+                                  organization_code="Si4j72IcAxs47XeIz",
+                                  expires_from="2022-03-26T18:20:47.000000Z",
+                                  expires_to="2020-06-02T13:13:59.000000Z",
+                                  starts_from="2021-04-13T14:06:17.000000Z",
+                                  starts_to="2023-02-06T19:05:59.000000Z",
+                                  created_from="2023-12-17T19:54:20.000000Z",
+                                  created_to="2023-08-02T10:54:47.000000Z",
+                                  issuer_shop_id="113d77e9-64d1-47a8-9216-356122513c51",
+                                  description="yn4Age91",
+                                  is_onetime=False,
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_0(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=3682.0
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=8507.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_1(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=4498.0,
-                                  description="9dQAdVbIjdKodnIqsg2hwfCC3ynrJLnPSb5d8avvWNGGZpHcQub7jyKGPEze4eDg0kaj205"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=3503.0,
+                                  description="Bnv9RrzZK5kL8kuH9QZjAoA9Wjz3xWF4fJVtnG3Avmta20vIgud6F1UgGMHbk2IRflsvw"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_2(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=5778.0,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=6165.0,
                                   is_onetime=False,
-                                  description="9Vfs0xgdWlEYjRqPOb8BVVabHLEG4agkq2G8IRGQBS0nchLLndRaY2NqmWOdlkOhTjC67yWAbgIrPt858HfVRa8DX5UPvkC2RO0Ka4lYXy6v8yeYaDtl3yxclWSiWAV8VoZ5q4f3l3OfQm9YtxuJK"
+                                  description="Zxk0nQmXMvg0FcWUrBHOSV7LC2s46hfsRF0"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_3(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=6130.0,
-                                  usage_limit=2500,
-                                  is_onetime=True,
-                                  description="FgfnOa5xAhF9FsFDzTIAFGDPhp"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=3019.0,
+                                  usage_limit=3576,
+                                  is_onetime=False,
+                                  description="ClCMK7WZ9OzNLNkjfoAuPSksHUuefNAm0yTlB8Y7jnhE6v0ICVfZpB32LWZFMYYNQ77hNnDgeQkP6BrHNLW2T"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_4(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=5537.0,
-                                  expires_at="2024-12-09T23:17:36.000000+09:00",
-                                  usage_limit=9117,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=1303.0,
+                                  expires_at="2021-08-31T22:09:02.000000Z",
+                                  usage_limit=2528,
                                   is_onetime=True,
-                                  description="zEARJ1rvmqI1bSsRkkjQVB7WPQBN4OQef6ic8PJreX4akuWpKD9afhWN8gpYbk1UQRVGeT6q9QlLL4St0RhV6KdSsO2fKUxMoBriyYb61zvPjBcIHUY8RekKTAhSuM7Lo0VuZ1eCkX9fH"
+                                  description="kClYsxYjLV6mNckmXWb6cDTOBEvT1fZYocBrtgwRLixenA1GWqf2JPqamqpbb"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_5(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=9711.0,
-                                  point_expires_at="2024-01-25T06:53:05.000000+09:00",
-                                  expires_at="2025-08-01T00:06:50.000000+09:00",
-                                  usage_limit=396,
-                                  is_onetime=True,
-                                  description="VQAOjB0XTIEf"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=6389.0,
+                                  starts_at="2022-07-15T13:49:30.000000Z",
+                                  expires_at="2020-10-26T18:08:02.000000Z",
+                                  usage_limit=6992,
+                                  is_onetime=False,
+                                  description="YRasH9ARntTDK9f1O2csoG3F55uy56fVMl4ovKtbbNMLWzz4xf72tklHyikvXSu1xVqKMzKtPMLBX6YLvmDqPAbWtHJHRtQBqCHsxk71kIO"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_6(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=1282.0,
-                                  point_expires_in_days=6045,
-                                  point_expires_at="2020-11-23T19:32:02.000000+09:00",
-                                  expires_at="2016-11-05T21:40:18.000000+09:00",
-                                  usage_limit=4226,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=9193.0,
+                                  point_expires_at="2021-06-06T19:42:00.000000Z",
+                                  starts_at="2026-07-23T19:11:15.000000Z",
+                                  expires_at="2024-03-01T14:04:54.000000Z",
+                                  usage_limit=8392,
                                   is_onetime=False,
-                                  description="NvwAf7hOlSBfFEUcOQMXEYHzF8m9cIjwUyTMaVMoVAP5OP1Cjryz"
+                                  description="Z37iojnk7j2j33qMA4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_7(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=2688.0,
-                                  bear_point_account="18679ba0-531c-48c0-9544-cc2b776f7486",
-                                  point_expires_in_days=8961,
-                                  point_expires_at="2022-04-03T14:35:05.000000+09:00",
-                                  expires_at="2022-06-02T11:03:48.000000+09:00",
-                                  usage_limit=9788,
-                                  is_onetime=False,
-                                  description="Z0UkOPXKep1jFsPNeua1jB7"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=8762.0,
+                                  point_expires_in_days=7304,
+                                  point_expires_at="2020-12-20T04:25:14.000000Z",
+                                  starts_at="2025-07-16T12:30:06.000000Z",
+                                  expires_at="2021-10-27T10:19:23.000000Z",
+                                  usage_limit=3959,
+                                  is_onetime=True,
+                                  description="NS7QyCEhtgNDuAnxydB9u3o7ZMeTosoRh4S0mExQI1uCwHXvSS9xqXNJMeqv2rRxx8S"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_8(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=8553.0,
-                                  point_amount=9597.0
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=4709.0,
+                                  bear_point_account="8fa7f9d9-988e-4a9c-ab00-f9e7e33bda95",
+                                  point_expires_in_days=9262,
+                                  point_expires_at="2026-05-22T20:43:54.000000Z",
+                                  starts_at="2020-08-21T12:46:45.000000Z",
+                                  expires_at="2021-12-21T20:25:54.000000Z",
+                                  usage_limit=9491,
+                                  is_onetime=True,
+                                  description="AZIE0d3whSKLF4xWXCgQOdSsQVPrApoltrzZbMj"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_9(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=8517.0,
-                                  point_amount=348.0,
-                                  description="F7xhaxW"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=3233.0,
+                                  point_amount=4925.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_10(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=457.0,
-                                  point_amount=59.0,
-                                  is_onetime=True,
-                                  description="TjjuPniB6yr4Okg2Udv9iXSqMQb8J3iQSJeJic2mGuJKmsKLeWViwh5Xh0Ohe1EHst26OluNAixs6BC1rh1DjTMJERyJtkUyg63OuNEg3mOoFwMhlx1RPa6KY"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=4322.0,
+                                  point_amount=9256.0,
+                                  description="CaDUv1CsWTy6z2FdXbfXavW2HwaVVWGcOvRgfjTir1eeHpnGAvFN5uVHKI7mM3plgJR5fwzKIFQcpGZZVlRU03Fa2F6PUopGrOCijX4VQZjHwhb9lV"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_11(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=4154.0,
-                                  point_amount=9158.0,
-                                  usage_limit=338,
-                                  is_onetime=False,
-                                  description="bXhU3xeAmdgIIk86pUwNP4PXVypEGcP3yMzT6mxM4uuK6GdmBVGY71PucWuEB8iBjiFIbSubHrvAi7K4jyfS9dg15S1q6jH34UfMTbaogiuk2Hs0mRi4FH4wAH9Jfj7o054MsL4b1CJFFK6iXZLbDkWhxmVZQrN7vHF2MDKVtEIQupvmKHRwHKhrE1cew1CNfg"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=8435.0,
+                                  point_amount=3156.0,
+                                  is_onetime=True,
+                                  description="jbq8Wo22UU1er3T1gBtfr20CiDsCwy"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_12(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=7863.0,
-                                  point_amount=710.0,
-                                  expires_at="2021-01-29T12:17:29.000000+09:00",
-                                  usage_limit=4681,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=1356.0,
+                                  point_amount=7767.0,
+                                  usage_limit=6325,
                                   is_onetime=False,
-                                  description="YctoKArmPX6ICAqae4Gsnk7CCks4Hk5SfM8qCg753Xc8sxEuuaOPh40uyY7zIQa1dLLxrHG11vw1vq47MweLd7PEXecikrpiqy8sfzPeC95z6SUSQpi9Wzm3lpy1cb2RHdUOA0t8u9bgfw5lRkS6OP4v7xcpJRU1gAPOZCWBu1LN9FJ0cnlAGNGx"
+                                  description="EeQbE5VhNxjrtNh84WLuHKWoYQpDLtJyiWbDVy6Ss7attO0KDvZ2PuoFKU33PYYZTEIyRndmm72c26Cd6B3OB7swghUIdkqUOY2HAI87h7tC8vMnTzjNmFWDzLZ"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_13(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=6566.0,
-                                  point_amount=9852.0,
-                                  point_expires_at="2017-10-28T12:04:32.000000+09:00",
-                                  expires_at="2018-06-09T05:37:59.000000+09:00",
-                                  usage_limit=9628,
-                                  is_onetime=False,
-                                  description="Lc8mXM6C7FzYciEIbzm3gXQmk"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=5701.0,
+                                  point_amount=3356.0,
+                                  expires_at="2024-02-12T02:13:34.000000Z",
+                                  usage_limit=4256,
+                                  is_onetime=True,
+                                  description="7HQXwymFrbXYvN3cal4RO9jT63dRDxKNVoewLoaJggIMA5wXB3CTdPu3I6Gb57N6Bfk723xgVJhWc2FLmu9RV4wTQ1eFfFoOmA6KgKFTgUMIqeaKPydQtxKkPEiJ9F7s09s2D07ZJtROtnJy"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_14(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=7922.0,
-                                  point_amount=4635.0,
-                                  point_expires_in_days=5699,
-                                  point_expires_at="2020-10-13T15:11:43.000000+09:00",
-                                  expires_at="2022-08-31T03:54:45.000000+09:00",
-                                  usage_limit=6237,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=1018.0,
+                                  point_amount=9142.0,
+                                  starts_at="2022-11-05T11:38:29.000000Z",
+                                  expires_at="2025-05-01T02:50:20.000000Z",
+                                  usage_limit=3496,
                                   is_onetime=False,
-                                  description="2Ig2RcyGTEKbRkheq6QL08QyyZhWxWZXOgJUUSaNEWIfPAbzyBHOjNPScM2HIOB9HTAlispEbZ0nm2AG9fUViptAmbz3OlMcIwPiDhPvFVPSC9IO8VxniaFu09a6CuuEqXlxnf5GR396SeNDqXXKEJV0JkE3TjLaqeZO"
+                                  description="npU0js5rsIZ4cWpER3UtPkG2eq1I6SZr9Xo8DUROCVDxPSk72x92MmliF75MFhbZKuKGU7dTPisUgKnCV"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_15(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  money_amount=4781.0,
-                                  point_amount=2633.0,
-                                  bear_point_account="7cd70715-9a97-40ff-b7c5-d332a1c742b2",
-                                  point_expires_in_days=1773,
-                                  point_expires_at="2020-01-06T07:22:58.000000+09:00",
-                                  expires_at="2017-02-28T02:18:19.000000+09:00",
-                                  usage_limit=3357,
-                                  is_onetime=False,
-                                  description="SAD7vVGJBWjZfkSD8toOPMhnrU8KE3wpUrjUs8sizjd1z2FtADy5Q3C5jNeYsU9MpL2cFyrblmxyYFjVJ1ksDCEql8"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=2682.0,
+                                  point_amount=1701.0,
+                                  point_expires_at="2021-02-13T20:25:17.000000Z",
+                                  starts_at="2024-11-12T15:49:04.000000Z",
+                                  expires_at="2026-10-13T03:12:49.000000Z",
+                                  usage_limit=4228,
+                                  is_onetime=True,
+                                  description="lylHobnm6HycWppeOG5c4bSqVBGp3Ank6BTTvgxHzzgdLIxgPMdYrCUsTg7mFBD5JyTl3OSbQF6o9LFFmkiVCdqahnfY1HR9DfMzD3LCASqee9bY3sHOGNF3Mai4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_16(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=5129.0
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=9325.0,
+                                  point_amount=8503.0,
+                                  point_expires_in_days=1775,
+                                  point_expires_at="2022-05-30T20:39:11.000000Z",
+                                  starts_at="2024-05-18T20:01:59.000000Z",
+                                  expires_at="2023-11-08T12:44:26.000000Z",
+                                  usage_limit=3466,
+                                  is_onetime=False,
+                                  description="RN8AasCH56gnyuHFpFsNPJmzuH1GHYOOmiUvKwyiQYSSoPK3N5ZGrmU0unMptspEioBBqGcJLaXcepDTPRHElLNQrvWUnk17KWAioiFIGH7shpxz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOz"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_17(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=9724.0,
-                                  description="3astJ4f63IhsEW"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  money_amount=984.0,
+                                  point_amount=1794.0,
+                                  bear_point_account="fab1506e-da52-48c3-8863-74e28ca559cc",
+                                  point_expires_in_days=2292,
+                                  point_expires_at="2025-06-15T20:55:05.000000Z",
+                                  starts_at="2021-11-02T17:24:29.000000Z",
+                                  expires_at="2024-12-24T19:38:54.000000Z",
+                                  usage_limit=6708,
+                                  is_onetime=True,
+                                  description="joxB"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_18(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=2452.0,
-                                  is_onetime=True,
-                                  description="V1aJM8EwjAmRBWR0j6oBZVp6NIn0X9ZNmVTX8mLedIikedmC30IadhoI72wGGaOUhWf0bdfCQE42KbdvTX1CfA4ud9qfvPOSoxFI1UweO2XRdO2hY0pCC8FQpyDiFdYn6ST7vY9DrqkrzPV8XVdQkJOO2v1m3A"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=5795.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_19(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=3141.0,
-                                  usage_limit=8665,
-                                  is_onetime=True,
-                                  description="lsFCHOKfiqVfddqZXHyl9FtM3BiAbJG4RFalUDm4QOG36z0pAjeCTeiy225IXwhDEUvB4npxY9ubMTI7cGyilStc03UjxERdVoe6HFhJgKELPhJZ4V6jG807jn4"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=9134.0,
+                                  description="piRc0j39oPNkDTFwGmGihFz2z0gAPfWDnSv3peMsqUtDBVf5JNWPBpzSQtetKx5V0IU1H2quyHwM5236"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_20(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=3201.0,
-                                  expires_at="2024-12-17T12:16:09.000000+09:00",
-                                  usage_limit=6576,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=3744.0,
                                   is_onetime=False,
-                                  description="fSZTliY3BcoO0R3ofHxO79PyMPuNxlOm9TssUDzbSN9easDT5qaXE9oVV6dzFzoMTL1nMwdKXWkN1V7WK5N3KEyrv8oYx3uFnGQ6ZUjkvuDzL1kINhlYHLw7e"
+                                  description="7FRSK6ZN3dPGJYhssMJ1c81K9V4uwaN6FqKGuMQEbIhSKLSxcJDAAH0jwIPbMhYlMMXruKsOetb8P3w3wpAlq46MRFhBa1KSFCImukjAtQPb0UOTifX7KrzTtAdseC51TTzGU05VTqLiAQDTT40IDYkIvu0sCcHMaDTHEOIiZjdOoQxmayWcgZvBQUAudiH"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_21(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=4039.0,
-                                  point_expires_at="2021-10-21T07:15:29.000000+09:00",
-                                  expires_at="2017-04-04T13:28:04.000000+09:00",
-                                  usage_limit=2287,
-                                  is_onetime=False,
-                                  description="z2mwFW2G7CePrEb6qc1vzC0TUXZ7gJxmZbR4QIZxkVF44SiHUuKLea6KXKMTxnuRpjgiKiTeKThsCVHvt0FegcXhZNGhoP3dbXW7imuFIarDCIG12cWukEiPRDcMrsI69et7tZGcxsWh3x4WMFG9JtXGOrRTCDsNsdOxykdQVM02fdP8dPWgv17"
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=9627.0,
+                                  usage_limit=5366,
+                                  is_onetime=True,
+                                  description="hALf0xr0YedjAtAhk4Q5ZEYWHc6DIDKem3xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW1v6Ot04JjRtKJ3Y50yRgOZb7LyYKRMPV8lVcOO1w2GShMQxP1XNaA4tM"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_22(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=103.0,
-                                  point_expires_in_days=1545,
-                                  point_expires_at="2024-11-28T07:21:26.000000+09:00",
-                                  expires_at="2020-08-26T07:40:31.000000+09:00",
-                                  usage_limit=9070,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=8202.0,
+                                  expires_at="2026-05-12T11:28:55.000000Z",
+                                  usage_limit=7531,
                                   is_onetime=False,
-                                  description="VKZ2Yg2XW7z7bqKh4VDMi81vkZfIvFF2aVGBrt4d4BQcmvC7IyShbMWHW8OrxkY"
+                                  description="t9CEIs7P52Qn8Ps6rGg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHAM5JdvPW8u4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4Ufa8eDKBhpNX1jWPk8Z43B0y0B9mfs2"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_check_23(self):
         response = client.send(pp.CreateCheck(
-                                  "b0ded9e1-b593-4cd6-ba88-8079a453b844",
-                                  point_amount=5119.0,
-                                  bear_point_account="d1ba1d3b-1fdb-47ca-89e2-a6e51082e5ad",
-                                  point_expires_in_days=2943,
-                                  point_expires_at="2018-08-02T22:30:45.000000+09:00",
-                                  expires_at="2017-07-14T22:48:02.000000+09:00",
-                                  usage_limit=9589,
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=4490.0,
+                                  starts_at="2025-02-21T09:39:26.000000Z",
+                                  expires_at="2023-05-29T20:41:14.000000Z",
+                                  usage_limit=4243,
+                                  is_onetime=False,
+                                  description="qIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTI"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_check_24(self):
+        response = client.send(pp.CreateCheck(
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=8007.0,
+                                  point_expires_at="2020-09-18T19:22:00.000000Z",
+                                  starts_at="2022-01-12T07:20:55.000000Z",
+                                  expires_at="2022-04-24T08:52:17.000000Z",
+                                  usage_limit=4977,
+                                  is_onetime=False,
+                                  description="4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_check_25(self):
+        response = client.send(pp.CreateCheck(
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=3968.0,
+                                  point_expires_in_days=3689,
+                                  point_expires_at="2026-06-13T22:48:06.000000Z",
+                                  starts_at="2025-09-23T09:44:34.000000Z",
+                                  expires_at="2025-12-21T16:00:44.000000Z",
+                                  usage_limit=2605,
+                                  is_onetime=False,
+                                  description="Wf7Mk6qxlTgasH11ZahWwt0KCw4FDQO05qLTqGDbzQDuaFv4VsaDUMga8HPHLfj8VAxLQCn6DppPY7uZKs5wMf3MBYDCuF"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_check_26(self):
+        response = client.send(pp.CreateCheck(
+                                  "75875759-0587-4231-8463-92d7223b1d3f",
+                                  point_amount=3267.0,
+                                  bear_point_account="630f294d-4a84-4c8a-82fd-053da93a2c4f",
+                                  point_expires_in_days=2337,
+                                  point_expires_at="2021-12-02T10:33:24.000000Z",
+                                  starts_at="2024-01-19T02:35:12.000000Z",
+                                  expires_at="2023-10-21T04:43:56.000000Z",
+                                  usage_limit=1815,
                                   is_onetime=True,
-                                  description="wz6QVslbgmox4sylqaj0m4"
+                                  description="8MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFSWXNEvBDeb"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_check_0(self):
+        response = client.send(pp.GetCheck(
+                                  "b79e12a5-59d2-40cf-ab49-c0352b6f2a8b"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_0(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_1(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_2(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  bear_point_account="9338199c-6a7d-4db3-9596-49214a714c3c",
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_3(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  point_expires_in_days=7543,
+                                  bear_point_account="b3a15941-5b64-4d67-b2d7-b62cf2add97a",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_4(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  point_expires_at="2024-11-13T18:36:24.000000Z",
+                                  point_expires_in_days=5802,
+                                  bear_point_account="7cd04551-ad13-48be-a604-b282be1a6906",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_5(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  starts_at="2026-08-02T13:27:07.000000Z",
+                                  point_expires_at="2023-03-05T04:38:58.000000Z",
+                                  point_expires_in_days=7909,
+                                  bear_point_account="cb1862cb-b2ab-4e2a-9682-6be851efbe83",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_6(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  expires_at="2021-08-05T21:59:53.000000Z",
+                                  starts_at="2023-02-28T10:46:05.000000Z",
+                                  point_expires_at="2025-02-16T09:45:35.000000Z",
+                                  point_expires_in_days=6060,
+                                  bear_point_account="09567ac9-efe5-4be1-ac5d-7dfbe066e509",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_7(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  usage_limit=2140,
+                                  expires_at="2025-02-25T20:05:49.000000Z",
+                                  starts_at="2020-02-24T15:23:37.000000Z",
+                                  point_expires_at="2025-04-14T08:09:01.000000Z",
+                                  point_expires_in_days=4571,
+                                  bear_point_account="4c677e8c-b140-4ae9-a6a5-4c560cf02bc2",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_8(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  is_onetime=True,
+                                  usage_limit=8545,
+                                  expires_at="2026-04-13T18:16:19.000000Z",
+                                  starts_at="2022-07-03T08:06:41.000000Z",
+                                  point_expires_at="2025-03-07T03:35:34.000000Z",
+                                  point_expires_in_days=4183,
+                                  bear_point_account="fa06ce06-7cc5-4cf5-bd35-f5fd3dfd8e6a",
+                                  is_disabled=True
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_9(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  description="1IIKsQ450xUM6O5hfI4vi32RsgmtpDzruBR2bpCJbWCsF1XOMwOMfbCbRi8MeoObjQBbD5vivOmPF0WWyAe43BTjYiVtdGDmgs4Vk2VUx2tI5N4bIOpNt",
+                                  is_onetime=False,
+                                  usage_limit=4215,
+                                  expires_at="2024-12-07T15:47:41.000000Z",
+                                  starts_at="2021-07-26T12:08:50.000000Z",
+                                  point_expires_at="2021-05-05T23:07:04.000000Z",
+                                  point_expires_in_days=4227,
+                                  bear_point_account="d51d154a-d828-4d37-b492-c46147960346",
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_10(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  point_amount=591.0,
+                                  description="ZNR9womkOYYXss1h0acoAUmABE9DWtANH45sfx8Sg9q1O62IQSAJ63xgskw6yfFQPcXHRn98CcSXK5Zl",
+                                  is_onetime=False,
+                                  usage_limit=5840,
+                                  expires_at="2024-02-11T04:38:26.000000Z",
+                                  starts_at="2023-06-06T18:02:33.000000Z",
+                                  point_expires_at="2024-07-24T02:38:03.000000Z",
+                                  point_expires_in_days=1491,
+                                  bear_point_account="8f5a375c-d056-47b0-b8e2-2785cec1d9e4",
+                                  is_disabled=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_check_11(self):
+        response = client.send(pp.UpdateCheck(
+                                  "8cbd1889-3836-45b8-8efb-1a799f3cfdee",
+                                  money_amount=6082.0,
+                                  point_amount=6157.0,
+                                  description="EvdzHS5KI84n4B4JwtxMbsrynFzleqVzZvPQrwaZ5xfzumz05DAlrcpNez8TuusjLCXuqGq9aXt2RyxOmHZB8Yd9TYL0bkCAVqSRIdac4BtBwC2bbOKrqEvtHSmLf6gZqSXb2Lr55RtyiRtGJ1HUxolj1KPz6vAaVd6Sg4zOt2LPb0nLBvCfu5QWsdUnRrH9KHVuX",
+                                  is_onetime=True,
+                                  usage_limit=5088,
+                                  expires_at="2020-08-23T02:44:55.000000Z",
+                                  starts_at="2022-04-14T00:28:02.000000Z",
+                                  point_expires_at="2025-02-15T04:46:07.000000Z",
+                                  point_expires_in_days=2508,
+                                  bear_point_account="2eda5a83-88dc-42f4-a134-31bef34a5ddc",
+                                  is_disabled=True
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_cpm_token_0(self):
         response = client.send(pp.GetCpmToken(
-                                  "NHRO5ZxO4O3NjLEysHxuDJ"
+                                  "lw9lRVMCAhIxweHf4mhVFw"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_0(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_1(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52",
+                                  per_page=76
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_2(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52",
+                                  after="emCYd",
+                                  per_page=33
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_3(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52",
+                                  before="Ky6kNARZB",
+                                  after="0",
+                                  per_page=56
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_4(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52",
+                                  status="expired",
+                                  before="So7Ck5Gj",
+                                  after="L9QXL9sf",
+                                  per_page=83
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorizations_5(self):
+        response = client.send(pp.GetCvsAuthorizations(
+                                  "97080b35-75a6-4efb-a8b6-079e10576f52",
+                                  customer_id="6a9fffae-dca1-4fef-ab51-a2a62e381269",
+                                  status="canceled",
+                                  before="gJL",
+                                  after="s7NW",
+                                  per_page=95
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_0(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_1(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  freekey="9l1twQ5yfMr36GSBF53m0mp6Vm902998gKSlRVYmi3g9x6K6695nMt225FwYZn"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_2(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  memo3="V44vJ7PbIc8x2mqlwHAtI7SPFU47Tk05r8XQ63Pl8e6jQkHms039Evq1",
+                                  freekey="ZVQcH0w1N33FOG762B5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_3(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  memo2="NXRur8r2RE0n9712yDktOl",
+                                  memo3="EZVH",
+                                  freekey="1bn7a11dL7FcRCxuBiH2kLrjee4ei13GR1Ra4hrq"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_4(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  memo1="0Zv6MEIB507Y90PwCKK4LBPVz8gJNq1ZbxIh3UNkYTd0IiTkmOCEpZ371SJo8V2JetTNfSUHM3338k1e6",
+                                  memo2="ZHsA7",
+                                  memo3="58Wxt1bY1575Hw28TjMP1JWOz3Hawhhq9q8LJac8W55lnRjy8l4dAGi9qY5znJ5P9t2",
+                                  freekey="2nOPBZHuCvjPmlvS5mbNrA9M692EwSfXq6dx0OGf8ugYd2rTnC1Up1Fj4miq1bhLSu5KZQ7ubDvKrYJ2jvcK9e7be84Yo"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_5(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  topup_quota_id=6030,
+                                  memo1="4P662lF1RMT24f2W5M7sd0V90Va5IcSnfEWoG3TT0NbB",
+                                  memo2="T42tZ48HrbQRnSxo6P73QfkgVu0CDiY5YjP6PR1MDlVyY5xIC7b5F5",
+                                  memo3="9LYQ5Xw59qGNQkvy5C",
+                                  freekey="EaIQ0xOT615Y4uu7o12Na3K9CF2482nF4m2b7CR0RsZS6VU3pAPCU9t3VrCTa0CVjP2Yd4onyS0jh8FHkd361AV1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_6(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  description="2WPHw1UTjf1quigD2l2JnK33Y2PKk",
+                                  topup_quota_id=6254,
+                                  memo1="9JB8zXBagXoZ1gYcffaXF2xbgWgMpH",
+                                  memo2="3883n4LCa7rIWPinB5j4wA5bwjkIL7gOkuG4898e8dYCIK923mHW8M6",
+                                  memo3="IjMWKX7wQ938Uha7Ax8A",
+                                  freekey="raaDUv2874Ack9rZ261f7lWd63mMNtY54HZDwIs2TpRPkwhol05FDsK9z5Z0y6ptgU2"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cvs_authorization_7(self):
+        response = client.send(pp.CreateCvsAuthorization(
+                                  "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+                                  "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+                                  243792,
+                                  "other",
+                                  "Dg31",
+                                  "Umv",
+                                  "i1k0xZep",
+                                  receiver_user_id="2346511d-b54f-430f-8cf9-dfefde24362a",
+                                  description="lj4kfEe2uvMtiKxUivt9MIJ97msI3tB",
+                                  topup_quota_id=3614,
+                                  memo1="4W8npM84jc00khUz8eyDBG38Eff5fDifkJL05986tiQ1RZVz7uSQQe",
+                                  memo2="oggd9iEDf0LbSMkhM9bwkyfCEo27t0BghDGvNW61MIuZN37bnv813RSm4ouG",
+                                  memo3="8ZuiIEM9G32HsLfgYDsXr04Ee266d4g7P9370h9",
+                                  freekey=""
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_cancel_cvs_authorization_0(self):
+        response = client.send(pp.CancelCvsAuthorization(
+                                  "59b1d643-abd4-4449-af0c-aaa29d626ff5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cvs_authorization_0(self):
+        response = client.send(pp.GetCvsAuthorization(
+                                  "972a7718-71fc-4777-9b04-e0a1018d6670"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -979,226 +1628,238 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_transactions_1(self):
         response = client.send(pp.ListTransactions(
-                                  description="z86s8rMyDwBbVQMVNIv43CsGJ1N1Ty1LpoGWtPPIzjjzRC7Vh9LObliCnClJEf5Qg177zO5rb"
+                                  description="4PaSBE0QhobjzNQVW3hP"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_2(self):
         response = client.send(pp.ListTransactions(
                                   types=["cashback"],
-                                  description="EpgsB3u1k6p1M3AaDCD8U2M3hy0vfxtwSmqJp6yKARh5ZRW3Kxq9vutzMeQNTZUuVlFabCqRikwgbBJfMhTrHTPQaRFRzLrLpSH0GqkthOAKJR8VBFpRQxxKQe"
+                                  description="rN3Em7q1SjNjatjjDZX7RIKgDX3b9oA142xLkpis0qy5MfISyoLqEQKhMnAGBrL3KeptreugpuZPDhn3kvKQdinTisU7JGahMN0pspm5VBpWaMfH3OlTb5uoxVylmhf3ESdF0EHZGgpE19g89rUgV81h6fR4XXAReVSL8MjPf2nDJncUb"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_3(self):
         response = client.send(pp.ListTransactions(
                                   is_modified=True,
-                                  types=["expire"],
-                                  description="TlRS"
+                                  types=["topup"],
+                                  description="SFTkZLdy8B9WWqNrXVXI"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_4(self):
         response = client.send(pp.ListTransactions(
-                                  private_money_id="c58173e0-6c0a-4927-b350-ae7379973c89",
-                                  is_modified=False,
-                                  types=["expire", "payment", "cashback"],
-                                  description="FQKcrRJGtyzouTG0fNi1SBzVwDCpwO7mzwiIebwBbgsjluVjYrLryI60OsM6yKV"
+                                  private_money_id="fa31af8b-f231-46ad-b7d2-c42b9507b3a8",
+                                  is_modified=True,
+                                  types=["cashback"],
+                                  description="sahBGWwps3iARDJTRZkOOEQFC19Wtss23YjQBhHozeYJjV02y90GWowMI3ASCsApxBJptaJJRDQ6YTYkiFEIISp"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_5(self):
         response = client.send(pp.ListTransactions(
-                                  organization_code="NiR4y3oI6DDGG-8-2bm99nV4-6",
-                                  private_money_id="810867ad-d660-425c-8f8f-9b012eadea00",
+                                  organization_code="--O-4OAet-3-s-gSd",
+                                  private_money_id="152b45f3-0798-4c98-abe1-66f461698421",
                                   is_modified=True,
-                                  types=[],
-                                  description="uCdyUUls75UdwXdZijuTLMB27QQHu"
+                                  types=["exchange_outflow", "expire", "topup", "cashback"],
+                                  description="8TcT02JvhzyAvEGRwH1gqt79bzapcrIrLur4lrAgRY4qmYCDpX8Ny7Ex4zLyYmVuuwRZjnfSOf90ILh1FnEv5pCv1ztILSktq1cNxb1w0fAXCRcSE6z5QHSLVITcWyXkWwNeThLpK"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_6(self):
         response = client.send(pp.ListTransactions(
-                                  transaction_id="tN",
-                                  organization_code="s-8M6b-O--i----s",
-                                  private_money_id="539d3808-02e2-45ea-8fb7-13bb48fae77b",
-                                  is_modified=False,
-                                  types=["exchange_inflow", "topup", "expire", "exchange_outflow"],
-                                  description="N4lU5sMlhBuyia62bkzzlqIc0ydT6mqiA8RNdj3U"
+                                  transaction_id="I1N6RIMY7t",
+                                  organization_code="OK5-xZ8l",
+                                  private_money_id="deb64870-aa9f-4559-97d7-a423d0fbabc5",
+                                  is_modified=True,
+                                  types=["exchange_outflow", "exchange_inflow", "topup", "expire", "payment", "cashback"],
+                                  description="uyvbNkfkqdGOYba42tK1ETZVrimXQx2toEzw7Z1gM6fgx4uE"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_7(self):
         response = client.send(pp.ListTransactions(
-                                  terminal_id="803db879-0d54-4a71-8821-93559b8743f2",
-                                  transaction_id="wecpoFXApI",
-                                  organization_code="-3-5n-r--7-0B--g4l-p-2M-z2-s",
-                                  private_money_id="19ab3ea3-5c42-45bf-a247-5a075756b9a1",
-                                  is_modified=True,
-                                  types=[],
-                                  description="gB5z5qrK2mXuD0UWST9ldTa29xEBfE4jaoCgaw81ksIPXpJoHnKZwzgtMuSjmXprQOJIDMtkxUA3CwMowYwsohy6o54EyGXhKAybq9is4L00eclCf6ygQgmzcLUKbT5feGtXeOgCjHXo5HdhOmdyoXuDdYfk0Kl5lQobWMeUr"
+                                  terminal_id="31e5709f-d228-486a-86f9-5ec90473783f",
+                                  transaction_id="UvTVKqm",
+                                  organization_code="3L-n4O51QOwj3b--1NCX1te51",
+                                  private_money_id="56e3efe4-b3c8-4779-9af0-d92df66ca93a",
+                                  is_modified=False,
+                                  types=["cashback", "expire", "exchange_outflow"],
+                                  description="KXyywxfAsvQQw8eNXwtPfKAW4UwDxtqXzHNdytk1inQrWiktMK0FHLyLnv"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_8(self):
         response = client.send(pp.ListTransactions(
-                                  customer_name="TL0yrW2IFnoVrabBtuZMnnkajdAwZKazac8bckasxqrpu0M7pIUsW64iTD7n",
-                                  terminal_id="77ac2164-1439-446f-a917-f2119a3bc5b4",
-                                  transaction_id="jTu3F",
-                                  organization_code="M0f6g9mH",
-                                  private_money_id="8c761014-fa19-4562-b6ca-ec6a513b12c1",
+                                  customer_name="zTdFf0Y1JODoBhEEJFs7RURiJHf6mnglgKA3t551AWYy2EKxgIvudVQKM3ivlyVYA6fe68jtm2G7nC3SW8MPeFKTYT7eEYLwvHQFKDImV0W8uMWRziTXMumFeaEHdh8PePoMZwnAEmuUL6pb761IWS7zT3jmF3XMzgKDKO5o6UqQsbMF41dYUnemzRdROKbGph7rDrumGN6tQ3vZwFKRF7w7plclc",
+                                  terminal_id="5453c93d-a357-4c1e-823f-1539a73224e2",
+                                  transaction_id="R",
+                                  organization_code="--lO6AAM9WXv2-2F-",
+                                  private_money_id="270cde38-f943-4db6-b82f-e2670781f93a",
                                   is_modified=False,
-                                  types=[],
-                                  description="HzepSQlFXs1g1p8h9cEw94TVm3QEXbRfQ4MBKBqC3S2iDFnRE3SwskPWs7mGvsLBFz2ikalm5QIcpZb2q5YnZ6axCoTTIbjOEPBaRli2lUAMJ7CyG5TMfzsA0CzHGei6FNa5iNHS8ae3s1VgKjc7Q8j7Z0S"
+                                  types=["cashback"],
+                                  description="h3hboA1VaXQqYz47H8v5OYX2Bb7kgjpYtpWxkJ26TN1VktFjJy7P4SbKkoz4u4vqNtkYjPXUyJ1V0r5CHRNT2ecfLdc33OS"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_9(self):
         response = client.send(pp.ListTransactions(
-                                  customer_id="bbb9b557-aa05-42df-8d3f-53cca7d69395",
-                                  customer_name="nzw7xhca7VuCPQn3tgDKKsPg1tK8tF9sjwQnBp1nMIeAnY6Xeri5tCJDZsGcVm09iZYX0jHs0ds3Y41lK02B8JXAbkOFKSHaiDX11U4V4mzkiQ9KgdufJCOqQoqEQic9b7rjANNhMIW5uX0nomeRn6xi8YDAJH7HJXNF3Oy8VhKyGvyermibojKhVPIvz1I1HvcbolySSXeAcLtwR",
-                                  terminal_id="f8abfb31-45b1-413a-a4f8-7c0bcaa3c7c4",
-                                  transaction_id="AJrx0pv",
-                                  organization_code="L2-kAk10H",
-                                  private_money_id="e428bf44-d697-4b39-9345-02bb98291d91",
+                                  customer_id="f9e59ca3-ea07-4ffc-ae39-f434929e27f7",
+                                  customer_name="SCBGnb27KI1Ko9Ro9P2UOPHKcZd7kJ0a09BOfpTrIxahzBDxgf0eAPjokEVHRFLghiMn2sJjV2bGnLruRc9c27Gpu7iWb08UbIXfazIWogjdxJNEfM7ZphEzx62f8FNzaDel7ro4JT6XY3Y33ek4ahxmsrZJPb5B1K9ZLJjlQzrcG4cFx990D5go4dBLdUCSZVd4cTqnNfSRiXLw6IXxof4N3bX72yEerLNEKMYsRf9vriYiP",
+                                  terminal_id="6a46b87b-8d00-46a9-bab8-68c8d99fde8a",
+                                  transaction_id="tLKgF",
+                                  organization_code="vMtR-RLce6L-6-v-3c-9W--",
+                                  private_money_id="cf33862f-69d2-4c7c-890e-c333c1d684ea",
                                   is_modified=False,
-                                  types=["expire", "cashback", "exchange_outflow", "payment", "exchange_inflow", "topup"],
-                                  description="oiZ9sjCAHNKHbkDV7xD9UgYkUYCn38T5jddnt"
+                                  types=["topup"],
+                                  description="cL7edhmrVi5NIsblUeDquiQL8YRreNoLAWMJdywYSICtYcbHl2"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_10(self):
         response = client.send(pp.ListTransactions(
-                                  shop_id="565d6596-9682-4c21-8cfc-05fdab2294df",
-                                  customer_id="336ec650-2cb9-4f90-abc0-a2fc4ae562f7",
-                                  customer_name="vyYD1qoSVwF6tpYAPGi6YnBQDM8MlLw6WNmhQ1XbNNNiRTERN1SPoqCbHjtLPWoEeyLYkaItEzRnlzKYkySdT2Gi04uqdwqTzZvD1PwMG5sUToLzAoDfdSJfprAXytppmaGjNfTvZeWlNcmFKOSukr",
-                                  terminal_id="3c8bd2dc-622f-46d0-b0e1-b4539f4ca774",
-                                  transaction_id="C08Ccb",
-                                  organization_code="-F-0F-30--u8E-UjA1yE-86h-",
-                                  private_money_id="53bd51c1-5eed-4b95-8af9-31db853099f5",
-                                  is_modified=True,
-                                  types=[],
-                                  description="v51Dnx9WEjtPQeVvIzNJybaWd5nDKgnWgGOF388caTufq1V8gMtPEUm5qxAkXQdgmA6Ox4Cr60"
+                                  shop_id="2700952d-ed8e-486b-b4c6-36bcf722b85c",
+                                  customer_id="0340f631-b219-4136-a770-e761867fd990",
+                                  customer_name="4attROZcBbejZS9wdnnNKINI7vj8qEDPsdJ8JkL6K4fbUtzmymsdzvhUXmrc210VozYCz4wR9Gfv1ooHMcqzJF0zVNZ8zHF5mnetJol0g7uhhZVwBBSB9NQuG198o4cE8ye8xiCptr8X3OQSs9cvMVMzYpfEHHq4AVCPhpFJVl2NE9OohrFLhv",
+                                  terminal_id="98c433a3-2bc1-4942-b41b-04b9af0b6691",
+                                  transaction_id="Yje",
+                                  organization_code="338M6m301U-",
+                                  private_money_id="d4379d4b-5051-4efb-99e1-9a4cc50d7074",
+                                  is_modified=False,
+                                  types=["cashback"],
+                                  description="Mao0iMx72McbAtuQfbwPK5Ol2Udeu5ClBnNsqGtwvAjO8SQrjpTlUKU7ix6vD3BTnNcaIv4Cy2qiGNeSDJueWNAF2iLhkB08mWoSEw4Yfnz5e3bjXKldANGzSZe49qKV1rholLnfHAgpNJKDDEjuzSmETPUL6TDRxNmjKWPDEzen9VEh9J"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_11(self):
         response = client.send(pp.ListTransactions(
-                                  per_page=2636,
-                                  shop_id="b460e2fc-852f-4293-bf34-3934c1710ae1",
-                                  customer_id="6712c23b-2383-4130-b136-f2dfc8722833",
-                                  customer_name="ByMdg32LG1oWyluqXLUpztzpGIdluCdFeopAnKzAxtAmMd124CMe44VQ69lqvNuxrP4SroQtmwf2SR0athJ6w5HZkze23HnekgXpUMEHxZW0",
-                                  terminal_id="b235fe8f-b71b-42d4-8063-7f367e7f6c65",
-                                  transaction_id="IuVp5e",
-                                  organization_code="-F5d118kJX-",
-                                  private_money_id="aa60ac47-38c9-4730-a4af-9fb95d54910c",
-                                  is_modified=False,
-                                  types=["topup", "cashback", "expire", "exchange_outflow"],
-                                  description="7shqF2iDJgp3ZW8SpDn16YEfYX3JUUHHD0kbha6rpojFdIy8Lev3F8En8X"
+                                  per_page=6014,
+                                  shop_id="c9921b2f-57f7-4388-a17c-62ba9a51e4d5",
+                                  customer_id="12532a6c-a77a-4c73-98f8-8c625f4b2203",
+                                  customer_name="9tQKSZdMATJHlP3s2aiyvcn732KUYpvpwWJTv2DUcmsWBTf3SfgLVNlOhNoRUioebBno3HZhnyNZ5Q77U04aLs4hmy4C28WnCRfz2leovb1R7O6QOgboW2zpcaLxa2QZma6CRo8nyJO9Y3f9djMgk8QSZwJ1udEIb7zDJ6KZTEk0mDRGqd8jGihF2zo2GN3QYDG6CZS1PVe5LZzi2NmWBluHrzflOytNd3ROmH9nMfAHnX3LOs6P3dxLhDjrt4CF",
+                                  terminal_id="147b01bc-2fc5-4e7c-9e16-f45300e56d57",
+                                  transaction_id="nPC",
+                                  organization_code="13u2J-z-w1lK",
+                                  private_money_id="6b23a142-cc52-405a-9bed-a051237f3f7b",
+                                  is_modified=True,
+                                  types=["cashback", "exchange_inflow"],
+                                  description="gzecqWdDVSstoEtPVo"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_12(self):
         response = client.send(pp.ListTransactions(
-                                  page=3176,
-                                  per_page=4306,
-                                  shop_id="79be3681-7943-4470-b510-00d67b659019",
-                                  customer_id="0f782632-14e9-479d-a4b4-69bf7fe3967a",
-                                  customer_name="Rrop8yq1iTaMXh9J32aBIrleFDh2AVDnVQPI4cS2rMsWBfreBRQpW9vUd58fde96uK1qpkeDgc6H",
-                                  terminal_id="c303d83d-be81-47e2-9b9e-7b6f388b2233",
-                                  transaction_id="o2wSmfRoo",
-                                  organization_code="l-y0-M-fT9--rXh",
-                                  private_money_id="d1d72603-12a8-4e82-8fd9-317085218001",
+                                  page=236,
+                                  per_page=7779,
+                                  shop_id="772baf74-c9c1-48bf-842d-2f0288789b81",
+                                  customer_id="80e85836-989d-4309-ac37-2b577450b440",
+                                  customer_name="ayqQLAKXyhWYdlIHfSBBKI1KQl4cK6HLesoN7AsxjaX4bkzoW5SSzFCKjOEE829PJZq44v95w5OTBAsM3ixdWcd35lzGg9k8zX5Zx6rdzZ6Kiw60EKpO7FL05ARSiRG2UPRPUxcw9rvtxOfCP20hUm1E2Nlz5V1CO5TSFyNtopqI6bCrDgQTiBz8hopleWuv10dzq",
+                                  terminal_id="1bca217e-629a-4283-911d-00be90c727fe",
+                                  transaction_id="mxXKu",
+                                  organization_code="j1-4OzW-2v--3A1U",
+                                  private_money_id="5d254159-6728-4b16-82ca-b055184311a7",
                                   is_modified=False,
-                                  types=["expire", "topup", "exchange_inflow", "cashback"],
-                                  description="Qy1efJIm6p2nFeDatBkmxJUfJ8iWJ5x76ilzTFGw7NqxtlVIVfYnX2Qn7EnOChsUwktnh8VjRFve7MdNMBgFvJyEEmkecVySQ3ucJUKFqVhyrEcw3WNc5IXHiI2Hhl1OjgN6fFukYqihBSq8D0896GNWlaYQ8akcWxDZkhO"
+                                  types=["topup", "expire", "payment", "exchange_outflow", "exchange_inflow"],
+                                  description="d9Vw0ghvUwHY4GPMgqa4p3NBV6jn"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_13(self):
         response = client.send(pp.ListTransactions(
-                                  to="2017-06-15T20:11:56.000000+09:00",
-                                  page=2800,
-                                  per_page=6267,
-                                  shop_id="3f07546b-e020-4dfa-91aa-75176d0dfc65",
-                                  customer_id="fd14dc73-60f8-42b2-ad8c-c0ee944b4d65",
-                                  customer_name="2LIVGGp8Vx16M91diHUGfol8Mhj42rW4z5Wjzvhmx48Q4mMZZBBUosSdONTSqEGwk1DyPJJ9VhetNR8hTecHZnx73cRhZIXdPCHq2mv2UAXA",
-                                  terminal_id="2506d490-38f4-4fba-b13d-dd72ed30a710",
-                                  transaction_id="kbL0z4gSPz",
-                                  organization_code="--9-5jKh-66tZieYA7-E",
-                                  private_money_id="3f07627c-77ba-473d-8747-2571b3e7f3e5",
-                                  is_modified=False,
-                                  types=["exchange_outflow", "cashback", "expire", "topup"],
-                                  description="DzJGZ9TM0TySjAlV"
+                                  to="2023-02-19T02:06:50.000000Z",
+                                  page=1350,
+                                  per_page=393,
+                                  shop_id="0740d26d-314e-40e0-a92e-e5aecedb846e",
+                                  customer_id="2eb7b49f-ffed-4618-99fc-e4e0ce656897",
+                                  customer_name="BAkC",
+                                  terminal_id="447b7bfd-0ed1-4ba6-acd7-c8f1fa972a02",
+                                  transaction_id="4Vgta",
+                                  organization_code="5Er4-1t-M-9-Zk--W-8E",
+                                  private_money_id="a77996d1-0834-4e84-9e91-3d7f0b186dd4",
+                                  is_modified=True,
+                                  types=["exchange_inflow", "payment"],
+                                  description="XbFiutZ4wFjGxBLsRpox6uXLc6he8Kxv6FPaZ8I6Axiy"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_14(self):
         response = client.send(pp.ListTransactions(
-                                  start="2022-08-21T05:02:04.000000+09:00",
-                                  to="2023-08-22T00:59:39.000000+09:00",
-                                  page=7332,
-                                  per_page=726,
-                                  shop_id="bbfaa117-03a9-4fa4-8e3c-44e4ca9e2e88",
-                                  customer_id="dfffc54f-10a5-4bc3-888e-a5167f459165",
-                                  customer_name="kFyfPkq8IYlCnIEfVjyhIzvswfx06lwewFlBxBPgZymInLxkpSlp0CcXJpCFZzCR1WWP7a67366cHWhkYkA6trhbS9trPinjNzKWZdpxUSeeatx6TLoIfkctcu",
-                                  terminal_id="8435a804-3c3d-4433-85d4-18eba3009519",
-                                  transaction_id="D",
-                                  organization_code="-4--jJ-64eW6-Tp-m-V0HjUu9-",
-                                  private_money_id="95c84b40-9503-4a9a-bdf4-ff2d34fc2643",
-                                  is_modified=False,
-                                  types=["expire", "topup", "exchange_outflow", "exchange_inflow"],
-                                  description="C2YnEIi9qrFhHU4UChBktVJM6Ehoat5RskjtjMRgfY9KAojiVjkW"
+                                  start="2023-12-24T11:02:19.000000Z",
+                                  to="2026-03-14T01:44:02.000000Z",
+                                  page=8022,
+                                  per_page=1771,
+                                  shop_id="cc647fdf-b0ee-4732-9f26-0c4a0e1903db",
+                                  customer_id="e3804abc-97ec-475b-8dd3-f714e7c471bc",
+                                  customer_name="6V8dRYSFDiggsas4Nm4Pbqn0MLycuAIyd8Tc91YrDumA0BEPaxu5hz8quH88gYqQC45YQseyms9QyHVorEq6zLZyg3cEPs9bN7e1DJRmWCvXV5f7NFxRTTWOKh4cp2t8rtdj0F82hhuu2d72PSRBNNGTP71wcJLJGkIvTZnRNAv7oeQjUez1G0bwCFurxmaLHHuXDOcuycPW2WYY40",
+                                  terminal_id="d14aa826-9ee0-4279-975a-4398e8e4c6be",
+                                  transaction_id="9ZjHK",
+                                  organization_code="2gJ6nU-9-pi-",
+                                  private_money_id="41997604-eed6-41e3-b075-41a228ab1219",
+                                  is_modified=True,
+                                  types=["topup", "expire", "payment", "exchange_outflow", "exchange_inflow", "cashback"],
+                                  description="sbYKCNybmAlkaNJiOvuRswwQSmiJco3KwhjqpMqyENnnotJKNM2D"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transaction_0(self):
         response = client.send(pp.CreateTransaction(
-                                  "cb1374c7-08da-4914-8de6-4184771c3f04",
-                                  "15918858-c262-4fe8-871c-821841c6becf",
-                                  "79ccd9de-1646-4976-8e8b-75d9511ffeb5"
+                                  "12d3dc8a-4aab-45f6-bcd1-828bc24caba8",
+                                  "9a665627-9c18-4e05-9375-102d7c8ec127",
+                                  "4bf87b87-813f-4899-9c2e-4a88dfcb9d87"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transaction_1(self):
         response = client.send(pp.CreateTransaction(
-                                  "cb1374c7-08da-4914-8de6-4184771c3f04",
-                                  "15918858-c262-4fe8-871c-821841c6becf",
-                                  "79ccd9de-1646-4976-8e8b-75d9511ffeb5",
-                                  description="OwkPTEUz8oSFQeGoSG3k81y4L7o3GM3UKBXMJoycpsy4LyLZFxRuuFLA4Ui8k1KypnJ8Uw7M1CvtXboHcAQ9ViIsvWqws3eBMzyIUtiNxNhmRynGWfznERPtN3LViJS1dpiuu6JWeysJ5UR27acols8OLFNhYvqrdgeoTKVw3QKHsut3xFubIL"
+                                  "12d3dc8a-4aab-45f6-bcd1-828bc24caba8",
+                                  "9a665627-9c18-4e05-9375-102d7c8ec127",
+                                  "4bf87b87-813f-4899-9c2e-4a88dfcb9d87",
+                                  description="6FE8juzeNINZktFZU0JpHpSrpNbF8O3WzYFSGY9bWV5jbNBEz"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transaction_2(self):
         response = client.send(pp.CreateTransaction(
-                                  "cb1374c7-08da-4914-8de6-4184771c3f04",
-                                  "15918858-c262-4fe8-871c-821841c6becf",
-                                  "79ccd9de-1646-4976-8e8b-75d9511ffeb5",
-                                  point_expires_at="2024-11-07T12:20:55.000000+09:00",
-                                  description="ZVISKCKpUoBc7VjLNhPbQNBNhem"
+                                  "12d3dc8a-4aab-45f6-bcd1-828bc24caba8",
+                                  "9a665627-9c18-4e05-9375-102d7c8ec127",
+                                  "4bf87b87-813f-4899-9c2e-4a88dfcb9d87",
+                                  point_expires_at="2026-08-29T01:38:03.000000Z",
+                                  description="4f9BIpTXI2luGWaGy1CoCYoYmaLr1BLYdgsrsB7nf3z7z76OYqLZhd2VmnwZ1YQAtf2GPfHYeeJWiJLn1TOWVNqKCYgaN6maSZWJn127yVjYZzSkjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5ck8HRSP5FHw4UX4tGWi4N1WpwhPz"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transaction_3(self):
         response = client.send(pp.CreateTransaction(
-                                  "cb1374c7-08da-4914-8de6-4184771c3f04",
-                                  "15918858-c262-4fe8-871c-821841c6becf",
-                                  "79ccd9de-1646-4976-8e8b-75d9511ffeb5",
-                                  point_amount=6017,
-                                  point_expires_at="2021-07-11T10:11:12.000000+09:00",
-                                  description="jnuLcC94xG8sb1tOVm7p5XAwHfSXk3eOR6TecHTnhwvZsEsT85OfQ8lzdmqxGSg8e3RhOb5BMcQPLOIjmc8VMDMHWqGdZh4akYykFCJxLZHGXI2AIAE56GVf0Gw7"
+                                  "12d3dc8a-4aab-45f6-bcd1-828bc24caba8",
+                                  "9a665627-9c18-4e05-9375-102d7c8ec127",
+                                  "4bf87b87-813f-4899-9c2e-4a88dfcb9d87",
+                                  point_amount=4872,
+                                  point_expires_at="2020-12-27T02:30:52.000000Z",
+                                  description="De8V1DYdcKn6nAl4cEX71br7jv7EDkwXN76HyKk1SGbd2fzw9nBiKXYeHN7C4dOhcXyEVzhZku2OJwUM0ktk1yse4CdNhZgpKbkXWC5tLFNUhqVPCyC44juCu9OYkti8QhcNElbkx"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transaction_4(self):
         response = client.send(pp.CreateTransaction(
-                                  "cb1374c7-08da-4914-8de6-4184771c3f04",
-                                  "15918858-c262-4fe8-871c-821841c6becf",
-                                  "79ccd9de-1646-4976-8e8b-75d9511ffeb5",
-                                  money_amount=8299,
-                                  point_amount=2285,
-                                  point_expires_at="2019-11-05T17:34:47.000000+09:00",
-                                  description="NPt7OvjdgkL3FTfLMcm3icBM39ZlgHnODxDuHCOV9jJuZqWToSer58JP7CddvYZG2P4sGsjZKQxe7fKpax0Uc45ft1nisEBoOyK7IWRvWeQ7"
+                                  "12d3dc8a-4aab-45f6-bcd1-828bc24caba8",
+                                  "9a665627-9c18-4e05-9375-102d7c8ec127",
+                                  "4bf87b87-813f-4899-9c2e-4a88dfcb9d87",
+                                  money_amount=1867,
+                                  point_amount=3511,
+                                  point_expires_at="2020-06-21T06:30:07.000000Z",
+                                  description="potaJBLyz8KN17fLxPU1GvU5oJnH6hOfBgmDSuxOmphkziTG6p4HsLeIcNrFvlQBIX1JBgnrD1yLFlL5kbgs6xUgxf5sOofYseOtl3ilNOPpyI"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_transaction_group_0(self):
+        response = client.send(pp.CreateTransactionGroup(
+                                  "VjtUkLTSkOKux630Id9YuKsTGECVvJsAnqjel2la3rWWdK2ybDtXJiikZzBktm"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_show_transaction_group_0(self):
+        response = client.send(pp.ShowTransactionGroup(
+                                  "86c483c0-73b9-41b8-b3eb-e27337284bc4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -1209,920 +1870,1287 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_transactions_v2_1(self):
         response = client.send(pp.ListTransactionsV2(
-                                  per_page=728
+                                  per_page=101
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_2(self):
         response = client.send(pp.ListTransactionsV2(
-                                  prev_page_cursor_id="9de12471-99ca-4b77-9813-2bfcca47c9ff",
-                                  per_page=516
+                                  prev_page_cursor_id="3863fc4b-8a2b-46e6-a243-81904003f8a8",
+                                  per_page=570
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_3(self):
         response = client.send(pp.ListTransactionsV2(
-                                  next_page_cursor_id="22ec9ab3-265e-40a5-8442-7863a71151f2",
-                                  prev_page_cursor_id="3ce137c1-2c06-471a-b0da-4aca6ffb016d",
-                                  per_page=336
+                                  next_page_cursor_id="e588ab2f-8436-4a44-805f-692953d53a8f",
+                                  prev_page_cursor_id="574e457c-ea1d-4c5c-823f-aaa56bbefccd",
+                                  per_page=393
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_4(self):
         response = client.send(pp.ListTransactionsV2(
-                                  to="2022-08-30T12:31:46.000000+09:00",
-                                  next_page_cursor_id="db90af9f-6e3e-4355-8d6e-40e6176c6b1a",
-                                  prev_page_cursor_id="2ffaad79-6d64-45aa-8a44-be69bf94ef44",
-                                  per_page=521
+                                  to="2023-03-10T09:35:50.000000Z",
+                                  next_page_cursor_id="d85a6380-47f5-49c3-b01c-7fd1361edf54",
+                                  prev_page_cursor_id="bd7f365f-0f0e-4de6-bca2-23179fcf2d40",
+                                  per_page=633
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_5(self):
         response = client.send(pp.ListTransactionsV2(
-                                  start="2016-07-21T22:31:11.000000+09:00",
-                                  to="2021-02-28T12:59:09.000000+09:00",
-                                  next_page_cursor_id="1dc97a39-0a28-440b-a504-36765ac3bb9e",
-                                  prev_page_cursor_id="df2b38e6-1fc4-4b7c-b1ab-9b0a2612f150",
-                                  per_page=268
+                                  start="2022-09-21T05:00:50.000000Z",
+                                  to="2026-01-23T05:14:32.000000Z",
+                                  next_page_cursor_id="10b6a96c-a5b2-45bb-9a9a-9a5a842f42a0",
+                                  prev_page_cursor_id="6915cc42-07bc-496a-9979-aa3fc57b1ed1",
+                                  per_page=398
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_6(self):
         response = client.send(pp.ListTransactionsV2(
-                                  types=["exchange_outflow", "topup", "payment"],
-                                  start="2016-01-01T04:27:16.000000+09:00",
-                                  to="2022-02-25T22:31:49.000000+09:00",
-                                  next_page_cursor_id="090174f5-5769-4e0b-832e-ba49023d62ae",
-                                  prev_page_cursor_id="139de550-9f78-44af-87d8-9991a48220cc",
-                                  per_page=647
+                                  types=["payment", "topup"],
+                                  start="2025-01-09T02:10:51.000000Z",
+                                  to="2021-02-22T23:16:09.000000Z",
+                                  next_page_cursor_id="c4a0fd3f-764b-4d68-9946-4ef2a11efaeb",
+                                  prev_page_cursor_id="3466ae8c-9df8-4c3b-8318-69a59870d221",
+                                  per_page=362
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_7(self):
         response = client.send(pp.ListTransactionsV2(
                                   is_modified=True,
-                                  types=["topup", "expire"],
-                                  start="2024-06-24T22:54:19.000000+09:00",
-                                  to="2022-01-09T17:10:32.000000+09:00",
-                                  next_page_cursor_id="abfad28a-2261-4770-bb9f-eadaeb23d234",
-                                  prev_page_cursor_id="35e21334-fb29-4919-b760-396ad97efee5",
-                                  per_page=736
+                                  types=["exchange_outflow", "topup"],
+                                  start="2022-02-11T11:06:12.000000Z",
+                                  to="2023-09-24T22:05:24.000000Z",
+                                  next_page_cursor_id="895588b6-bec6-4b46-aafa-663143f9ab99",
+                                  prev_page_cursor_id="15fa3f5e-f677-4b2e-8a8a-02ee35c1a517",
+                                  per_page=276
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_8(self):
         response = client.send(pp.ListTransactionsV2(
-                                  transaction_id="Leg5dXf",
+                                  transaction_id="IRjO9M",
                                   is_modified=True,
-                                  types=[],
-                                  start="2021-08-22T00:03:33.000000+09:00",
-                                  to="2020-05-09T09:50:53.000000+09:00",
-                                  next_page_cursor_id="59d05ac4-417f-4c10-8d1f-fd95efe040e4",
-                                  prev_page_cursor_id="10b62b00-d792-47e2-b891-c453cf6b7021",
-                                  per_page=746
+                                  types=["cashback", "expire", "payment"],
+                                  start="2025-10-11T10:31:28.000000Z",
+                                  to="2026-01-12T09:51:00.000000Z",
+                                  next_page_cursor_id="8c503c1e-f1ca-487d-ae8d-8463d344c02c",
+                                  prev_page_cursor_id="c862fa00-5ec8-4e7b-8c7f-41c201a75fc3",
+                                  per_page=405
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_9(self):
         response = client.send(pp.ListTransactionsV2(
-                                  description="dHtUdWqjwNZ6SqXcjRYXWjjppT0r9xvCuvBOfsidrDI9VlsfxLxW5axZvNGABU1Kq4dKF1bCFldqrEeXCX83UsZSPbix6b1Za3ly7V",
-                                  transaction_id="1xEB",
-                                  is_modified=True,
-                                  types=["topup", "cashback", "exchange_outflow", "exchange_inflow", "payment"],
-                                  start="2019-04-19T17:54:35.000000+09:00",
-                                  to="2024-12-02T09:54:02.000000+09:00",
-                                  next_page_cursor_id="6e975fc1-ef3d-43c2-a37a-2612a0ea96b8",
-                                  prev_page_cursor_id="ac5c6261-5ad1-4e56-9134-810abdf9f8b6",
-                                  per_page=717
+                                  description="R1qP1zId4mLJ",
+                                  transaction_id="zHpO",
+                                  is_modified=False,
+                                  types=["expire", "cashback"],
+                                  start="2024-04-09T08:40:19.000000Z",
+                                  to="2025-12-26T13:42:20.000000Z",
+                                  next_page_cursor_id="39f8bd08-13bf-42ad-9706-f98f3b1df25e",
+                                  prev_page_cursor_id="6fddd6a3-0d49-4f00-9d38-652825844245",
+                                  per_page=77
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_10(self):
         response = client.send(pp.ListTransactionsV2(
-                                  customer_name="RceMuSvImdDq9y3aEus7kZPbP6pY7uTyJAbvra0dcpr2XBaxBtLUqtpR4s1JU0lVQ2OypewcGn6EYrIoiJUtnz4tPDjzGeH1vMI9teS2D85S1UHA16vfzALVhDfz",
-                                  description="Jqhsy99eYUXwCEgrx3b6fZBGl5iNgWbOvie519sB5ATfDwJwr3eQ20YGcyYu0bMGv3vztYfqlxsbOENjEAJX3lDTAofzZK4Rxx8sLYfBb6BjvrBrNNM0rEDhKG45tzzgCXrxrouPH3h",
-                                  transaction_id="I04AO4rgT",
+                                  customer_name="JwRA62Ghe0ne6pcNR1V7JprfFD47gNL9WM6cSeojzOZZrLxO3x6r1ViuOnspa8l8OxqMpLrB8ZQmhXHGSVgVcs3OQMdHqZLlv01wGqOn2jIsFsWbo7",
+                                  description="pQq9anT6PszkN335U1t4DYsuiE88p3Hog0k8dxuKgCFI0Qv1brn8ATMTNMMEyVApkaDeYuOtBoCZgc4gwc8RSE7B5wsqfAkho5y",
+                                  transaction_id="EQGpb9",
                                   is_modified=True,
-                                  types=["expire", "exchange_outflow", "payment", "cashback"],
-                                  start="2024-07-26T20:01:43.000000+09:00",
-                                  to="2020-08-20T21:42:17.000000+09:00",
-                                  next_page_cursor_id="941ef2f1-9cea-47bd-87fb-4acc6bcb1c50",
-                                  prev_page_cursor_id="1dde2b95-6a30-4fc4-82d5-0387e9a02e6e",
-                                  per_page=456
+                                  types=["expire", "exchange_outflow", "exchange_inflow", "payment"],
+                                  start="2022-07-05T03:00:37.000000Z",
+                                  to="2020-08-25T12:08:17.000000Z",
+                                  next_page_cursor_id="58848055-12ea-45d7-8d90-0d052e4825d5",
+                                  prev_page_cursor_id="44dcc65d-19f9-4f77-b9b7-58c8ebef4b94",
+                                  per_page=438
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_11(self):
         response = client.send(pp.ListTransactionsV2(
-                                  customer_id="01138506-06f8-4697-973a-73c5b9fe2fec",
-                                  customer_name="SvEGfkoczpVf2XfhCesDbLNG0um3YX4ee6SkSSSI0RCCs8xN6z62EIsVi251R9OVM6dJXfTSVkQAgLF0UCGkzWfvHQLNpl08",
-                                  description="kirPvpqWe6LFMxqHgshQQxZyXH54xcjjzE4jf3bC1uhrBdvXqhm8jwzIEhcNYML2OSzpp2xgjGNFVHJxj8ajHmdLScmLSMjxtIdUuX8NpagwVisjQjWa0Ga7Mr0",
-                                  transaction_id="bte93",
-                                  is_modified=False,
-                                  types=[],
-                                  start="2023-12-05T01:05:41.000000+09:00",
-                                  to="2025-07-15T18:47:09.000000+09:00",
-                                  next_page_cursor_id="5112bfed-8bbd-45ba-8f09-c7c5be7e3368",
-                                  prev_page_cursor_id="d93f74d8-963f-426e-8ef9-8a3e8a658155",
-                                  per_page=930
+                                  customer_id="34abc457-5317-4c69-b02c-9b05e91bdea2",
+                                  customer_name="UlM5hWRopq8fm3QjwrUJDS6QIEgbGEOQG1PZp7fjd91zgh1RHHtL55R7YEprCJ0U4QnLZWmGvTqLQwaZ9vOnv67spoRoPKUgWvYVa3Gv9xbfzvgScohGvfvszFZKZ0fsirdyb8N5",
+                                  description="N4uLXeppDXZ9aq2pYugtiiL7qWoYElTKm",
+                                  transaction_id="ZkE",
+                                  is_modified=True,
+                                  types=["exchange_outflow", "cashback", "topup", "payment"],
+                                  start="2023-06-22T21:43:18.000000Z",
+                                  to="2023-06-28T11:52:41.000000Z",
+                                  next_page_cursor_id="f77b1237-364f-46cb-9561-7aa90abc11b8",
+                                  prev_page_cursor_id="0c63b402-ca2a-49fd-948e-5619d24237ce",
+                                  per_page=102
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_12(self):
         response = client.send(pp.ListTransactionsV2(
-                                  terminal_id="6877d983-9c44-4572-b38c-f2b0646ed5d9",
-                                  customer_id="150bea29-3953-4b8a-9408-acf986e34ee0",
-                                  customer_name="NNnFCcwr1avxToYBT4VEV6evoILJv7tTWIqRKgT33Bi9tzz6Ttxk7d6FPiA0lsYPm9uy3bOLitkN0",
-                                  description="KHj5fbn2v2B0UJuNrXCxgjdk6CWOkAWhJ0Lot3",
-                                  transaction_id="toFslAl38",
+                                  terminal_id="c557cf45-6aa9-4d6e-8634-35fd32559731",
+                                  customer_id="87ecba6f-8917-4155-8d57-5c5e4999577d",
+                                  customer_name="j1sxtSyQgT1GkRhboXHY39x3Xs6KbKOjUQYLsphxNcJXceDU70KRGU02ETtMe3p5BruF5QOJx8zwWTQtwhgEUQrpqVtFI20RqU84wWVej7KjR7PO79YOuc2btzI2HvKaIy1dRKuzOlLMmdBSZr220xtZpZdQ9ssluYJHAlylPpV6xWxt7f2oLFlgp2lLhVbHghg4lZSVxXqYiDQPFv2",
+                                  description="mI4PlPvyiodipyOhBLvJd18F7msVClYIZ6Bq4ZCm153pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtFF9xx8GHcZXN3Xa70o7nFXURkjCcagg1x0DCy4shXKR7nTWCyIt3Gr6ubUQRiycmsaOa8T2aG0PP6tnqHnuoUILOizvfJbTrh0kbVP56HQVtzlq6MKoBe",
+                                  transaction_id="SZG",
                                   is_modified=True,
-                                  types=["exchange_inflow", "exchange_outflow", "cashback", "expire"],
-                                  start="2021-06-30T14:29:44.000000+09:00",
-                                  to="2023-04-27T20:48:19.000000+09:00",
-                                  next_page_cursor_id="05eb8b06-89ea-44f9-b387-f2834ee3403c",
-                                  prev_page_cursor_id="6f05a394-993e-4220-9eea-4e650951e99d",
-                                  per_page=506
+                                  types=["exchange_outflow"],
+                                  start="2020-06-23T02:58:38.000000Z",
+                                  to="2023-08-26T05:36:43.000000Z",
+                                  next_page_cursor_id="545404ed-9e33-476d-9b9d-4f6bb7c51241",
+                                  prev_page_cursor_id="bcd57ad0-3440-4d41-9d1a-9c141202f1ba",
+                                  per_page=347
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_13(self):
         response = client.send(pp.ListTransactionsV2(
-                                  shop_id="c212b7ba-9a85-45e5-8b99-b2e739d7cda7",
-                                  terminal_id="da52f90b-54a8-4209-83b5-841db4dedd0b",
-                                  customer_id="6d48ed45-51ff-4283-9c43-26815b5480f8",
-                                  customer_name="1SgJEpSlopBJNy3qmiwYmDuOlcchHpAG2gwwi3nOK6tJxpePLFHBs9kILByZGqDqm9YAgnobRajraam0rBpkfu82GZDo8PtRb5vVt3TqmZrxia2ui6VWr3guQRAw5Cq4lwbs5G5iUu21d4ST7CuEydnlBtSyriuS9M5GXcqFt6wV9qfsP61uEwZUrs1XMhNzPArurgTCGgpfTuJZDkeCAQBkolLr",
-                                  description="oUrTRKy1uTbc45m4YwxjxtGbA05zcwQ8eNnH7AYfIcNt7NKHBDT4zItl3ZAd6IFhkcz8jRzOJNYNTmAx0cRygrFZ66y9EQQUqakXyxFnuW2T4m1VyTa1OoANMT3g8KQuzrvKESksiTJQTVn",
-                                  transaction_id="H",
-                                  is_modified=False,
-                                  types=[],
-                                  start="2024-04-15T14:27:38.000000+09:00",
-                                  to="2017-04-08T13:41:07.000000+09:00",
-                                  next_page_cursor_id="d930a88e-56a4-4ffd-b7ae-c779b73b7c37",
-                                  prev_page_cursor_id="52838966-3eb2-49bd-8c59-ce7791e5996d",
-                                  per_page=380
+                                  shop_id="954cb430-4355-41cd-9cfe-3c11b9b4215d",
+                                  terminal_id="a0619996-053d-4b3f-a72d-b1ee2ca1b86e",
+                                  customer_id="db25ddf7-57ec-405b-af82-6425c525e2bc",
+                                  customer_name="100h7H4BT2IdLeJZDTCEki4ZW2q7YUb",
+                                  description="Ilt759XkPd0Pd9Lm5F7XmpoqfPmIraGVhsLJiqbQ3MQR9CltXlG6ahNcft22PrlsKWxGtQj4OhVmQAfFvVtR4Fr5En7ms3KrOq6LmEP7tafjyhKgvwh227cUJMuQ1t83oitBAmKCKeNp7Z6KeHafoOKYuUs7zf9dIsiva1vYlz4sIXfB3ep9eHnNy54z9Y",
+                                  transaction_id="ZjsW",
+                                  is_modified=True,
+                                  types=["exchange_outflow", "topup", "exchange_inflow", "payment"],
+                                  start="2026-03-03T19:08:25.000000Z",
+                                  to="2023-08-17T20:59:22.000000Z",
+                                  next_page_cursor_id="42420c5c-9147-41ec-b5bf-9162e4a7b363",
+                                  prev_page_cursor_id="051440ae-a8e6-485d-b8f0-0c6f254e6dc8",
+                                  per_page=567
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_14(self):
         response = client.send(pp.ListTransactionsV2(
-                                  organization_code="V-Sl395---C-z7S5-H-5W-2-kd",
-                                  shop_id="b882152a-de65-4772-ba7e-aff88188aee4",
-                                  terminal_id="3d4253e2-96a2-4b40-b515-64dfba992f80",
-                                  customer_id="b2ced270-729a-4bad-a03d-b756300687f9",
-                                  customer_name="8ATO6lTexkb25xKe3io9ZDBIqGu38r7vCoqpH5QhZu1k2tSxqrr7YJPVhda0ziWsQtZgRc6cmsvPcY7yThlkSXuhO9OLfbw29j7FyeDINdaRXM95lPwMwz9IKIn6wEZkP",
-                                  description="JyErXa70KC1ZDBuFoL3t7T5TQkGNyZe8GBabvL25GCAVUwr2eojbDaPOXkEpypH4JrghAf67UGzdtgboYq9",
-                                  transaction_id="zCMQ97NziA",
+                                  organization_code="8J-B-3--31r-zIu---40",
+                                  shop_id="e5eb1777-bbc7-4d1c-9019-35089254c719",
+                                  terminal_id="9697b2da-b3d6-4f80-a1fc-46e41dd52766",
+                                  customer_id="5713b4e5-10c8-441f-8d1a-83625c2ff111",
+                                  customer_name="D60qrRKjcydAgQf1kjgylUDTK4jhJH0jAjNW1ZH6MoDDkoySCPKncEWYebt4RUGRqT3wcuceySCabxrgTXSxZbg1Ud9jBS9CQqv6T7eIQXHJd8SnpNPnO39WNWvjXlHUhCIHkbLQ7KL6y3Sdoxdn1tpYM1z5XMrmRY7bQCW9sPYWAKIaPAnlgG8",
+                                  description="mho7qKjeP1Vs1el3tVDmtz0qcHqLIsXtLIzc5kRp3WnRoU2x23XKfAMBShU6I6qbRRo0KsKQjbIFpDLYbMMvlh9JCT1xGcQLRIyKzcfWhCzi1Z89pSvPCqCpyLyZq50fssjoNHBAUn0qZzCUWIZlu3nVCPUHg3HpQOkzK7L",
+                                  transaction_id="GZ5l2cQL",
                                   is_modified=False,
-                                  types=[],
-                                  start="2022-01-01T10:12:21.000000+09:00",
-                                  to="2019-06-09T05:22:32.000000+09:00",
-                                  next_page_cursor_id="690f4903-a5f1-41dc-adf9-4e3875a63e1a",
-                                  prev_page_cursor_id="d423ded4-7964-4fa7-b052-f7cf4a704a52",
-                                  per_page=529
+                                  types=["topup", "exchange_outflow", "payment"],
+                                  start="2026-05-31T20:33:55.000000Z",
+                                  to="2021-06-03T11:41:47.000000Z",
+                                  next_page_cursor_id="3f69575f-6d15-4b97-99e4-dcad2d27c3b9",
+                                  prev_page_cursor_id="8241d176-ab5f-4a73-b59c-cf3ae6a86bd2",
+                                  per_page=175
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transactions_v2_15(self):
         response = client.send(pp.ListTransactionsV2(
-                                  private_money_id="50889553-41ea-48f9-b67c-adf823ce3d66",
-                                  organization_code="77FEB3qUK-k",
-                                  shop_id="f7dcb836-0149-4c49-8494-4102615ea6f9",
-                                  terminal_id="03df9db8-2356-4845-abb7-3f57ab1da6ae",
-                                  customer_id="a2831318-0cf7-4a5f-8281-2b0b8dcc5fe4",
-                                  customer_name="0msuDaOhM5oqV2xleoqU08aoK4SSRQxNI4HYZa4lL8vlyT5v2fWiN7LjHjlDtCGjTLI9kXm",
-                                  description="3rfByXFrnlgeqVtAvQ0rVDYOMHbm3FgLktaUhgEFTnEcwpkpUTSKxUsOoZPlM9KHj0LscW1P81Qy90jmz1sBL2rdIxI95Aq016ZjJCH7wtIwkByOxgZ1CmhlD7BVFzYE678H",
-                                  transaction_id="grDW8XfB04",
+                                  private_money_id="bb675935-d776-4599-92e5-2f9448d2d77f",
+                                  organization_code="G6-2-T-s--d5-",
+                                  shop_id="9711832c-7336-4e54-a326-ce4d97ccd64e",
+                                  terminal_id="39223304-2777-479c-a4e6-530696cb29e0",
+                                  customer_id="c53f202c-86f5-482a-a49a-396414586284",
+                                  customer_name="0OcDN26kEZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1q",
+                                  description="nKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OU",
+                                  transaction_id="0vKQ13",
                                   is_modified=False,
-                                  types=["expire", "cashback", "topup", "payment", "exchange_inflow"],
-                                  start="2020-01-06T20:53:36.000000+09:00",
-                                  to="2016-07-07T03:48:35.000000+09:00",
-                                  next_page_cursor_id="b2b5dc71-463d-4465-8a57-c66ee4676b26",
-                                  prev_page_cursor_id="38d6cf3b-d212-4809-bbf0-f0c0ae65a17c",
-                                  per_page=688
+                                  types=["exchange_inflow", "payment"],
+                                  start="2020-01-20T17:45:53.000000Z",
+                                  to="2023-10-02T21:54:44.000000Z",
+                                  next_page_cursor_id="e8c73853-4028-4dc1-abc9-b7d5bfabdfac",
+                                  prev_page_cursor_id="88efd5ff-00db-4d5c-a341-ba01fa597585",
+                                  per_page=56
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_0(self):
+        response = client.send(pp.ListBillTransactions(
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_1(self):
+        response = client.send(pp.ListBillTransactions(
+                                  per_page=656
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_2(self):
+        response = client.send(pp.ListBillTransactions(
+                                  prev_page_cursor_id="a6dc73c1-b66a-4c85-8cd3-cb12caece5d3",
+                                  per_page=534
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_3(self):
+        response = client.send(pp.ListBillTransactions(
+                                  next_page_cursor_id="b973ea4c-6aaa-4822-b59c-f7489fb1ea07",
+                                  prev_page_cursor_id="0ff6bfd9-09a1-4a7a-8106-c994f122ac21",
+                                  per_page=502
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_4(self):
+        response = client.send(pp.ListBillTransactions(
+                                  to="2022-04-24T09:57:38.000000Z",
+                                  next_page_cursor_id="f0eaee02-f102-4832-92bc-d4e1f3d53414",
+                                  prev_page_cursor_id="7a0bb9b1-0642-4e4d-8572-5f3689cf97a2",
+                                  per_page=737
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_5(self):
+        response = client.send(pp.ListBillTransactions(
+                                  start="2023-12-02T00:21:58.000000Z",
+                                  to="2025-06-15T16:23:25.000000Z",
+                                  next_page_cursor_id="f1e03db2-5ba0-46e7-a51c-b4239f287020",
+                                  prev_page_cursor_id="3b87d576-9fee-4b45-af79-40fe5e178827",
+                                  per_page=231
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_6(self):
+        response = client.send(pp.ListBillTransactions(
+                                  is_modified=True,
+                                  start="2024-12-31T23:36:16.000000Z",
+                                  to="2023-07-08T03:08:49.000000Z",
+                                  next_page_cursor_id="d764e45c-6b20-4d41-bece-6c181825fbba",
+                                  prev_page_cursor_id="5d98f724-8813-4eee-a50e-481b769fcf6b",
+                                  per_page=496
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_7(self):
+        response = client.send(pp.ListBillTransactions(
+                                  bill_id="774c33e5-7524-4e0e-acaa-143981f823a6",
+                                  is_modified=False,
+                                  start="2024-03-25T13:24:15.000000Z",
+                                  to="2024-06-09T03:04:59.000000Z",
+                                  next_page_cursor_id="4a3b27e1-d244-40e7-a460-b3ce34323bd3",
+                                  prev_page_cursor_id="fa19fce6-0283-4b97-9e7b-88ed8c45ea7d",
+                                  per_page=921
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_8(self):
+        response = client.send(pp.ListBillTransactions(
+                                  transaction_id="0dfdd386-49c5-4ab5-a321-165c616e0844",
+                                  bill_id="e7b3b765-d806-48bb-aa5c-fc1617857135",
+                                  is_modified=False,
+                                  start="2020-08-27T18:29:49.000000Z",
+                                  to="2022-09-18T06:22:31.000000Z",
+                                  next_page_cursor_id="4086e72f-05e2-4886-aa3e-71d49fcb2976",
+                                  prev_page_cursor_id="85a57a5c-5f8c-4a28-bb4d-39f98883efc8",
+                                  per_page=284
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_9(self):
+        response = client.send(pp.ListBillTransactions(
+                                  description="pd2S0WD3FaqRKAgoYEGpNOGzwWmNqL0QHxylFWlu94S8FVSDMY5BU7ZXRTfnNFoNra90XKkUB3tuq1X9Hm0SHBKCUruJxi1ST1WXtfeKSzrq1Zc5Ju53UYOCwl5C8rEq5yNfh8NoRe5rX0rVCmpqdlLHN",
+                                  transaction_id="bbf21da8-18a8-458d-8e13-08ecc79eec01",
+                                  bill_id="2778c0e2-b4a3-4464-ae57-06b1d23893ef",
+                                  is_modified=True,
+                                  start="2024-01-25T11:01:45.000000Z",
+                                  to="2025-07-23T05:00:13.000000Z",
+                                  next_page_cursor_id="d9f8e2df-c76f-453c-8909-ee5a5891db03",
+                                  prev_page_cursor_id="70464b09-efa5-439d-bc46-c652b87b2cbf",
+                                  per_page=939
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_10(self):
+        response = client.send(pp.ListBillTransactions(
+                                  terminal_id="ad84f721-932c-4023-84d3-0269aeb7e579",
+                                  description="ltrhPzNi7jenj4X3xdXKxR7POl5XLEB6rdcoyFq3Dy2RXyPUAe3PgOIxNaz3",
+                                  transaction_id="c2941633-8abd-4612-8d44-110b35321a6c",
+                                  bill_id="6f8e994d-8c29-4199-a4ed-023fac1f33e0",
+                                  is_modified=True,
+                                  start="2021-02-10T03:14:40.000000Z",
+                                  to="2020-12-10T07:27:31.000000Z",
+                                  next_page_cursor_id="66b1bf08-6eb4-4a31-89b7-8424bf10a9e0",
+                                  prev_page_cursor_id="9bd23843-046c-4e07-999f-75d6adb23850",
+                                  per_page=91
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_11(self):
+        response = client.send(pp.ListBillTransactions(
+                                  customer_name="adCz21oTLg0Zh082rSUmgTJgltXUvopMAE6nKVgCC79b4Ei190OQ71CLczodkHUHlo8UiDVjyL8K2mxNxSNDBAB21jRDn",
+                                  terminal_id="b8560e44-96e6-41d5-96f4-d140d6d0c97d",
+                                  description="YgIyZaTsiHOmcCShoExxXDzwmu0NmtxroKVUk7sDu4lw8ZxL5ooBCUmbexHlOYPdRDRXfcFEKebPAHiatKRmL7K8IMJIBW1vB1RC8WQ75Zq2CPEph5LyiHrKKZHYeA6KMsRSBkbfNhFwjSSUkqouGV2ULftf3KLiOm0u6OdTYvY1WMa6BMdHb",
+                                  transaction_id="d331c96f-32f2-4ba0-b983-d142e4aca901",
+                                  bill_id="322c438c-67be-4b3c-a0de-8969073c2838",
+                                  is_modified=True,
+                                  start="2021-02-20T06:36:26.000000Z",
+                                  to="2026-10-12T03:23:19.000000Z",
+                                  next_page_cursor_id="d802538b-edd9-4d25-925e-deaf0546a417",
+                                  prev_page_cursor_id="9236343a-552c-4d5e-9983-e909a9e4296a",
+                                  per_page=614
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_12(self):
+        response = client.send(pp.ListBillTransactions(
+                                  customer_id="80b039c1-d0c6-491e-b8e0-134ee186edaa",
+                                  customer_name="8XvRYyNjj6LzPNoFY0NPc7gW3tda",
+                                  terminal_id="da29c565-95f2-42e2-a894-05e6abef18c1",
+                                  description="j6MGuDCQRgbbh69IfOOqdFvcvTYHWhMSc2JtDSCuxpXIBKjX0wbEINtuhWyJmxhctiEpL1KlL20SY28CEIpXvCz2lX0WFgkUTJYHHOr63hjnglJCcSZdRjCOwyap0lsb8d4Dc5yMU1TN0yX6",
+                                  transaction_id="c1827187-def7-4178-bb0c-928ed6f00559",
+                                  bill_id="e2c173b6-c28f-4b24-89d0-caefb8163620",
+                                  is_modified=False,
+                                  start="2020-09-14T13:14:56.000000Z",
+                                  to="2025-12-21T16:19:05.000000Z",
+                                  next_page_cursor_id="625779c5-a88a-4cf2-b8eb-8e042985fdff",
+                                  prev_page_cursor_id="2e0c61ec-6dee-4463-a6c7-3705c3be21eb",
+                                  per_page=70
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_13(self):
+        response = client.send(pp.ListBillTransactions(
+                                  shop_id="5d7c5eaa-f7f7-4b48-9642-40af7cf3843a",
+                                  customer_id="8b31e312-23d7-4400-9dcf-2029929de91e",
+                                  customer_name="qOm",
+                                  terminal_id="1ed84f6a-c0ab-4450-9485-e4d133301dea",
+                                  description="JIqduyEzfF4ihEMnqIdNLL8T5msTmgqj81RXJ34GFY2SrpQfm9Le0rSPWlrPa8fbLwdjVaS9JydpHqXjqW7D3uCGCdE3Z7gIcLSudPl4JIrQmLFWJxcGB9NLriuIsMTYyCUoOEa9YZaUNPTMagDSPeHLGCGYvgqbqCIdoPTyGfjAlvbOwBRftL3mTfJhTjDs9c8Q",
+                                  transaction_id="c57ccb1c-e53f-42ce-8fd5-1d474278763a",
+                                  bill_id="5e0ea876-80af-406e-a874-cd3ae6b1ceab",
+                                  is_modified=False,
+                                  start="2026-02-19T22:50:06.000000Z",
+                                  to="2026-04-29T08:48:21.000000Z",
+                                  next_page_cursor_id="1aea5279-1463-483f-82d6-2c64386397de",
+                                  prev_page_cursor_id="9cd1e868-2e3f-48f7-aa80-a2007519a371",
+                                  per_page=543
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_14(self):
+        response = client.send(pp.ListBillTransactions(
+                                  organization_code="",
+                                  shop_id="a6632c74-37cd-497e-a2a9-eb2c1ddd2a00",
+                                  customer_id="3930cc0f-93e4-4ddf-9a30-e4dbbf1a472c",
+                                  customer_name="f5nebRZC0vDYNEWMfxXSVHRY4YZdsEswklf9tWgAr9KxjsUzeefEvU98BI4BdtnYVFOF5IX",
+                                  terminal_id="4b9c25c1-7c81-4436-ac9c-3fdb7831c74e",
+                                  description="6Yqs62ry4EX0H5SsjBGi2vt3IVLujfoeXIyA6Ao821XE55hc29pv4sZ",
+                                  transaction_id="cac61bc2-fd6f-4c6f-9a0d-0d8a5d7cc793",
+                                  bill_id="6e7598d9-4ab5-4877-8ea2-243d9af9fd41",
+                                  is_modified=True,
+                                  start="2024-03-07T20:01:56.000000Z",
+                                  to="2024-09-08T15:46:47.000000Z",
+                                  next_page_cursor_id="6aff83b2-72ff-4698-83eb-fd9f9bb962e4",
+                                  prev_page_cursor_id="32e616dc-7712-47c1-99cc-f9dbc403b1d6",
+                                  per_page=853
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_bill_transactions_15(self):
+        response = client.send(pp.ListBillTransactions(
+                                  private_money_id="b66da81d-7003-47f8-bb88-c31a4fd5670f",
+                                  organization_code="JI0-u3A4--t-gt---t7",
+                                  shop_id="4944adf0-6d62-447b-a172-8350fa3b1f29",
+                                  customer_id="49757cbc-3613-4d11-9a8f-4ca29979e26b",
+                                  customer_name="nNjPWO55U7DSfY3LgW5M2IvR52CgIBy3eLTys12HHDFFeqLoUtYmfM0XLYceQxhubY3jVYhbh4RW4SjcPHu2gIp7HlC",
+                                  terminal_id="2966a767-97f8-40bc-996c-9196c3715346",
+                                  description="ZzBuHZ8tjsh68ScZg3aAMErPcV9o0TcGJkIJgRMahTjY4B83KCbssdnciBK2yKUyBpazsFHLyPhoCqWWrzikH0DrThI9ndCARX9iZhUIwUrsQ8Uijo55dyiBxXbKWYhqIQcADAJhWFwASll2hGkEzja1NmQ",
+                                  transaction_id="c74b9c85-f127-42c8-ae7c-c8c375e7037b",
+                                  bill_id="6f9dcad5-c341-44d4-87c7-1bfcbc47747a",
+                                  is_modified=False,
+                                  start="2024-07-08T22:33:16.000000Z",
+                                  to="2020-11-25T21:27:17.000000Z",
+                                  next_page_cursor_id="f80476b9-ceb0-4164-9cf4-edc211238a24",
+                                  prev_page_cursor_id="5d38423f-2fe8-46a4-b5e3-6fa2e3178dbd",
+                                  per_page=859
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_0(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c"
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_1(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  request_id="abb94754-34df-42b7-89d4-35bac4b3ac18"
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  request_id="46fb88a2-28ed-4778-8015-6b041b4b993f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_2(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="070ae720-ac1f-486c-9d66-9d9f9224f976"
+                                  request_id="762bfcca-e855-42ee-bee4-471c2286ea39"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_3(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  description="jHRgsb",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  description="RrjDmsbpR1t9xme9U0GR2pRvNpULEoTr6H5p2Y5YBaOZdS1seolNILNbVpFGvZ3N4x3uvaLnbw12Ii4C82SzJJG4lODNS2Ij7U5b72UTWbjXGfzCmZ2vkYmrCrWwA7IkDmk9acr8tX9JQSHyiFoseHqYyK8GIOW0PGU45uzPdd0dJeNNvUC",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="cb2ceb6a-14f2-47ef-a158-c68e366d2aab"
+                                  request_id="b7257d1e-2b30-4362-b109-c000786b5f8f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_4(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  point_expires_at="2022-08-02T22:15:07.000000+09:00",
-                                  description="1fxLB1",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  point_expires_at="2026-06-04T18:57:26.000000Z",
+                                  description="vmd5I8evbrAQGpnYomE2cpD4cThkIOO2LW0e3G1sTmjjHcN57ZbAikJ2opGyr1ja",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="d487cff9-f3e6-4eb5-9112-3064cda241fc"
+                                  request_id="0adaacb3-479e-4afa-b583-de8135ee8012"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_5(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  point_amount=7904,
-                                  point_expires_at="2020-09-12T16:52:14.000000+09:00",
-                                  description="wvhweVkrWRctnJ2TSLmfSkWFb6oLKvNkr7xERwVYEzuAqPS2Yq5Zx72l8Uwb6djbQEnxEVuuBukUKWopaaFtoO5CUO2HA5dwLtiNF6M5",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  point_amount=8813,
+                                  point_expires_at="2026-02-13T18:38:02.000000Z",
+                                  description="e771kQ7mwZnfGMQasC1yb1Dq2UL9Kx0jYk7sZRicOTg23f5GXrX6ozTzm0HG0TosxKz4jitwHtujKhwCFGwiyv4vlRBRxfHZeKBVf4jVtecQNubIdHetIBP",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="f1ee1412-40fb-491d-b13a-170163f455a8"
+                                  request_id="a05cb38c-740c-4b55-933f-7572719a092d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_6(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  money_amount=2401,
-                                  point_amount=8189,
-                                  point_expires_at="2022-10-19T13:39:38.000000+09:00",
-                                  description="AMFoXb9rmaZQXIsaxB2CgIcPvFHqcQFB1JdewR9",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  money_amount=3830,
+                                  point_amount=7408,
+                                  point_expires_at="2022-07-03T12:45:25.000000Z",
+                                  description="N86f46tWgyM",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="9024ecbb-e800-453b-a6e2-b45d82161f75"
+                                  request_id="0ff2f2b4-cd33-42a8-89c1-e08ed5359b4a"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_7(self):
         response = client.send(pp.CreateTopupTransaction(
-                                  "4b9b2098-1ea7-4b7d-94b6-42385c3006aa",
-                                  "1fdefda8-8f90-479c-b3b5-04a02d3d9534",
-                                  "2b085fef-414f-404e-b30c-07caf16f239c",
-                                  bear_point_shop_id="6794b3c7-1610-4089-bb97-fd2d95aa8ed0",
-                                  money_amount=3473,
-                                  point_amount=5609,
-                                  point_expires_at="2021-11-27T08:22:55.000000+09:00",
-                                  description="lh4drGbWvDfmVaNvPs9iu3XzENeNNhWBPj9P6rAeXLgWVKiBaMXABCznkolZF0XVehDsumc383ILCYIvwae0oDTZVM9Vn0NHWZb8ZS9tjcczZ4Gwb0PhYqZgpZBJnGwbDDj",
+                                  "779d29a4-9328-4324-b4a7-2765237843bc",
+                                  "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+                                  "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
+                                  bear_point_shop_id="391a9528-49da-41a2-b0cb-f282d601da2f",
+                                  money_amount=7963,
+                                  point_amount=9463,
+                                  point_expires_at="2026-10-13T16:48:23.000000Z",
+                                  description="YBSX4EzfsIiIDCSxoowqwobMRj4K8plKuk4zON6lsKCXAkk07Q9YuV27x2ZZwJNPJ0aXH1uRWCYsw6VR",
                                   metadata="{\"key\":\"value\"}",
-                                  request_id="457a8c16-41f4-473d-a56a-e67baa506a4f"
+                                  request_id="d315edc2-0f95-4266-9258-9a189e847860"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_topup_transaction_with_check_0(self):
         response = client.send(pp.CreateTopupTransactionWithCheck(
-                                  "5dd080a5-a514-4a1f-8868-40feb93b038a",
-                                  "91325879-5260-4a35-8ad4-2d848eace7c5"
+                                  "fd82afc1-2e46-4bb7-b865-86ae217b78ef",
+                                  "c883f6e0-83d4-4ca8-9230-4079d0ae1e2f"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_topup_transaction_with_check_1(self):
+        response = client.send(pp.CreateTopupTransactionWithCheck(
+                                  "fd82afc1-2e46-4bb7-b865-86ae217b78ef",
+                                  "c883f6e0-83d4-4ca8-9230-4079d0ae1e2f",
+                                  request_id="b9f2a7ad-890f-4bb6-ae6c-4e4e01728e3d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_payment_transaction_0(self):
         response = client.send(pp.CreatePaymentTransaction(
-                                  "66b1b6e3-f490-444d-9c3c-7f52a4ee1dbc",
-                                  "4a6f0990-2205-4e7a-bfef-08f7dd62f10a",
-                                  "1070e59d-0123-45bf-a02e-32724a291586",
-                                  9028
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_payment_transaction_1(self):
         response = client.send(pp.CreatePaymentTransaction(
-                                  "66b1b6e3-f490-444d-9c3c-7f52a4ee1dbc",
-                                  "4a6f0990-2205-4e7a-bfef-08f7dd62f10a",
-                                  "1070e59d-0123-45bf-a02e-32724a291586",
-                                  9028,
-                                  request_id="d490a262-3100-4d8b-b6c7-4c1cdbef2619"
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
+                                  coupon_id="a8bd92d5-5e5c-41cc-a09b-1935b0ce14de"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_payment_transaction_2(self):
         response = client.send(pp.CreatePaymentTransaction(
-                                  "66b1b6e3-f490-444d-9c3c-7f52a4ee1dbc",
-                                  "4a6f0990-2205-4e7a-bfef-08f7dd62f10a",
-                                  "1070e59d-0123-45bf-a02e-32724a291586",
-                                  9028,
-                                  products=[{"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}],
-                                  request_id="b06d8cdc-54b4-4bed-9248-b320dcf58d8a"
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
+                                  strategy="money-only",
+                                  coupon_id="0d0a802c-858d-4c77-bb3d-80f6725e3354"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_payment_transaction_3(self):
         response = client.send(pp.CreatePaymentTransaction(
-                                  "66b1b6e3-f490-444d-9c3c-7f52a4ee1dbc",
-                                  "4a6f0990-2205-4e7a-bfef-08f7dd62f10a",
-                                  "1070e59d-0123-45bf-a02e-32724a291586",
-                                  9028,
-                                  metadata="{\"key\":\"value\"}",
-                                  products=[{"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}],
-                                  request_id="38ea6024-15d4-4d61-8a86-423af8ea204f"
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
+                                  request_id="67f248ff-d3ed-4517-a61d-d1eb3ef959d3",
+                                  strategy="point-preferred",
+                                  coupon_id="6a9e3764-7ee3-403f-9d91-42cc0838460e"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_payment_transaction_4(self):
         response = client.send(pp.CreatePaymentTransaction(
-                                  "66b1b6e3-f490-444d-9c3c-7f52a4ee1dbc",
-                                  "4a6f0990-2205-4e7a-bfef-08f7dd62f10a",
-                                  "1070e59d-0123-45bf-a02e-32724a291586",
-                                  9028,
-                                  description="MMolvbDp36ZS9Ve1qo3bvmXucCaFZQN2ap2j3Mr8o8HkBWUUKfQKZC3BSMS3hsgpJcO",
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
+                                  products=[{"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}],
+                                  request_id="cbe5dda3-e8a2-452b-b67d-a80e728c2306",
+                                  strategy="money-only",
+                                  coupon_id="d66771ca-a929-4b51-891c-68523389333e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_5(self):
+        response = client.send(pp.CreatePaymentTransaction(
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
                                   metadata="{\"key\":\"value\"}",
                                   products=[{"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}],
-                                  request_id="9ac4e641-90e4-45b6-958c-8f6f147822fc"
+                                  request_id="dcd8a29c-affc-47f5-9ff6-bed7f7fb68dd",
+                                  strategy="money-only",
+                                  coupon_id="10c4f870-8cd2-4395-ab70-91db20b8f1e8"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_6(self):
+        response = client.send(pp.CreatePaymentTransaction(
+                                  "8e6ae56c-2f86-4744-ae5b-273c6cb844cb",
+                                  "56da79c5-9a4f-4379-8d84-1e56ac0969b8",
+                                  "9e65a310-bebe-41b9-849d-e048611eab81",
+                                  6952,
+                                  description="tqbTr2vHF1iF0Y7dBxe8hiTzwkLtzBfAa7kaQm6vULSy1FKdTtu83N0tnRGbdpbMjOs6NsjUaiDroY6Q3IK7BQ6AmswdAM3IJrwVbs9pMxfMCth",
+                                  metadata="{\"key\":\"value\"}",
+                                  products=[{"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}],
+                                  request_id="b3d7d3fd-6bf6-44bb-b124-78e1020de332",
+                                  strategy="money-only",
+                                  coupon_id="12290e16-1045-41c8-866d-0aae4dc5a29b"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_with_bill_0(self):
+        response = client.send(pp.CreatePaymentTransactionWithBill(
+                                  "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+                                  "54af57f3-f39c-4258-9caf-9886fcc19e72"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_with_bill_1(self):
+        response = client.send(pp.CreatePaymentTransactionWithBill(
+                                  "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+                                  "54af57f3-f39c-4258-9caf-9886fcc19e72",
+                                  strategy="money-only"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_with_bill_2(self):
+        response = client.send(pp.CreatePaymentTransactionWithBill(
+                                  "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+                                  "54af57f3-f39c-4258-9caf-9886fcc19e72",
+                                  request_id="b0a1dc41-095e-4da7-a747-4f08e3d906ec",
+                                  strategy="money-only"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_payment_transaction_with_bill_3(self):
+        response = client.send(pp.CreatePaymentTransactionWithBill(
+                                  "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+                                  "54af57f3-f39c-4258-9caf-9886fcc19e72",
+                                  metadata="{\"key\":\"value\"}",
+                                  request_id="18a3d0a2-fe92-4fc5-8205-bb194fad4716",
+                                  strategy="money-only"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cpm_transaction_0(self):
         response = client.send(pp.CreateCpmTransaction(
-                                  "cE4mBLmKXcPupi77r56oXC",
-                                  "69188c4e-2113-4363-8325-43334faeaae4",
-                                  4786.0
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cpm_transaction_1(self):
         response = client.send(pp.CreateCpmTransaction(
-                                  "cE4mBLmKXcPupi77r56oXC",
-                                  "69188c4e-2113-4363-8325-43334faeaae4",
-                                  4786.0,
-                                  request_id="7e2d12c6-0dcb-477e-a5d4-fa5c2e1d0998"
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0,
+                                  strategy="money-only"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cpm_transaction_2(self):
         response = client.send(pp.CreateCpmTransaction(
-                                  "cE4mBLmKXcPupi77r56oXC",
-                                  "69188c4e-2113-4363-8325-43334faeaae4",
-                                  4786.0,
-                                  products=[{"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}],
-                                  request_id="808d1e8e-3cc7-48b7-b0ca-c83dbd739c4d"
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0,
+                                  request_id="e78c8c12-040b-45f4-a4cc-2264448a43d6",
+                                  strategy="money-only"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cpm_transaction_3(self):
         response = client.send(pp.CreateCpmTransaction(
-                                  "cE4mBLmKXcPupi77r56oXC",
-                                  "69188c4e-2113-4363-8325-43334faeaae4",
-                                  4786.0,
-                                  metadata="{\"key\":\"value\"}",
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0,
                                   products=[{"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}],
-                                  request_id="ba2c2be2-340e-4b01-921c-5988aceb9053"
+                                  request_id="4b311105-fb97-4614-a1e9-a2a0f1420357",
+                                  strategy="money-only"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cpm_transaction_4(self):
         response = client.send(pp.CreateCpmTransaction(
-                                  "cE4mBLmKXcPupi77r56oXC",
-                                  "69188c4e-2113-4363-8325-43334faeaae4",
-                                  4786.0,
-                                  description="mw5RMuvJN6cdbvg50QHlnDydRn68KboUvDsNqKoorksWBQ398rR59EiVvlwAljCUfIeXX8HLaAA7O7c9AzboPOcXU3N4H4mDJ",
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0,
                                   metadata="{\"key\":\"value\"}",
                                   products=[{"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}],
-                                  request_id="353709dd-b35b-4569-8024-fa4bb00b0e71"
+                                  request_id="ce508046-0772-438e-93b5-6547ab2b8ad0",
+                                  strategy="point-preferred"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_cpm_transaction_5(self):
+        response = client.send(pp.CreateCpmTransaction(
+                                  "PmHrH76ocsr7yZptwOIMGR",
+                                  "f9c77fa6-aff8-419c-9417-e09b2d67995a",
+                                  7188.0,
+                                  description="wp4l70ZsGyPlyZYRURgUMf0P5ozHDn0iOeoWIRRMyR0nQkh8Zz7eaFGoiOPKR0rUW9UTcnGDBsZuPfABdiNvfS9Anufij6THnocikBJOkD3FvwnaI0WeOGlWmmegc1KGhe3TxnuKac7CS1DK4Gnrr3oBLGMXHrz9mqfRhRmUp8pN9pjtB",
+                                  metadata="{\"key\":\"value\"}",
+                                  products=[{"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}],
+                                  request_id="8474310b-a6be-43c5-8bb1-ebb5460e0a0b",
+                                  strategy="money-only"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_transaction_with_cashtray_0(self):
+        response = client.send(pp.CreateTransactionWithCashtray(
+                                  "27bd0d23-08c4-4017-8e64-03296f90d519",
+                                  "1a1f9b33-160f-49d8-bdf8-3b43e548b554"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_transaction_with_cashtray_1(self):
+        response = client.send(pp.CreateTransactionWithCashtray(
+                                  "27bd0d23-08c4-4017-8e64-03296f90d519",
+                                  "1a1f9b33-160f-49d8-bdf8-3b43e548b554",
+                                  request_id="018632b0-035a-48db-ad0e-337507ebf0b6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_transaction_with_cashtray_2(self):
+        response = client.send(pp.CreateTransactionWithCashtray(
+                                  "27bd0d23-08c4-4017-8e64-03296f90d519",
+                                  "1a1f9b33-160f-49d8-bdf8-3b43e548b554",
+                                  strategy="money-only",
+                                  request_id="6eb0a40d-c937-44f4-820e-b0cf3a0c4440"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transfer_transaction_0(self):
         response = client.send(pp.CreateTransferTransaction(
-                                  "579126f3-0f29-45ad-a048-4009f35287c2",
-                                  "2e2195b9-fa97-433b-9ad0-1dad04e0857d",
-                                  "55aab81a-51ca-4470-acf1-631f9bf8851e",
-                                  6914.0
+                                  "ee11b178-a05b-4d71-9dfe-39755bec4cee",
+                                  "34216f81-bbde-4265-9cdd-37cebb855f61",
+                                  "95861a74-2e47-48a8-9ebf-c606d3d3267c",
+                                  2927.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transfer_transaction_1(self):
         response = client.send(pp.CreateTransferTransaction(
-                                  "579126f3-0f29-45ad-a048-4009f35287c2",
-                                  "2e2195b9-fa97-433b-9ad0-1dad04e0857d",
-                                  "55aab81a-51ca-4470-acf1-631f9bf8851e",
-                                  6914.0,
-                                  request_id="aa555288-f7fb-4168-9a4d-d822fea51059"
+                                  "ee11b178-a05b-4d71-9dfe-39755bec4cee",
+                                  "34216f81-bbde-4265-9cdd-37cebb855f61",
+                                  "95861a74-2e47-48a8-9ebf-c606d3d3267c",
+                                  2927.0,
+                                  request_id="4d6fcb6c-3343-45e6-b6a4-168d8d671953"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transfer_transaction_2(self):
         response = client.send(pp.CreateTransferTransaction(
-                                  "579126f3-0f29-45ad-a048-4009f35287c2",
-                                  "2e2195b9-fa97-433b-9ad0-1dad04e0857d",
-                                  "55aab81a-51ca-4470-acf1-631f9bf8851e",
-                                  6914.0,
-                                  description="aIB",
-                                  request_id="3f25a9e3-aa88-4e5d-916a-8b8e11624fb7"
+                                  "ee11b178-a05b-4d71-9dfe-39755bec4cee",
+                                  "34216f81-bbde-4265-9cdd-37cebb855f61",
+                                  "95861a74-2e47-48a8-9ebf-c606d3d3267c",
+                                  2927.0,
+                                  description="F7SeZXyMS6WkNJ2GvSwQUcruYP4H5cCw5ExNqh41OXXFwVmaHYw6oEFbK8qER1LlAIi5qYTqeIN9jftsBTkZDKCnQigIBcgyeHE0te",
+                                  request_id="3e3db2e3-88d2-41f2-aa59-6142152e3c67"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_transfer_transaction_3(self):
         response = client.send(pp.CreateTransferTransaction(
-                                  "579126f3-0f29-45ad-a048-4009f35287c2",
-                                  "2e2195b9-fa97-433b-9ad0-1dad04e0857d",
-                                  "55aab81a-51ca-4470-acf1-631f9bf8851e",
-                                  6914.0,
+                                  "ee11b178-a05b-4d71-9dfe-39755bec4cee",
+                                  "34216f81-bbde-4265-9cdd-37cebb855f61",
+                                  "95861a74-2e47-48a8-9ebf-c606d3d3267c",
+                                  2927.0,
                                   metadata="{\"key\":\"value\"}",
-                                  description="9HnlNHLuA0aOdVgj6K1GxL1yIWWOf6rndacFLJTT1b61igwFwXc9Xw81AcLgJ7HUPLZ2JY3PzdziozZN0eUlnWAmEdaqY8pJTyG58WWoVkTIofZ63ZHIa2ZaoOg0V0uaqelttkE7ehROL4XrOdkUWUyHCGGZhBjhjuTKoJ3qmoFsOI4faRjWQ8",
-                                  request_id="064416e7-5085-495b-930e-ee4ba9e6144f"
+                                  description="XoYNaRDH3xa5ZXl3L94kmDiQZVmfdCV9",
+                                  request_id="5b8a38a6-2477-4fc7-8a7b-ef5591b714af"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_exchange_transaction_0(self):
         response = client.send(pp.CreateExchangeTransaction(
-                                  "ae6b2c00-a58b-451e-80e8-efcbe62ff98b",
-                                  "c70c7399-c50f-451f-b9a5-76980bff8402",
-                                  "cb5df075-f585-4254-b41d-83a1ad0abf60",
-                                  6825.0
+                                  "0fb9d8d2-c31c-42ae-9e4f-a7fdf97130e7",
+                                  "7a6893a2-49f0-4a80-bdb1-b3854b5f8622",
+                                  "52be44d6-96d4-4fce-8cf3-232a5a259174",
+                                  1356
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_exchange_transaction_1(self):
         response = client.send(pp.CreateExchangeTransaction(
-                                  "ae6b2c00-a58b-451e-80e8-efcbe62ff98b",
-                                  "c70c7399-c50f-451f-b9a5-76980bff8402",
-                                  "cb5df075-f585-4254-b41d-83a1ad0abf60",
-                                  6825.0,
-                                  request_id="837cbbb5-b318-4585-8112-2a26c7e8fe9f"
+                                  "0fb9d8d2-c31c-42ae-9e4f-a7fdf97130e7",
+                                  "7a6893a2-49f0-4a80-bdb1-b3854b5f8622",
+                                  "52be44d6-96d4-4fce-8cf3-232a5a259174",
+                                  1356,
+                                  request_id="e93f83dd-273e-4073-9e8f-94e2e4e51c6b"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_exchange_transaction_2(self):
         response = client.send(pp.CreateExchangeTransaction(
-                                  "ae6b2c00-a58b-451e-80e8-efcbe62ff98b",
-                                  "c70c7399-c50f-451f-b9a5-76980bff8402",
-                                  "cb5df075-f585-4254-b41d-83a1ad0abf60",
-                                  6825.0,
-                                  description="9dHqyzQZgDiWvj8etzcFhDXwcbaPJFYUtWSDUUOzA6JdRqRnPGGmxcvLiruhnUYA2evPNgfEtt9VoXY8Zbi4bO3aVrBDzVdWXtFy5mPY7A1qrS8dHstlQrZdGZnteTqjTP7dz4MDySQpvknUff9KCWQ",
-                                  request_id="e5b8a8e3-6709-4859-bfbc-c71a274d5f4a"
+                                  "0fb9d8d2-c31c-42ae-9e4f-a7fdf97130e7",
+                                  "7a6893a2-49f0-4a80-bdb1-b3854b5f8622",
+                                  "52be44d6-96d4-4fce-8cf3-232a5a259174",
+                                  1356,
+                                  description="wvZcZmJCZwuee4w9Rkvag9C19xRl1IlJpGXqlhd5uwOg53j3Qic0iyKLnZxaZi9iCa2kj9IDD4FLU53H4cTCafuN856J50SdiADG37eydGENMPuSUGCPNHip0Y3dBWcNdXe1sIjLSVztCspdpKcDGU85LATApzQ2dQG1XtK0UfX1fzmKZw4",
+                                  request_id="e489d188-81aa-448a-a9ea-472687ec4a02"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_bulk_create_transaction_0(self):
         response = client.send(pp.BulkCreateTransaction(
-                                  "FvGq64q",
-                                  "mrZJcpF",
-                                  "iWZHeIfQdHdvs4v2aUitPGe5J3m0ryc2OEvF"
+                                  "X5",
+                                  "dVMZA",
+                                  "3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_bulk_create_transaction_1(self):
         response = client.send(pp.BulkCreateTransaction(
-                                  "FvGq64q",
-                                  "mrZJcpF",
-                                  "iWZHeIfQdHdvs4v2aUitPGe5J3m0ryc2OEvF",
-                                  private_money_id="542b6c58-1d38-459d-97fa-fe107125e67a"
+                                  "X5",
+                                  "dVMZA",
+                                  "3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW",
+                                  callback_url="https://7MWulxJq.example.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_bulk_create_transaction_2(self):
         response = client.send(pp.BulkCreateTransaction(
-                                  "FvGq64q",
-                                  "mrZJcpF",
-                                  "iWZHeIfQdHdvs4v2aUitPGe5J3m0ryc2OEvF",
-                                  description="H3wIxddmLq7zZNIbWwSHwKCgXCSNnukUNKPot1qoYiOk2cFGGn09uTba138P32btAcZSker4bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQ",
-                                  private_money_id="4c1250ec-21ea-46b7-b31f-70fea16b41aa"
+                                  "X5",
+                                  "dVMZA",
+                                  "3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW",
+                                  private_money_id="8b5b9e65-d196-4f6a-bc45-6407db70a31d",
+                                  callback_url="https://oXiemEzy.example.com"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_bulk_create_transaction_3(self):
+        response = client.send(pp.BulkCreateTransaction(
+                                  "X5",
+                                  "dVMZA",
+                                  "3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW",
+                                  description="22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sle88sl7rSWKN9oQjHsNX48VkSyiuzE1L2wv36YuE4jwp0IiR44I5KLiOrRKq3qxtTGifN6K",
+                                  private_money_id="261c9a2c-a272-4e72-a1c4-76b5986060f5",
+                                  callback_url="https://ojwDmQdL.example.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_transaction_0(self):
         response = client.send(pp.GetTransaction(
-                                  "da124937-e649-4c71-982a-a6e301d6ef86"
+                                  "73fedb4e-e04f-42cb-ad5c-063e2f0aeeab"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_refund_transaction_0(self):
         response = client.send(pp.RefundTransaction(
-                                  "62bfd79c-c5c6-48bb-be08-8badf5722a1e"
+                                  "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_refund_transaction_1(self):
         response = client.send(pp.RefundTransaction(
-                                  "62bfd79c-c5c6-48bb-be08-8badf5722a1e",
-                                  returning_point_expires_at="2023-02-22T09:28:07.000000+09:00"
+                                  "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4",
+                                  returning_point_expires_at="2025-06-25T02:01:40.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_refund_transaction_2(self):
         response = client.send(pp.RefundTransaction(
-                                  "62bfd79c-c5c6-48bb-be08-8badf5722a1e",
-                                  description="0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4R",
-                                  returning_point_expires_at="2022-07-14T07:05:27.000000+09:00"
+                                  "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4",
+                                  description="aOh78QfhNbZ3YfGhlbqaOElvScjtjkG1WEjltqaYkhp7caXjUtBcNe9XyY4wthFo0glXBErIUB1p7aPMzXnAdDrY96Gn0OAQ9xSN0zfKx7",
+                                  returning_point_expires_at="2020-09-03T12:35:02.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_transaction_by_request_id_0(self):
         response = client.send(pp.GetTransactionByRequestId(
-                                  "07696302-af43-4e8a-9aca-20634c6a4d1d"
+                                  "d720178e-3301-4de9-b8e9-84d6fd11d67f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_external_transaction_0(self):
         response = client.send(pp.CreateExternalTransaction(
-                                  "6699706b-410e-43ca-a36e-330eccec726b",
-                                  "262b2a8f-f5fb-4076-8097-38383791f262",
-                                  "92b16c33-0b6c-43e0-9bfe-faa6606c8e84",
-                                  2437
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_external_transaction_1(self):
         response = client.send(pp.CreateExternalTransaction(
-                                  "6699706b-410e-43ca-a36e-330eccec726b",
-                                  "262b2a8f-f5fb-4076-8097-38383791f262",
-                                  "92b16c33-0b6c-43e0-9bfe-faa6606c8e84",
-                                  2437,
-                                  request_id="65e2794f-510c-497b-a41b-1fbde5317529"
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652,
+                                  done_at="2021-01-07T01:44:52.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_external_transaction_2(self):
         response = client.send(pp.CreateExternalTransaction(
-                                  "6699706b-410e-43ca-a36e-330eccec726b",
-                                  "262b2a8f-f5fb-4076-8097-38383791f262",
-                                  "92b16c33-0b6c-43e0-9bfe-faa6606c8e84",
-                                  2437,
-                                  products=[],
-                                  request_id="80129708-8e2d-48ea-9ddb-957e3e63c5a5"
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652,
+                                  request_id="bc0cfa02-d79e-4cd1-ac05-f378e4378a41",
+                                  done_at="2024-02-27T07:19:37.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_external_transaction_3(self):
         response = client.send(pp.CreateExternalTransaction(
-                                  "6699706b-410e-43ca-a36e-330eccec726b",
-                                  "262b2a8f-f5fb-4076-8097-38383791f262",
-                                  "92b16c33-0b6c-43e0-9bfe-faa6606c8e84",
-                                  2437,
-                                  metadata="{\"key\":\"value\"}",
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652,
                                   products=[{"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}],
-                                  request_id="690fa3ad-e25a-4b53-9a69-767351df754b"
+                                  request_id="2dd7ccab-cff4-45a3-aaca-375fd6127329",
+                                  done_at="2024-11-04T06:24:14.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_external_transaction_4(self):
         response = client.send(pp.CreateExternalTransaction(
-                                  "6699706b-410e-43ca-a36e-330eccec726b",
-                                  "262b2a8f-f5fb-4076-8097-38383791f262",
-                                  "92b16c33-0b6c-43e0-9bfe-faa6606c8e84",
-                                  2437,
-                                  description="JGtLxfbPFfaIRWKNMj5dtiKnG8zX8tvWqvm0QmTuUJdqTxvEdTrlIkQGkGEpBmPu4",
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652,
                                   metadata="{\"key\":\"value\"}",
                                   products=[{"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}, {"jan_code":"abc",
          "name":"name1",
          "unit_price":100,
          "price": 100,
-         "is_discounted": False,
-         "other":"{}"}, {"jan_code":"abc",
-         "name":"name1",
-         "unit_price":100,
-         "price": 100,
+         "quantity": 1,
          "is_discounted": False,
          "other":"{}"}],
-                                  request_id="30d75c89-25bb-4deb-a7f1-509062af654f"
+                                  request_id="53397b54-e20c-4b63-82d8-62d7964b28f4",
+                                  done_at="2023-10-08T23:00:15.000000Z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_external_transaction_5(self):
+        response = client.send(pp.CreateExternalTransaction(
+                                  "6b9390f1-2aea-477f-a724-59f68cb8abc2",
+                                  "7980a0ab-1a83-46a9-a5bb-6c7c212f697e",
+                                  "5e408ace-bd63-49f3-8451-da1412f90aad",
+                                  8652,
+                                  description="KUzkNd35gyuBKlwozbM8BIp6WWFtoNM3mKKWyblmmAHRSYCV0EDw10SY48ZoA8oj9alrEKYDjBWPKCwbirzvScUvjsqVkcSInvOjFPIL9qlVMwg0ANEHCj5eM805Swtsg2NkJBDv",
+                                  metadata="{\"key\":\"value\"}",
+                                  products=[{"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}, {"jan_code":"abc",
+         "name":"name1",
+         "unit_price":100,
+         "price": 100,
+         "quantity": 1,
+         "is_discounted": False,
+         "other":"{}"}],
+                                  request_id="bfe2a478-5f10-4927-9657-996f03fbedf1",
+                                  done_at="2023-09-15T18:18:12.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_refund_external_transaction_0(self):
         response = client.send(pp.RefundExternalTransaction(
-                                  "84cf16a2-3d66-4e04-9885-aa03d2c00a45"
+                                  "cff911cc-21bb-4d16-9cf1-c194731c951d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_refund_external_transaction_1(self):
         response = client.send(pp.RefundExternalTransaction(
-                                  "84cf16a2-3d66-4e04-9885-aa03d2c00a45",
-                                  description="l5C8v6PzPZ7WYdNdFH0K2AD1TKPyYWlsuXOaI"
+                                  "cff911cc-21bb-4d16-9cf1-c194731c951d",
+                                  description="QmHRbZpwbPRidVG7B6hajGJrCJBxTKH0YUW8iwJJuJPCjlaztijN"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_external_transaction_by_request_id_0(self):
+        response = client.send(pp.GetExternalTransactionByRequestId(
+                                  "ab3f7421-49b3-4076-9365-7662e2986bea"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -2133,176 +3161,176 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_transfers_1(self):
         response = client.send(pp.ListTransfers(
-                                  description="vkZ0hBxHL8DiEhh2VnZoTnDJVFMsrvforwTxS8CU7xfi8Z8k0xTZqtjlnCMFHx8TKGI2xE1Bu"
+                                  description="T869RjYRPCqvnZ1YzdrhGH7XKNoGDpqqjYUa42NN7jWbTA8sT9CjYdhYyR9ZtWhMAKSZHQ2Tjahc0hASAcEibjku1fdQetgL0O7DlAFrkXVihIdQWu7J4NYirXryPP6taqbm6hsnA9hELkacVB4dzDqQ1LbTyVIgVP7"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_2(self):
         response = client.send(pp.ListTransfers(
-                                  transfer_types=["transfer", "coupon", "topup", "cashback", "campaign", "payment"],
-                                  description="Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9tiLg6fzyprLRU7zHjv8AVBjeNyLKs5OWxHdcCIY8xfr6"
+                                  transfer_types=["transfer", "expire", "topup", "campaign", "cashback", "coupon", "exchange", "payment"],
+                                  description="mnrDx9P7HPwLX5lwWZKuWWf4n5wNPq2rjN28QfQLnQ9Qr2gs4rAyEVt2ws7WkJzpgGUX4mtxobZ9ZCpNJGZG6LzTWIbd8ZNVrafdii"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_3(self):
         response = client.send(pp.ListTransfers(
-                                  transaction_types=["exchange"],
-                                  transfer_types=["payment", "exchange", "cashback", "transfer", "campaign", "coupon"],
-                                  description="JsJ"
+                                  transaction_types=["expire", "topup", "cashback", "transfer", "exchange"],
+                                  transfer_types=["exchange", "payment"],
+                                  description="trelImUNmLeKEfXUc2dQExu22E4bXnTsrAuXzcUztcjpDcIzv8TjKb1dIcQKtgPEpt9Ynsu0LI4T70lQwB453YpOK96EoFGxVJNTeRlFM4Xw2YneFR"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_4(self):
         response = client.send(pp.ListTransfers(
                                   is_modified=True,
-                                  transaction_types=["expire", "transfer", "exchange", "topup"],
-                                  transfer_types=["cashback", "exchange"],
-                                  description="Zx4bL3mKFhR8vX2cSSl7ObxLVY39aP4hWiGuhuMVGxVPfacjrslMZj02ZSv"
+                                  transaction_types=["transfer"],
+                                  transfer_types=["expire", "cashback", "coupon", "exchange", "payment", "campaign", "topup", "transfer"],
+                                  description="4y"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_5(self):
         response = client.send(pp.ListTransfers(
-                                  private_money_id="7068670b-8849-46a0-9328-db3ec33dbddf",
-                                  is_modified=True,
-                                  transaction_types=[],
-                                  transfer_types=["payment", "expire", "campaign", "cashback", "transfer", "coupon", "exchange"],
-                                  description="pu0MDWpiDvc0yH6ElFsXXAu1ggrDUCau2gnuJ4JjDHOBMd26S3mihK7Gc9ouBdfj9baUMO0QAZUEFS2BtlR4VIQVU2y1HqZTEweuiw2lLR54hFsTWRshdiadwR5IXzLVIyr3tVtLqZwSGR9"
+                                  private_money_id="d05de412-3e23-4724-a331-881d24f61f6b",
+                                  is_modified=False,
+                                  transaction_types=["exchange", "transfer"],
+                                  transfer_types=["topup", "payment", "campaign", "transfer", "cashback"],
+                                  description="HNPhRgnqYnUlh4JbOrMj5jFwrAdcz57ZOWsDr0Djt9M12BOno1AcjM96oftC7mHhiSDgXKvVy5paxKD2XcOfyMo26iqol80j1t4n3lpnoezOx6Ov6eGwjQCqxdtQnDY"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_6(self):
         response = client.send(pp.ListTransfers(
-                                  transaction_id="d9dea1c1-4088-4174-9f53-a284a51dff44",
-                                  private_money_id="77e561b9-24e3-4392-8f5f-9996faf7d62b",
-                                  is_modified=False,
-                                  transaction_types=["exchange", "payment", "expire"],
-                                  transfer_types=["exchange", "topup"],
-                                  description="VkjkAmAursWmY8lUcPFFH8OBO0gTOPvALkgMJawdwCaYZ0f5A4WuoS1IAZgM9FDFzPlCr68wDPzP1uu5pUlr0e255o067YSY4rtLpQIhTsQtfNlHNUlxPCHvPHeZ4gCJRD87F5OLspmSpFUbvNXpSViDBWfAPmGs"
+                                  transaction_id="513f18b4-4c9c-48d3-b9e0-d74e430e5e81",
+                                  private_money_id="eef867b4-a388-4e83-bd87-22488adab12a",
+                                  is_modified=True,
+                                  transaction_types=["transfer"],
+                                  transfer_types=["payment", "exchange", "campaign"],
+                                  description="cUZY47cpIh03BvqB7CzLjYHoO28zEE65UlKtMCe12MUV2dxrA2428zEWnFZLX87qtedPzV8NdiYCurcmVOPZzwMWHgQ0VESfspW9b9NBdczTSynCfTiWLEN2pEbq7ZeB8PVJkE9Nz"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_7(self):
         response = client.send(pp.ListTransfers(
-                                  customer_name="08EBxCdTJypI42Inu56VLkNyEIUSlWSa6lZGo7PhTYTGs3X1TO4wzYkyXyy6lwP0N21ySbpke",
-                                  transaction_id="60074f6d-1b1f-4444-a504-27aa2e7e66cd",
-                                  private_money_id="24efa45b-7e07-4a9f-aedb-9b1d7d493633",
-                                  is_modified=False,
-                                  transaction_types=[],
-                                  transfer_types=["payment", "cashback", "transfer"],
-                                  description="zT4JKnzi5L8cpHHMwXcAIRcjNLk0uNWeNHUqo3XUcSS2VsZS4Lj4GkDI0oXRDtBJxvb11fmeXANYMff4lfRrFSD2GU0U0YSAX1Q89ssC5bpXwoj13v0TL4xfkZtGKmcVmh1Ev4M51rbMFUU1jVlGa8RcO6wCBU9Eja3cVhwcSD6iDQwph5T"
+                                  customer_name="aeTpt",
+                                  transaction_id="263d63a9-aeda-4d35-a9c0-0f0b7d67283f",
+                                  private_money_id="46afdb9e-8514-448f-abd8-55407b263c39",
+                                  is_modified=True,
+                                  transaction_types=["cashback", "payment"],
+                                  transfer_types=["payment", "expire", "exchange", "topup", "transfer", "cashback"],
+                                  description="nTlLyubwibc5uG9Y4cn6ApRZ5NX6gFb5nuODlmm9rpn022H3wQmNFzbLFmfFSz1uperYHhU5vbLxW8Yq15XpRuu89q3NykiRPYO2oQiAYMcKkXBWEu4RSjxgCW3jFlgob7yobgqdqFleVhpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCa"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_8(self):
         response = client.send(pp.ListTransfers(
-                                  customer_id="91296555-1f19-4e1d-942d-facd4e64e6aa",
-                                  customer_name="16YqrHAO8roW5GeUYrGDCf0i4xR1YeuarVLqKYaajZ",
-                                  transaction_id="fd1f4784-b934-4335-8b6c-bbcd9822fbe2",
-                                  private_money_id="60a989b2-ba45-4de4-aaf0-3af8f00db7dd",
+                                  customer_id="3b82b6e2-c914-4d85-aac5-a17474585c4d",
+                                  customer_name="iIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ2qp6BlopujNmJIuVKWvjUjC0u3f2Lo9NqlV6uXM4yE9kd7lV6QKkz6REzoI7cZYW4c0GyNh6EpQVqX4KE4B5KRDxSSppVORQLy6PO73cHGKqjz0v27dHE8reh9b3v7zqeYS2n0EGsPPbvQvYkAPBJ",
+                                  transaction_id="3dfb3c37-7a1a-4177-a0ed-50e78a00ce14",
+                                  private_money_id="f2300d13-4c43-4b1e-8e3b-89572f603e4e",
                                   is_modified=False,
-                                  transaction_types=["payment", "transfer"],
-                                  transfer_types=["expire", "transfer", "campaign"],
-                                  description="SC89X69cCxk1lmjrE2LQn8WVW3m44epc5OJWLmTr626o4XX2rICXAhNDPHxc5nbxE6dOS7QbkrsxeFRrdV1gQxduyB3Z9uLKn8CBvuRo159rPRsnfNPsYuS9nBNol3v7"
+                                  transaction_types=["transfer", "expire", "topup", "cashback"],
+                                  transfer_types=["expire", "cashback", "transfer", "exchange", "campaign", "topup", "coupon"],
+                                  description="KZBD2FhNoFZKIbAgSoRCKxxDEWQZO9yz4Mc4BWxPS7UaVHpVi4pZYZOGKLSewvJuaN97ObUNQZ0A0Rwk2Z2omGatDjCcJfOMaGd4kHySUJYrKI48UyLazcdaqg9M9b56VUQzIG7"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_9(self):
         response = client.send(pp.ListTransfers(
-                                  shop_name="lVyt80jIUhEuqcVn523Q4baN0pPcQtGvFKDcSo8tIJSa9PEebkW1DkF2wmIfJ50Imwzo4spi93QyENqmwOx8YnV9T8kaR9yxV",
-                                  customer_id="6cd1cfeb-e294-4b69-929a-62303eb65459",
-                                  customer_name="h350uvTmXJ3taiP6zrMBCvrTp2KPzJXVVtSjH7KpG4W7WMlwVoyitMfaSwwyI0wlFPTcSqX1OcJJCpH4abwAvDfIYbVEzwXEzeX",
-                                  transaction_id="7d14df37-d484-4d83-8036-a0c3f19900f5",
-                                  private_money_id="2a68520d-1062-47dc-be42-d1ac557b2699",
+                                  shop_name="r7fsBnFuG56tOVY8vi9Z9lrbTGfh4QbdPS2DfLew9jsvLcXjFRqAsdyU0EjzFGdoCEVoN09yrlyTlHcxkp2hdiJWs8",
+                                  customer_id="441d327e-1cb3-4826-a52d-bc1fcbb63fa7",
+                                  customer_name="eoAqvgg01zZW75gRDgWRTNwobRsB1baR1aePdc9fGHLcwyelAg5Jr7zEeO7nUDqxXj74j643AIOVakyq8QHWKNric3MBQYWsKtvnxoQJLloM94TQVFchkaVLnKXq1JcpZfZUH2UsKCx",
+                                  transaction_id="83b07d16-e26e-4ed2-a375-e2d38c710a83",
+                                  private_money_id="b9c8576f-644c-4ece-8106-a48dc3ddd7c0",
                                   is_modified=False,
-                                  transaction_types=["transfer", "payment", "expire", "cashback"],
-                                  transfer_types=[],
-                                  description="vZavHGIwQGFD3y3WQcOQ77GqTbykQNeXwfkirPrCHC6oGX762VWlOvBKRDnWwJ1RB1Xf0sJSNdUIy9UNPxEn8d7PVOwf2KxYZgpwkatfDXh6wjcpgPghclYC1sotThNzacMPGRW9XLUFYLKH2dLAXy2plAkroUr6KjPvdUwWdZh0L8"
+                                  transaction_types=["topup", "expire", "transfer", "payment", "exchange"],
+                                  transfer_types=["coupon", "exchange", "expire", "payment"],
+                                  description="zfucn7LZFZwhy5RIJGwbFSZ2qU3L9frpqlrETgz3O9wlyQ0TWfR4Gx21zM7WIQGDsPsJyAShBlCJPjtVj6RA58jW2j8noWbhryHKQAP2bBeZ"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_10(self):
         response = client.send(pp.ListTransfers(
-                                  shop_id="7eb0aff1-f14e-452e-8b7d-61adb380f83c",
-                                  shop_name="4Tq0PqVhzCkKROCStDoZvAY3OKa5oCE4xLFobA9UOrBeN520IjUnvAonmJrl0Qqm11RMoDMOSwDGwLJ7XtGOGgKQwzAg5",
-                                  customer_id="ecc88e49-3c14-489b-abee-d4fd8daef6c4",
-                                  customer_name="gdQyyCPmcszk1DSduCpdgUz5UizzupfDUVzOTa3MaAaf4kTfREjRbk7TIk1gephK43IsijpvrzedeO1cdtY9cqUS5AzQzHdKGL1guEaRrfiOPX45f7SdsQcMHW7he8Z1qLepuyyE02MG8yUNtUKfprHpGaVcCOEeWb7TQI3q8qslujxF3n4fR7Vfp3vRJLnSgiLPjnc4kQ0HdyTor536XOfVM3XXOQ3tGi0CJH7VMgkZVkFMaOxCQ0Il",
-                                  transaction_id="9733a614-fab4-4fcc-a0d3-5b31c67962c8",
-                                  private_money_id="cbeb5039-2bd2-428b-ad68-6fb1d8d8bdfe",
-                                  is_modified=False,
-                                  transaction_types=[],
-                                  transfer_types=["payment", "cashback", "expire", "transfer"],
-                                  description="FmlvrlMvNLwEsnbNKTS2h75GF8UpjoAlQvJzCU8IgWIQfnPgb4T4DEkgPLD0xZMd5yjnHtiPzKYB9uBkIh8qvqswUq9MIMd1v50tEiK5VU8URPZftDXY7iH91521L9iCZDgOHv8ccbKA9zaXWI"
+                                  shop_id="f05ec32e-eceb-4c6d-9d29-38490eae3f19",
+                                  shop_name="h2UeN7Z047tEp9MnaMKkPTTOh4KlFXKgtix",
+                                  customer_id="348962f3-11f1-4ae0-8e20-dc5672417454",
+                                  customer_name="rrSHZ1a0tz4EzkuhUCHWp85qyAYWUJWst1yIlHOt0XiM6Qkur8SbZd3wcuCesxkTgeUlIAlQvL5t780R8L5VrLxzRQlVu0ZdkmHWdPUiVDqeHPcQVtlOjSB31Mxq8SXpxSHJRZi52y7KvoeklIR5ig74Fkbtbb0SlK2KbT8BQ8WxGHxi6f0cuW1ZhxLtCHCm7yUfJm7Fg98YgjSKRGLQpNx8ci",
+                                  transaction_id="86fd9ae0-4321-47ce-b24b-0df74d4a2b65",
+                                  private_money_id="4d5e9d15-a4c7-42ca-b46e-a5c7c9457471",
+                                  is_modified=True,
+                                  transaction_types=["exchange", "topup", "cashback", "transfer", "expire"],
+                                  transfer_types=["coupon", "topup", "cashback", "exchange", "payment", "transfer", "campaign"],
+                                  description="6D0iGddOVzLT6tirwJLurByrAGwszVwlQAuTXTWtKg2YB5YxVquVYsbDyysRisRQ9ectqoj4yKOsEPCrpQPvSjUDltH57ysDpO4lTbJ9dq"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_11(self):
         response = client.send(pp.ListTransfers(
-                                  per_page=6639,
-                                  shop_id="445462f2-5650-4a1d-ade7-3618880ba8bf",
-                                  shop_name="iqGxhGUs6ZnMyMQoClDSK7KRPQ6M6EMYtB6Ep2GnDZJdtjBh5VRBTfV5MJhYQTBRBM7G8j00YInJitv9WP6kwxoiXMMFgIG6MJKNbnVLomjuJJQI4ykecPid861BWO2utY6ykCTVCcIXTPlbcMZgCJ9BjKA9LvljTLcW71b8cClVacDr5l3x4FVfYiLUL8Bb8dzaB45kELqQHfqMF0cAfS47CSQOovJ8c1i3",
-                                  customer_id="2bbf4666-5b65-4dce-8fb1-9f716b286690",
-                                  customer_name="Bnpp3tyKjZPjTs65qzNTqIMvOUP7lDJ32SCMXHu4UsQsifzmvmEGKnmcQWOqm2bxZSUNMN2LXvZ3UB0bY6L3973iqLKkGFIZmfuXhD9mm06njf2aXb7PnD9gNpMDYfCPceKjPow2YL1adnoZFEUP94ii4uT2NJ6DSRSGMdhjjWzKEnHt1GlWmv2y5j3kpGt0e4jNi92dahl",
-                                  transaction_id="bda42c6e-18a8-42ee-99eb-0eff2ebfea08",
-                                  private_money_id="851c313a-c888-43a1-99e0-0d4bb926a292",
-                                  is_modified=True,
-                                  transaction_types=[],
-                                  transfer_types=["transfer", "topup", "expire", "cashback", "coupon"],
-                                  description="PkZF0J60lUnUwRinT2la9EMVbGBQcWz4E8fUZnWcjAk0kMso3CQzadAG14rJr7OIiIwKYtNBz"
+                                  per_page=3064,
+                                  shop_id="b007e319-009d-434b-ae35-5d800741544e",
+                                  shop_name="SHIJ7mbc5qbOnYCYxA4AjI47p6qtIsaCpt80GzH1FRWe6zLcwMHaeJGFXqwAY75stQD6SAh41fZii84vybd1Jsf0jR3rzbwtxyn2FAh1zUedGEpNztrZH4AytTHxVvHVgjPvTnTRbAGxJFBzSBdN9rH7Ml90EeuZg",
+                                  customer_id="69e6bce1-4b50-4821-9232-59943e0b6430",
+                                  customer_name="pyyEjfyZnRCBHpzVqBZqNRFUo9BhqQxq9FR8VF2gH7EAnlFEgMmyi8jmBN0T80aLvrKoRyTXgPVT4AzeoZEOYuu1RyqlWwyCNVezTDDCUN00F2Vhn3XqmCSMDzeEDKcNHBIUBy90lbfxByyLgJllatyS0exoVZwnX2Y3MjJVkSKFu78PD8Nsi0ghqRiHIikuwLQAi0YorDHLBFs4pFpuxUcIrb43g0nK7tb3btHVGJJQejQb3sdWfi2Z2Wvmx",
+                                  transaction_id="bf6d451b-0795-4e03-9530-f55a7dbe6b71",
+                                  private_money_id="d31f75cc-b745-4a77-9978-7e1a296ff377",
+                                  is_modified=False,
+                                  transaction_types=["cashback", "exchange", "transfer", "expire", "payment", "topup"],
+                                  transfer_types=["campaign", "topup", "transfer"],
+                                  description="QdvuQb5QYDYt7CyctlhtAXqf6uerXtmVp3iPqRhb6DnnO4ty38IkhtTfaQWLqhFbA6TsT4rGSzhCtzrrQIFeK35Z3EF7SWnLL5qkYPGTd8wILW6Ubji6nDVo6kwt"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_12(self):
         response = client.send(pp.ListTransfers(
-                                  page=4465,
-                                  per_page=529,
-                                  shop_id="559ce0b8-c26e-4c01-bb5c-be21df42192a",
-                                  shop_name="ODkJL8EIU81Vy5zPsQOGlQlr06Jl9JLWCZ8neyUVmWBR3xve7r3YSLXQYTyvYaaI2qvRlrSNIrRDPa1eyCiQOxDTwWc9gws9XAUrux74v2ITxjA0PgzICgqeJVlSY26G92wNF5y9aZcAMQT3BxPWw78yOKfPR1NUJQvD2rVGC8",
-                                  customer_id="833e6222-c1b4-4612-8aae-1dca405fd4cb",
-                                  customer_name="YYu6jp9XJncsuSh46krybNv1zjGCQgXpBAn6vYjVqpA4IONiLV0kr6A1DgXWodpkxho8rBfuxAgk4G7K3EbPTtYbjyxowsbeNA1qdSnOGMCPl7IMBQKQv86A0JZpBpvSAXbobD9Ki30vC5rrnazdVnK3PrJ5SiaT9q7d0MByh1j24T8jie07UHeDFjaRvAps3KfAZfCcJF6TIE",
-                                  transaction_id="2798cae5-6e85-4152-bc82-eae3b243e7f2",
-                                  private_money_id="a7391768-dba7-4f69-a04d-c4dee6af5f19",
+                                  page=4670,
+                                  per_page=2165,
+                                  shop_id="8359d186-5292-4630-a520-af409e38c1be",
+                                  shop_name="996vZBp0zzwPN5DIhcy9tg03Xeu2UN5sKl9fYJxmaO84WKiqpzyFwc0O5qDH6cAdyVZn4o55A5DSTN7FZ8Y8t8MIK7GdyM50XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNhhqnfBQjVsClPPd45bUBovESo5O7DwwlNZPFf6xG0YeVkLQLhc",
+                                  customer_id="939a23b7-6f19-431f-a862-ab142e38aef5",
+                                  customer_name="3B8S8pH3eqOx8cOR3TFR9a8hMUMtt7RdIKeKSciqwdkkgvqZQpEwqxxIpXTryBWY7YmTtJYjps5n0FjmTFvO6PZjVX87PLzR29oTCv16fPXjhVlLpKgtr0a",
+                                  transaction_id="6ff5abbb-cb8d-4c58-8dbb-daedf81b75ec",
+                                  private_money_id="f09e1530-e2c9-4938-be95-36aa615b347d",
                                   is_modified=True,
-                                  transaction_types=["expire"],
-                                  transfer_types=["expire", "coupon", "campaign"],
-                                  description="qC0B7Kcw0qagkhJ7wfZWTULKa8VECsBZr3IToxXjdyKGc7ZzHUV5fOm8mtNakhvcdUzoLcA59nUhEAXqtCyQcPmsvpgfmd8PIAhkngoJScrC1WRA"
+                                  transaction_types=["payment"],
+                                  transfer_types=["expire", "coupon", "payment", "cashback"],
+                                  description="GrfkcGFxlkTYjYgPlxnzpf9XcHDiw8sqMTw9CGMrpupnZP3tXLGdI4BQeMKNjNC6v4LdJ9q0nifAUuGHUnCvc4A5HlCo2a7OllUlOCGYapVIyu0AtoOYT3d8xXDGe31wijgcuuWSuuP7qXIDVYzNjNiLWADYEWxDRpy5o7rEN4eiDqYJVEg5UZOhJA"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_13(self):
         response = client.send(pp.ListTransfers(
-                                  to="2021-02-14T04:41:34.000000+09:00",
-                                  page=5519,
-                                  per_page=8002,
-                                  shop_id="5cb8e7a4-db54-4107-a2bd-70923811a5d3",
-                                  shop_name="rzSbRU1v2KZFFhdMjCCzsHpBmrvRb2UjrXmXby0g0KQCQJco6Fst7K2jJcCqUZTewzuJ3F92QKd3C9M0vBcKWIUBdcBNwq9T0OG7VRzcPfWGO1YJqrl83WexbWjPBIcMUJ3obVqULs7P",
-                                  customer_id="3932f409-f473-4812-b809-d0c77e8b8d7b",
-                                  customer_name="UAdxQTQ69L5ufP3C8GoKbqWo6okozRxG7O1lnWZInpqxewkSnO8G8BVdp2SnU56fm1",
-                                  transaction_id="f3c38910-0015-42a0-9f66-aa74aa523a9c",
-                                  private_money_id="5d7977f5-2fb8-4652-aef3-12e461c631e5",
-                                  is_modified=True,
-                                  transaction_types=["payment", "exchange", "expire", "transfer", "topup"],
-                                  transfer_types=["transfer", "exchange", "campaign", "cashback"],
-                                  description="gBjKxJ1kVUP7sJk9W7sPqDCWwYS94nlMA9QMeCafNqHwyMdjdwcWi3JTYLChkb6TlitzWaW4uPhPny3cB55XyFtx17QBRLdwgp38D246YReej2SSevahES9poV0ViKFLpI4REDYg"
+                                  to="2025-11-03T16:50:06.000000Z",
+                                  page=1502,
+                                  per_page=3299,
+                                  shop_id="d5b3edbb-efc8-42f7-889f-44409c7333ce",
+                                  shop_name="Lgu8Nky9WURMByjAKTzdQ2llGcXl5Cw9ahtSHvWHxDbu1GOKxoKM3BkiQ5JCNLUQPpDOoGNkBoKxTvABwe33UWeSzKCZwv",
+                                  customer_id="0cf6fd9a-7095-4c34-90f7-569dccf3f61b",
+                                  customer_name="JOyIcULWzrNeMACItmOkY1pUONfZUthj8CTdPwk2g7DYhFuXWtax2gH7mosTYAgSjd1Lu4N1G4DllEfWLsx2f1PjIk5LFEcZYZR1K1ULgGU5oSrsDCn36n92LJoBnxVWA0Bmx0P3sSh52djDx2E",
+                                  transaction_id="0a1332a9-b4b8-4371-b22a-ce83dcaaf254",
+                                  private_money_id="f7e5676c-95a9-4b30-8c36-07495c64449d",
+                                  is_modified=False,
+                                  transaction_types=["transfer", "topup"],
+                                  transfer_types=["exchange", "cashback"],
+                                  description="KLj26g9D4jd9Fi73fT2ekfbMypSoZArmvOOmVqy7LHITpCScM5po6zQrUB5yHtoGfycJYa2GIKQCGBFwcqnjKtXS5ctb0sUDamQiJFavfIlsQjs1Uxv98uoxa9cfqdBZ"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_14(self):
         response = client.send(pp.ListTransfers(
-                                  start="2024-07-10T08:49:16.000000+09:00",
-                                  to="2017-07-26T19:47:22.000000+09:00",
-                                  page=9304,
-                                  per_page=8816,
-                                  shop_id="2005b332-9651-40b8-a30a-48ffd1dc538a",
-                                  shop_name="wkpiTfx0K3NI9FJ11nkGfRQlGszH71XXMwwageqdiCUtiam5OCYCyW06FKS14FS73",
-                                  customer_id="6ff8661e-d9dc-4447-890a-261812bffa9d",
-                                  customer_name="a3ijeaDjTIJss0bIT0ZqOXGSTVH9BRjr8phyPclxsBq9XBmkTSfhHrb5sDnsI3ZWUf9QMTgobmXveIIZc15XikWWDvoW8CZvliqF7CSsjWcuOJS4Ehtu4LwcLHvZh25xxfXebiI3VayaI3kTnTLIkpOXuMZobSfeWKzoEFQ5pyI5j9pCzj3hQwJJC",
-                                  transaction_id="eb17985d-2eea-458d-ba95-fa47894a5d5b",
-                                  private_money_id="ccebaccb-e5f8-4839-8a81-79e1339c2b8f",
-                                  is_modified=True,
-                                  transaction_types=["cashback", "payment", "topup", "exchange"],
-                                  transfer_types=["expire", "campaign", "cashback", "exchange", "payment"],
-                                  description="RysjIT"
+                                  start="2024-08-19T03:34:54.000000Z",
+                                  to="2020-08-30T23:03:30.000000Z",
+                                  page=9599,
+                                  per_page=84,
+                                  shop_id="5a82633b-4353-4001-b9a5-fdf5aa3a62bb",
+                                  shop_name="PsLgc14jRH1daAJWkWpeGV",
+                                  customer_id="f13cbba1-c695-4af4-ad37-c04268673507",
+                                  customer_name="TtK3VwbUSgXIGfDPEPwHED0KtmD",
+                                  transaction_id="a3d4eb5e-8601-410a-ba78-99cc1826f1d5",
+                                  private_money_id="ab6d912c-462f-4962-955c-f2247b08b08d",
+                                  is_modified=False,
+                                  transaction_types=["payment", "topup", "transfer", "exchange"],
+                                  transfer_types=["cashback", "topup", "campaign", "coupon", "exchange", "payment", "transfer", "expire"],
+                                  description="KhxLe1FMHoh3041czvU7tiTGNYlDyRk3aGMps1HN2Oi8GzWre6yIHCge3KvTMWtvAOdqc6t46b4EgFIpDVk2sq"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -2313,322 +3341,362 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_transfers_v2_1(self):
         response = client.send(pp.ListTransfersV2(
-                                  to="2016-05-19T03:51:03.000000+09:00"
+                                  to="2021-03-10T22:39:27.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_2(self):
         response = client.send(pp.ListTransfersV2(
-                                  start="2018-06-28T12:53:42.000000+09:00",
-                                  to="2025-08-05T21:35:39.000000+09:00"
+                                  start="2025-10-17T04:10:10.000000Z",
+                                  to="2023-10-30T09:11:55.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_3(self):
         response = client.send(pp.ListTransfersV2(
-                                  description="1O8xVGeOGcFlOxiVnFhvQYgTq0yLoByCmHUuVyH3cfcF8Pf92JXudRmeZmjiokTl117bHBnYglbQt4QBFDEJKi3AHyd9yQ5W9RMhIq1dhsWztxTud1TnBQZsbkd",
-                                  start="2020-07-27T06:53:50.000000+09:00",
-                                  to="2019-07-22T10:30:08.000000+09:00"
+                                  description="hlAUNF0Kr6ekdB7WSGlsT24mzzvf0uixfzgMS7DAxRVXjpoYOkLYbJM46YGKDJVQANtfUdHVcsouxX3xI9",
+                                  start="2023-05-27T10:56:03.000000Z",
+                                  to="2024-10-14T09:25:58.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_4(self):
         response = client.send(pp.ListTransfersV2(
-                                  transfer_types=["coupon", "expire", "campaign", "payment", "transfer", "topup"],
-                                  description="KWD0fiDnREQQDwR5XEyIFeG77xZhQ031Bv0fXxSyFQJeZ6rdQ8buBb1f9slLRuiYJe4XyJvTb23a",
-                                  start="2020-03-14T13:09:59.000000+09:00",
-                                  to="2018-07-19T14:11:21.000000+09:00"
+                                  transfer_types=["topup", "coupon", "cashback", "campaign", "expire", "exchange"],
+                                  description="NDSkRyfWKAxjQWjCB8nFcqmE",
+                                  start="2026-10-07T13:30:46.000000Z",
+                                  to="2023-03-20T00:58:00.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_5(self):
         response = client.send(pp.ListTransfersV2(
-                                  per_page=925,
-                                  transfer_types=["coupon", "transfer", "expire", "payment"],
-                                  description="Kvikb",
-                                  start="2018-03-29T03:19:06.000000+09:00",
-                                  to="2023-07-01T01:25:32.000000+09:00"
+                                  per_page=591,
+                                  transfer_types=["campaign", "expire", "cashback"],
+                                  description="gwF9x3xZsR5bLJPhH3FEHzbfU4cD6smAeqngifjNikqDE3OudXpYhNwFWUAKOnWlhna0lYNQbEnbMVdbi9G5aE3q4gTN93gHJA1FfneXYRV1FBu9VqwmK2QWEkaIk3Nf304AeRoMBnYRrC4cXtKQ0a4OPrt2tro65RM4SYyWPQ4b5",
+                                  start="2023-08-02T13:53:58.000000Z",
+                                  to="2025-06-10T20:33:28.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_6(self):
         response = client.send(pp.ListTransfersV2(
-                                  prev_page_cursor_id="5a8cb885-93b7-4968-b13f-e9065fc1ff54",
-                                  per_page=521,
-                                  transfer_types=[],
-                                  description="9ynJs1QCqTRlC3W1MGePxsBFCAyv0dcBt87MHAdufVNZM7qsWa8JyqZo0jQRpDPE6rh6ExoxFn0c43cEW5yWSswalnNSPl4nKgIh67Gkz5WkqpvEXvT4G0zj9vSzfdqnwxVoVRAJZtMnbN2adZxWSJweQkjDaZNU8iBur4dbIER6acqYlw",
-                                  start="2024-02-02T15:42:04.000000+09:00",
-                                  to="2016-08-25T01:29:18.000000+09:00"
+                                  prev_page_cursor_id="a6dba746-4ce8-4ea7-8614-63b0ddef8d4a",
+                                  per_page=994,
+                                  transfer_types=["transfer"],
+                                  description="XqNgzf5XFTYAHJdFeGZi1JIa9NTrkMeAKNU2qNMrw4Jay2YBOfulEIFK5T7Dc8oOst1MM9PmjRDk75J779k3qO5Tt2uQGKACRqDnzgekX",
+                                  start="2021-09-05T18:04:33.000000Z",
+                                  to="2020-02-09T02:22:46.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_7(self):
         response = client.send(pp.ListTransfersV2(
-                                  next_page_cursor_id="57d9e313-6445-438c-b0b9-3ec439e77024",
-                                  prev_page_cursor_id="6a5565b3-e96f-4160-aad8-c857dc1f2327",
-                                  per_page=387,
-                                  transfer_types=["exchange"],
-                                  description="7xTzrPkAXyiXMztQxtJ4M2WJmA50gKlydbRXM1sy2g1Pf0MqzXeXqK5rRDKBvomcRcTm4csmVWyjay9TthXSYCbva0t32yWLYVWM4QhXAPz9W0Mxm5OYGh3N4Z6M9NXBY9oPVgI76tvDy",
-                                  start="2021-06-04T03:44:58.000000+09:00",
-                                  to="2016-02-25T15:21:47.000000+09:00"
+                                  next_page_cursor_id="418df5b8-7518-44e4-b60d-ec4430a28a0a",
+                                  prev_page_cursor_id="d96e0330-13c1-4970-a544-a54e16f3a8d6",
+                                  per_page=532,
+                                  transfer_types=["campaign", "expire", "exchange"],
+                                  description="hDHmMPohPl8jvZE0kmWyBRnvtcRhoAfyfPvqbgkbgVyEBxJxS2dp5fON6g3h5b1QYmVCtk78JxdSgtNZkgpDcQrvPvYu9rBGsdWvnLspaw0X1BOuUcrgAIrlVAxUxxoJ3m2cOYFN",
+                                  start="2025-12-14T01:49:39.000000Z",
+                                  to="2021-06-07T05:57:30.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_8(self):
         response = client.send(pp.ListTransfersV2(
-                                  transaction_types=["cashback"],
-                                  next_page_cursor_id="10f2975d-1790-456d-b970-2fc64059f4d2",
-                                  prev_page_cursor_id="891bf7ed-f355-42fe-b6e5-ef827c4b9964",
-                                  per_page=519,
-                                  transfer_types=["transfer", "expire", "payment"],
-                                  description="lSSsYDRmoQAbzux2YVPLs6mqcLQO6KAfySYCh0uqCGrCwLPsZTQHaYj8b8oAQjqHWHEUSfBXgsFSQYVjyMJi1osniwzvMM5724wrvJulOUj4A8M3jM0zpEWete9qDkCIpsjezZ2M4DgCUcWaYN25M17e8QItVUDPdnGbbjU",
-                                  start="2017-06-10T09:09:15.000000+09:00",
-                                  to="2016-04-18T19:52:41.000000+09:00"
+                                  transaction_types=["payment", "cashback", "expire", "exchange"],
+                                  next_page_cursor_id="4a404569-360e-4975-8061-ff96b143425e",
+                                  prev_page_cursor_id="43c2df04-510f-433f-80a8-0b0b72fafd81",
+                                  per_page=524,
+                                  transfer_types=["transfer", "expire", "topup", "exchange", "payment"],
+                                  description="bb8U4LoGEUFzMVQ4l9WdfwN1GBXrbSDIYZlYLOis5sBRV50E243Lt7Q0CkQGlHLmFUomkHrvNClWFSWTgMn5wd",
+                                  start="2021-07-21T23:05:26.000000Z",
+                                  to="2024-11-07T10:12:00.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_9(self):
         response = client.send(pp.ListTransfersV2(
-                                  is_modified=False,
-                                  transaction_types=["exchange", "cashback", "transfer"],
-                                  next_page_cursor_id="e2590801-5e40-461b-8110-539d51d51d2f",
-                                  prev_page_cursor_id="a4a03b6f-faa6-48fe-88a4-d0f9078a983d",
-                                  per_page=304,
-                                  transfer_types=["exchange", "cashback"],
-                                  description="yexDJw4m5W5NSAarqtGtlcKJp9gTWhEWSlBiVnl9lORTBFy0IWWO4H8KmbVB2M5EGOlNZgqvSi38sr7tIAdAm2GfCQqu6PVWox7el",
-                                  start="2017-03-04T01:54:13.000000+09:00",
-                                  to="2017-05-10T23:34:31.000000+09:00"
+                                  is_modified=True,
+                                  transaction_types=["payment", "topup", "cashback", "expire"],
+                                  next_page_cursor_id="d5672946-09b9-484e-9ac1-33d467bb0880",
+                                  prev_page_cursor_id="33e04bed-59e8-48f1-946f-d09899e85326",
+                                  per_page=157,
+                                  transfer_types=["transfer", "exchange"],
+                                  description="bT09Lp665rg0d7eGITtIklkYFTO7OJe9dSEOGALN8S7",
+                                  start="2023-01-16T05:41:14.000000Z",
+                                  to="2026-07-24T12:16:42.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_10(self):
         response = client.send(pp.ListTransfersV2(
-                                  private_money_id="9d93ce54-91e6-4322-9d12-739d5879dd72",
+                                  private_money_id="b93c31a8-bdb1-4bcb-a146-b48244b60e22",
                                   is_modified=False,
-                                  transaction_types=["expire", "cashback", "transfer", "topup", "exchange"],
-                                  next_page_cursor_id="2ed7910c-d1c1-47f9-aa8d-2ccc92902d9a",
-                                  prev_page_cursor_id="0596f408-1119-41a3-a4cf-79ff70bb9da1",
-                                  per_page=396,
-                                  transfer_types=[],
-                                  description="3AIIQZmW74G7CnNpvzFPpYINeb1rEwkSNbZUKM9QJifASeEjt7rgfB4dUvUA5MkBayzjLixvqernP2ia0JTvsqFBudbGeZdEPGzzDd2lyZr3fyGm4G1h2gpnMz4EtR2vopXxSWiIg6gduAWVf9XkDSsioG64",
-                                  start="2018-08-02T17:59:49.000000+09:00",
-                                  to="2018-12-07T20:05:22.000000+09:00"
+                                  transaction_types=["transfer", "cashback", "exchange", "payment", "expire", "topup"],
+                                  next_page_cursor_id="534492f7-0cf8-4113-a3b8-ec6fa6dd3def",
+                                  prev_page_cursor_id="f057915d-c491-47fc-b34a-c9cc67d3fecb",
+                                  per_page=694,
+                                  transfer_types=["exchange"],
+                                  description="pZGMSz7kvOMHYRjzAZw05Ty0nenwzHOaIVwMTjPFMGevwVMeZt8EqIvyxvlj5KalqxA7HuqvdSNveW",
+                                  start="2026-05-13T17:48:42.000000Z",
+                                  to="2021-11-12T07:50:47.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_11(self):
         response = client.send(pp.ListTransfersV2(
-                                  transaction_id="272cff66-15e2-4374-ac9b-f38154ad010c",
-                                  private_money_id="a5ea0593-81c3-464d-a293-659f455c9949",
-                                  is_modified=True,
-                                  transaction_types=["expire", "transfer", "payment"],
-                                  next_page_cursor_id="49b96d65-7153-4c06-93f8-ae6282c39fac",
-                                  prev_page_cursor_id="db7ac25b-147f-4852-94f9-1e160b46cd36",
-                                  per_page=598,
-                                  transfer_types=["campaign", "transfer", "payment", "cashback", "coupon"],
-                                  description="6TRb2QsyUYaFBg0rLG7i",
-                                  start="2022-07-09T08:10:51.000000+09:00",
-                                  to="2024-10-28T00:32:14.000000+09:00"
+                                  transaction_id="e4d06ec9-1f2e-4a35-8c93-e3805e5da697",
+                                  private_money_id="eca2b88d-3bb6-47f3-b4af-c5155b579d1c",
+                                  is_modified=False,
+                                  transaction_types=["expire", "transfer", "cashback"],
+                                  next_page_cursor_id="808ded3a-2a06-475b-a416-bfd277033d5b",
+                                  prev_page_cursor_id="68080c82-b24a-4ccc-acee-0b90777e0b87",
+                                  per_page=9,
+                                  transfer_types=["transfer", "exchange", "campaign"],
+                                  description="2bcH2xVBHTbiOHYbzW7EYCf76ToHcl8dtzcqD6rqwGDVR",
+                                  start="2024-10-09T21:51:32.000000Z",
+                                  to="2025-03-20T16:08:15.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_12(self):
         response = client.send(pp.ListTransfersV2(
-                                  customer_name="umX9lPF6p8o2y11Yrgt4LCmHaJMs2PMcoeItTVcWkxXihexQXo312p3Wls1sE7BHULcZQtWWfaD4rWZB2GIm3dWvJq3fHzlHa1nO6pf4h9ws9kLnk6c",
-                                  transaction_id="b0c32819-3ece-4962-80e2-d630b93993a3",
-                                  private_money_id="8e0a0ca0-6efb-46ca-8484-644a76a3e7dd",
-                                  is_modified=False,
-                                  transaction_types=["exchange", "topup", "transfer", "cashback", "payment", "expire"],
-                                  next_page_cursor_id="14f80a79-934c-4bab-aa49-e047b893ed1c",
-                                  prev_page_cursor_id="ca367023-56ba-4d95-8719-96ec05e940be",
-                                  per_page=404,
-                                  transfer_types=["payment", "topup", "transfer", "cashback", "campaign"],
-                                  description="mHAR3RBnK72f11paMW4hGPanWOZJLbDfcebA2uxdCspznoi6atFNTbrEABXoODKwUOy71",
-                                  start="2020-10-10T07:12:50.000000+09:00",
-                                  to="2023-04-11T15:30:10.000000+09:00"
+                                  customer_name="jGjigHpZl8InHQBhMIrdZJT9MnQgGfElkSct56tB3QvYjy8mUgDyXQYOSshpGMCke10fApKjBHnAmdlKiUj9JqianI8FqIXqzelGZDONUAJfl2HMto7yaW0Gkt1pOBZosxcU6W1vFMKN952VUdQ3t63Wpysg20fNh",
+                                  transaction_id="59bca0d0-b49c-4f68-bd25-3e4686cba24b",
+                                  private_money_id="2c6462b8-4bed-46d5-b771-6bdea0b556bb",
+                                  is_modified=True,
+                                  transaction_types=["cashback", "expire", "payment", "transfer", "exchange", "topup"],
+                                  next_page_cursor_id="4d77c0f8-7c9f-4956-9ccf-f0564d9e8071",
+                                  prev_page_cursor_id="561174c9-2067-45ef-a7e0-156f605db39c",
+                                  per_page=739,
+                                  transfer_types=["exchange", "cashback", "payment", "transfer"],
+                                  description="vrKruisPGcjRxKz0hnHtPEmOFzye10sMn1hLqgZ4Scflk2JdjznjOojFztUyYyUwwyS",
+                                  start="2020-12-20T11:40:08.000000Z",
+                                  to="2026-09-03T14:44:09.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_13(self):
         response = client.send(pp.ListTransfersV2(
-                                  customer_id="a0327969-162f-4fed-9828-f97fd44ac862",
-                                  customer_name="yuBcqQnQ9Lj9uq1rjYyblkDRghHjQDZezbRZC9FxfNOIHrbpOq6mcQRKL5CG2GPSQQB1U6IjRsZr2eFWgbnzGrBQcbaSK3iX1ZFYsGd1YMLCaCs0F5pkoUcbMvLHGSU2LTCLPQ5GJELxIJ85m7pWO5Oq5sU8iwoJ735Qje9VnUZQt0pzes3TegY2AoCAsHwCP5A6Scunsmt5agjEkUDn1nh1J0PoLY33AeuLX1vt0Xc",
-                                  transaction_id="d3bdf3b0-ee95-4544-8f8b-87d06be1c6c9",
-                                  private_money_id="2dd136f3-5908-487b-aabe-a695d5a68eef",
-                                  is_modified=True,
-                                  transaction_types=[],
-                                  next_page_cursor_id="9033c9f9-954a-474b-8a86-87a41fd8fefa",
-                                  prev_page_cursor_id="25b98bce-65d2-43a7-9d95-2e2ce43ebb06",
-                                  per_page=356,
-                                  transfer_types=["transfer", "topup"],
-                                  description="TrsJZ4LsdIfCC8uQL",
-                                  start="2016-06-19T21:09:18.000000+09:00",
-                                  to="2020-07-22T17:47:49.000000+09:00"
+                                  customer_id="180e68c2-ec35-4a0d-a87d-9bbb6ae12140",
+                                  customer_name="tgNIDpUpzKyj3BEvYp1TbuySIy9vMfjs9RSVIuRLJam",
+                                  transaction_id="c0dbf9d5-0367-426f-a439-a1764b174e4a",
+                                  private_money_id="4736202c-5be0-4f52-8de8-43359161fbec",
+                                  is_modified=False,
+                                  transaction_types=["topup", "transfer"],
+                                  next_page_cursor_id="b80a36e1-b8bf-496f-834c-0947d8c5510a",
+                                  prev_page_cursor_id="2d4fb274-ba15-41b4-a070-3aa3eee0ff89",
+                                  per_page=769,
+                                  transfer_types=["transfer", "cashback", "expire"],
+                                  description="l2QniqdOC9my1YOO8CjR0YFmv40UM5wZgue67e0YlrO8E3L7gW6pVOxZ4jRFNa6hoBOihdHvejLf7HUNUhMpEnczyOhMWAPbHXytdj",
+                                  start="2024-03-09T11:56:11.000000Z",
+                                  to="2021-04-13T23:27:17.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_14(self):
         response = client.send(pp.ListTransfersV2(
-                                  shop_name="KagjGEM3GfsC9B0w8zKt6bQig1LgqOPtR6wzZdUh56Q0WZf8IPC7BRlPxu7PJAL2SSrdIkCx2w3UniyERaYjCV8kJefHmgXwlVomKPcnp5Z68uiRVcRs6iSVq6CAE1cykbPfFVTBynTVWrp1vTM1qsdO4ANmXuI4",
-                                  customer_id="d9defb96-653e-4070-acea-e661c4734461",
-                                  customer_name="jMjNf8XzKneiyaJFmKrTqfSFemIMfA7XBmcoIx81EXrZTOXzCYdt",
-                                  transaction_id="f564454e-8e63-49d3-a325-e3b5cf7b91b0",
-                                  private_money_id="ce716454-b5d2-49ad-9468-c276f58246bb",
+                                  shop_name="8FkE6WXDem2rgSzz35aQ4D94kR9S0XTdmHcC0cGFAfEKgLlOIWqFFofKhzWzCAqp2ZanhrL16oNA3cZ4NnyIE",
+                                  customer_id="ae22636a-91e1-494e-b680-1964521839a9",
+                                  customer_name="YZY4p9bZgscBV3pXiPPiW2qUm4FbQucsmz0GYwY85K8kF9CcO2FCZ7wQECuEigH9T54l9EXWThBhNBtq0Hlr5VUDcRjPWhcWE5Ed0Dp6qm5enNIYlp4WuULLQB3hzZG357PPnWlMQlOO65IFrI1BJMiWPv5dAbUBWta",
+                                  transaction_id="f1b0431b-0336-45b8-b61b-8009606f5a21",
+                                  private_money_id="5b87c228-cf0c-4e86-b708-e0dd0d3c7e9f",
                                   is_modified=False,
-                                  transaction_types=["exchange", "topup", "expire", "transfer"],
-                                  next_page_cursor_id="b06f04e1-4cd9-4cf4-987e-d2785c82c77e",
-                                  prev_page_cursor_id="72fa7747-a9c8-4bbd-b210-00b518cb02a9",
-                                  per_page=579,
-                                  transfer_types=["coupon", "payment", "cashback"],
-                                  description="0CKWqFPB7cXogK3lXTpk1ACQL5MC28qImQU81piDFRyBs61QA64ubFmiSNGPB6PWeR4fjojaItl7qDDnWfDz83II3SsVbG",
-                                  start="2020-04-08T02:34:10.000000+09:00",
-                                  to="2024-05-07T09:48:34.000000+09:00"
+                                  transaction_types=["payment", "cashback", "topup", "expire", "exchange"],
+                                  next_page_cursor_id="57bc2691-4b8a-4c98-8d1c-7864e0e4fd92",
+                                  prev_page_cursor_id="3a2f9a0e-3d12-40d7-9431-f6ebedf93950",
+                                  per_page=823,
+                                  transfer_types=["coupon", "transfer", "campaign"],
+                                  description="LEzZTeXAsCUOeSILicKJugPMhkbNW4",
+                                  start="2025-05-11T12:20:40.000000Z",
+                                  to="2025-12-21T18:25:04.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_transfers_v2_15(self):
         response = client.send(pp.ListTransfersV2(
-                                  shop_id="1f497aaa-58ca-469a-be9b-00c14a74767a",
-                                  shop_name="xkiC6dodh0lsFj5rFalo907TQSGuwj68ad9K1XBWVYxIt1hLKB6GROESgi9KMGwAvzt2XDFLhsltsxjHevXAeaqJQdiPE4BeJCcIbjYCJA60910zNdhVnyX38KqA1fvkyrtqclFU9jljopVrQrbVbWUr1E2HhlclCQRWx8FEGzWXdbWzamEGXFO5PHpjsIS4SoPDOBVrOHFo8xzE1tgCZyMtCfVQXKeHEaCm6v4bOQPdSecOojChL",
-                                  customer_id="5dcc3900-eb68-42f5-8593-f6ae4d1a34e1",
-                                  customer_name="RbGgSXO57u6cTOWbPpHzT8SBHVxA4uTsQXNQLVTsa7Enw9cnxOrtkyrYkFM2fsUIFcBc3xUhfvCQABU9yhdPlghv2VJu1lljCVVYSCGNIDxlSztThgX67n2PgbzVLVHAuqNRKSFbkQ",
-                                  transaction_id="11b1dc20-7477-4b5b-ba45-5cf8642c05e9",
-                                  private_money_id="4c8990b4-61e3-42d3-b02d-a87644255373",
-                                  is_modified=False,
-                                  transaction_types=["topup"],
-                                  next_page_cursor_id="cbe27a6c-6995-4996-8759-7007989abf04",
-                                  prev_page_cursor_id="1daa7de5-15ee-41a0-9076-4d39eaddc862",
-                                  per_page=603,
-                                  transfer_types=["topup", "transfer"],
-                                  description="sQ10G0TlaGn12vl36ewyKaB6SHyKZZn5jR7G8GZiBnTaUgy7N3mTLemMZeIt74bhbcXSO6mPwoW10WefOcGtzUdCSHPXTvrjAoBOkNuRh5LysIScuFPNL3GzqnMP5NZDifqWbMDgjD68XvQQECUSjutOosOC5LZHJPKApv7OfARAe3RnFd9nT02p1eaStaJkR7kpHzH",
-                                  start="2016-11-08T13:11:50.000000+09:00",
-                                  to="2022-04-02T01:16:54.000000+09:00"
+                                  shop_id="213c7f3f-6134-4178-b5ec-365ba7aa9714",
+                                  shop_name="izelx6Zw3ANkreMSnigb4Yb3t6kmvyhjD7Y1lgzqIh5MLpUpAeuRnJqWXlTPA3BNnPJo0CH10GQb96Jzcef7f3He1f0QYEkgJnc3iiJ3NDVFkNizSfk2HEbXxayxzM2cghdc2Ljaj2GsuiV9UsDnl2m8nhmhWmlD5AgJ4dO8VEt3hyN01xWKpyfSJX1OiNUbqHXuSEWeM8VLmM8qznKIn9uBoqN3XKkwmXFnLL0vhZmz7rucm",
+                                  customer_id="68fd9ec6-d0b8-45ee-8138-0bd6e03ec89d",
+                                  customer_name="njFoEs5f64mvXKC0yIYDrOmfZvcfCdES8HHJf50TC5y2HNrP34hD1uxIbudPgKcAH4LqtvnYdJrsgVxWy0PirB5ccKSjPsnaJy0xSUaUZ3KYipGveNp11WiSr08uCzB0JSt7hZN",
+                                  transaction_id="431401cc-9736-4363-b6e3-ec3bed3d0c89",
+                                  private_money_id="14dbbb3a-8af1-4bc2-ae68-47acba856bc7",
+                                  is_modified=True,
+                                  transaction_types=["expire", "transfer", "cashback", "topup"],
+                                  next_page_cursor_id="75ce1024-d1b1-45da-a2e7-028880bebf8d",
+                                  prev_page_cursor_id="6d2fef45-7e96-4458-b4b6-ae447dfa4424",
+                                  per_page=461,
+                                  transfer_types=["topup", "cashback", "expire", "coupon", "exchange", "transfer", "campaign"],
+                                  description="Dfg2K2KSBJ32yceHkpeJS",
+                                  start="2021-01-12T10:42:33.000000Z",
+                                  to="2022-05-19T05:18:38.000000Z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_organizations_0(self):
+        response = client.send(pp.ListOrganizations(
+                                  "33e9e033-7172-4bdf-aa1a-ee51a68ca5d9"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_organizations_1(self):
+        response = client.send(pp.ListOrganizations(
+                                  "33e9e033-7172-4bdf-aa1a-ee51a68ca5d9",
+                                  code="rIERvl0"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_organizations_2(self):
+        response = client.send(pp.ListOrganizations(
+                                  "33e9e033-7172-4bdf-aa1a-ee51a68ca5d9",
+                                  name="iuN",
+                                  code="lhP"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_organizations_3(self):
+        response = client.send(pp.ListOrganizations(
+                                  "33e9e033-7172-4bdf-aa1a-ee51a68ca5d9",
+                                  per_page=5046,
+                                  name="wfR",
+                                  code="sdmSnnsKF"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_organizations_4(self):
+        response = client.send(pp.ListOrganizations(
+                                  "33e9e033-7172-4bdf-aa1a-ee51a68ca5d9",
+                                  page=7280,
+                                  per_page=8614,
+                                  name="LOuu",
+                                  code="rZaaP5"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_0(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_1(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  contact_name="iyLhmVZrKtrf8fOXhtgmBfxN2mKWhxAVox0bSxOCeaMv9sV8PCVe8gGULXYHHQVItPbBIgVhkWUs64kjPOvg7oS"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  contact_name="1hyPDbNVjct5yQNjV"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_2(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_account_holder_name="7",
-                                  contact_name="fBaWrA04virOZrFH9lNvZWQOhHbcPsVzudSsho4D4Vucvtqjo5TxhMxHQM1DHEyhnbl8ZtFdCq3PjvYo6pCNI1mfIpJ9f4NksvlPiC4Vu3XtdH9FsNEZ86HjJPe4Lp6lJfyvAGgrUXXkhfXnecR"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_account_holder_name="3",
+                                  contact_name="5rDh040vhQYw5VlT5PtGoiFuhhxPNxJedAo6"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_3(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_account="369991",
-                                  bank_account_holder_name=" ",
-                                  contact_name="xGnpm1kxDBXzRf1f9JiZjCJBrJjt5kCWz5zMWjynyv6K"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_account="7094848",
+                                  bank_account_holder_name="8",
+                                  contact_name="FEuPGo3GkdygOOVSyzQqeTxBrSdGB4t2pP3KohbOZsA8epkaCTJpPbbkDn1ZrOBa"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_4(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_account_type="current",
-                                  bank_account="",
-                                  bank_account_holder_name="ｸ",
-                                  contact_name="ACMY5nowhDUZD5IZKMp0STmYDwTtHP0EcP6hogkn6nAjgTjLkVtsanieCAlqrCK8PwmGod9YcEsgY2DC2Vj8cKXwgERagqK"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_account_type="other",
+                                  bank_account="421",
+                                  bank_account_holder_name="\\",
+                                  contact_name="XIV1wGp1Rn3U4KQsAm"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_5(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_branch_code="735",
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_branch_code="",
                                   bank_account_type="other",
-                                  bank_account="98",
-                                  bank_account_holder_name="(",
-                                  contact_name="nCdyvxKvSOqTvlYodFyg21jiUhByaB66BNcapTyLZWxad9qMqfjUCaVImVTzD7ogGgbbuuhXvkkv63jx716j9qYeQTBsHYxIvY8A2kLLFzDvGgwT6RWA89QL9Vp03GIkTp5cuONNVFc9v9gdz5hWfe1"
+                                  bank_account="2402592",
+                                  bank_account_holder_name="｢",
+                                  contact_name="2f4606Zw3XOfvqGLqQiqaG2p9irVNMOOMEypf2sbMz5sG1GgyrO7oa"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_6(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_branch_name="2XdVSiGrZna",
-                                  bank_branch_code="",
-                                  bank_account_type="other",
-                                  bank_account="047167",
-                                  bank_account_holder_name="Z",
-                                  contact_name="vsUjS1TQRpGXwusKVKoDVo20K4pvhym0ixofoZrqcO9xmrGI7Yq8b7zKf4Zjq1K3jlOjYQfsbEScihoRIGPs251h35D6RqOUv7GYFIehbCx0by4HajPsFnZyPkDxfEbj7EZcJNWpppH7JtG7uLWNnv9bkjUCUVfq92VQxP0FMeHm2Gc8mWOktzQrw5GjJ8uGQSasHDUHsEK1qalH"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_branch_name="IPGJ7JGBC1o5Rc96wfmVrWrKd8ZckndPnp3nLoMele3ppOb8vOALeCaVZzJ21",
+                                  bank_branch_code="927",
+                                  bank_account_type="saving",
+                                  bank_account="6736899",
+                                  bank_account_holder_name="6",
+                                  contact_name="YkfqArkVOxtHaQbqrekxj6KVFbsIqYgBl99xXSIGv3Ovn3SH7"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_7(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
                                   bank_code="",
-                                  bank_branch_name="wNsBFFvhBAfKd9pYjNXINvRo8XrSFeFKEUniweS0acjh4qrH7klovo9x1qmkFFjd",
-                                  bank_branch_code="189",
+                                  bank_branch_name="ljqEdpqCcPOp",
+                                  bank_branch_code="659",
                                   bank_account_type="other",
-                                  bank_account="",
-                                  bank_account_holder_name="V",
-                                  contact_name="dCsP"
+                                  bank_account="66",
+                                  bank_account_holder_name=" ",
+                                  contact_name="0Yvld3IeJyhTlRgTT2NxSiphZRlLoLjMmLSHQhe4tHPdlvKxC8QojNKN"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_organization_8(self):
         response = client.send(pp.CreateOrganization(
-                                  "1LETy",
-                                  "ZPKAQBgMPUGbEnOIPDq2CLAbjX1Djn2XWSwjThwDAcCZY6YtawxId266BZVwZVmHyD1UpI6d83jiZ9uTzP4YjXFZyT5vOgrOJYvJ3LNaiOIeknn7RYaYRsrRINAXrIL7Vokdd5FDSOlHXvPdm6smgX4oL5ObnN7xsSw29hgwVKZ3q7f2G5Csbw765Up6rDPAvgZ3Lft7QdtUV0xBtYCY2peqF3OIROYkI2OmNuQfBQja",
-                                  ["0e3d9e11-0003-4ee2-8399-f215bd941cf5", "537efd5a-3cc1-4437-a016-4f49c457ec11", "b4acfe2e-625d-4bb2-abb7-fe505e1360d0", "0324324b-1a2e-4317-81d7-afbda5d2e56e", "d7832ebf-9c96-4f2b-a58e-e346f3c74013"],
-                                  "0PAVPIqlw5@xHvb.com",
-                                  "neEVFJO1vU@ShUN.com",
-                                  bank_name="1zaX0YEC",
-                                  bank_code="0533",
-                                  bank_branch_name="S9uGcWpU50I9EOF1CbY7DQ",
-                                  bank_branch_code="670",
-                                  bank_account_type="other",
-                                  bank_account="9439628",
-                                  bank_account_holder_name=" ",
-                                  contact_name="6OljXWNCah5Q3Axy3FHS7HHlL9hetKrZtdVOY5mSWLpoOzWuTFDp0xZJMmmZyM3omHaaYolohp4jua"
+                                  "zVuitJAWBnMTQrqQLb4F279",
+                                  "csdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1",
+                                  ["95b4f282-a208-4d28-bc3f-c6a82cc0fc9d", "a1f28f66-0904-44dc-add5-72e680ab0e25", "795732ff-0bf4-458b-bbc9-e81c8475025d", "6dc71621-939e-4d33-b006-854a46d14626", "ba1f9479-fa3b-4242-8950-5d85133f9d71", "f75a9164-4e8b-43c3-be29-d4c48265c076", "18859557-4c3d-4189-a76e-8cd4f6340d52", "93051b76-fff2-4c8b-a9be-caa0c3ca72cd", "d648c6a4-ee4d-4b1d-b189-9e1f3ed176a1"],
+                                  "T8Y2wPxWWX@EUoq.com",
+                                  "g0zXsuvc8L@F4mb.com",
+                                  bank_name="0zqICt7BPEIsHw9i",
+                                  bank_code="8888",
+                                  bank_branch_name="PzoaDv6U6SXLkHad9cOSRej1Twb2rvpiwJ",
+                                  bank_branch_code="783",
+                                  bank_account_type="current",
+                                  bank_account="",
+                                  bank_account_holder_name="\\",
+                                  contact_name="MWmZEdo3TtkAPfziyB2HYxaSuFevcjssU2Qn83"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -2639,355 +3707,386 @@ class PokepayTest(unittest.TestCase):
 
     def test_list_shops_1(self):
         response = client.send(pp.ListShops(
-                                  per_page=2911
+                                  per_page=744
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_2(self):
         response = client.send(pp.ListShops(
-                                  page=3096,
-                                  per_page=7801
+                                  page=9151,
+                                  per_page=728
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_3(self):
         response = client.send(pp.ListShops(
-                                  external_id="Rzzc4S4bskUY0GUghtLrKdmw4Mj2vrs21Q3Q",
-                                  page=7668,
-                                  per_page=1177
+                                  with_disabled=True,
+                                  page=9600,
+                                  per_page=824
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_4(self):
         response = client.send(pp.ListShops(
-                                  email="cjDt5dNl9I@acbc.com",
-                                  external_id="U5Qd92Qhefxi61LsaPXprVMDsZV4dkyP5lnQ",
-                                  page=5477,
-                                  per_page=6460
+                                  external_id="0T8Nh7e",
+                                  with_disabled=False,
+                                  page=2896,
+                                  per_page=170
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_5(self):
         response = client.send(pp.ListShops(
-                                  tel="0777572-2256",
-                                  email="sLa4vnCWV1@QVss.com",
-                                  external_id="1Im12",
-                                  page=7841,
-                                  per_page=4055
+                                  email="6asjOox0RR@zWzg.com",
+                                  external_id="J8",
+                                  with_disabled=False,
+                                  page=9842,
+                                  per_page=546
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_6(self):
         response = client.send(pp.ListShops(
-                                  address="LZ8F0u3SxrrH1vjl84VkWU20DVNhF1QRXrkYNIOtHHG8yHnSu7dDAUDz3Ba7wXTCzgYCbLTAWi1ohaetMA7WNeaonbTVSEX134CEzJmLXodVipQoaS9jpxZmBe1IVqn6l0xvjbPmp4eCBlLWO5LUEEnWeZcSGLtIalNYra2M0CM",
-                                  tel="06-1527855",
-                                  email="MWb2crhAOj@Ag46.com",
-                                  external_id="xwepf8NCoyrEsYCM3co0m5f7",
-                                  page=4443,
-                                  per_page=5863
+                                  tel="08047565",
+                                  email="shIHzbucfD@hID3.com",
+                                  external_id="qemlo7JMNmGUe8JtqofMq1TyFcW0Uuc5ug",
+                                  with_disabled=False,
+                                  page=5526,
+                                  per_page=307
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_7(self):
         response = client.send(pp.ListShops(
-                                  postal_code="0788400",
-                                  address="Yp6krkF1YbRmwvxymb30gk854pQwTzmFQFV2uDFFIi8EFMWMycoOxYLCK5275yaFTfZztXuQw4RaWFmQq3HxE1cttSeGuAJyXtCyfPpoPjMTr8crob004vlXwUsthEoZOk8UXfYg8fdpzyB6W0dkeo5uEqZaCFDcbEj9ISDmaB2afkehiCZS1KVArQK",
-                                  tel="097-214-9647",
-                                  email="ArWQhOtANq@AqTE.com",
-                                  external_id="SOlpuGW5FhrbDgJ77XFXl4NKb3zycQebat",
-                                  page=2091,
-                                  per_page=4535
+                                  address="pDoeGryI5OQQ9GoRehaS9O2M3fskqX8WbkxbWTp66iGj1lRR9XuMVcs2zeQQbQwb51zUDjfyGpNkIiUDvsd07Li3GyEdt6GGJ1GXo5UPiFJuScrEGcY5I6vYJqEcansSsP2ceIvKP9bgYanQbVQM9Z6RG0kCsPdzwEr5mXGzuLW3FkWi9ZhIojVZoApe0VcAXVJNN81LI44xL3mfrFPu",
+                                  tel="06401439524",
+                                  email="g3VaVg5lQK@irhr.com",
+                                  external_id="QIm",
+                                  with_disabled=True,
+                                  page=4010,
+                                  per_page=287
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_8(self):
         response = client.send(pp.ListShops(
-                                  name="OYZVBO6i7OrH9y83QqXgWF2opiVdC1V5KC13EYjcxvJwZkwVKG4nhx51AwtpZIv6uv80k2eZHBR50sHyhGa26QKgCzW91ijqwGz4iwxLvGQu8AItYv5ALjIimTwKA5k60bA481CWCvSZBvCgqCd3bRt5kX2boQl",
-                                  postal_code="996-3686",
-                                  address="mm92pmKFDO4dzrTnN2hnl6jClpe10uHCcbxZraKIE5JV72jwXeLc5ziCQvgnEPrwn8MGASAuLD3WLJqm2LErGcclueraXSCDvzDuhvkKIoa3xl900hkmeYLn1AjsWrIn7wWX9",
-                                  tel="027201-922",
-                                  email="9BG44UnK5k@ugEb.com",
-                                  external_id="8t3i1",
-                                  page=5670,
-                                  per_page=4615
+                                  postal_code="6437032",
+                                  address="24vRn0V1KmKqNhpuD1AS4IxvpFPGaTF6gXtd3nJyyNe74Q2bvFtDokudzPS7PJ09whlF6CVlMKFHkTHEGRWUBVUZa1rmAxzFUF6ihvlI4uoOEnKraNjpsN9SjDxtxrgs7e0dkiAAa8jwX6FLCB1XlvzBazSCE1hEG2EkkP2VIPy7HW7Ee7skB9BB1YNClE0n87A30l6vspNWH9u8x4Yq2mxjIub5",
+                                  tel="046-0438360",
+                                  email="3QkI11kPUO@WIOC.com",
+                                  external_id="9XRX",
+                                  with_disabled=False,
+                                  page=6032,
+                                  per_page=609
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_9(self):
         response = client.send(pp.ListShops(
-                                  private_money_id="8b384a7f-3cae-4ad5-87bb-8e84edd7dbee",
-                                  name="40madwkN30KxIK4R69fUEBg5VG6fY3BMw3LzyuQr74JtjTjvnySfqw4U7H9TvwAB8eScBfn1Rj6bF7qwsumEcO5tiAsHMCj6rQ8z",
-                                  postal_code="0316822",
-                                  address="Ct8CHPFNDEoS5JXEhny5IMhsG4v0CQldqzxJ6XAxr",
-                                  tel="07-8989809",
-                                  email="ZkaSGkcJKe@radq.com",
-                                  external_id="xAY",
-                                  page=161,
-                                  per_page=9451
+                                  name="WvgwMdC6YsQVBM615BSLRTB4phpjbt6QHeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6kpXiCTiSBUIe5iqIMOcjyqBKlSFGLuqDn2oMYRFh8cqnV2spFoKb7jYgx3gTJKy6dBb3ykYYVRZ4jdyfDGYQa0QPCC60HT399N8hkxoSQFYDUU0HuG332kYdREQC39nZBUv4F8J7UzyDYEv7bctcmIqdmvTV8RBzp0gixsKZWoUeOR",
+                                  postal_code="948-1469",
+                                  address="TW3tonru5DxxR1kiR4daTST401zYU9O5bmxo5R8HDeIrg38UDixRQOsOxJyiut30oRsSLi4FAWjvNFlMGhO7MjoFiHLt",
+                                  tel="0991-25-5842",
+                                  email="rqjqD6mB2g@z0FI.com",
+                                  external_id="SbIrXOBo1I3rdkL",
+                                  with_disabled=True,
+                                  page=1015,
+                                  per_page=886
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_shops_10(self):
         response = client.send(pp.ListShops(
-                                  organization_code="--",
-                                  private_money_id="7bbcd51c-855b-4c63-8a1e-1c47ebc0d2b8",
-                                  name="6z8KVqUt2uzqsseXYFYKRp",
-                                  postal_code="5750498",
-                                  address="7EPOVCpM4N6VpPYojnLWN99oUAp27dRdHXT0bu9kBbfQDVxrOePjXnEEoR26VQKj59HY9GxwaIDAEfbXDBB3FNIL8Usakbi9ZrjBPmCyriSuUZrqYwq",
-                                  tel="06-6680881",
-                                  email="Q2iQavwvhD@r8TN.com",
-                                  external_id="B4vIcRTpSaCV5",
-                                  page=2541,
-                                  per_page=8445
+                                  private_money_id="20ee3f55-3851-416c-88c8-4ed70d9f61bd",
+                                  name="HdfJKJGJOe4o3A7Ast7GZKKewMQbpvWdRIf0j2NcGpd9k",
+                                  postal_code="497-6822",
+                                  address="WuGj28bjzoMkUfQZyG6ql9kvIc3ugQfVcwKEOAlMUYblAnOJUw5uYgLUj2LWIHcZ5Kh7Upt9fM2ThdFR4ZGmC3lYSdkRdIHlBo7iMGslQeLzTg9FCP6boJkANEW",
+                                  tel="08735424848",
+                                  email="kjCZ6KXkiM@x1kH.com",
+                                  external_id="TVbpRx79qoFTViWGk7rsKgu",
+                                  with_disabled=True,
+                                  page=8115,
+                                  per_page=106
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_shops_11(self):
+        response = client.send(pp.ListShops(
+                                  organization_code="",
+                                  private_money_id="809e5b4d-316f-481c-b62c-d410f3bdb948",
+                                  name="FjN16Mt1NNT0LSnWyLCIiaSmxOiabyCFBUZkKwMvzRhZdC9PIbxRIokrSMcAe6DLpfhwjho9qAj035em2B0e1zQxL4LWrEkUrKUADYaUMS4V1xY0z6q9RliuqOBINm4Q77ByqizVQoe2X9mQJiEELVlycfdA0sn1Jp9ctBvXrxjspmUg2Jofbfd8lI7ca3oyQQIsUl3rCM2ZMpE",
+                                  postal_code="485-4053",
+                                  address="or4IADTHdTPsjhUsWbuhnbIUFlfvobOclFXKfvdQivs3hjtD1VYnThEQOLtlkRPIAeI3C1kLwoSJ0t0xwzgZ3SAsjpAuPQwOMExC1w6ifl9ZUstqj7jJ1Xazd0M0QE8si7WktomTSIs3sss0bSZ1cR5rMDg0iBD2et6R89vRehYIZbMh6MfShA8D4Ev7O7TGT70LQ2epxhXvfJrqwCwzvGv5tXB9",
+                                  tel="041-41-063",
+                                  email="vr2jD2CPBE@g6qD.com",
+                                  external_id="hSH8hafJy0sDTnMPtA7T3E2nC",
+                                  with_disabled=True,
+                                  page=6859,
+                                  per_page=673
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_0(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_1(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  organization_code="p-56-v-V-d2v6TRcOGYOZVY-7-f7FI"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  organization_code="--tUjL-pTtgI--4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_2(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  shop_external_id="9utYjWSxV0PYaS2m3w11YOc",
-                                  organization_code="8-U59-5--"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  shop_external_id="AoX7opuae",
+                                  organization_code="3-VvUwlc--9--P-U--BDY7DB-4"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_3(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  shop_email="7yg59bUqlz@l8RT.com",
-                                  shop_external_id="pDWU8ApGd",
-                                  organization_code="jha-bSdj"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  shop_email="tG2FzeWXxP@N6Ri.com",
+                                  shop_external_id="VhZmmGj0TMjPFL",
+                                  organization_code="d--30-eF"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_4(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  shop_tel="0678722650",
-                                  shop_email="dJBaCIrObU@Z5ZC.com",
-                                  shop_external_id="2jyrMS4IVkYp7d5uCmZcCGs",
-                                  organization_code="-N1ln-E48-Fv5-"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  shop_tel="04336000",
+                                  shop_email="kr7nBijaa4@uqZK.com",
+                                  shop_external_id="pHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTX",
+                                  organization_code="o-2ic-Qt-8"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_5(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  shop_address="JzkH6S98QQghHEuISiLlQ9W3XgJB2NaMYnzVdH4lBEl49jCEcrfCIMQObL3OoO8rAUeIJB",
-                                  shop_tel="0452533964",
-                                  shop_email="aXhLa6DeYg@ow42.com",
-                                  shop_external_id="LUfdk8XuchSqSb",
-                                  organization_code="h-02Ut-0-37k-tAm-76w"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  shop_address="NXBuhLAxPxLgPF7PH9jsPo3qRbXC06hH5q5N6rSqlhclxbbI1pwNVNkX1wbtHq7h4XHkBbxR0RnLtirGJS2N5S6EEO5Bp0TaBrmndiCNxXXwjFaRAeTxfe0YQCHzm8OG8zcqkOxIGcWZjjM6",
+                                  shop_tel="053-243305",
+                                  shop_email="9iiEwcokne@eQ36.com",
+                                  shop_external_id="N",
+                                  organization_code="m-X9R1LR6-liKvm3E-"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_6(self):
         response = client.send(pp.CreateShop(
-                                  "txsN8hQh23jWL68GyttBaIaA6bT2oimSP8aDw1fwYQo1a8Jvio1NlXmWokT3fCZ0aqdulZZGglvs1mmHvcGJdXuMvjofsG8E4KIFxs3y0EBuTM1S0iPJraQIMtAPJ1JN9CtWW30Uo4UAg9arJ4XCMrwN15cIxDvF6fUC0OQCualYkGbJ73b3nYCrV9uDJehyXJGfZSkx4G3NTiGEBvJP8jVkcC8",
-                                  shop_postal_code="110-4245",
-                                  shop_address="ItB6ycarokvOGbxOtjjILQMz1SYbigi3uqGy9JaET7yaI77xfyzjZfk3Eg446tN2eZ",
-                                  shop_tel="068248-6277",
-                                  shop_email="9qEb2szCXB@kkHR.com",
-                                  shop_external_id="CtXprtOEGF7FA7qtYAU5",
-                                  organization_code="5-ZJ-DoDe0f-I--q-9-5----"
+                                  "cqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv9imeNiY62Bc",
+                                  shop_postal_code="674-3092",
+                                  shop_address="3y8WItCe9VYgMydEalG76qE4T1vOrKA4IwgS5AgijWRyxneekV8cIDT0hnm8h8evW68NKpdkq0PM",
+                                  shop_tel="036-14185678",
+                                  shop_email="NTXOxFwqhk@pZVa.com",
+                                  shop_external_id="hpFPp",
+                                  organization_code="Cw4-Z-0-Z-H-kvA7qoX"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_0(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur"
+                                  "kF0DY"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_1(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  can_topup_private_money_ids=["d9181998-ebae-4faf-bede-cc6d2b261e3c", "f29dafab-c59e-4793-8f29-7885f6049c8c", "f18d03dc-c3be-4949-8f9f-1f7069364ee9", "fdb50494-1824-4454-a9ce-029b1127a14a"]
+                                  "kF0DY",
+                                  can_topup_private_money_ids=["6b37cfd0-cacc-43d8-8c6a-2f0191708575", "e9fa69db-6777-4a03-b270-f3a5c2a01f65"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_2(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  private_money_ids=["e2c2cc3f-96e8-4b24-9346-e2a13c4d9bca", "a726dd0b-3dda-460f-846f-8d1e6239b2b3", "3ed88a6f-1627-42ab-8ba3-e071cdbdb109", "af4722a6-4edb-4839-bfea-7353e0c7b499", "62cefa55-27eb-47e3-b9a8-ad1ec173f91c"],
-                                  can_topup_private_money_ids=[]
+                                  "kF0DY",
+                                  private_money_ids=["07e4939d-35fc-45a2-b008-e241922c1aa1", "96b4eabe-99b9-4b49-8459-4708526c1a50", "517fe034-d5a1-4d3c-b3fb-8d1143aa5fc1", "8e59fa69-4fc6-40ce-a398-0b776cbfee21", "9f8fabe1-cc19-4e61-a339-0ba825c958dc"],
+                                  can_topup_private_money_ids=["5b1e2ef2-75b9-4747-82bf-5ffb91e15127"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_3(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  organization_code="1ey-5m0KE-1-d-q3PGhF-z",
-                                  private_money_ids=["8277ee0d-fe69-4d34-a8da-2f6ad0800228", "1b95993b-a0b4-4c78-a47c-d6d02c3f61d4", "8eaec5c6-8c54-46c1-800e-e9dc19f8c530", "b45fb6b2-26ad-4955-8a04-42dfed760914", "0f63f45a-d70d-464b-a597-9ffbcc796422", "558a79be-af16-40be-bb63-5097d29e14c5", "051c7826-63ce-4f5f-a779-efcbb9e44021", "f55b21f0-a2b2-4a0f-896f-57a1c125a037", "e2000954-417d-4cda-820b-81f1f1e31385"],
-                                  can_topup_private_money_ids=["999c44db-d5c9-47f1-ac83-cd23252cfa4c", "1c2b1385-9722-4ab4-9ef2-ebf0f1b9de0a", "ca793fb2-98c0-4445-8672-350ac2806481"]
+                                  "kF0DY",
+                                  organization_code="6Hlhq-c-6LiJ8RL-097C-",
+                                  private_money_ids=["aefe4c7f-4a96-4b47-ba1f-4a2671763c7d", "42f2beb1-55c4-4fa1-9afe-c4fdfef3304b", "f14e73ea-0eb2-4274-87c2-27527fa958ac", "b8f8a4c6-35e5-49a0-88a5-e01687bc4660", "115b3f2f-7e72-4ee8-93f5-ccccafdf22b2", "128b3e97-2200-4214-a2b2-bb7e371cbb21"],
+                                  can_topup_private_money_ids=["92bb9347-24bc-4fa2-a73e-87e17252b237", "640b19f0-0b03-47a8-8630-82ee9a6dcfed", "8c5f834c-fc4d-4d1a-a6dc-16ee560b2307", "433fd12b-7b49-43af-9c59-42d4ec62a710", "a0a706fb-25d1-4764-be1e-50bab17f1c9b", "9611cef1-3192-4c83-bc1d-f0c83706b100", "31fe607f-9324-434a-9a25-6ab807cf05d7"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_4(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  external_id="fcK15L",
-                                  organization_code="98B----0C-Du-Z-M-d1-",
-                                  private_money_ids=["14fd052f-115f-4ff8-a030-a9c546e531e7", "1f8fb2db-5332-4edb-b4d9-2f9e58e3486c"],
-                                  can_topup_private_money_ids=["9c1df855-e422-4216-ab71-1b5db6b87f6d", "0371b2d1-56a5-48dc-899b-66762535e236"]
+                                  "kF0DY",
+                                  external_id="nDHEVfpIBt",
+                                  organization_code="e-0F0",
+                                  private_money_ids=["a39beb9e-befc-4dbe-903a-7d3e434ba9f3", "d0e94ad0-79ef-4eb2-b62b-29bf11686ce3", "6c4fbcda-13f6-434b-84a8-8561a85172bb", "0e196f9c-0466-4e34-b730-150de3936c44", "59f40c77-ff91-4a86-b559-6edfcff6cb9e", "87d0edac-4091-43c9-b6d3-61e50a5e2085", "eb47ec15-ed41-4fa6-a2ad-9426485df6a4"],
+                                  can_topup_private_money_ids=["501160cf-0d05-43c2-94c4-de2b88bf03c2", "ef74dce7-0152-4595-96fc-8e1450d2c191", "47994541-dc67-43ed-aa85-b4deab4fe7f8", "6a483e90-d640-44bf-9a47-3e09ebcf1efe", "509dbefb-2102-4fa6-8743-ee0145b7d393", "e1595623-3806-4771-a142-f4dc2b466bf7", "e0f61aca-11b9-46e9-98ea-7dd89ad86abc"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_5(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  email="0CMZa5pywm@hrY8.com",
-                                  external_id="J0",
-                                  organization_code="ROSVf--f8V6uh-----oo-71v",
-                                  private_money_ids=["fe5b20cc-76e9-484f-97c2-384e59392876", "71108082-bf08-40e6-a1ae-9a50fa366e55", "ab10c4b2-12b0-4dea-900c-cebca34d70f1", "522c8fad-0a48-4e95-83a2-4cf1b2f3f744"],
-                                  can_topup_private_money_ids=["e6256666-61ae-4875-ad14-e4bc61f54e8d", "efbceaa0-1aaf-49ea-8223-18c871aa2ff2", "18f2fab0-7321-48fd-b3aa-d90e59d7615c", "8d88f7b8-fb37-46ef-ac2d-84eabaa6e4a2", "eedab2a4-0382-4e40-bb56-a89e72091eea", "f1f39151-21ec-456c-af1a-024a6f4bcb8d", "71132c8d-1181-46a1-8204-4a0cb5dea6a9"]
+                                  "kF0DY",
+                                  email="SEfbkdsvlf@nd1N.com",
+                                  external_id="OUEcUOGT",
+                                  organization_code="SiE0u12gE0o749aUoshEn8-57",
+                                  private_money_ids=["14352341-1522-45b7-ad65-32a2a431bd92", "4311e0a5-8cc4-452b-9b2a-09a65d3eac3d", "af629f84-ffcf-4403-81ab-d003c5759a98", "f25ab157-7cab-4a11-a5af-7aef734c8015", "ccbbf4c4-eaf0-4465-93c6-3bdf84ce1ee0", "2152fa0b-1036-4803-b6e3-f453400bb3f9", "319ef67b-b41b-40e7-9c31-4cce8fac1e39", "146e7b91-e870-4d94-ac78-ca37bd64587c", "7f97ce2f-3dea-4019-9c6a-6cc8f65646cb"],
+                                  can_topup_private_money_ids=[]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_6(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  tel="09680-125",
-                                  email="vj6KZvk9I1@4B0w.com",
-                                  external_id="Jjv5PZV8BzD6xxeVZJr6fOg9zsFZTTh",
-                                  organization_code="E65g-oq3",
-                                  private_money_ids=["c564b6d2-53f0-4867-beb8-e0ab87b2eaef", "c8e5153e-fab6-4ffe-b7b5-9e2d37f59c0b"],
-                                  can_topup_private_money_ids=["08f6d8b5-5355-45d0-a58d-9efa1bab4e17", "b3ea9de3-e7e7-4e9b-9a2e-478504bdea45", "ce015e0b-c7c4-4d05-ba34-b1d0adcaf985", "c021618a-1369-4885-a8d5-e1f47442cbce", "6c47bfee-3770-40dc-b798-492583952f96", "e06dc6fe-52a1-4334-bc57-21e9716a335c", "f11d8fe9-f84f-4777-bce4-ab03a4cf6e38", "56d54687-b105-4e99-8510-ca6965405e7b", "03cf5603-cdf9-4c8a-84ac-f0aac35748d9"]
+                                  "kF0DY",
+                                  tel="0619952440",
+                                  email="2YVVNgkhGi@OaJk.com",
+                                  external_id="HWWbXOMsyMVL1Y0FzVG",
+                                  organization_code="aT-Ihebmm01-C-tP--1q7ewM-UA21-mL",
+                                  private_money_ids=["6e0ce3ed-9848-492a-af0f-ca79fc9a177b", "3b63aaf6-f8ae-4566-813e-9def6896acb1", "d6e27e0f-9dbc-435a-996b-0277e96c086b", "53255918-6064-4fa4-b201-72c19f7cf62a"],
+                                  can_topup_private_money_ids=["676b0144-ed8d-4def-928b-ff792512744e", "98ba5b71-1432-45a0-bcd0-8ad732e9339d", "94adccb9-41e5-4ed0-9a8f-7c487a656687", "d0fc785f-885c-4eb1-96b1-6b3697ebdc98", "6e597f0c-2844-4ae0-ac63-8683bf3b1245", "18b4bf35-58db-4f87-ad9b-8d7b5d9ac772", "052f6809-e6b4-4098-9449-9aad7c1af77b"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_7(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  address="Z0zhmmU4qjfXM0iaeCNkqwEBU16Jq12CxO1vOYhEe55St2TiyraOemZRjiAchwL6b1jB1Cg1nBSU78Sxgo6Taagdxx1mLakIn0CpIISvuAWSZZfn8krGsRTJuHW0p1Ch4TRpHb3xaMjpGa8gaJHdl18J3d41BsVgtiwJjEQgl2khqccOMjuNbV7",
-                                  tel="0665-73085245",
-                                  email="DuKxo1Vi0y@j9LZ.com",
-                                  external_id="0SyJWAaPdTI8GQRoTVVL",
-                                  organization_code="-Hl--Y-x-",
-                                  private_money_ids=["ca99cead-e794-432f-b255-a62ce1fe2366", "0b3a459a-26a2-40b2-8bf4-1212cb0f6a9c", "8af2e78b-4ebb-4d11-8446-d160c5889968", "b321057e-8c82-4024-8f2f-b5ca7e722aaa", "c9c559b8-d20e-4048-87b7-84b9ab694894", "7e3f9b2d-e4ad-4c2c-b616-0c50a099e310", "cdb77066-cda2-4a8d-93c0-bfb69d4cebb1"],
-                                  can_topup_private_money_ids=["1345d4dc-8f38-420b-9277-7ecfcc5a4bd9", "60c7287d-bf62-4804-8267-673cb8d2c8ea", "1294f47c-da68-4b22-aa6e-df2b01a70e5e", "689fb969-0f20-4fac-a500-1c789c78f5ca"]
+                                  "kF0DY",
+                                  address="qCPq1klPYIi4fgZzpFf9vCRDU8J59OtcokEMMVhmKz2iBoGU1OxUmIl7jlWxrfEKMQ8FCs062PLb59yfzniw8Z7TrjWh0BQdrr7bOC0AUfJnZnSogxeCWxbc4wl0P2Dqh3DSK23Mk8m6Cln0nexx5CEw583J2WEBiiOFuwneTfWH1pqqlIhFKkOnPR",
+                                  tel="078-064977",
+                                  email="flopJpL06w@ROQZ.com",
+                                  external_id="3dSb51CrQZVorM80jAnbL9pF",
+                                  organization_code="z",
+                                  private_money_ids=["1fbc3fcd-5730-42af-8dde-193c5f13a588", "ef6d566f-f5cc-450c-af91-a613087b53df", "cb126336-f461-47bf-8420-94bb0ae2c6fe", "8fd1fceb-54b4-4db4-a6d6-efbda07a1c5d"],
+                                  can_topup_private_money_ids=["b57d6d06-2fe6-4aff-947d-aa42ba3c9300"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_shop_v2_8(self):
         response = client.send(pp.CreateShopV2(
-                                  "96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfykROqGA2kGIKWn7WmxLFKf1vULaBahAeJdLNgTdHrnXru0CK861yZBwzeoylnePV0HOJ5Mg4Lqjra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCur",
-                                  postal_code="202-8400",
-                                  address="HCrQ2sJdGjdCNpP7vZgP6rij5EfD6DtnR73iSkAgC1lY6yupHUdfLL0DHjlwSaRnmrgoUZ8HPuG9MGiaGFzsfWWWy9Im8Ux",
-                                  tel="00-2655-826",
-                                  email="LEYZVZOefO@3wRM.com",
-                                  external_id="sdsI7UYvxBYHMaYiviU38jq",
-                                  organization_code="g-1K-mz-89-lch-1mHfb-Z-rLn8T6--4",
-                                  private_money_ids=["3109ea51-7edc-41cf-93ee-80c223f044af", "8bb000a1-1fce-451c-bb5f-46a60ebcbe78", "4e2a2e2a-b08b-4964-9003-679f22c4b63b", "ecb51cf5-cfaa-4f7e-b29c-224fc442c477"],
-                                  can_topup_private_money_ids=["17bc1437-dc67-44af-abea-2251c0436433", "5e8b6677-d5af-44f0-9c20-1fe5e481cf66", "d9e228ab-8ab7-46ab-84b2-559e6d54142f", "d07c4d8c-619c-4149-a921-6b6c1964d134", "c49decc5-6835-4fa5-9a88-42d7bb77c4f3", "e137b692-0e22-4b53-a565-e1e3a7a276f0", "87d74d99-cfdc-4f49-9b8e-ac71f881c3f2"]
+                                  "kF0DY",
+                                  postal_code="155-4157",
+                                  address="8xbTpd0PiIwS54q",
+                                  tel="0699-95876",
+                                  email="fusE3magRZ@XBvY.com",
+                                  external_id="Q",
+                                  organization_code="-46s-535-TMb9M",
+                                  private_money_ids=["abc9658d-1fd0-40da-b98e-561f55cdec28", "9355d521-a999-402d-b29d-6c12a9e527cb", "488fccb6-625a-43f4-a5a9-b6b194efc87c", "aa9f5e7a-b42e-4254-abac-d2bb6d7accc2", "9f96afed-3e35-4ade-be97-0cd1b0d3005b", "f5ae4ffb-9409-493f-b355-694a89df4c5f", "173e0749-662e-470a-b837-113fae85f586", "1b95ec7f-4d9f-4c60-b9a8-69f0f5f0fed5"],
+                                  can_topup_private_money_ids=["43803575-f9dd-498c-bdd1-262a4f9f124c", "c07caad7-3cad-4fb3-8b0a-91ca0fa512d1", "1cc39515-8ac1-4c08-ace3-ea295f65c8b0", "e4a1fc6d-7cae-4f97-b85b-2e5b08dc75e6", "2030e591-460c-47a1-9249-888b0fab2f42", "a4df7dc0-919b-4945-9128-bf3fb4bf6147", "5f678b2a-9757-43cd-8f8b-e3655bec198b", "85e47c71-fa67-4096-878c-2efbc67eae56", "e90423fe-907a-4a8a-aa76-274704ec8fed", "451831fd-b59f-4ba9-86e6-072665375f34"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_shop_0(self):
         response = client.send(pp.GetShop(
-                                  "c7d33c82-4db4-47b3-b0de-f09941ac0ce3"
+                                  "a5a83e8e-fb36-4c56-9a8f-ff436b260db1"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_0(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985"
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_1(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  can_topup_private_money_ids=["0210d22c-8577-4f5f-a463-7a9a9ea7a5bb", "f7b84893-35d6-4f4d-9562-a925a2d4a6a8", "9f953b8d-48b7-45ba-989e-251388c19545", "20efc542-437a-4147-8e75-d78f0213da79", "171bb0ba-8ace-4877-8fac-26330e578c1c", "1b0a608d-2b31-4b2e-9423-46684c33d14b", "834674d8-da82-48a3-a1c9-903a91ebc3a7", "ae0cc4f9-182e-49a0-a27f-8d880c2fc994"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  status="disabled"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_2(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  private_money_ids=["3ac1c52a-2056-4597-96e8-bca3475b9fe6"],
-                                  can_topup_private_money_ids=[]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  can_topup_private_money_ids=["804b5d7f-fa85-4887-b9fc-badb80388bc4", "de099877-d7f7-462e-90ef-d073e71e62f7", "db1b749a-45cc-4350-8072-c146a0d5caec", "3e5abddd-282f-4612-9b28-1bb05661efbe", "a5221138-de61-4e23-bc62-4992caeda788", "79d7b87c-69be-4d14-9b71-3279ab8666e4", "c914d04d-c23e-4aa7-bb1a-b05c19a685a0"],
+                                  status="disabled"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_3(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  external_id="d3BmnZxBBpR9nxMbDW2W",
-                                  private_money_ids=["466c0391-85b9-49a5-aefe-bec9f17a6c41", "0a9003f5-717b-4776-8ab0-cab717da3083", "2754c912-b7d4-4f39-bd23-9c3c35fcc64b", "ff2e4aa7-26c8-45d4-aafd-2aa6e7071d92", "6f6ac7bd-3718-4516-875e-594b58e1659a", "dfc48ed8-a598-4a99-8911-5d39d2a6535d"],
-                                  can_topup_private_money_ids=["0ae9bcaf-542b-4fe3-972e-0022ffbf553c", "5dc42ffd-1427-4fb3-a230-756efae02d3b", "06011fd6-5a9a-4948-a426-0f644c452a6f"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  private_money_ids=["00449d8d-5f9a-4a6e-a42b-280a617409a5", "e0972489-5c67-48a8-bce0-a894676ceb37", "c5b6f14d-b26d-483a-86f3-2544c10bd9ac", "47868a32-7997-479a-ade2-0fc37939dda5", "f476f381-399d-4af0-9a3f-b08805722098", "4eba5966-7839-462b-8b0f-54ed52ff85fa", "1b51a9f8-ae16-4d32-a353-e2f635841963", "90b4fc12-fe73-45e7-a670-c332e2ada6b8", "45fd7692-004e-4150-bbd7-c7719eb34def", "f073f936-0b58-433a-b1ec-fb974b022302"],
+                                  can_topup_private_money_ids=["810b7e23-b2f2-4309-92b9-45ecd92aeae7"],
+                                  status="active"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_4(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  email="9MOLvGZ61a@dHIt.com",
-                                  external_id="OUDj8FvTz5QBGaQdIsgWXQM5x",
-                                  private_money_ids=["b60e9931-c279-46d8-8a2f-7a555a11aee8", "82ef2870-1e5d-4302-9032-33141bca9d9c", "8094fda9-ce97-45e3-9e94-a0ea8f480585"],
-                                  can_topup_private_money_ids=["01499ad4-92fc-4fe9-9aa0-6e556514c0ee", "5d5f9d35-24bf-47f2-bbbe-14fa7145d111", "24eade2d-041e-4031-b0d6-e8168d5d65dd", "7887d188-342f-44f1-8b42-360ef580a4e7", "f9da63d9-850b-4c81-a0e6-5bfee560b9e5", "b8b9e23c-a6a4-4050-9e7a-0f5e3af75cbb", "9a752369-02f9-46a0-a0aa-4507823ca2f6"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  external_id="tmz4nyVSUDS2rGPI8Rxp",
+                                  private_money_ids=["7e541e33-4974-42e5-8550-636955941961", "bbfe4959-849e-4345-8e1a-f4e514d0a84e", "364f4538-38ee-40e3-afcc-2ab5ad645362", "f8ee0fdc-f4ef-49d3-ab5c-f1428cc3d702", "404a9b87-b42c-4348-ad3c-b79309a2adbc"],
+                                  can_topup_private_money_ids=["cfd62326-21f2-4745-9e74-2e3d4dcd89be", "99bcf947-88e8-4a96-a7c6-9b676af0ce7b", "80a72a85-ff4a-4c22-ade4-89f81d0a9fc8", "10c123dd-c26c-4a73-ab67-c9676aff17b6", "7a04144c-b3a6-484d-b789-8b7f51c74444"],
+                                  status="disabled"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_5(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  tel="08-457-6396",
-                                  email="3wthBO4Fjl@bNSG.com",
-                                  external_id="xbjuEMAeQ",
-                                  private_money_ids=["0ba4caef-c75e-4ce0-ab83-df8ba07d8aae", "59827ee1-2a04-4e20-9c55-a73abe13db4f"],
-                                  can_topup_private_money_ids=["b844396b-5a2c-4145-8a26-9f80a48d61de", "cf3de598-6aa7-4c4d-afed-2847dd56a9c5"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  email="HhWIQ2aljg@7pW5.com",
+                                  external_id="LDSL3EPYX",
+                                  private_money_ids=["cb41a798-07dc-484d-ab8f-15d8bb038364", "24f5f4ac-76fc-4749-98dc-7d06000bcff8", "ed78b7df-33c7-44c1-bb38-a93c2f8b5c65", "5da751fb-cf4f-4d11-8993-7d74d5c8b3be", "268d215d-4c64-45c4-a7b4-cb086a8d4765", "70d4ea6d-03a0-4627-9dde-3b5a809af63d"],
+                                  can_topup_private_money_ids=["3aa0ec1c-f2f8-4df8-b6be-d0766a7b700e", "75478233-6260-4c55-ba79-1dda053865ab", "6c8c68ed-1f08-4f98-8a7d-e0aa4fd93deb", "4c493250-00d0-4ee5-8c33-8ed10ccbf3df"],
+                                  status="disabled"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_6(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  address="3qtgKMvjDsKXEFhYl0BRpqUDYmqwBJzhV6dtnsmaJHCLyhHLjUCzekHgQwDCfsWS6JXTLuG14K9HQGpPICoaRhYRcaR59QCffGIaaiPRXQUB9KSDwnfHx9gXjCberbb7S8DARwQI05I6eJLYrFtVTc8XF6Iz7He5QYfhFsP0lBKY5Zym6qbNd5Gezpxyuuv2alBrKW",
-                                  tel="04008708731",
-                                  email="VHCWblj8QD@bDxz.com",
-                                  external_id="olTpcO7N2cnroE2",
-                                  private_money_ids=["e6126752-7bf0-44eb-8949-ff9894dfbbc9", "6c39f20a-07a3-4f76-9dad-ed9263274fe8", "93deb7b8-1aa3-4da4-a045-bfbf3386b98a", "53eb93f2-c521-496a-9d63-646c44ad88b3", "cfad8563-86fa-4b31-ae4e-aa5ed8a0f1ca", "4408da8d-2516-4663-885f-b65ee7f8ecf7", "8d41ae0b-acc8-466c-8e2c-5cd8ee9e689d", "9edc0770-2513-4f8d-97ea-dcc5a7b08728", "18083187-4ed5-4386-9178-340da1006446", "27998550-7798-431a-b95a-b49f34912262"],
-                                  can_topup_private_money_ids=["6d3278ce-e389-438a-b8fe-281a643b057d", "6d86dd52-0219-466e-9637-23bd5304ae88", "b262c417-fa9c-4d26-a451-dd938291a11c"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  tel="0823018-706",
+                                  email="jTFU0wWAMu@89mD.com",
+                                  external_id="TpxWczQUy",
+                                  private_money_ids=["cb700fd7-9461-4256-a7c2-980bc083f061", "2d119b4c-2757-4619-8d90-ee986e89f7aa", "9daad557-59f0-4bde-b4ea-87e7902a46bf", "2d14cb66-cdb0-43c6-a95a-31da62fa2b03", "15cd9a44-6193-4c60-91db-1d45e4c1c90a", "cfd535ae-f3ba-4596-854f-65b2c61e58fc", "449050fb-7050-46da-addc-00c1a48fa2a0", "667a6bb9-68e2-49e9-89ef-c4846d85d2d1"],
+                                  can_topup_private_money_ids=["34e00350-9247-4893-b12b-ac94450483c5", "963783b8-8bb1-4aae-aa96-9a2c1b9d918b", "30abcac3-01c1-4fe0-92fd-712945ab5b60", "4d66a95c-f6d8-46bc-a26b-33b7fa663f4d", "616e3952-9724-40b1-bcb7-4a7faee1a997", "0c2b27a0-99c3-4836-92dc-f5af12e89a46", "3f5c52b6-394c-4f79-8c4d-713a23dc51f8", "9a50aaa7-5217-42c2-810f-391aa56832a6"],
+                                  status="active"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_7(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  postal_code="991-6759",
-                                  address="2KNkDfzWRiioT9QYFPklAn30gj1CmaOUBeCZvfeO7Sgh2QcnuYHCBxXNgm1qjvh6lwQ5YfQRfoj2wOYmg9391o91QzyCQzu6PMATfONJfxW9vGUYm5paU0VcU72VDfrMfAvz54ATPoiAdZgk",
-                                  tel="055594-2253",
-                                  email="007xOusoKd@SFtN.com",
-                                  external_id="kw4qjPQJ7jTB834R",
-                                  private_money_ids=["8e19438a-8a79-4242-9aeb-7e77fc0c2373", "71eaa4ff-ff49-4d7d-836a-f6da4e577988", "ff4c8589-5792-4a1b-9f31-15f0bbd072b1", "6c0025fc-990c-44e2-add4-e41bf35479cd", "4f999de1-c144-4b3b-a972-22ce23116fb4", "c26cbc47-bd32-4125-a014-7e1390d527a9", "22d2c146-1e18-4013-969a-54e3aba56417", "80e9cb52-3dc1-4c49-8c54-13d0981cd917"],
-                                  can_topup_private_money_ids=["f6851f51-1394-40cc-bba3-5505bf3e0e78", "25b56e66-2efa-4485-b7a6-830c9f77fa0d", "48922c88-e2a4-4baf-9159-fd0a722e55fa", "05871c71-811b-4069-a019-7258bf6c21f6", "4c9fdc04-4431-40a7-a364-50dc3c27cdc2"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  address="NrASDj9",
+                                  tel="0262-7568017",
+                                  email="s2f7f5rT4g@nJZ2.com",
+                                  external_id="Cz81XNoucyBbEp",
+                                  private_money_ids=["7d030ef8-b390-445b-83c6-fa2f553d7a5c", "9b9f94af-bed8-4f23-8fb7-012db8a494d0", "a4127608-18af-4d44-89e7-4d986dd00b2d", "3d07d367-8e72-4afa-aece-075712154f8a", "02a68cc2-0856-4209-b05d-c205f76bbef0", "f8ad3e0f-26b9-4a8d-88c2-1dc251ce480f", "2d45c754-752c-4a54-b0ab-5d29a60c80b6"],
+                                  can_topup_private_money_ids=["bba5dfc7-84f0-494d-9a0e-b48241b855cd"],
+                                  status="active"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_shop_8(self):
         response = client.send(pp.UpdateShop(
-                                  "1bbb746a-5c11-4c71-b1cc-895e07238985",
-                                  name="YjUZmnwyS1mAzTO6PEOOvujUYEjG1bsd93HwfuPWrouBgDO",
-                                  postal_code="1471981",
-                                  address="cuEYpTU2CQDBEdrTGpzQaoH7roprIUCAGYbFfz98qEYs3fTBqIMEk6UFEGcRCIsN4Zfz8ZjlCqkGEh1KM2WnPd3zzJU6PO3sdcI8PDT08v74BI2VPe8qds4I2MEA4gJjHtGd0BbRBDVeSYn8uvrsJwmXqAKgViXf2eJim1RdN4XCU5aG5xcoPdJ6AA1qyCCpsvposWm2l41CxysbDiZ7jcWk9v3rFUsJH",
-                                  tel="089039-7525",
-                                  email="HWJNhtXiYy@5phV.com",
-                                  external_id="xCRdiZLpJEvBgW4klcH2n",
-                                  private_money_ids=["e5bdbf79-6230-4bbd-8e3c-33107e87dad5", "59d21014-28fb-486d-a172-52033e4a7844", "605c6d4f-befe-4ef1-a6c0-998dba80741d", "c1b69323-66c2-40ac-86af-4c59e32f364e", "5f2d6eee-751f-474d-ad24-37cc9f8a058f", "15cb1d94-5b09-4761-b023-6ba202431539", "7682a948-55a0-4c9e-8cd3-fbe8b9556d3f"],
-                                  can_topup_private_money_ids=["3b9dc5f7-0e15-4a9d-8b06-3126f3bd9df5", "95b9ef20-1ec2-47da-9c3f-62cebf498d1b", "98f92f48-6af7-4048-8cf5-47460e5d62fe", "316160b2-5273-4efd-916f-0d2b17607d72", "65d9b182-2ad2-4592-b0d0-0773a45ae85f", "7efe4b5a-3028-4517-b480-e0fe23bff0c5", "ce1c79b7-ec36-44ad-81f7-65b81b9476cf", "3f10b77c-2427-4100-8058-99827749ad6a", "50eee773-bc75-41e4-9291-987004a9b043"]
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  postal_code="301-2408",
+                                  address="YGiB4Qalu6chDV2Pcj2ctvmZzuG53qZWTYzGouuBX6LUUUBENz9R18rNQjTARxcKWcb1nyLLVIf7PJ4PKIYRAl1UCuQycWgFlQrGdRqVd3CIlE3dO8Hdi7PJayBT5IgAK5b9hyZhcZh8MuSlVRKgCSpIL13YYuGN17rfT9nOtCiuSx",
+                                  tel="07123-2457",
+                                  email="mJRYE0vgLG@n2Od.com",
+                                  external_id="xgxwF29eViuwKtjs",
+                                  private_money_ids=["0c7f7540-09a9-4252-aa7a-3ba2d3bb04a4", "bbc2331e-b729-451f-b6aa-c8e26cba52bf", "68c089bf-3938-4a58-a88e-1655ad1b9101"],
+                                  can_topup_private_money_ids=["172f53e5-42bc-4389-808a-77c78ed15c4e", "5d0c663f-4bce-4130-9667-531c01fef6e3", "ff98c062-465e-4105-a0ea-65c89188679f", "a31c3a83-ecbc-46c5-b079-ef26ebddeb6b", "3fb2de4f-abd7-4486-b21b-e43a400a139b", "a8947579-c7a5-47fe-bdd6-c9eca8c9db92", "60cf41c8-1dee-47af-a408-fb4de028601b", "7488f382-6d1e-457c-a70b-9ebff23ca28b", "e9ccca20-7d1b-4341-a47d-f457e3db3f0a"],
+                                  status="disabled"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_shop_9(self):
+        response = client.send(pp.UpdateShop(
+                                  "967e8e25-e88b-4c5f-a7d2-4efdb214eccf",
+                                  name="9HjNAOFWD0f28rlwLb9YSbpNpmMET9MPbipC8utokXPq016coqfiAUWXxFRzN5EfouqVIJLmWFeGJqYbyf9xqeV9Lg6T4ooRxK5KRr3h8egFMYUCN7QJ0QWlqwtDL88aLfgCd3mseLQBXIUiYpTvNgfaK3PoowpKAx3kfA31wXd04SY1O8gGOF1kRrye61uzmBIXdnENFs3jBlwZrD72DB37CRt8PxiP",
+                                  postal_code="9737512",
+                                  address="GgE2sj7Hu6WK5M7npguch6s2J670P8hn4WhIeMSn521mnmeh5QEBdCZJtrUa6Fgp7ym0hYqDUAWMYxWfGNC0wV3aBOX1Ig8hROFB3MljHGXrpVSkSdQBQzqXHWCk88yAdkNbUUlXp2sT5T809AbvtJaUy0K5oRI2Afv57nsS8pT7iwNl9CKN5yCsDMuuaWg6vjoZFJU5quwxFBXn",
+                                  tel="0550-137303",
+                                  email="EVPq46GdIP@Jm8a.com",
+                                  external_id="cYbz4K3IA8JYUILwDYHWq9h3ayYxN",
+                                  private_money_ids=["8fb414a4-6012-417f-a71f-90a02f3e865c", "9b6fe81e-45cf-4319-804a-b839408d8efe", "0691c084-bbec-4c7a-8f2d-80b72d6e7596", "0e85051e-5148-4c0f-8df3-9d376dd4e2ad", "8616a8f2-12ae-4938-984d-dba6716a363c", "05d7c8f7-8c22-4370-9d0e-6a1e0d7f3bbf", "93ee4e9b-24a7-44db-8a3e-6e0d659a6381"],
+                                  can_topup_private_money_ids=["25e4c1df-f96f-4683-b2b2-fdfc7764df7e", "73586fe7-cf1f-4216-b023-d0087fb396bf", "cfc266f9-773d-4d66-bea3-6624b88096ba", "fa3bed7e-77dd-4a5a-9620-8ad94b847099", "d1f1b390-6786-4392-b1f5-0054b92eaeec", "496545a8-3544-46a1-a6af-c9583cf7ea7a"],
+                                  status="active"
         ))
         self.assertNotEqual(response.status_code, 400)
 
@@ -2998,1739 +4097,5083 @@ class PokepayTest(unittest.TestCase):
 
     def test_get_private_moneys_1(self):
         response = client.send(pp.GetPrivateMoneys(
-                                  per_page=4872
+                                  per_page=1398
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_moneys_2(self):
         response = client.send(pp.GetPrivateMoneys(
-                                  page=7705,
-                                  per_page=7080
+                                  page=8261,
+                                  per_page=2022
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_moneys_3(self):
         response = client.send(pp.GetPrivateMoneys(
-                                  organization_code="ON-Y5tjP69-c--Qd",
-                                  page=1425,
-                                  per_page=9445
+                                  organization_code="ej--aMxf1-0T4m-8R",
+                                  page=2054,
+                                  per_page=228
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_0(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a"
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_1(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a",
-                                  page=2382
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561",
+                                  page=9992
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_2(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a",
-                                  per_page=8427,
-                                  page=3710
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561",
+                                  per_page=7919,
+                                  page=1759
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_3(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a",
-                                  start="2024-01-01T14:07:31.000000+09:00",
-                                  to="2022-06-21T06:43:28.000000+09:00"
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561",
+                                  start="2024-07-13T16:14:47.000000Z",
+                                  to="2025-06-26T23:11:28.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_4(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a",
-                                  start="2023-08-22T08:11:41.000000+09:00",
-                                  to="2018-06-29T14:30:11.000000+09:00",
-                                  page=2509
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561",
+                                  start="2023-10-19T11:23:47.000000Z",
+                                  to="2026-06-07T02:10:17.000000Z",
+                                  page=4641
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_organization_summaries_5(self):
         response = client.send(pp.GetPrivateMoneyOrganizationSummaries(
-                                  "f9c5594b-0190-4951-9e2c-77c897a5751a",
-                                  start="2017-12-10T07:35:27.000000+09:00",
-                                  to="2020-06-12T13:48:48.000000+09:00",
-                                  per_page=4690,
-                                  page=6132
+                                  "58d34f38-cbe7-494b-a477-83ba9d43c561",
+                                  start="2022-11-05T11:01:31.000000Z",
+                                  to="2020-03-29T18:31:13.000000Z",
+                                  per_page=9629,
+                                  page=8935
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_summary_0(self):
         response = client.send(pp.GetPrivateMoneySummary(
-                                  "1b466ba8-55d0-40a0-8b9b-3c4e820dad5f"
+                                  "25f52e0d-c9da-4264-ab9b-cc1939eb0edd"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_summary_1(self):
         response = client.send(pp.GetPrivateMoneySummary(
-                                  "1b466ba8-55d0-40a0-8b9b-3c4e820dad5f",
-                                  to="2023-11-28T11:22:53.000000+09:00"
+                                  "25f52e0d-c9da-4264-ab9b-cc1939eb0edd",
+                                  to="2026-10-02T04:08:28.000000Z"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_private_money_summary_2(self):
         response = client.send(pp.GetPrivateMoneySummary(
-                                  "1b466ba8-55d0-40a0-8b9b-3c4e820dad5f",
-                                  start="2020-05-24T18:23:28.000000+09:00",
-                                  to="2016-07-26T01:51:13.000000+09:00"
+                                  "25f52e0d-c9da-4264-ab9b-cc1939eb0edd",
+                                  start="2020-08-04T03:20:19.000000Z",
+                                  to="2020-10-30T19:21:35.000000Z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_0(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_1(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  per_page="37870963801105"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_2(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  page="3032523533316644515487018545",
+                                  per_page="25663417"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_3(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  sort_direction="asc",
+                                  page="79869195221602080",
+                                  per_page="2303738159884478274232348217"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_4(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="9578753734058",
+                                  per_page="73835833361176567398627821"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_5(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  with_balance="false",
+                                  sort_by="registered-at",
+                                  sort_direction="desc",
+                                  page="9088",
+                                  per_page="76"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_6(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  external_id="bJVgHdPhvPKwzwzrbVYcpu84LTKQxDT",
+                                  with_balance="true",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="desc",
+                                  page="8642266154283034620",
+                                  per_page="2113302842381685719"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_7(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  is_include_user_attribute="true",
+                                  external_id="iDPGC2ST6zTd6",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="83256630820604737016418216305700",
+                                  per_page="698058706400125"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_8(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  resident_status="non-resident",
+                                  is_include_user_attribute="true",
+                                  external_id="g11gUrgWq51AuUounyHv57rDbvmuL7BqYd28Ylq4PTRll",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="176799441966065645736078459",
+                                  per_page="8558209977919920170423202419"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_9(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  individual_number_identification="identified",
+                                  resident_status="unknown",
+                                  is_include_user_attribute="false",
+                                  external_id="ZTk4B1PK",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="28097475174950303900293773975867",
+                                  per_page="29695477496472479654"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_10(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  last_transaction_to="2020-02-10T05:19:26.000000Z",
+                                  individual_number_identification="not-identified",
+                                  resident_status="unknown",
+                                  is_include_user_attribute="false",
+                                  external_id="jNr295nMRl2EDxJjIsLyTAA5MEWhdNFDbX7fss0ltmaJnxs",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="2304257572357621263766",
+                                  per_page="14935404336920598328"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_11(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  last_transaction_from="2026-10-09T01:43:17.000000Z",
+                                  last_transaction_to="2023-12-04T19:03:12.000000Z",
+                                  individual_number_identification="not-identified",
+                                  resident_status="non-resident",
+                                  is_include_user_attribute="true",
+                                  external_id="prWtPSGZrL9UrmNU3vFgZ69vwXIbJ7yB2uIbdTx",
+                                  with_balance="true",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="desc",
+                                  page="5736802081",
+                                  per_page="2362676"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_12(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  registered_to="2020-04-25T02:05:38.000000Z",
+                                  last_transaction_from="2020-07-08T21:24:09.000000Z",
+                                  last_transaction_to="2021-03-14T15:19:27.000000Z",
+                                  individual_number_identification="identified",
+                                  resident_status="resident",
+                                  is_include_user_attribute="false",
+                                  external_id="HFPpRHSTTSFxnvRwj3O",
+                                  with_balance="false",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="desc",
+                                  page="63166220486139287258878239990",
+                                  per_page="56559467150273525950077302853160"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_13(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  registered_from="2021-02-08T00:31:59.000000Z",
+                                  registered_to="2024-01-09T22:10:12.000000Z",
+                                  last_transaction_from="2022-05-08T13:01:59.000000Z",
+                                  last_transaction_to="2020-03-29T11:09:37.000000Z",
+                                  individual_number_identification="identified",
+                                  resident_status="resident",
+                                  is_include_user_attribute="false",
+                                  external_id="e7wXOOVc8GIqj26qcMQ423OrAYOyd21L9",
+                                  with_balance="false",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="asc",
+                                  page="28",
+                                  per_page="44020596349889370133"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_14(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  account_status="closed",
+                                  registered_from="2026-07-21T06:22:07.000000Z",
+                                  registered_to="2023-06-07T01:20:46.000000Z",
+                                  last_transaction_from="2024-08-24T07:37:19.000000Z",
+                                  last_transaction_to="2023-05-04T15:44:44.000000Z",
+                                  individual_number_identification="identified",
+                                  resident_status="unknown",
+                                  is_include_user_attribute="false",
+                                  external_id="yQ4ogjQgbj8",
+                                  with_balance="true",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="asc",
+                                  page="1508113783701454266",
+                                  per_page="9053828336979687967355"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_15(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  customer_email="Ewfbe5dxC9nFb6EnR37XI7b090WiBtRh0avWom7iSFIO4uZdtJGn6HWLBVq7JKL8IsIw17O7EyRwbRgUy7vFea5WeBAkgIciVnQYB9t75iPCouDaOPQZR4UpdKmspN8b2gkMcSPrmt0hjIJu43wB7scWlYirrj6XmXYoqVEvKvw3AdEs5hGDLuaSpYl1TGEiugglxJJBGt0dc",
+                                  account_status="active",
+                                  registered_from="2023-11-01T01:24:50.000000Z",
+                                  registered_to="2025-01-14T18:25:36.000000Z",
+                                  last_transaction_from="2021-06-11T09:05:32.000000Z",
+                                  last_transaction_to="2020-11-18T23:09:03.000000Z",
+                                  individual_number_identification="identified",
+                                  resident_status="non-resident",
+                                  is_include_user_attribute="true",
+                                  external_id="4uSkk26uSRwX6Rx7fOEoFSQiDYpTTgrywklV",
+                                  with_balance="true",
+                                  sort_by="last-transaction-done-at",
+                                  sort_direction="asc",
+                                  page="54685579043257",
+                                  per_page="62031118793017910261"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_16(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  customer_tel="ey0F",
+                                  customer_email="13qC7iArhwm76E35ql4XfUae14Wbt93t26Li",
+                                  account_status="suspended",
+                                  registered_from="2021-11-10T03:40:01.000000Z",
+                                  registered_to="2023-08-20T18:04:49.000000Z",
+                                  last_transaction_from="2023-05-29T11:12:07.000000Z",
+                                  last_transaction_to="2022-03-18T03:08:28.000000Z",
+                                  individual_number_identification="not-identified",
+                                  resident_status="unknown",
+                                  is_include_user_attribute="false",
+                                  external_id="x057AoBwLeryNecuIhUBXRQRCvkSHsmDbMU34aVyZLcCNE",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="asc",
+                                  page="81007561995588464",
+                                  per_page="2029832251905614030889836940"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_17(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  customer_name="7pSUjn2vqwiu14DVHGOrsaIKsQ11QA0zf5QFhEcKjjKztGRK6K9KAPEUIedziHih60rhQZO78Ysa8FmX0ccAumcgyg4cqEaxSmm8kmOYz37PEcPNNiKvN5Ht8RLA9ghACTJRDSXhb0oNXnX7lDuTKN6ygQ5h7kN",
+                                  customer_tel="0paU2HC64wcGrU",
+                                  customer_email="cdcRO2Sa3zE9qA6JlqvTos7SrIAldP5taDahvoqIf3H7H22Xm9qyhmrKIzglEahNrgMO9grD73ccOw2h3Fa222nHBaN6510bAHdVRRVqtJb7GLA5jeThW5qr3yEd4dXuL0rYsAz43Mmx6hv0Ug3INp6i2B7flub",
+                                  account_status="suspended",
+                                  registered_from="2026-11-07T18:49:49.000000Z",
+                                  registered_to="2020-04-12T18:05:27.000000Z",
+                                  last_transaction_from="2026-10-05T12:08:24.000000Z",
+                                  last_transaction_to="2026-08-16T22:26:54.000000Z",
+                                  individual_number_identification="not-identified",
+                                  resident_status="non-resident",
+                                  is_include_user_attribute="false",
+                                  external_id="3PFzXHSW",
+                                  with_balance="false",
+                                  sort_by="registered-at",
+                                  sort_direction="desc",
+                                  page="4969438571",
+                                  per_page="56772722710689287598730"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_18(self):
+        response = client.send(pp.GetCustomer(
+                                  "333d70d6-2c4c-4711-af93-d54f85010e02",
+                                  customer_id="c8697ef1-4884-4bf1-be6f-7f11eea3e8f7",
+                                  customer_name="qG8fKRsijZT9ACbFhSbUnXdQpmPpnHFqiJvOHOlQFLdxOm16oejI9dat1CLgQoRlzuyxB2QGrCPmQ415Et2SGqgy7Wowcm3CmFfxpyCPpsziVloAtynLsPgO9CFz87kImOLWynZ7sTqSkOWWDLZmiyY4qSDce16GC4wPtLkv3o4mk88yYjRj6",
+                                  customer_tel="p",
+                                  customer_email="JLnlec8JObXuRsPVeFJcsOCB9dZH0k0NKC7bYH6IQhPn4Xu22OkprhqhwvNpMEMbpSnLulsX8V7SnJwOTksCozm6o1k9oepRB7yq0Oa1SzxnfEtxAkEm7sWqtjzoUhtWxAFotkA3GwpJ6pUWjvsx",
+                                  account_status="active",
+                                  registered_from="2022-06-25T06:48:38.000000Z",
+                                  registered_to="2025-10-22T21:05:18.000000Z",
+                                  last_transaction_from="2026-03-22T03:59:37.000000Z",
+                                  last_transaction_to="2024-04-05T08:30:47.000000Z",
+                                  individual_number_identification="not-identified",
+                                  resident_status="non-resident",
+                                  is_include_user_attribute="false",
+                                  external_id="3pAVbXivHZtrIAyP3B3n1m451",
+                                  with_balance="true",
+                                  sort_by="registered-at",
+                                  sort_direction="desc",
+                                  page="576137890863485",
+                                  per_page="4584646080682"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_cards_0(self):
+        response = client.send(pp.GetCustomerCards(
+                                  "7cb81587-1c02-466c-8c13-0a70b1bda71a"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_cards_1(self):
+        response = client.send(pp.GetCustomerCards(
+                                  "7cb81587-1c02-466c-8c13-0a70b1bda71a",
+                                  per_page=15
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_customer_cards_2(self):
+        response = client.send(pp.GetCustomerCards(
+                                  "7cb81587-1c02-466c-8c13-0a70b1bda71a",
+                                  page=1439,
+                                  per_page=10
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_customer_card_0(self):
+        response = client.send(pp.CreateCustomerCard(
+                                  "04cd8060-9453-4095-b5bb-19a4b42b0eb7",
+                                  "AEF"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_customer_card_1(self):
+        response = client.send(pp.CreateCustomerCard(
+                                  "04cd8060-9453-4095-b5bb-19a4b42b0eb7",
+                                  "AEF",
+                                  is_cardholder_name_specified=False
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_delete_customer_card_0(self):
+        response = client.send(pp.DeleteCustomerCard(
+                                  "5edfc960-1cdf-4d9f-b249-7afdede205fc",
+                                  "12b10567-f7b4-457f-99e9-7a982b318496"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_0(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_1(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  freekey="NK2k71v1NS4d7Vc6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_2(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  memo3="0p999hbr2QBNJh1mWiWeF4bRCF4u83r9B8",
+                                  freekey="N68B8130jU8VcMF4hQeMMQpp23ZoWegcEN7FbFi"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_3(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  memo2="2C1g38iLrWLS9ULdS1R93vk3PlW8l7mUBp7a1z1HShJnsD9I5K82d54q79i2JSdxrEY3ZeDZGgml4w7F7",
+                                  memo3="dO4M8C5AqXnJ5hLflivt219w8WkwGR2m8499M0SLT913q",
+                                  freekey="FU1gv752H86249ph8Z5AKkRYv3317"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_4(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  memo1="hi6UK63ytt63b1JGS59Ei864N1ZQO9MSoW9Gq4pp1v6Tj7z",
+                                  memo2="6bKxv2cUJTE3N2DUb94wP2TRbTPSn19B34T6HFG8y6W3021LYmMnmRLt832I6llTy3lfUvdLUJId69GzzmCEM9T4zub93",
+                                  memo3="S10ruWfr19",
+                                  freekey="VR5J9949fnOQN0FBw9QQZSMRNI3G1sT8jiaW81983thN5C69"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_5(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  topup_quota_id=632,
+                                  memo1="p2h0bWbePGG7R7En8J26Qg",
+                                  memo2="mjc07xx4",
+                                  memo3="j809wt1Gpw2wfZQ05F5Pj9rgsg40Gas76QSRaQ3MS63zqq82kLaZf04ONKREQaR6H5JROR",
+                                  freekey="o9n3Ap716Oe6y8R7e476BAPHanY8tSqiWhzTBV5I7w7sC101IW037XydF3U1600a046Jf5D7tAy8I4fwSYhSIu17kV8Rl94"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_6(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  request_id="00f971ea-e730-49d5-ba10-02be290cd967",
+                                  topup_quota_id=1098,
+                                  memo1="QVuyw93pmG2vlkI3N8w4Z7e7F6Z5ADxOW65Fi518Cpl",
+                                  memo2="M3kV78lmctY8aBPIn9rgt1i415o2a1xnPH5W4Ecw6TH26rHQPnQMqRQtTq61uYwn17DrFpky54cY4VmcgL6AA3PyHaCi7cHi6JW",
+                                  memo3="s8pKF9AIK0psNj2aS7L24UVas975J2G1GJCU9L8u88QI",
+                                  freekey="t2I9Jr51J9e55ryAi32TSLdKYdSCq396y46C1sozoM"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_7(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  return_url="https://KM2vajHz.example.com",
+                                  request_id="5deba1f5-13e0-4efe-a83d-3ce0d0ef718f",
+                                  topup_quota_id=3051,
+                                  memo1="34im1SKUGTk1S",
+                                  memo2="75Po4ecBNS7dp6gUd9sF0rgoqdPP1Ok4ov432r0rB4380E828C6LRoLboRQDdH27e3ZEUApy8",
+                                  memo3="mkfSrO4tbICO4lIsE95MMYNND7Bv13DegUj31AE3T5ahL3jF2VCH7wU72E27mZAe7NVtc4u0D8iCj65618",
+                                  freekey="0zZ7zv9YKaHM9c1Sl3bS69e5D0bNQTL8U5Dqq735009mmErTq4W86"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_8(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  description="g9hnQlyenzuwrO3gGQmGe09eXlKtPgqSA0ERaGz46vIiA4hbe1yI3CGp5lj6m5fgOCupwcIP",
+                                  return_url="https://xBzhbkfE.example.com",
+                                  request_id="b5c1ab21-194c-4b97-aacb-b39bb85b3204",
+                                  topup_quota_id=370,
+                                  memo1="nK9t544oz",
+                                  memo2="YJEarDFyV1cl5yr9fU9mmn8GN5ophkmv",
+                                  memo3="h7iKe9yt2S6B4m4GBZP5Q5QZKM4bB4nzJ8Fvxy79gp1gGhfe944D4172Di7QU1RMrYyI",
+                                  freekey="oaqI0eCvmK0gShKZxal6N1Xemjo94TDobj0J"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_9(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  delete_card_if_auth_fail=True,
+                                  description="xXuIalmcupP8PaFubqXmo0h47ayHi8sXxsnC42wCpyAiBnUBLAV",
+                                  return_url="https://97YftKTM.example.com",
+                                  request_id="85a2f3f0-69c8-4de8-93a8-d31d6e404857",
+                                  topup_quota_id=5086,
+                                  memo1="Ix7PN2eg7vblz6N6517EDagatC5SvgKwRf69KLSvATd7Hcy0Y16H4s7LGP2q2CP0a8qcIzFQ0in4E",
+                                  memo2="F574jf4B19A27dW79UliyjOw8R44eIVrk168eVD4n1Z4aueu8rWxQy5Hpn6kT59TF4f2848X41lM196lXI83dnj20JiQ09C2Z",
+                                  memo3="EHBK",
+                                  freekey="Vb1sLOwVOI0EDx5PD0chPQBsVb4rKl00F74YKZ10iupx6D8Ji1nT044NlT2FRZWFoHC0e9Epw01fCkHj5Fz"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_membership_10(self):
+        response = client.send(pp.CreditCardTopupWithMembership(
+                                  "b260646b-aaf2-4f50-abc8-c045a8059d89",
+                                  "f0f47951-6ecb-4f74-a618-e2e877437918",
+                                  "8c221bee-5855-49a3-ab96-4e88eb42b6e0",
+                                  2943,
+                                  receiver_user_id="171a6d68-ebe2-4816-aeb7-1f23da6b34bf",
+                                  delete_card_if_auth_fail=True,
+                                  description="8oA0LE9nGzsoBIqSCZEncCQxjIhrUeBMFsGSoFMs14cvovqZ6GQpcxkL1iWim0Xpy9XRR4FHqayBd9Y6naDnCaj1IshUK5sOcLMoSdluvLDw0rIOalhSCHrt5J1YKxmhpIQaAHuF1XqBsQEc2YHzb0v51JNexx20Bl",
+                                  return_url="https://obdlTY6n.example.com",
+                                  request_id="83f1ceb3-88cc-4de2-a07b-8acb173d25b6",
+                                  topup_quota_id=2518,
+                                  memo1="uXd36M4IvxiitEEwV0Ns6D0w8tHM8aG5N8G5A2Y637vqu5iFQxKb",
+                                  memo2="5e7ytvmnNDv1tpOE50MEfnzr684z0vNh9CZi0O0eilJLDaoDkF7aI9aziOjNW6d0IeV82G1kv2h1j34NTmOqolu01y8Ilr",
+                                  memo3="76rAYhqa",
+                                  freekey="e0041w"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_0(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_1(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  freekey="A4A7BUx7n99LEh5n7PticTxWIc46qT6893INKO1L06q0Ic7QCAVIcT33f3WbvaMmNX66IJwp5Vq21tj25e04nTNX3b4L2mIxIt7"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_2(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  memo3="0QxUOhcVWAnsE8O6Gskgl3JB9G5Y4vNj1QB3LJKdeJKz33j3VCjqfJL",
+                                  freekey="Eb1TB1PhgqaU63E4fYWjHVBzEC54N3o5Biu8xfLAmd74Bh035EDF62N8WT493qh274KIB0CXQ9Znl80TORG5000FrXK6O6Zp"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_3(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  memo2="R5T8Oks0sBFAelmN8aUD43An54QqXTtF",
+                                  memo3="Tlg9fY2LA6dVS2Ttoh6BB82saXe50Z3WrB343PP5A1N",
+                                  freekey="U0cQsk3u7xJY793Avx4V4g03vLh6F1qU233106R5uA9XREJF1M3ZredXfP521J06EL3iHs3F6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_4(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  memo1="vgVr2M5mT114At35sKr43maUie",
+                                  memo2="X2vbzP9Bd5Cvy4QC37rj957yv1696b",
+                                  memo3="oIgNmk09mbD8rqDLVtam4g7SQFY3BSXb9XTtcUuPe8a36D6nYXVEHuTPWjGyxdfhlymPWK6LvO7ZDc59hZL7r3qam26",
+                                  freekey="c41Fub"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_5(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  topup_quota_id=9802,
+                                  memo1="9C1eNFpvIu12G0NXSwp3v8dQn8WYii5h4fZD8ObDG24xe8av076z23XbX97ann5V32",
+                                  memo2="13vJ81phUlYQksdt5xtQI8m2CNf5W98OAlRD0WuVDz2I6M98HqTe1X57354nQ3Owk0d3u7XdJGmh07FVjSTF7G0oH3y7nyN5vh6o",
+                                  memo3="V",
+                                  freekey="xgD95dIK8Sw5P9N0dIx9AFgsWUDuP0616ZJXlF003Y0nc715R2D7SLZQ5z5wpjvg6JH24je08mJw4G54l9Q7xr3"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_6(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  request_id="07c18bf7-1f95-4599-8cd2-514096c6a170",
+                                  topup_quota_id=5637,
+                                  memo1="DzjFJ48I91d1",
+                                  memo2="V40USXY70wfRHf7WRvH3A59l1ucWQ3",
+                                  memo3="9xV7IlqvBqaQ99kK2osuTLp4JHVD39rS334oz4Pl3YjxJ24FDKtqH5e6T94pB7UwIp",
+                                  freekey="ekgZU4nH3kll5QmncEdPBoelOm01ftjQ668T95hNn9ubp0z7yZM7oob48307xcN8PV6hni2TzD"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_7(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  return_url="https://ehTHNb57.example.com",
+                                  request_id="78821109-fba3-4a92-8f50-a80fe85bafe7",
+                                  topup_quota_id=1178,
+                                  memo1="u9J5SSx7CP6K8j8l",
+                                  memo2="Abtn5IaXIDLo3F187gL63EgGW5if535COQvJciQ07eLfH713yi520zZ7VjNg1a1m9YzdxMvRtggX9fP7KVScUPgcA2MAPo",
+                                  memo3="0GNxa63M8qLYT4V88TS83OgFM16oVPcgr7x3h0IDSKbA54byqoxA987da",
+                                  freekey="7mbd8AfDC9k3wQ8GGJOw9318"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_8(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  description="tAZixWvzCjvZGuuLmpXAGJua2paAAkUgzb5zEsMYGbxzOIV2r2JtDEGxgzX90xQ1qEwnOjzBjMdE2ZgqC6g1ENWOPFMuygZod8nu",
+                                  return_url="https://ff2bwE3R.example.com",
+                                  request_id="bb763d8b-6caa-4444-a56a-8b1fec2e86ad",
+                                  topup_quota_id=1775,
+                                  memo1="K8n15d0JP65D2IdKzFM4NvjD9YVEW7A85qNs1212HSW4V6kox0g1Tu594Z9WtIQIyj4Q80Q",
+                                  memo2="TkblsUFrtbU5Q3tqC9gfA96HMKtYJmIH38cb63qDwyZm0L7474ljI5lgbEEW4yG5m45IvOlK60l6ePP50pMO0TUpxP",
+                                  memo3="B4e258223V3ORi6",
+                                  freekey="H8dvRiAUT1FuvX1D2Tv706m77rKGRt6vKlbyXXIs0ihsw45z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_9(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  is_cardholder_name_specified=True,
+                                  description="XzEp3cMOeoQItbJApNFNbizZqSEKvNBsiLTmRsG1pcvzPfSNlMjgyCm3",
+                                  return_url="https://l36NNuyy.example.com",
+                                  request_id="b32af3a7-e560-4e77-bd65-aa41cfa5749f",
+                                  topup_quota_id=4321,
+                                  memo1="61w5B46D85cE271E3Fqo3q5dNOlt4CKELjZt971oQ",
+                                  memo2="0YVaYDP2t4FRjwXODTi38kldJerxKQ1rqEpF6s99Ac6xAZxJ7Ts502O5v4GJ0zvzO4y5SrqWbYJxyzDNdnl9BO7a4Ov6x7e1N",
+                                  memo3="d",
+                                  freekey="C3kAy9xMGmNCKDw4Ol522R3f1k5yFAD9588bb6u2350bPlybCC6Fr0ObLq87JDuGlxGGIZG43iwKDj38p1az0NFFSH3m60L"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_credit_card_topup_with_mdk_token_10(self):
+        response = client.send(pp.CreditCardTopupWithMdkToken(
+                                  "c66a6257-8177-4667-8ba3-65f596fa5b40",
+                                  "Bec41Em",
+                                  "1ffb648f-7077-49fa-bc7a-2f211defac46",
+                                  4867,
+                                  receiver_user_id="67b1afa0-4b25-439c-9d02-28d728de8b33",
+                                  is_cardholder_name_specified=True,
+                                  description="yXFj5pEZQNOtIwcrR2Tap7tnXzfq7vVXcZZXkAjYTEO65NQtF",
+                                  return_url="https://JaRQvj5y.example.com",
+                                  request_id="8e696304-a9ff-46fe-a679-0771430ebdda",
+                                  topup_quota_id=1514,
+                                  memo1="xiq98XiL6oG",
+                                  memo2="9YWFBZ5gP3lFQal78kD",
+                                  memo3="1Pr1L3PQIocjdha5S5XK91F143i8Y0Ope7996C6Hd59Gita973PMcTktPGZ9v2yN",
+                                  freekey="23P65BZ11Y6n5JEYT2z7R9vHVr5iLNBjA12Ha8"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_0(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01"
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_1(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  per_page=3635
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  per_page=1368
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_2(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  page=8814,
-                                  per_page=671
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  page=5345,
+                                  per_page=2630
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_3(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  to="2019-07-23T01:08:01.000000+09:00",
-                                  page=1061,
-                                  per_page=6541
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  to="2024-12-15T10:28:54.000000Z",
+                                  page=395,
+                                  per_page=3733
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_4(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  start="2016-12-31T10:53:02.000000+09:00",
-                                  to="2023-05-08T15:39:29.000000+09:00",
-                                  page=7196,
-                                  per_page=7788
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  start="2022-08-28T15:46:15.000000Z",
+                                  to="2020-11-08T06:36:45.000000Z",
+                                  page=6484,
+                                  per_page=9921
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_5(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
                                   is_modified=True,
-                                  start="2025-08-08T19:15:15.000000+09:00",
-                                  to="2016-06-23T11:03:31.000000+09:00",
-                                  page=6121,
-                                  per_page=1352
+                                  start="2023-04-28T04:46:24.000000Z",
+                                  to="2026-08-01T02:02:06.000000Z",
+                                  page=2213,
+                                  per_page=4547
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_6(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
                                   type="payment",
-                                  is_modified=True,
-                                  start="2022-10-03T04:47:28.000000+09:00",
-                                  to="2020-06-28T15:24:41.000000+09:00",
-                                  page=4552,
-                                  per_page=8478
+                                  is_modified=False,
+                                  start="2022-01-03T22:39:43.000000Z",
+                                  to="2024-11-04T12:56:27.000000Z",
+                                  page=4372,
+                                  per_page=791
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_7(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  receiver_customer_id="4bfeb1cd-a2fa-4fa5-93d0-2c0dd8c04ce0",
-                                  type="transfer",
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  receiver_customer_id="47cd69fc-0e93-4225-a17e-94461f924fea",
+                                  type="exchange",
                                   is_modified=True,
-                                  start="2017-04-01T05:42:00.000000+09:00",
-                                  to="2025-04-17T22:34:09.000000+09:00",
-                                  page=8585,
-                                  per_page=5913
+                                  start="2022-02-19T20:19:38.000000Z",
+                                  to="2024-04-20T08:17:34.000000Z",
+                                  page=6991,
+                                  per_page=9120
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_customer_transactions_8(self):
         response = client.send(pp.ListCustomerTransactions(
-                                  "05b16a54-5888-47c7-a866-6d99ba6a6c01",
-                                  sender_customer_id="60db07d8-5eb4-40c7-ba2a-a5211ac0bd0e",
-                                  receiver_customer_id="d8128818-e537-46c0-bdd4-3e371623cacf",
-                                  type="transfer",
-                                  is_modified=False,
-                                  start="2016-11-22T14:49:47.000000+09:00",
-                                  to="2023-09-25T01:21:44.000000+09:00",
-                                  page=7699,
-                                  per_page=7048
+                                  "84a7a82a-7a7a-4cef-8a55-d01fd7f0422d",
+                                  sender_customer_id="447d4718-7a2e-4a70-8a03-ef7ccb14e711",
+                                  receiver_customer_id="1c4051f2-41ad-4957-80cd-1d1b62a86513",
+                                  type="topup",
+                                  is_modified=True,
+                                  start="2025-04-03T10:10:56.000000Z",
+                                  to="2023-02-06T09:56:17.000000Z",
+                                  page=3044,
+                                  per_page=3491
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_bulk_transaction_0(self):
         response = client.send(pp.GetBulkTransaction(
-                                  "8300a4b9-cfd7-4739-abb1-07e548bc1afd"
+                                  "b7d1790b-73aa-463b-83b0-a52dc3b4de3a"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bulk_transaction_jobs_0(self):
         response = client.send(pp.ListBulkTransactionJobs(
-                                  "1e4cffcb-fa3a-4e0b-889d-159adda948b7"
+                                  "a0e089fe-9dc3-4a72-93b3-361fc5152051"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bulk_transaction_jobs_1(self):
         response = client.send(pp.ListBulkTransactionJobs(
-                                  "1e4cffcb-fa3a-4e0b-889d-159adda948b7",
-                                  per_page=2419
+                                  "a0e089fe-9dc3-4a72-93b3-361fc5152051",
+                                  per_page=5371
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_bulk_transaction_jobs_2(self):
         response = client.send(pp.ListBulkTransactionJobs(
-                                  "1e4cffcb-fa3a-4e0b-889d-159adda948b7",
-                                  page=9378,
-                                  per_page=2745
+                                  "a0e089fe-9dc3-4a72-93b3-361fc5152051",
+                                  page=1100,
+                                  per_page=4256
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_cancel_bulk_transaction_0(self):
+        response = client.send(pp.CancelBulkTransaction(
+                                  "573bea28-78db-405a-80cb-e1c8e802a4aa"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_resume_bulk_transaction_0(self):
+        response = client.send(pp.ResumeBulkTransaction(
+                                  "fbf47ed7-8fcf-4c87-99c4-b49a48198479"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cashtray_0(self):
         response = client.send(pp.CreateCashtray(
-                                  "c3fa6687-a405-4fee-b010-b4881db5bacd",
-                                  "4065a9ff-76b5-44e3-aa10-1100c05a6d95",
-                                  4823.0
+                                  "b1c8709c-1b38-4ed8-ae61-8d31aab9b46e",
+                                  "9a8edd17-64e1-404c-a2f0-7fbaae5a6290",
+                                  5125.0
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cashtray_1(self):
         response = client.send(pp.CreateCashtray(
-                                  "c3fa6687-a405-4fee-b010-b4881db5bacd",
-                                  "4065a9ff-76b5-44e3-aa10-1100c05a6d95",
-                                  4823.0,
-                                  expires_in=1775
+                                  "b1c8709c-1b38-4ed8-ae61-8d31aab9b46e",
+                                  "9a8edd17-64e1-404c-a2f0-7fbaae5a6290",
+                                  5125.0,
+                                  expires_in=1720
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_create_cashtray_2(self):
         response = client.send(pp.CreateCashtray(
-                                  "c3fa6687-a405-4fee-b010-b4881db5bacd",
-                                  "4065a9ff-76b5-44e3-aa10-1100c05a6d95",
-                                  4823.0,
-                                  description="mvcVzayJGxdqzoO9uXS4XBDN0o0Mu7ieKvzIZjqj6ciQDbUq",
-                                  expires_in=3605
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_get_cashtray_0(self):
-        response = client.send(pp.GetCashtray(
-                                  "92df5a8a-34d4-431c-8cf1-a69cd05e3f5d"
+                                  "b1c8709c-1b38-4ed8-ae61-8d31aab9b46e",
+                                  "9a8edd17-64e1-404c-a2f0-7fbaae5a6290",
+                                  5125.0,
+                                  description="oCkUCkILHDjG2icoeSoFWNBFxzeu6Kj8LSmqtcTHfZNvkLrHlNhPf4I7mVEEqd8S9trsTY1RY9q3EI5KlF19OJHZirKKYCiI5WbqIsQYvdmHcE3kg67Mp0CzjO",
+                                  expires_in=2441
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_cancel_cashtray_0(self):
         response = client.send(pp.CancelCashtray(
-                                  "ca73d7e6-6ca2-42b5-9b16-cf9eb65c9a49"
+                                  "f36f7f7a-a11b-42e6-bb19-0727126b9e91"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_cashtray_0(self):
+        response = client.send(pp.GetCashtray(
+                                  "573e7774-2ace-4ff5-85d4-af2763dfcefa"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_cashtray_0(self):
         response = client.send(pp.UpdateCashtray(
-                                  "eb79417e-11ba-41b0-97ba-a66dfab9dd91"
+                                  "a0284b01-f666-4918-989b-c8e00c84216f"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_cashtray_1(self):
         response = client.send(pp.UpdateCashtray(
-                                  "eb79417e-11ba-41b0-97ba-a66dfab9dd91",
-                                  expires_in=7250
+                                  "a0284b01-f666-4918-989b-c8e00c84216f",
+                                  expires_in=1903
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_cashtray_2(self):
         response = client.send(pp.UpdateCashtray(
-                                  "eb79417e-11ba-41b0-97ba-a66dfab9dd91",
-                                  description="V3ZqnN3F5j5hei5eenuWOLqxpAqKhr1PiatJCFbxFePHe8fLp7pWtBDbGEkzsRtHz3ymmInXbIX7AIIYKuFyd9WkOS8uJqFVIWZBtq3jnfd5KTcWHD2AadOYe9kazoxyRuU9Z",
-                                  expires_in=6943
+                                  "a0284b01-f666-4918-989b-c8e00c84216f",
+                                  description="mfKJhNI2H",
+                                  expires_in=9895
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_cashtray_3(self):
         response = client.send(pp.UpdateCashtray(
-                                  "eb79417e-11ba-41b0-97ba-a66dfab9dd91",
-                                  amount=6426.0,
-                                  description="8Q2HvADi2W3bSFZd8xGhm9VbcZgOZ4yYRMkHKY2yx9gLKmBFLvqK55BnlHTaFsTxQXtMZL6XWgDmeak1eoliBFeYUr35I7ta0sw71srL0z9GEG3PXvnl3BKAcPvmXPfih5KNNjURd2N8Uca7AszKQRtnK9OFQAZ",
-                                  expires_in=548
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_0(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment"
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_1(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_2(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  dest_private_money_id="7dc078ac-b404-48ed-9777-fb30237911c5",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_3(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  max_total_point_amount=8487,
-                                  dest_private_money_id="6d324518-06fc-4623-aa6e-34e4b0a25291",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_4(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  max_point_amount=3783,
-                                  max_total_point_amount=756,
-                                  dest_private_money_id="f424cefe-6014-483b-8788-4bf615716118",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_5(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=6880,
-                                  max_total_point_amount=8168,
-                                  dest_private_money_id="08ffb985-f360-4626-92d0-f7f57c263d84",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_6(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  minimum_number_for_combination_purchase=6296,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=8551,
-                                  max_total_point_amount=3991,
-                                  dest_private_money_id="4d498f9b-cea5-452c-87d2-4a20d721f5e8",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_7(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  applicable_shop_ids=["403a483d-212a-46d3-89ac-f82f59c6cede", "603c630b-0950-44bb-ab42-b73f6db31b0b", "a6654460-debb-4f19-8c0d-5f7f08dadd2d", "d2f5f88f-ff99-488c-860f-1bd6ddfd067e", "de38f153-87ef-45f4-a69f-dc67aedbbc0f", "85bb9caf-bea0-42fe-b96c-17e42ea048c0", "68f309ae-73ae-4a02-96d6-1f8e17f2756d", "baef9f61-e0d0-4078-bb26-ac8893c91881", "da85f1f8-376b-4f12-94f1-229f764a8ea8", "ec0c115b-e6a7-4cba-8fed-80c6310b45f2"],
-                                  minimum_number_for_combination_purchase=8647,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=3302,
-                                  max_total_point_amount=1602,
-                                  dest_private_money_id="951d8947-e95c-41d7-bcb6-7aac1875fb74",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_8(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["cc61f682-a9e0-48a3-975a-67db75627fb8", "b498a89e-a82a-419d-9bbe-367b20cd8615", "16326fe3-daa9-4be3-82c8-94483a677cd3", "31093e1e-c091-4b3b-a4f3-1be3042d6a70", "c54ad9de-dfcf-4dab-b28c-487c908056ee", "fa083838-6fa8-47b3-b264-818182d98d36", "0a0b2764-a10b-4ff1-b520-93465d5cb77f", "8acbf391-5fb6-4065-9fe9-919c30a2009e", "fcf374da-1003-41b3-84c4-02648b13c386", "d1c47bb6-b157-4b22-a99e-77d3ca78b59c"],
-                                  minimum_number_for_combination_purchase=7802,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=1455,
-                                  max_total_point_amount=7194,
-                                  dest_private_money_id="ca39fe6c-e650-43cc-9819-19f89a618058",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_9(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  applicable_days_of_week=[5, 3, 6],
-                                  applicable_time_ranges=[],
-                                  applicable_shop_ids=["054dde71-7a0a-4ec1-a34c-0ed03298acf7"],
-                                  minimum_number_for_combination_purchase=7240,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=8545,
-                                  max_total_point_amount=9335,
-                                  dest_private_money_id="d70c4f1e-4cfd-4d48-a509-b2898d5e93db",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_10(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[0, 1, 1, 3, 6, 6, 4, 1],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["a8781f35-1e68-4d25-ab4b-611015e7d889", "5363b2e9-4ea0-4db9-955d-e0baf2952c23", "230c104f-2027-4a9f-b2a0-4e3cef87922f", "9c9ec550-28fe-4582-9db9-eee05967a1ff", "630ea097-43ea-4185-833c-162ea132fae9", "08fdd487-485a-4936-b521-9333131563a2", "6529bd78-0fb2-4157-8286-0790adb6293d", "db965b7a-525a-4217-8a90-bd2ed61a9c7e", "1d259b24-d2e0-4285-9ab5-c4e13c037835", "81eab067-4236-4503-9371-c61b4be8a2d5"],
-                                  minimum_number_for_combination_purchase=3607,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=8287,
-                                  max_total_point_amount=7856,
-                                  dest_private_money_id="fef6156c-d43c-412a-9e3f-0d9d49012795",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_11(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[1, 2, 3, 1],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["d2907b19-eedc-4de4-a747-c956525b9da2", "e0d42772-3fd1-4b32-a1bd-ad2cfabd1734", "a4e6b906-85ef-4006-b483-921e7657c06e", "ca811ecb-0843-457a-a53a-34d93f170947", "d006b0fa-3ec0-4efa-9154-0a8dab4cdb57", "ec742ac5-c09b-4b33-ac05-c6fd5b5bbfd9", "ef395aa1-78a2-474f-a739-95f24ed92860"],
-                                  minimum_number_for_combination_purchase=2681,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=4469,
-                                  max_total_point_amount=3481,
-                                  dest_private_money_id="7412bee8-dd9b-4479-903e-70e6045e87d8",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_12(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  subject="all",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[2],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["4412b72f-e87b-4a94-bbf3-26299824d007", "973ae698-f750-4821-9fe4-e5b1f21eb564", "034470d6-bfb4-4dfc-a0ed-caaf04bdc62a"],
-                                  minimum_number_for_combination_purchase=5470,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=7126,
-                                  max_total_point_amount=9863,
-                                  dest_private_money_id="4f3c775c-92e5-4817-b6c7-5befd7dccefd",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_13(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  is_exclusive=False,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[6, 0, 5, 5],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["9479d6d5-33f5-4dbb-af5c-892ddee283af", "1ab52c18-9d5c-49dd-839a-2a8dd54b0818", "e410730e-8a4a-43d6-9dcb-3825d37908b5", "57bba400-25a3-43dd-8cc1-593deaf4ee47", "6d2da28c-9053-4165-acde-c1e90d379586", "02d7d411-1cd7-4857-a8c0-8a252dd067c5"],
-                                  minimum_number_for_combination_purchase=9268,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=6200,
-                                  max_total_point_amount=9283,
-                                  dest_private_money_id="b2c24a4e-7ce5-4362-aeb7-fb322545d972",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_14(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  point_expires_in_days=481,
-                                  is_exclusive=False,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[0, 3, 5, 3, 6, 0, 5, 4],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["14ca9a8b-050b-4f3a-818c-0bf87d1d95a6", "53fe7815-2ef5-478f-92ba-5468132e8f14", "6016d087-3eb6-4a1a-9ebf-89b6ead1a6b1", "85796cd5-edb8-4816-be8a-16321a3d54e2", "3cb38187-3230-443c-bcf9-0f2705aacd2f", "151fb790-362a-41e5-9986-1aef9c532a1f", "cdbaff35-7d06-42fa-a64f-70c19e8cbf27", "3c3d08ab-7967-4a3b-a453-a5cc921c7e2a", "07365ed6-1640-4b0b-8ee2-4f3180027931", "c65a8ce8-005a-4eca-ae57-fe2ca3c34e45"],
-                                  minimum_number_for_combination_purchase=7866,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=538,
-                                  max_total_point_amount=9877,
-                                  dest_private_money_id="6484e7e8-7a8a-421c-bbce-fe1fac01cce4",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_15(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  point_expires_at="2021-01-01T13:57:44.000000+09:00",
-                                  point_expires_in_days=4438,
-                                  is_exclusive=True,
-                                  subject="all",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[1, 1, 3, 1],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["53183c74-811a-4a3c-b07d-220b7bc3e150"],
-                                  minimum_number_for_combination_purchase=1165,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=480,
-                                  max_total_point_amount=7822,
-                                  dest_private_money_id="7dbac46f-f891-433c-ae57-b29c53b02649",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_16(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  status="enabled",
-                                  point_expires_at="2021-06-04T07:55:30.000000+09:00",
-                                  point_expires_in_days=9766,
-                                  is_exclusive=False,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["d080fcd8-6969-4243-8744-97470d89273e", "49326dd2-b6d5-453c-93d1-894caf0c4381", "c901f531-9656-47a3-a958-471f5ea43d9f", "92f08b3b-59a0-4375-b30f-2a3512d5ce78", "7b846cee-c737-4dcd-a2df-e78325b02bda"],
-                                  minimum_number_for_combination_purchase=150,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=9794,
-                                  max_total_point_amount=3768,
-                                  dest_private_money_id="3a17ca94-5f5b-4747-b976-1110b8bfcfc3",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_17(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  description="5m86vU4CTunlo9FHcvhpXn1f9WUvYvDDo3G7amxcKXWGa0ExI5eaGTZJemJSk",
-                                  status="disabled",
-                                  point_expires_at="2018-10-28T09:16:24.000000+09:00",
-                                  point_expires_in_days=3549,
-                                  is_exclusive=True,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[1, 4, 3, 1, 4, 3, 5, 5, 5],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=[],
-                                  minimum_number_for_combination_purchase=6703,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=9351,
-                                  max_total_point_amount=4539,
-                                  dest_private_money_id="a90eb049-f336-4374-9275-ac65bd66cd29",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
-        ))
-        self.assertNotEqual(response.status_code, 400)
-
-    def test_create_campaign_18(self):
-        response = client.send(pp.CreateCampaign(
-                                  "k8lWFzl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTs",
-                                  "a3dd2a8c-a0c8-4a92-9f88-255c868fa801",
-                                  "2019-03-03T02:07:28.000000+09:00",
-                                  "2023-07-26T09:59:50.000000+09:00",
-                                  4686,
-                                  "payment",
-                                  bear_point_shop_id="f7105b4b-71fa-454b-a441-0314a61aeeae",
-                                  description="G45Yd1ntlQmTFdCRQoNs8we7kw42AF3DTjcROuetQ8zFdMo0VY4tUGROiwu8g5jegd2tDc5SvOZdXc2AVLuF8gaKQ0OEhkP9BLs49M6H6epGVtu0HPhsCKuI2bJUyIRN5hatVHvQNYn4X1Qj8JOhaftsXxsjd7rD3p3viKfIPkJsUNb1al7E8GagW",
-                                  status="disabled",
-                                  point_expires_at="2018-05-03T19:52:12.000000+09:00",
-                                  point_expires_in_days=5288,
-                                  is_exclusive=False,
-                                  subject="all",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["f5822a34-75cf-4bc2-a5c2-bd97ef8c32e4", "0143d27f-e96d-4e13-90fe-3ec16f86ba4b", "90a5fee9-0577-47af-8b2a-0e98a1080f0d", "8758ea6b-dd19-4294-97d6-1a4dacdc2ae5", "d3dd4ec7-d38a-4ff7-af94-0b5e7335c463", "a6e05010-250f-4bdc-aeb0-e49970bdb5f4", "1a82271f-e565-4d6c-80d6-b698b9698e7d", "7b829275-f20b-4932-b495-742f3c16038a"],
-                                  minimum_number_for_combination_purchase=5967,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=6027,
-                                  max_total_point_amount=9202,
-                                  dest_private_money_id="29877b46-9825-42b3-8f5e-00e958920599",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "a0284b01-f666-4918-989b-c8e00c84216f",
+                                  amount=5565.0,
+                                  description="0SlKK1O1UKOiryeoJ2KHqioForPYYF",
+                                  expires_in=3141
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_campaigns_0(self):
         response = client.send(pp.ListCampaigns(
-                                  "86b887e9-ffcf-4a75-aaa1-c9d2cdf8b927"
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_campaigns_1(self):
         response = client.send(pp.ListCampaigns(
-                                  "86b887e9-ffcf-4a75-aaa1-c9d2cdf8b927",
-                                  per_page=2193
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422",
+                                  per_page=24
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_campaigns_2(self):
         response = client.send(pp.ListCampaigns(
-                                  "86b887e9-ffcf-4a75-aaa1-c9d2cdf8b927",
-                                  page=6395,
-                                  per_page=5370
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422",
+                                  page=5412,
+                                  per_page=49
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_list_campaigns_3(self):
         response = client.send(pp.ListCampaigns(
-                                  "86b887e9-ffcf-4a75-aaa1-c9d2cdf8b927",
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422",
+                                  available_to="2022-10-20T04:42:58.000000Z",
+                                  page=358,
+                                  per_page=20
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_campaigns_4(self):
+        response = client.send(pp.ListCampaigns(
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422",
+                                  available_from="2024-02-19T05:10:53.000000Z",
+                                  available_to="2023-09-16T15:53:44.000000Z",
+                                  page=3872,
+                                  per_page=47
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_campaigns_5(self):
+        response = client.send(pp.ListCampaigns(
+                                  "0d1af52f-2e85-4dad-a7a4-8180b0fd8422",
                                   is_ongoing=True,
-                                  page=7970,
-                                  per_page=4015
+                                  available_from="2022-08-25T03:00:01.000000Z",
+                                  available_to="2022-07-07T20:21:15.000000Z",
+                                  page=3738,
+                                  per_page=17
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_0(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["8bfd56c4-50f9-4ba6-9dd7-acba6fb28766", "30debfca-41c0-4220-be62-81011595c6fe", "510d4244-3830-4393-a902-4a590e38ee37"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_1(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["ab65a0c6-d715-4d3e-bfed-4bffb95eaf3f", "7021e0df-db0d-4dd3-89a6-19224bd2b3c9", "e263bb4a-802e-4778-97bd-042ee5a14d9f", "840ea1f7-9e4b-4042-bbf1-321ab2b9a104"],
+                                  bear_point_shop_id="75951663-a4d5-4e55-87a2-aba278f9e8cf"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_2(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["f22733c0-2e01-4800-b472-8fa3dcb4aa29", "162ff970-dd40-42da-b8bf-1f10de3115d7", "b60e5e36-4343-4a31-9d1b-de0ae4360380", "ec86a624-2310-4fab-afb0-d6faf64082fe", "b106909d-dac0-4476-90cb-25c8e7e7ba77", "b992a76c-a312-428b-8e09-133abd097f3d", "3b3b7b35-bd63-40e7-8bfe-067b4a607f70"],
+                                  description="KhTDjrt62aO0gTJKvsFX8pCgUNdYXQChONhwWGHDaQRstzyfCMC6r4ZI5zg9bDUlUJBBIg9Fd6Y7e4aTjbZiLOaWRsEnzqZ6lGrz0tQnP1Co4x4AXMvzQhY1JlrHqbdU",
+                                  bear_point_shop_id="02a8e57b-3021-434c-afa6-53e391c4282e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_3(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["c1ec65f9-1b71-4763-9046-9ce711bfbf93", "f7f4da1c-e42d-4168-9eaa-b10b7f38e89c"],
+                                  status="enabled",
+                                  description="qKIiyi3aAuGXWsNdhyWJyqrPAKmmZGZJNC4j2awHXlJF9A7cu6AxfU8HIO6LO5Dd5XiFWL9oU011XoGoCpelXPpOt9Y3msxtcs0WRQEq2AUltkkF5RV8aSNO9GQnDszD12NRIYvg8bbFQzPdX",
+                                  bear_point_shop_id="9577ef0e-b1c4-455b-b0db-f975432585bd"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_4(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["741afa03-6aea-4f75-baba-854fa7e5caeb", "9032a0a5-383c-4f0b-a792-650f7530fe7f", "d7281ab0-0a96-47ab-8998-5fe42d87a197", "f85d2c1b-e9bb-41ee-9f53-aca0e1d7d395", "5cd31f64-c8dc-429e-a126-3296dfedc641", "642364cc-6e9f-4a64-8e76-9f35cad49a72"],
+                                  point_expires_at="2021-01-08T03:29:11.000000Z",
+                                  status="enabled",
+                                  description="wM328xFuBm1H3xUdHsESYPWyVyErNbO9OH6RQgeafcESSUHZ6h2XaPg728RkvVOUbcGA0kjIj9fnBbIK8dSJpAN6wIXIQbTWkewXW1RgDvxeuhtqc0lVuVevBpKZFsUJPsCckORoCtdXbeAqJmttYcSXDoCgwypQnQUsnWOKMZ3rJ8a",
+                                  bear_point_shop_id="9a2ae052-21dc-4bdd-8e47-9df711e8155e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_5(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["3b58e3fa-3416-4e36-9644-221ef9ce47f1", "60dac032-10a9-476b-8cd6-c9b7c05b132e", "211b9615-05d5-4352-8086-fb39cdbdef5b", "29c31285-6f97-4cd9-8273-05b1ac1bf442", "a3277bd4-07e2-44cb-aa39-3494ddabd08a", "4f2c0b51-7a65-49fc-8da6-41c777c09f57", "b207b055-1cb4-4db6-ac40-dc31ed4b89c0", "8c1b28e5-ea76-4032-8bb3-cc51eb7faedb", "e0d22c35-2850-4edf-85db-fdd498069f8c"],
+                                  point_expires_in_days=2722,
+                                  point_expires_at="2021-09-11T11:34:24.000000Z",
+                                  status="enabled",
+                                  description="t4yAIzCwP1Z0JVfF9RSrf0Q1pmhWHNJvae7EjBkQNn9uWl9JunPyftwg9sZ6EOXmzMsMVDhbzfFvUl3UtKdNP5TLVhbhll0GP4QAkQeOPrTAo5HhYx5jCaGbLEuJCfBO4W1IV2UViZVHRWPkdj3",
+                                  bear_point_shop_id="9c7cfd97-ac03-460b-a357-661860a75928"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_6(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["c94267d8-8e32-44e0-b7ba-34cceb3476c8", "73c59f00-d18c-4ddb-b809-5efc20065f7f", "2b9c7fa3-77d6-4c5d-833e-e0d2130ed0d8", "89492ca4-8992-41a3-8a37-10525b823752"],
+                                  is_exclusive=False,
+                                  point_expires_in_days=759,
+                                  point_expires_at="2025-06-03T13:51:10.000000Z",
+                                  status="disabled",
+                                  description="u31vkGd5KFMjSHWQRA9E5",
+                                  bear_point_shop_id="0f5b8e33-29b5-4b6c-80d6-a35d06914987"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_7(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["8142e81d-d553-4ba6-b914-1efa92d6d2dc", "1db71b94-3c13-4c7a-9243-784852357cae", "7829ca6a-c4d6-4ac5-8945-50e77567fbb0", "02291587-ecba-4bfc-ad53-8cf0a4d5748d", "6907b6a7-db59-433c-9b7b-ed44509f1546", "41e462a1-1ac6-40c4-8218-dc8d4de6bb16", "2d001ed9-fd91-47ad-b1f1-e72db5909af5", "dcc54c78-bd4e-416b-952e-9d5319e982c0", "5b93440b-d19f-4223-93b1-2c2e0b6db3f6", "79e4b5ed-6b1c-4821-9d43-b828cab7e14c"],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=5869,
+                                  point_expires_at="2024-12-11T02:03:09.000000Z",
+                                  status="enabled",
+                                  description="c17zrM7imjJVYnMFmZVKbnQskJ4SJWYdnxMjsH9rlpcWw1Vg5A3jIY5TVDn7VAyGhf1a2i4Xb006Y5FN9bW9vksFBm8sMwbh1WFtp",
+                                  bear_point_shop_id="a0f8ee1c-90dd-4b2b-84a2-3e2e47dabbdf"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_8(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["7f549895-24ed-4b16-830a-ae1d92728f72", "fa940046-d3ad-428d-b1ce-33925f596c77", "87603b3f-b128-49a9-a44c-3cda2d61a087", "987be031-8435-4582-91e0-b85fff7b2e90", "3dba7f10-5f6d-4bc6-8d05-a976aa3525fb", "a391e5ec-5123-4899-be0a-564e267e7fa4"],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7138,
+                                  point_expires_at="2025-05-12T00:36:36.000000Z",
+                                  status="enabled",
+                                  description="goLZ5E9OEvOUIiBwbJ5GuqfgOe9nVnbOf1mceXbMKgmiS2lNCj0",
+                                  bear_point_shop_id="1c63be63-c25d-4f1d-aaef-27097d1cb9d4"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_9(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["1550ae18-8fc6-49c0-83e3-b42b52e258e8", "832af4bc-087f-4f6e-b0cb-13212bb16ec1", "b0e6fd5d-e258-4027-bcd8-20c47cc0d67d", "907ad07b-eb78-46d1-b6b4-ea62b7db4acf", "e28903ca-df39-479e-9d46-f6c329ea7a73", "1cc9259a-6d37-420e-b240-dd2aa0d7c020", "d0a68b97-3f39-4cd3-8249-3169800f2b50"],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=5780,
+                                  point_expires_at="2022-03-19T19:07:53.000000Z",
+                                  status="enabled",
+                                  description="GO5FAV5Tmz4fnzfWLRafbjHHiTlinfVLWJIyGq0eGZ3LjtgQn48RP8UioFkI4pFJl8a49K0SiRVrDmJ5TPkLuNgnu18c0Kn6PzJQm77hC3byYhnk9",
+                                  bear_point_shop_id="4c66d1cc-2f36-4a79-b5d2-4834bb61ae9a"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_10(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["298885eb-261f-4c15-a34e-76c868c83027", "d9f60dd2-e9cd-4a5c-9818-c02e7433add1", "08083083-b4d4-4a7a-9dd7-0d0c6491a8b1", "94c1bb16-553d-44a5-a9c2-970faebdd969", "baba755e-cdd5-4cfd-a0c9-4118da35531c", "1c8d12a8-91fd-4535-ba5f-8f4ae394208f", "f376cade-09af-443a-873a-e37f67fd241e", "7d2c923f-e862-4e00-a8c7-4eefd1c02545"],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=2822,
+                                  point_expires_at="2022-07-11T09:12:41.000000Z",
+                                  status="disabled",
+                                  description="do0WvNvuZ2zOymd6UzJ163lry8C4rDtJNzcEFdrvo427ISByum8MIrVugVBfT",
+                                  bear_point_shop_id="65d1fb19-2a20-489a-a93e-bbe6153f1733"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_11(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["1cc0581c-99ab-4170-ab1e-2d2d71a70158", "7c3e6fd9-4d83-45e7-8313-381a3f0b415a"],
+                                  applicable_days_of_week=[3, 5, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7530,
+                                  point_expires_at="2024-04-11T23:32:43.000000Z",
+                                  status="disabled",
+                                  description="ipHdsS3ShjnA4Sr1gSN2PelpywqnkqJGFUWWcs7OK2a7LaTGiSi2nVCa3OWfS7AqwLlHPiOBI9qmFjOPFMYQLKjqH9KdygsFLw1OF89AbrhaWMPvJ4w9BbWGLWxTOnqHU20ukx1FDQpVqtvlq3pwtYNpqFJFhJ6HuYWn",
+                                  bear_point_shop_id="74a53af1-5979-427d-9fc9-2755fc04ac06"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_12(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["0f4ee390-5541-4f22-bb44-55349b6bfba9", "7e74e93a-3472-4ff0-ba36-3c0eaf151c77", "e3fb9417-7faa-4ce8-97d3-631bbbee1c11", "16ecf546-5141-4ed8-821b-e8845bd538fd", "6c0fdc2c-3617-4492-964d-db922cde3e5e", "aa3a95f1-74a0-4179-9710-4d386b38047c", "24d929ae-8ea7-4610-9510-92642d3bc7f5", "a6dbdd41-e603-4913-9823-a4e4cab81051", "82534d96-9d8b-422e-b5c9-8c182815fbde"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[1, 5, 0, 4, 3, 2, 0, 3, 1],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=9271,
+                                  point_expires_at="2024-09-09T08:36:48.000000Z",
+                                  status="disabled",
+                                  description="kNbGO6nv206MCoq10cKjOOAJZbMJkEXTJUvgYePqHLhUyWTkN1F8Xwl2rFV9LPEG0FsEHZ0zFFEN3CsRlByNyR64VEa3muyU",
+                                  bear_point_shop_id="805ed6c5-6232-408c-b69a-72816a77276b"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_13(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["3b3fdc5f-70f7-4217-8b4c-1afb9cb9e35e", "d36a187f-6fc5-4fd1-a189-2927476c0366", "760fece2-b421-4b93-9502-dd922955a042", "9e7e01f1-45ae-4c77-b9e8-3c63ec27e1fa", "afcb9594-efa8-40a7-ab55-96de07290fc4", "da2b9498-4953-4a13-b685-6030fb7a2b86", "231605cc-173d-47eb-897a-fae3a8c4a1a6", "b49db35a-e518-48e2-9e11-fbee883d7190", "ca9f3743-0ded-4db3-8439-298476634c9c", "e9722436-7cad-46fb-a696-f55e2bd0816b"],
+                                  applicable_shop_label_ids=["958e39bf-0ff3-4534-9777-a75d604fc77d", "0caa0245-23cd-4d4f-b686-9dbc9ec2799e", "8474fc25-1e49-4c3d-bb49-deb6d7870df8", "7755a0aa-9d75-43eb-bdd2-a1efa68f86a0"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 0, 6, 1, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=2950,
+                                  point_expires_at="2023-01-06T05:17:59.000000Z",
+                                  status="enabled",
+                                  description="ZGPsDFfbhpjo6CvZmit6sG22LWplDlWahPig9MKERKZGyJip4Qp4t6WiXGIWU4TxH2FAjMtbi1KGeJyFNO2KrkgbsXcbEbgPoZFbPh9J838rL1gDfq3VsJIZMJTMvIMK26sORVFv",
+                                  bear_point_shop_id="e97a8cc6-ec35-4a5f-a4b1-1ece4653b755"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_14(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["e969f5a5-e293-466a-9f38-13a6bd73f152", "60ac8b14-fbfe-4701-8ec9-7bb7b7b5c81c"],
+                                  minimum_number_of_products=3850,
+                                  applicable_shop_label_ids=["8f11de15-d958-4cff-899f-834cf4d41eeb", "7e5e501f-8c9c-4051-8eba-65710f01e7c7", "0732ee87-d1f8-4652-8641-60f5e660e6b4", "391be143-14a3-448a-ac43-b9019b98d9fa", "b05054a1-ee9e-41d5-b9f5-6bc9cff2181d", "3c2501c5-48d9-4772-8e21-a0d80fc2b22a", "8774cfea-dd55-44b1-925b-af1960f6ad90", "20e18b6c-7760-4112-b610-31af6b155b76", "e7f7d3c6-7cb7-4cee-b963-6f57e5d32ce6", "2a447335-8ff3-4ec6-a630-9c41f31ef83f"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 3, 0, 6, 3, 3, 0, 3, 4, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=3689,
+                                  point_expires_at="2021-08-16T21:25:35.000000Z",
+                                  status="disabled",
+                                  description="j0FvKzWLO0X17seRboXyaTp5fxFISfuSj9R4g3InaFkgEEKedrMwdHukpCicHBj64f1DT6D6Mien3I4QpNgQKGBSiEs2F3MGwgLve",
+                                  bear_point_shop_id="c50217b3-8d54-4d29-86da-810ce949be46"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_15(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["94c2b66d-c2b4-4a53-b8e1-d8396b6c1485"],
+                                  minimum_number_of_amount=9112,
+                                  minimum_number_of_products=7050,
+                                  applicable_shop_label_ids=["6dfacf7b-391f-47e0-a2c9-746d314456e3"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 0, 3, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=286,
+                                  point_expires_at="2024-02-25T07:48:37.000000Z",
+                                  status="disabled",
+                                  description="qsC3AriSwCEB0Kew5ULKwo1UdPl33Js1Kuu0UegnQjK5K12MWvCvA9DjpAvmSouPF8sEd3lBtNl0JB2dKxVr",
+                                  bear_point_shop_id="d75ba06c-74bf-4558-8cc5-bd6fd2e50aee"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_16(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["1d8c3d10-0b18-4e8d-8031-e2cb012efdf3", "86495ba8-7094-42ef-90ba-9e1dde903585", "bff28000-cdd2-4f3b-89a4-6624de8d3514", "3be29045-5e8d-4f3e-93e5-af9097228dde"],
+                                  minimum_number_for_combination_purchase=2995,
+                                  minimum_number_of_amount=3461,
+                                  minimum_number_of_products=6611,
+                                  applicable_shop_label_ids=["4c4c21af-6558-4c71-8348-4f67321d5fa3", "6e5b8e46-be3d-4f4f-bf92-827fb7462a46", "3f6362b3-8afd-4cdf-871c-bfe289481692", "9b89817b-1337-4056-8564-d9f7327b9445", "86368a64-2e4f-4f50-8758-c98c33fe5a1f", "19d07cd3-fe01-4592-a539-fbbc0ec3450c", "806bc34f-614f-416f-9198-e865664d88f0", "493ebdb5-572b-474c-abd1-c0c45fe85117"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 2, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7090,
+                                  point_expires_at="2026-02-06T15:19:28.000000Z",
+                                  status="enabled",
+                                  description="y6uFHkBHhurHoZlcvR7Q0TdgtR89zH4BRb4LxjYp1VFXi65IWH287FkS1AdoZmr",
+                                  bear_point_shop_id="4255eae0-1dbb-488a-a58f-120c5c38ab2b"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_17(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["40742412-4ad6-48c6-ab51-ee1fc7ee6270", "1057e2b8-f466-4340-b0b9-8c494e368570"],
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=6088,
+                                  minimum_number_of_amount=7860,
+                                  minimum_number_of_products=6451,
+                                  applicable_shop_label_ids=["4a0cf1d8-a0bf-4a6a-939f-8765c0de1b41", "d99f3873-29e6-45f3-af77-746da357371e", "98969a7e-0a72-4094-8d0a-b7eea7c54b79", "714ae8f4-18ae-4cc6-aec4-274e72677cd0", "c295b145-f572-49ca-8587-e7c3731d6592", "9d895a30-9954-47bc-897e-899bf26474b6", "2c2b00bc-e7ea-4ab8-9428-451c4eceafd3", "740b2a42-cdce-4da6-b1c7-4889cb9a18d2", "f2d6a049-1478-4fe6-8ab3-1c25143e19d5"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 5, 6, 6, 4, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=5299,
+                                  point_expires_at="2025-04-20T15:00:45.000000Z",
+                                  status="enabled",
+                                  description="DzbRjTfUU5d5AtOipE6L0lEeYXxSLgJV1GwAOqdc8zzTPJEfMbaKIEhnBHfV6tGM4VGRurvyE",
+                                  bear_point_shop_id="ec586bfb-ac97-48a8-aca2-f6988868d03e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_18(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["02b0bf41-0353-4615-9f72-2b394e7cc1c9", "f6f6bc4f-c8f3-4dd0-882e-0784d05936dc", "44c3d35f-1d9f-447a-b43b-89da63dcd3df", "fe4d5264-36fb-43fc-adb6-78ad89cd923a"],
+                                  max_point_amount=5283,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=9236,
+                                  minimum_number_of_amount=2066,
+                                  minimum_number_of_products=4519,
+                                  applicable_shop_label_ids=["07ef3abe-5c0b-4268-8342-9c76e5aa52ee", "f291c743-a49c-4c88-b825-f699177921f7", "7e06e1c0-8b43-40d1-846e-917eae6ffe9a", "40081e0f-4025-4640-b5a7-99fee386dfd4", "8c827d96-5caf-4008-9e9a-977fb1dd1e78", "ee4e4d80-a1e5-4b12-9800-1f3dd02eee99", "3e38b750-9947-4fdb-aa3a-193d0eaeec2d", "9dba64a5-ad43-44be-9fcb-a820b437b363", "19c8e336-84fa-4e71-b0f6-b6e290049102"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[1],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3522,
+                                  point_expires_at="2020-04-18T04:07:45.000000Z",
+                                  status="enabled",
+                                  description="CBSEwRfx0DBbiZykOey7zjJ6OyJP83x3uLLTOPjH6jjFnlRSGQkOLow4uOPR7jYUkie5Rbdop3nbAQNRasJaqAeaFh0mPOgCiw12joVskUHIrzFx85stT5X2",
+                                  bear_point_shop_id="63b74c19-352d-4ead-a6e4-e6a92cdf9a85"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_19(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["589c4cf3-2901-4509-a5e2-caa0547ba025", "cfaf9b7b-4dff-4352-b5e0-6e4cb6418e81", "28bbe3dd-bb98-4556-a2bd-1f7af4852d5c", "0c884fd0-ddd5-42b8-9ef2-b3876bc6950d", "bdaa03b1-ddd4-462e-843f-6947f5612fb2"],
+                                  max_total_point_amount=6906,
+                                  max_point_amount=8390,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=9646,
+                                  minimum_number_of_amount=909,
+                                  minimum_number_of_products=737,
+                                  applicable_shop_label_ids=["a9fdaa22-7f6e-4c72-9701-a40bbf6c182c", "8823ac9c-b22d-4f0b-a16b-923ec9a57f51", "2269608e-c708-4b0e-be9c-f9d6745061e8", "24377c13-750c-48b8-87b8-7affe3fc4076", "e4aa4f5f-1d58-4523-aa46-fa11cbfaa33c", "6e3665cb-3ce5-4575-ba1d-3dc6ed82a5b0", "dcf89316-b41a-40af-86e8-cad41b2b4aee", "ded274a2-b01c-43e3-8eec-ca861314534d", "843d726d-6e67-4488-8575-3861c2fbc748"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[5, 2, 6, 3, 1, 6, 4, 4, 2],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=9414,
+                                  point_expires_at="2023-03-27T22:20:56.000000Z",
+                                  status="disabled",
+                                  description="iAw3cGaLL5KHpinnRK5y0OzJ9Hvf2cVYRMoN8ciCbZWnzcDnK4LA4gWzsFxrEWGQmIqwq80GWYOCdqp3aMw45RftnlC78XMJnZ0CKAQudtF",
+                                  bear_point_shop_id="85da6f45-98ce-4838-90a1-ff3cd84e2b2f"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_20(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["e5724355-5a7e-4dcb-ad20-55b63d58214b", "5feaebca-4434-4d5d-9bab-cf0783f91fe0", "6d4bc7a4-b021-4438-a432-ae23abb0a2a2", "30074f71-f7cc-44d7-9ad5-6f313c8d9a3d"],
+                                  dest_private_money_id="2bafa1ec-9cff-4c54-a75f-034acdc6107d",
+                                  max_total_point_amount=8304,
+                                  max_point_amount=966,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=1952,
+                                  minimum_number_of_amount=7352,
+                                  minimum_number_of_products=3661,
+                                  applicable_shop_label_ids=["8b00cb67-3656-4645-8fd9-3e3e8ec36c4e", "9d236942-9d7e-4988-8448-cd3fc6684a7b", "01e21f87-7085-4cb5-8a4b-1b47ac1bda6b", "dc2afb1e-239d-4069-9425-faae8417b2e5"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=5500,
+                                  point_expires_at="2024-11-30T06:41:21.000000Z",
+                                  status="enabled",
+                                  description="mbDvPcxbP00J7QmpOVA7MePtYYSm3L3WBUYIGLXhu0DvMLxvuDjJfJxeesKkwbEHxkNigyccRVuXaxHAAztkflrbX507aitxdTcYjjCJVatXW3s3mbWjjaocKJS9JHlwFlJcsltjjmodDQEUxD",
+                                  bear_point_shop_id="4bcbf9e1-e467-402b-a83b-6bf657ee092c"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_21(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["c063a344-0b06-44ee-9dd3-17c36a34e20f", "a7b94423-a4b5-432d-8812-ebde2af1e181", "b67344af-a9d2-43e6-b530-ea8135930c5d", "74ef3e1e-1a43-4230-b517-eb22f6439aad", "2e144412-ff2f-47aa-8bc6-219028433321", "779f7a77-93ed-4170-90eb-31d046ff3c3e", "9fd6a3ea-2687-41e2-bc6c-07454cf67389", "f74c72db-289d-4d8a-b34b-1017eb9c34f8"],
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="3b845552-e69f-40db-b255-13d44c34da05",
+                                  max_total_point_amount=4039,
+                                  max_point_amount=5787,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=2347,
+                                  minimum_number_of_amount=6416,
+                                  minimum_number_of_products=468,
+                                  applicable_shop_label_ids=["f9a5481e-df49-4694-8540-b85eb05bd1ac"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[1, 2, 1, 2, 5, 0, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=8476,
+                                  point_expires_at="2024-03-15T06:02:11.000000Z",
+                                  status="enabled",
+                                  description="YmXel2A200gV6FxYfWwCiS0MuCLswxDV9drgRKhLSvZ2KQORxMHroQo6jM66W2y8KrZ8xMlNalvWasLjNh8s14cZJ7e4Q9GCUyL2v9u3mWzZwKqxzujrUlmkKRdRXeieY6AmMB38WCqGZQWNed5BL6m650n0RmhPNf1QdSFaslICN4xIeeSgcG",
+                                  bear_point_shop_id="57f3d78a-6f80-40f3-93b3-2b2126a90518"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_22(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["4a2833c1-da17-49a8-b52d-21ff8b3ea4c2"],
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="cf93c8cd-43d5-4f7f-aab5-9c3fb2e2b80f",
+                                  max_total_point_amount=3279,
+                                  max_point_amount=2705,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=8510,
+                                  minimum_number_of_amount=7887,
+                                  minimum_number_of_products=6925,
+                                  applicable_shop_label_ids=["2b237733-b31a-4643-8790-e4e1bb16e9f4", "219cdda7-156e-456b-9533-f9518a3b25e9", "dc9791a9-b46a-4216-98d7-49af45d8c00c", "867fe44c-f0b3-4619-bb10-4c9a7b9ed992", "65465c23-408e-45b6-8f4e-cee501ad37a8", "1668b839-3e20-4ec2-aac9-f3a70ebd7e96", "a5b58f23-8440-4efd-8d1b-3ff96fbba044", "07baaa7c-3313-4eb0-bad6-c7016f090c05"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 5, 5, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=5664,
+                                  point_expires_at="2024-10-12T10:10:01.000000Z",
+                                  status="disabled",
+                                  description="j2i9JShHMs7dpHbhmzmDvsuxdQFF1b9FFVSxNRhY3CeG383Fyff0GWufJQM5UqG40T5H1YOyXeD7lp3hQ7iTUdtYXMwyZtYN7NcCeDXI01ioT6d",
+                                  bear_point_shop_id="712f81c5-b735-4e39-98e5-5c89de2cdac6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_23(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  applicable_shop_ids=["c74062e5-fc13-4109-b450-3cf8d2f32a48", "f0606c90-9413-4307-8d4a-c9bb73174768", "f74a1fc8-094d-4703-b6ac-5bd0a5ff1a5d", "d2c13352-7dcf-4a5f-bd1a-51af27598162", "c6170fbf-2851-483a-a778-617df795fa00", "f23ba8a8-4001-4723-aa33-a6972f1c4c66", "cef2bf34-1c95-4b77-a8b8-ccc5dba619ec", "63021f2b-1809-4f34-8885-49c0c13b8c04"],
+                                  budget_caps_amount=1000537544,
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="2b313fe7-c0e6-4a49-9b6e-0555489a165c",
+                                  max_total_point_amount=4854,
+                                  max_point_amount=2262,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=8624,
+                                  minimum_number_of_amount=4836,
+                                  minimum_number_of_products=4777,
+                                  applicable_shop_label_ids=["ac255ad8-e5ab-434a-8b6c-8c6cc4dee87c", "73378d01-a208-4960-a4dc-7adc2842126f", "f73bb6c4-8b22-4d75-b6b9-bb7e213d6a54", "42513cc1-f804-475b-9732-3e9822591758", "ad733713-83ad-4f48-bc52-fcaa5c80a2a7"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[4, 3, 0, 4, 0, 1, 2, 2, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=2418,
+                                  point_expires_at="2025-11-02T11:50:24.000000Z",
+                                  status="enabled",
+                                  description="YdkJGWgFmKTEIA1MAf2HgecIl74FyRST7ScfdaiXI0aphnQpmaEH4",
+                                  bear_point_shop_id="887dc31b-2536-4e9c-84ca-6f9507078cdd"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_24(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["1babd678-a7cd-4526-9f0b-ae169bcb66f7"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_25(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["73828a3f-9f15-4a9b-97c2-76b65f5a37b6", "4135787e-950e-4dde-88f4-d72ba240c8f7", "c0927f55-a87f-4004-9861-617af65d0f70"],
+                                  bear_point_shop_id="0f2a48db-2301-456a-8195-a01dc4a9ebf1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_26(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["31cff093-142e-49c5-a506-8d5296e03845", "d680b784-53ea-44fe-8bbb-17f1e09e462f", "e8e0396d-13fc-4179-809e-5ca06d66d3a7", "c4fb5fdf-7da0-4171-8a3b-bf92e1b5646b", "1f1caddb-d0c5-4f64-a682-c86b9cd0a4de", "af8100bf-2ed9-4aa1-8dad-872014b46123", "722de096-831a-45a7-b67c-45bc6bd1e595", "d0302a69-89a0-494d-a786-dba61a0aedbe", "27f07042-f970-465a-9cc1-b5d9bf592042"],
+                                  description="bcvRZzaI37qk5Qpl5Gz36NQavWZXSE0IrKdpz0FXntwLwsP6PlvtKfS7zk6Hoi0oeAT0NWEwBSET0oVnBy6crZKnvytNg93oYMrwaGFqX3wegLSKGRpqSEuwLWT9k07B088FFfNZznrcL9APcDhFVXImIJBKStcO3wB304Jmf05",
+                                  bear_point_shop_id="88900b68-9c26-4ee7-8ab0-14f2ce783b11"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_27(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["5fc02f3e-29d0-414f-86b7-39014510a041", "17649fad-d4ae-4326-a00a-5863aa9104df", "1610a171-0773-49e2-b1bb-1758aa87c80e", "67485d2e-4db8-48dc-ae1c-686f3e8b5a1b", "7e441d00-940e-4951-ad85-fe1661d8bf1c", "09e11d8c-0a6a-46ab-85b9-8f115c03335e", "9db80cf7-6b92-46a3-bc27-0e8a6fa5b166", "a4db93af-2b39-42a9-9355-5a985754ae7f", "adea3909-88b4-4dd7-aa4c-3ccba6667b31", "615af7fd-063d-4aa0-bc56-eb282fe49c00"],
+                                  status="enabled",
+                                  description="02GEDFloz09QK5UFuC5JXRVayFf6oyQZu56A1wWzKTTxm1brwQKhHT3R75H",
+                                  bear_point_shop_id="5d3809f5-5db8-4196-a659-704adefa834a"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_28(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["2aa2b239-59e8-40b1-9357-a9ad9c32f5e1", "8b98470e-71f8-4a54-80f4-b63e0b0970b5", "b1aceb95-607f-44d3-8d73-fc8914e49b5b", "be383a1b-e8f3-41ba-a941-5a6a8cd10f18"],
+                                  point_expires_at="2022-11-13T20:30:03.000000Z",
+                                  status="disabled",
+                                  description="yz1Cvo6cvEGDQNsufaSx2VVAwQqeQUNQCi45yyQTl9wTWmjZWPblWstjkwC6ll5fjzCHapR04ADVEFmUehgiDu605XKZkJCbVsNuqqVdUDyaVdHFVHz0uIFKJoDWeoZQYdDyUkA8HMjkxT",
+                                  bear_point_shop_id="e9a09859-82e3-40f5-9283-06739a0647c1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_29(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["13c47452-cc7e-415b-8be9-d765806e2ed1", "0d1ea2b1-e5ec-4fe4-a970-ec82e1c4130b"],
+                                  point_expires_in_days=7108,
+                                  point_expires_at="2023-10-30T11:25:39.000000Z",
+                                  status="enabled",
+                                  description="qoQ4XwLIDsqZ3ZF38hv2ikQGfIfeAIGZfO7OrSr8B2QPQ9Y2Rpsj0heI1pcWBx1T31cQtfbPCATbfETgM8KooCtS8z1fc4bmpdjKCTfj1GK9RSuRp80JIGIfZb0zQJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9V",
+                                  bear_point_shop_id="844af104-58c3-4139-8713-dfb642ef0663"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_30(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["3e862d22-22ad-4912-9c20-0abb6a21ee49", "5a5fa465-c845-4372-89fd-083ce197a5f4", "911d34c9-9abd-414e-8057-10e9e7c7c621", "683766df-7a6c-42bd-be35-3a21b953fd74", "22465104-4fc6-41e4-9e3e-26b5cb4612e6", "d6a6eb14-f277-43c1-9f11-bb83f540c13d", "b03b5e3f-dff8-4b45-8822-d86dbdc5bd7b", "adf9cffb-1d8c-4bc1-98c3-747565bb55a3", "e4126ee1-7444-4f2d-abb4-424f15d180e5", "67cb12cf-3559-4c4d-a427-1f361d7cb5b3"],
+                                  is_exclusive=True,
+                                  point_expires_in_days=5175,
+                                  point_expires_at="2025-03-11T19:15:50.000000Z",
+                                  status="enabled",
+                                  description="lQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZjgzjmCRB6BbdWS6JCIuNd5OFNrZXER72QaNrZpzYfcTDxwidoKxhgH4IlA44068ievlutMBS788il7UEqSz",
+                                  bear_point_shop_id="23e5514c-d82f-4779-bd02-d41ce758cfb9"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_31(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["76d94fca-8bf8-4eca-bbf1-763416fb8e68", "f41cc17f-f35b-4a48-bac0-1ee20399964f", "669d6841-7bd8-4358-9e02-ab162e78082a", "a30ccbd9-e460-42d6-bb67-1798fd47e0d6", "b37db7ea-54cb-4edd-99fa-3c46d0ef4d68", "fe038c25-2101-4960-ad78-4ff53dd4aa26", "a37b8929-7a5b-46d9-80a1-7994d0b21fd6", "052e0d36-b634-4671-97e5-d800a4b55684", "f04914b5-fd90-432f-9d03-7c02d0e69813"],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=2304,
+                                  point_expires_at="2022-06-24T22:52:16.000000Z",
+                                  status="enabled",
+                                  description="LXdk5kJbuw4YuJbyUdw",
+                                  bear_point_shop_id="9ba5d01a-da2e-48db-8074-5f2ff8441dfe"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_32(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["29a2957c-05e5-4182-a1eb-ac44f37e9d79", "64e44267-56ab-4014-a405-d50c817f435d", "285c8f30-211b-4002-9446-6a219bcbf3bf", "a5e1efa9-d5be-4cf3-acda-3995d4cc099c", "af5ec384-7e91-4f75-9018-42ead4b8e6c4", "fa42b66c-d5c3-448d-a9d4-61c1643e958c", "95211c5b-07c2-4920-816c-7394f1f9625b", "4b22c580-2482-4966-8990-cddb1330505e"],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=1641,
+                                  point_expires_at="2022-10-04T16:10:47.000000Z",
+                                  status="enabled",
+                                  description="9MZHKK4Bljx7sJ424DF7dkePprAJuqXJLC9DlGjqYc53kHtf9cD7bpNKlOmIqFEpEzlkbZXsHeK96R7zZjofXop8q4Bfps6VchHwOSBaSPaNKxM4bPYPa",
+                                  bear_point_shop_id="b7b322ee-4338-4055-9949-4a2bdff1a5a2"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_33(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["0f47b898-66bc-47c1-89bf-8d93ca299ed3", "b5408f07-e9e5-4592-8bd3-3db0c16c4106", "86a4df33-3832-420d-aea7-9f62e1ba7bf7"],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3218,
+                                  point_expires_at="2020-09-19T00:15:43.000000Z",
+                                  status="enabled",
+                                  description="BWthKP8SFB1epaCsenfTVlWM",
+                                  bear_point_shop_id="6e56bf46-bdee-4408-9af5-cc4074069d4d"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_34(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["5afaf44a-00fc-4c3c-89b5-d2dfa9f32ef7", "3450f1be-04da-479b-af84-169523b59409", "ca8e82b1-6f85-4963-8be8-f7d6143a351e", "0e9bf038-f3b6-4797-b36f-2828d74780b3", "096b379c-f040-4366-8794-f111d960915c", "799209ab-a195-4905-8c4d-c282b7d953c5", "b9cdde5c-8827-4a23-a150-842c341974cc", "f2fb6184-996a-48ad-844f-9c1a9c2edbc8"],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=8734,
+                                  point_expires_at="2025-09-06T13:53:01.000000Z",
+                                  status="disabled",
+                                  description="QE7ACXnugqJAsKtBEhfGR87GnzBbDtq5K3lfoJShMC6uD2oZ5QpD7GXwDffXUtXBf9of2MaByNhkorzLzXS7sax7iYOPlAj5UlMDxo6iDarlMDzJC7wMAkFYNemkzZpvDvog0lglLv2T90aOF7qLZJG6mWFW8mYG8iBpA9wK7FerKmMDJDN9kjn",
+                                  bear_point_shop_id="b587a185-df2a-491f-84aa-369a5f4b473f"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_35(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["e7193d2b-c041-4674-af57-79eb6c346d2c", "5df9140c-facd-44db-b130-9d79ff65325c", "a88cacd4-3827-43da-938c-afc3a1765cb3", "8dcddded-db74-419c-bd01-d3aeebe44b16", "08c888b5-0aa5-424e-a243-21a28ccd2c66", "3736bcae-f3a3-425d-aa84-cc74247c228a"],
+                                  applicable_days_of_week=[0, 6, 4, 0, 0, 2, 3, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=7899,
+                                  point_expires_at="2021-09-06T15:09:35.000000Z",
+                                  status="disabled",
+                                  description="e38yvM1SEczLfO3bcMSuKdq3",
+                                  bear_point_shop_id="81de0046-9ff3-4609-8e15-50829ef99f28"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_36(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["d8952262-d18a-47eb-8807-51264406a515", "3140386f-ab31-4dff-9093-43bea30796a3", "a3b83168-1178-4de2-a0e2-071bee8c6eff", "0960f3d4-cc32-4e75-a6ab-ea6de4c7f24f", "80f3061a-3e98-4183-9f29-3f861f7c3f52", "f60f8456-576a-491c-b15e-5d793b727599", "4022c844-4abc-4b66-876b-26d0dc2d4aaf", "c86d663d-dcbe-427b-b165-0b75ca7dda92"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 4, 2, 6],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=8615,
+                                  point_expires_at="2022-04-07T08:39:35.000000Z",
+                                  status="enabled",
+                                  description="hCxzDjEP",
+                                  bear_point_shop_id="f64e0526-cf4a-403e-bf2a-ee73da5e105c"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_37(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["c4e89e1d-79f2-4e27-833f-9b885dbfb556", "331190b0-c89a-4371-8576-818a7b69cc02"],
+                                  applicable_shop_label_ids=["25afbd28-b350-4270-bc0d-d3565183c33b", "42e3e600-4cc0-466f-845e-c916b59a29a3", "bd46c33d-ec04-42f1-9c97-ebb78758db37", "71f30896-6850-41bc-b5d9-0aef7e557ab1", "2529b846-88de-49d6-9d53-08e4303b3d9a"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[5, 0, 5, 0, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=8970,
+                                  point_expires_at="2022-05-03T16:26:27.000000Z",
+                                  status="disabled",
+                                  description="5qFGBCHYpL8ODBvwgaMAc0JPVvhl1tkrYQHQhhRs2PIaofbMQ1Wyxx6iPX8wNVpCNUyiEzApKM66ZkEOto1oTpzcZyDOIWVwoFQcmGYbDKlivyrCrMwSNsOLmKdqXCCeTbwp9jzAmkVeybVqp1Yrzur",
+                                  bear_point_shop_id="c7eaf16b-b00f-492a-bff1-e7935d8cbc9c"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_38(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["2ce23d7b-73c9-4f8f-bbc1-c7f70d8ed063", "564af7ca-5336-435e-b3f8-e8b22e1cf857", "7845fa70-d389-4e82-ac2d-646b882063ac", "f3bff786-e01e-42f1-b2af-403fa3ec4246", "287f970d-2513-4e64-aa07-2b843397d91e", "666a6303-e18b-40d8-a8fd-30b6bc19f443", "9b4826c5-f4d4-4f60-ac18-7637c50b9b36", "7f5666ad-6d83-4aa7-a7b4-2775385ea431"],
+                                  minimum_number_of_products=4579,
+                                  applicable_shop_label_ids=["5a77897b-ec55-467c-8a75-b6dbf9e7e38f", "60f9ce2e-4cda-4ea7-b321-cca5f9fd223c", "315959da-402a-4ed8-a445-e65b275e1a90", "a24527e9-8807-4700-a7f3-ec586b237d22", "fffea0c8-fe16-4047-8671-453271930c6f", "4e6e6ce6-ed52-48be-9d3f-642b233df454"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[1, 5, 2, 0, 5, 6],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=3786,
+                                  point_expires_at="2024-11-13T20:09:29.000000Z",
+                                  status="enabled",
+                                  description="IJEzXmOEMtSXxzZokGYkRiArikWZSvWA49o8HQUEwypAtZsgSDOAS6m6W4ycEKeHr4636lRXTr2iPpZt0j1CI3l6J30",
+                                  bear_point_shop_id="2129d7f1-7dc2-4104-aa9e-312f4e731a0d"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_39(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["028382fe-4112-4156-b266-6139e0c4505b", "4f3f253b-57b9-4024-ad7e-39d09cb349cf", "681ce5a6-e46f-4ee0-ac71-77318f3eefba", "3fc1d565-2a5e-45e9-aad7-713961a4d840", "db71b318-6fd2-45ad-ba75-cc7ed5ee63ce", "b260b41a-fa5e-44c8-9fd8-a85ec8e3dfcc", "d2b96673-e318-4f62-a5fd-17599c7ed26d", "b0c8565d-3aac-46f2-a6a9-4ebaa4b5c0c8", "a17b3bf7-e9e9-4cba-80a5-eb57374200b6"],
+                                  minimum_number_of_amount=1297,
+                                  minimum_number_of_products=4636,
+                                  applicable_shop_label_ids=["a7a04b9f-18f6-4e1b-8b4c-e4a868f133f5", "921610b9-1fea-4ad3-b93e-e8803b51ea6b", "f5ae0a40-18ab-4191-b944-c498caf378bf", "1c9474cd-d815-4415-a602-2778fffa0a6a", "7f7e1bdb-b7d1-4668-ad2e-a01c2a83ae80", "2534cf86-fad8-4725-baf6-c67150aaf373", "dfa48283-1dba-4027-8e98-3d6b01c7c555", "688926f7-5af0-4a04-9d9b-c16e1f7aefde", "43dd3af8-454f-424a-a226-447e9b76430e"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 5, 1, 5, 6],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3447,
+                                  point_expires_at="2023-05-28T06:45:30.000000Z",
+                                  status="disabled",
+                                  description="kEgkU1iGJo4Veu1nD62pEennAfXO8IbuWWi93UYOzWoEzm8A",
+                                  bear_point_shop_id="eca24432-b503-49c1-873c-30ecec095481"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_40(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["6a5172a1-9b3d-450c-960f-eb1ff2485420", "58b0edb9-18a3-480f-b9e9-c68b35389b76", "7a298dd8-125b-4d07-9ac2-7223e7c6b3af", "383f2078-76e6-491c-9ed1-028fc3d34836", "7cc50054-fe09-48dc-98ac-28bb6de1ffcd", "a8f10669-df5c-46ff-8194-5f84bcb92717", "64bbc96f-712e-4eac-8e41-4ea26162fa8c", "91862d25-24d3-424f-bb49-b0e76f8cc6f3", "95afaeff-6641-4246-bb4d-dc031012f152", "fe5f7d3a-3dee-4d41-97b6-d1d241c9faf1"],
+                                  minimum_number_for_combination_purchase=8355,
+                                  minimum_number_of_amount=2436,
+                                  minimum_number_of_products=4343,
+                                  applicable_shop_label_ids=["eb1aef5d-7c9e-4e83-a684-280f8212e6d9", "7d1b8786-ff6f-4169-bf29-317c4be173b1", "e001eb19-6948-4b99-8ed1-5f9a2c32e502", "93a181b6-21fd-4ad3-9502-ed55f147f5dc"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 6, 3, 3, 5, 6, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=8159,
+                                  point_expires_at="2026-08-27T17:23:33.000000Z",
+                                  status="disabled",
+                                  description="joj4E906hjOODSKfXhRhf12fH18u3lWSr6bxBxhq8hzLJKGl7pegu99iLkGceRH09p3Djf3UXXM3TuFXvJTrk8Ursx5VM8uakcEIyxQz7D46SGfEdpD0URVkFLTmlxp8SI9cXescrmSD5n",
+                                  bear_point_shop_id="3a7f84a3-eeeb-4cf0-b754-6f056fe33409"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_41(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["127d0b21-20c8-4228-87bf-9fece6e806f9", "ed787e48-14b3-46f4-95bb-3aa5b8db1f0d"],
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=6430,
+                                  minimum_number_of_amount=2945,
+                                  minimum_number_of_products=8387,
+                                  applicable_shop_label_ids=["db4cfda1-e6f7-4d2e-8846-a7e2ed2e72bd", "43016c43-6947-4978-91b0-a39ee4efa19d", "7f03d52e-d6d8-437a-80f1-16f832db7332", "79a2e0f7-9e13-4dde-a8ad-b1879851c874", "931531e1-8bc0-4fcb-9770-9bf5b8434631"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 5, 5, 1, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=4240,
+                                  point_expires_at="2022-05-12T17:06:59.000000Z",
+                                  status="disabled",
+                                  description="tIsxTTV24W3",
+                                  bear_point_shop_id="48d063e9-b44d-433a-9323-16ead55a8a0a"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_42(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["a75f1423-460a-48aa-83bd-836169663de6", "76ea8c34-33f6-4931-8605-52dd662984b7", "f3fcf38d-7797-400f-a908-9f219251e6fa", "db365887-dfe2-49a2-bdac-9e323d13a2b4", "e7771215-9428-46d4-bff6-66927929ad56", "f1ee34a5-b8d9-4679-887a-af9daccb0290", "d26cabc7-dc7e-4309-ada3-306f9aa7f88f", "c9dc7d4e-b183-41d9-8c49-efafebf58221"],
+                                  max_point_amount=2393,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=4601,
+                                  minimum_number_of_amount=9509,
+                                  minimum_number_of_products=3312,
+                                  applicable_shop_label_ids=["d9ebceee-c26b-4b1d-8dbe-4047c5bf1d7d"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[4, 2, 0, 0, 3, 2, 2, 1, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7072,
+                                  point_expires_at="2021-09-02T05:34:27.000000Z",
+                                  status="enabled",
+                                  description="p2uygmHKqGnnOeMtFto3ZtBMyDD0JldWFE85ZjbUaTENhmx5C",
+                                  bear_point_shop_id="eaf3b2e8-590b-404c-9371-2dc2293abe93"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_43(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["089550f6-db66-43d7-ae7b-0cdc090f8ef2", "24ba1985-aa67-4b36-9f77-1bff1f675084", "182fe90b-5194-45a8-a845-565f18cbb09b", "b856e242-7a02-4400-9b38-e4386043740b", "35555d30-f7ec-4bcd-823d-b4817a979344", "d321bac5-e32a-4a88-80de-3d19a602c8f4", "4f87f26f-93e6-4b1e-8f77-41f5ccba2e22", "e496a5d8-9e34-4791-84ed-122b5d1c2c58"],
+                                  max_total_point_amount=287,
+                                  max_point_amount=665,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=116,
+                                  minimum_number_of_amount=7932,
+                                  minimum_number_of_products=8069,
+                                  applicable_shop_label_ids=["a95020aa-910c-4cbb-9088-ad55deb99aef", "3b35de65-d112-4ed6-a7db-a8022bbac6ac", "d2099a31-8dd8-481d-823e-8f5f893123c8", "6e482eb7-8591-4038-a8af-93df7ad3798a"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 5, 6, 2, 6, 1, 6, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=4913,
+                                  point_expires_at="2025-12-04T16:31:11.000000Z",
+                                  status="enabled",
+                                  description="RXsy9p5y2A7XdzXIFXZbjsiiNiXZ0lFTg0buQwKeaQ4HWfPuDn8vtLGTKy9baAXpUrNxQgJv2d1RjRDvxxlQFhM2eopmIlmvqzqnGOYbg6rdqjemTbEPE7it6nxw8VlzyCNbz8zcALV0qfahEqSWpbWk8lIjmXf3crokuVBQQlsA8T5nZUMuDqsp",
+                                  bear_point_shop_id="33229b84-eabc-4e48-9e75-e3507e872d20"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_44(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["471f032e-b811-42a2-ae47-80e9dfc2557d", "459045d5-bda1-496f-a888-8f197ae35726", "5110a70f-bd3a-4450-8bf4-0b652a6ff37a", "16e4ac40-3f2e-4118-a1b9-28ff1c363885", "932927c6-aa6f-4b78-b801-b2230b074e3c", "0cb98333-5d9b-40c7-83c5-f67d2686e454"],
+                                  dest_private_money_id="fa09d9a7-03a9-4c8b-8bca-ac05bab9e0dc",
+                                  max_total_point_amount=1922,
+                                  max_point_amount=6684,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=9078,
+                                  minimum_number_of_amount=7670,
+                                  minimum_number_of_products=7968,
+                                  applicable_shop_label_ids=["9855d24d-b9ce-4a9c-889f-5992ffb28e28"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 5, 5, 6, 5, 4, 1, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=9634,
+                                  point_expires_at="2026-09-20T09:58:03.000000Z",
+                                  status="disabled",
+                                  description="zSm63cU49za1QJALcpDZJ7YKoaGZqFQRMYj7eI0OiTg",
+                                  bear_point_shop_id="694d5520-76fe-4c3f-aaac-0966b2ebfd3d"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_45(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["b5a122ba-9796-4272-b6b8-0ee67dc5f2d0"],
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="2f89f9a6-d82b-4e32-819e-0c85c7130b0f",
+                                  max_total_point_amount=2873,
+                                  max_point_amount=3795,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=8151,
+                                  minimum_number_of_amount=9226,
+                                  minimum_number_of_products=5908,
+                                  applicable_shop_label_ids=["2b13dd6a-7349-414d-9aac-26f57b52c915"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 4, 1, 2, 4, 2, 5, 3, 2],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=1913,
+                                  point_expires_at="2020-03-07T16:49:15.000000Z",
+                                  status="disabled",
+                                  description="QgsidEuf2NvBHeZX8hYKnrzJWptMhyWUi64YZ",
+                                  bear_point_shop_id="4d2792e2-2091-4b2c-871a-1f09fa1a52e5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_46(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["2cd4cb43-6353-45c6-8874-a6261d377533", "ed4d8eed-1f5f-4063-8872-5e432a42557b", "ba1c9642-c9ba-4538-be98-64deca027f74", "63a4d924-3f83-4f8b-b18c-6a38279f32f1", "59358efb-9704-4ca0-b2c9-760e0508bdd6", "231e5fd9-5e03-4c32-bc0d-1f96feb6aadf", "0236732f-50d5-49d0-9b24-c31aa1d4b9f8", "e6417e27-1f8b-4ec5-8b0c-b98825346938", "785be024-ff6d-4377-ad07-fc0a4fdc6b48", "82055e1f-9b6e-47a3-a8bd-a427203658e9"],
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="5e1a3ba5-c467-47a5-a1c9-4c2121e7a4dc",
+                                  max_total_point_amount=7876,
+                                  max_point_amount=2241,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=4267,
+                                  minimum_number_of_amount=3296,
+                                  minimum_number_of_products=7161,
+                                  applicable_shop_label_ids=["681b7af4-79a9-4465-93a9-8bccff615686", "f03071c5-99ed-4d4f-8e7b-cd1fc16838f0", "110c182b-f773-46b6-a575-b6db4272a7e0", "6bd3de7d-c234-41d0-b2b2-ef72c6137598", "3e54853f-438e-4599-9c9c-063eb26aec6a", "a78647d4-bf34-459b-a47f-04ae80f32fa6"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[4],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=1357,
+                                  point_expires_at="2025-02-09T17:40:39.000000Z",
+                                  status="disabled",
+                                  description="rwJlYmSq",
+                                  bear_point_shop_id="4c7a7344-658e-48b3-bbea-5b68ecd0517e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_campaign_47(self):
+        response = client.send(pp.CreateCampaign(
+                                  "3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSa",
+                                  "5f803e10-c9e3-4dbe-8c6d-16c2951e2018",
+                                  "2022-05-05T20:48:43.000000Z",
+                                  "2024-06-27T06:15:24.000000Z",
+                                  2904,
+                                  "topup",
+                                  blacklisted_shop_ids=["eff917cb-1474-4c6f-9161-a4a0db0a52e5"],
+                                  budget_caps_amount=332505087,
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  dest_private_money_id="fa8784e1-72d7-45b3-b62e-9c37feb74599",
+                                  max_total_point_amount=1404,
+                                  max_point_amount=7288,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=3458,
+                                  minimum_number_of_amount=8576,
+                                  minimum_number_of_products=406,
+                                  applicable_shop_label_ids=["28d7d7e5-aa37-43a2-92e2-3dbb2e7ff2ac", "3011adb9-e210-4093-9c48-62541aeb8ea3", "b007b617-c82e-434f-8d25-3d617bce1e95", "1dcf1d1e-9277-4f57-ac42-711a62574e9a", "5b8d1ced-1710-4e1f-8fca-966ca9996590", "4e87a686-f753-43d2-8efe-ff837f628e39", "66d0b17d-b699-4c8d-b2ef-c4e7e9f86ad6", "2bb70f5a-f577-44dc-8a1b-ca4f5a6f5f9a", "8379569d-e283-4932-86f8-ee0edec1dc27", "f68e00fe-31bd-4305-bb4e-84e39aa178ec"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[1, 5, 2, 3, 1, 6, 1, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=6269,
+                                  point_expires_at="2021-06-09T03:07:45.000000Z",
+                                  status="enabled",
+                                  description="I0vqJ8n0oUjQYsKaRMsrJUacY2rYQO4gmGHCfbUV5BkcqYiSNlDYC6MEWefziiHI3EykNpjwCPjAkzyY2kmUe2JJ53U3N6F0e26pbO3HttlG4eyiatMI7VF3dtugJSz1Q3vovXNsgFsW05W19aXuGVV",
+                                  bear_point_shop_id="0a707c11-7d3d-4552-bbd1-553b0467206c"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_get_campaign_0(self):
         response = client.send(pp.GetCampaign(
-                                  "c7da7402-0838-4b4d-be12-ed63035b186a"
+                                  "6a9727d5-f5aa-4f07-9627-3286e47da8fc"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_0(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff"
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["ab85b739-61c3-47da-b25a-96a9cab80f89", "24a1ee73-ccc2-44e8-9bed-45604bc33b2f"]
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_1(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["5034330b-dc84-41c5-8e5e-42ca408c1fb2", "60978628-184a-4cf0-b259-55cc3a4a8e6e", "708ef750-893b-4681-b5e5-a169c5c100a0"],
+                                  name="IaB8AWaFb8JKCZbl1FLUJSG0fudQ9bvTSzMBL1Qigyh82R8yfv5oZ1A8LucSTZwJytxSEpRfXYxFxMDsqe8NITOunWJGeGMfsCgwJoSsvq0p2vMuqT6yO"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_2(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  max_total_point_amount=6985,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["1fda0b9b-ea93-42bb-b00e-4fad70fa2e35", "30be81fe-54a6-4e1f-9cf8-23ed9780445b", "8bbf736e-89c7-4d85-be27-480b27399b9a", "6015e1c7-9f19-48cf-9d80-fb68cbbfe121", "eec535a9-ad38-4882-b38c-4111de1cf7f7"],
+                                  starts_at="2022-08-01T14:44:20.000000Z",
+                                  name="3YT1DlU5jqThl0v0LlAw1sxsypKPTUBVqh1Y1karSx9kbbfwykuboyLPrrY2btuxHx9YophvSLqEzRt6XTR3oDpLSu"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_3(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  max_point_amount=483,
-                                  max_total_point_amount=5324,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["93535868-8a57-41c7-93c0-f90df5928ef0", "348430b4-4e49-4b1e-b5ce-4158f154b545", "783c370a-e276-4b7c-bb41-3cd919033585", "28a9e08a-e3ab-4b06-b691-ddb34e1c24b4"],
+                                  ends_at="2022-06-03T20:52:46.000000Z",
+                                  starts_at="2026-07-09T11:12:49.000000Z",
+                                  name="ndTljbWPhfpiwPMjupC65xVDnAJbsKD6b895iftqbY67Ut2zsAKH6lKT6gJXbaEKAddoUM0CRdaSDeoQ9lXXELG9oQdgpEse81VvpXr3HeuSevupI3Lg6cydG4CQY3zROLCcC3cDzGwCmJXHiF5C2aKJupg0Hph0EUCWBeCDLYnE6HiVXoG09ihrRj4aejWMyEn4Q3X3BDxBJJ5t6h3IPcBKQDcagEkitF8iACEva8PGaDArnv6F3H"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_4(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=3283,
-                                  max_total_point_amount=203,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["0bc4980e-31ca-402a-a383-778b5d4e9e86", "2376a20b-9ca7-41ec-ad70-44bb6bb7380b", "d08c941d-e4f6-4faa-8597-94a4f27dbd0b", "07b934c0-45be-44ec-a30e-b7b0cb9bf06b", "49bc9498-9fa9-4dbc-8218-a6bd756c844c", "53b3c157-b3ea-416b-8352-6dab5bb4eb04", "d3b77f30-6ea9-4e96-9f4d-73ea1e10a8b5", "5983bbc9-b0fc-4aa2-b348-aaf19c4bcc2f", "221f6afa-7423-4eb5-ba1f-4ca88ad1d989"],
+                                  priority=8234,
+                                  ends_at="2024-11-04T06:15:24.000000Z",
+                                  starts_at="2020-07-28T22:52:32.000000Z",
+                                  name="6kx1IdZKDkCNCl989Inr9h5bKrK"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_5(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  minimum_number_for_combination_purchase=8693,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=6573,
-                                  max_total_point_amount=6922,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["c264e841-df8e-4130-94ed-8909d9da8ce3", "9a9740c6-1b1e-42ff-85a4-0c93b2ce4e1c", "5f47772c-d721-4a7e-94f4-ccadb3ff7d7c"],
+                                  event="payment",
+                                  priority=5243,
+                                  ends_at="2024-03-22T14:08:36.000000Z",
+                                  starts_at="2021-09-06T06:25:58.000000Z",
+                                  name="dsEkzDVoxJr0lAnMovtOnbZ68JstsOcxw5PoatcF0TU5W5"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_6(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  applicable_shop_ids=[],
-                                  minimum_number_for_combination_purchase=5529,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=2652,
-                                  max_total_point_amount=4799,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["5fab7a12-3806-4ebd-bdc0-48d98c0977fc", "2971be49-bb1a-480b-9d9b-bc2e18d0f071", "2e74786a-3a46-401d-8c4b-73e45dc7de49", "ce68bfa8-9c1e-48d9-a965-c4073a7d0d8e", "8a5bd8d6-cc58-4137-9923-8fedf31b2b87"],
+                                  description="2aCCypluKCuWAlkVHsDkHFJvihW5VcQOv2mc2IS",
+                                  event="topup",
+                                  priority=5129,
+                                  ends_at="2020-06-10T19:51:24.000000Z",
+                                  starts_at="2022-06-04T16:53:02.000000Z",
+                                  name="uuu6HEZICTUsFd55cysKpzPw06buTFvYo4vEubGw6jVHah2jNyPqoWcQPdnYsCcbQIY2KFXsspdkpVkTBJa3OTrsXs88kJNoIZazm0lWPTZ7efHVp4Du6bqVzq0H9hNDIpWOGRlL4QDCIWrLzYwdZH6RYisLngmui2yyfAvCUPPfC6gPSyCFjnlF5wS89FXtStGk"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_7(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["1c80cfcb-f8b7-4405-bdb6-50d6d4d3d48f", "3a88a31f-c87f-4cfe-b54d-7784abeac0cd", "419673af-3cd3-4c04-9d1c-97e85356e2aa", "189a11af-5032-4bc8-a1b6-13ebafbd1bb6", "ec808e82-f0b5-4789-94eb-cf67bf22437b", "9fe8d2d1-f093-451c-892c-4341a3150ac8"],
-                                  minimum_number_for_combination_purchase=5080,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=7117,
-                                  max_total_point_amount=6957,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["9d35125b-d1f3-47f5-86ca-0cd35bafcf63", "05ca5c81-e23a-4510-b3f5-ddc9fc30b836", "7299d159-94e2-454e-8d62-23849fe6fbb4", "eea1887c-b2d9-4604-aa53-ffae9cf1bbf5", "40ff6350-52d7-4a4b-af37-52c0c384db78", "8ab92acf-deb0-4888-91eb-b58705a8602d", "e1f8b87f-d561-44f6-b95c-5791312da560"],
+                                  status="disabled",
+                                  description="Bs7zcSSckrHrP7zrKa6Deu24AbEENpv2mR4vcFbZYPGyrsGLqJFlRMGfDCisIe5qHD",
+                                  event="payment",
+                                  priority=6372,
+                                  ends_at="2026-09-25T22:56:26.000000Z",
+                                  starts_at="2020-01-16T03:05:46.000000Z",
+                                  name="7wbTKEpXzySqqc4sXPad6xuwUqi64YRTYtsOeEN9XbwlgwBy5OkIYkbdAf4PBqh2Y5zV0C85Vn4l2htJKp8EeWwIbRZU73CECtq6YH4jkVjZI7iaSuegvmESb5ZkkQma0HXRKUqv4lzkwZFtSWx4aRECgS2Rzs2ylIq5ZtrGXVCQUhbREfojZVoiIjURbvF5cuoyvA3t"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_8(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  applicable_days_of_week=[6, 6, 3, 5, 4, 4, 1, 6],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["adc67640-ed95-4bc5-8c92-a9d6a1de17c6", "7b596a2a-1549-4dec-87a2-0dbc7db3109f", "2b78ff8a-e53b-4d69-8c5d-a41fdf3cbd08", "1fa80e1e-d3c7-472c-95eb-fafadb55251a", "50f25c44-9177-41f2-93f4-8a80a12c1944"],
-                                  minimum_number_for_combination_purchase=8825,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=9265,
-                                  max_total_point_amount=5977,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["79545f94-82a9-48e9-b56e-c31361d7563e", "151563a0-0273-4040-be10-57592c1807dc", "d46d9236-6fab-4a53-8edd-4a5265dccdf2"],
+                                  point_expires_at="2026-09-05T17:22:41.000000Z",
+                                  status="disabled",
+                                  description="c8QDfAEfV4F8XUQw7FOCvHUkEBp2LxsthHBe9EWUoT5QLe9Yg2CBY3rucfBues6uHoyn0kY9tu08AkjC0WPKbQvYow9FaOH3zD7SQmRuyNCMpGLgUAKK4AYX",
+                                  event="external-transaction",
+                                  priority=9615,
+                                  ends_at="2021-07-14T06:22:18.000000Z",
+                                  starts_at="2021-01-13T22:30:53.000000Z",
+                                  name="THGYGC"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_9(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[0, 4, 3],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["070feac5-6ce5-4c46-8d94-2b9b5c31cdb0", "dc748dc7-7236-4cfb-ac63-cb9b1662393a", "f4a1e78a-dea1-4537-8ec1-3dc0aed6627c", "10c0732c-6eca-486c-a680-e165a4293178", "94eb190b-2b3a-4146-a13b-3d8008861f6f"],
-                                  minimum_number_for_combination_purchase=4472,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=665,
-                                  max_total_point_amount=2582,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["96f6abb6-23c6-4a02-9c53-e92f4a1b18f6", "4272b072-9af9-4cb2-a38d-48e9d88ff7c7", "7651137a-e4f0-4191-a808-7d8dc1e38c13", "a043d3a5-5957-40e4-9f67-e435d7c72a17", "158d69af-939a-4a80-b923-8d813a1009ee"],
+                                  point_expires_in_days=5639,
+                                  point_expires_at="2020-05-25T23:58:10.000000Z",
+                                  status="enabled",
+                                  description="5eaT1YQUtPEMBFK5RCvbOFISTKPBIbnB4IlVfzKQeAZtwqv4AGYkQ5YWzuO0mrMzlLTVYxU13omHKmdh2ng7xlmB0D7qlClsr3peE1RPsdDZEoaT5osfv5Au45ikmQzjXEIrL5tEVsPccciqGzpCuGxg",
+                                  event="external-transaction",
+                                  priority=3183,
+                                  ends_at="2022-11-04T03:41:40.000000Z",
+                                  starts_at="2024-08-31T01:29:06.000000Z",
+                                  name="AnDFm6nBFTBcp5MgKi6djde9q9Gx06zspIhW3gmaN6JcrvmX5G7cBGoNqTURH3hLLIVR7YcRrTeQOsLdvK2PUyIdpshyxjFJxJ7Fcj7Ywb40WRFS5iP8DHnWS95dKYCDWjMDqXUFGoRA4XvfiL62W"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_10(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[4, 2, 1, 4, 0, 1, 3, 5, 2],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["b89b426d-a28f-430d-ad62-abc51bf41957", "147a04f9-7b3e-4946-aa48-710e9e403ba2", "981a9933-26bf-40a9-a3ba-cd9a9341727f", "db10d525-2566-46b4-b824-b947dcc46f95", "ee15b4e5-a94e-4056-b957-2e310e1e8064", "7d83b6c9-1dda-4cba-ad17-910e67ef3f98"],
-                                  minimum_number_for_combination_purchase=9780,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=1700,
-                                  max_total_point_amount=5708,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["ca33dd2e-4332-43f6-ac8b-a78445832b85", "53daebb8-f5f1-409d-894a-8013550c37e1", "498c89aa-d266-4f8a-a377-983a5a00e842", "b243041e-abdc-4644-b000-674c9964912c", "dde8ce8c-dc54-4bd2-8e2e-64b1037dea61", "12aad89d-4030-46ec-a172-743bb9b60c21", "3049cbb5-1323-4663-9ffc-938d42ddfaf6"],
+                                  is_exclusive=False,
+                                  point_expires_in_days=1419,
+                                  point_expires_at="2025-09-17T10:22:24.000000Z",
+                                  status="disabled",
+                                  description="6HP3Edv56q9t5VGuIJJqB3hC6IgJljp1y8KOJgfu4WFT3sPLKGiMRgfz5jiMdvRW63Z9043h9SU3fTD5o4Kn6TQ5PsH9Yt",
+                                  event="payment",
+                                  priority=5250,
+                                  ends_at="2024-05-03T01:03:58.000000Z",
+                                  starts_at="2024-03-11T13:46:01.000000Z",
+                                  name="nNiOZyV9AO3DnB1YRES4xlc6449ibwy8gDnWqdIP3eIh1PycrJFKeRKa6OogwkyZYeik5qw2qVOD7lJwoEqJ4uimGtF4vDevDABoV1497oKjyplKXUyjuZoAdZaiUShsjoKemD9IJVji3EhQ10nakJ4Xx7"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_11(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["0d354f6f-f08f-4ca7-b38a-fd28d576cd5e", "37778f61-51a7-49f7-a8cc-85c055f21ab5", "cb4f1283-1d9e-4ffe-b158-add702d26830"],
                                   subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[3, 1, 6, 1, 2, 3, 1, 6, 2, 0],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["8ab58f24-d998-4507-9d5e-f4b0ce7af464", "6904ba0f-5a38-4006-9892-66e836bbfa44", "c6d65117-8e03-42c3-a943-7fa9fd7fea47", "5dc961e2-8916-4096-bf7f-13c50c87d00e", "feed0fc1-5698-4711-adfe-da8d2b2bf05b", "11a63b38-f044-428c-84ed-18fb4fd3becd", "9b300da5-fdf6-42b6-8a05-bd9e37c32f05", "880c894f-1855-420a-9304-18c087d892b8", "485e3e78-24d0-4f5b-9223-0de08837f06e", "c1272035-1e4a-4ce0-93df-09483cd67bd6"],
-                                  minimum_number_for_combination_purchase=8967,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=7529,
-                                  max_total_point_amount=7225,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  is_exclusive=True,
+                                  point_expires_in_days=4635,
+                                  point_expires_at="2020-08-11T05:50:27.000000Z",
+                                  status="enabled",
+                                  description="tyBqdUl09HCPEoMCgQwCdLCVxkfS7LC09h1a33P4feIw8rNkq1IJcIVXz",
+                                  event="topup",
+                                  priority=9771,
+                                  ends_at="2023-04-15T01:03:20.000000Z",
+                                  starts_at="2021-12-03T01:31:59.000000Z",
+                                  name="oLITUciADNRcm8cr7h7uvpVmJgh2hspBOtxaFVpQwu69vaYb020lVhpK1ujAV4SIGQkIPmfa5YJsZSIV5H0hKFZRjFJsBJwxE5ymHkkfvwj75uGxXyxLiKvyAHQ0Cmh0"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_12(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  is_exclusive=False,
-                                  subject="all",
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["0a316dd2-b7b2-4d81-a7e9-25ce043525f0", "97c10a51-f92d-4f67-a28d-c3f2212c3eff", "9a75ebd4-c4d3-43b2-8845-bc11fd962ddd", "460c48e6-1d66-41d0-9eb7-f38cbbe64a30", "a57e7a88-c01d-4344-9548-600d0a2f4043", "f46613d5-4b6f-4709-a8d4-2acde56267f5", "a7cd18b2-8f36-4139-8acf-d2dfdf580627", "0906b33c-2985-430f-9d4f-63363c77c01b"],
                                   amount_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
@@ -4751,140 +9194,144 @@ class PokepayTest(unittest.TestCase):
           "point_amount_unit": "percent",
           "subject_more_than_or_equal": 1000,
           "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }],
-                                  product_based_point_rules=[],
-                                  applicable_days_of_week=[4, 2, 6],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["a831071f-df3c-4f2b-b4df-b0b3151f8647", "c76ba9a8-1d34-4e0f-9839-5718996d4a68", "282a2390-f87b-4c28-a975-16c73e7e82fa", "ad268cfd-0339-49cd-94e6-1a5cc2301792", "ded62e9e-e3b8-402e-a2f2-0e287a87e529", "5d109cf4-8fc8-4768-9d95-2b81059f088a", "ee7c7f5d-bda4-48f1-9db6-2e197c2b622c", "7a60f5de-bd99-4d3b-b68c-b7544ae18121"],
-                                  minimum_number_for_combination_purchase=4924,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=2627,
-                                  max_total_point_amount=6475,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=5677,
+                                  point_expires_at="2023-12-23T14:39:52.000000Z",
+                                  status="disabled",
+                                  description="je3Px2M6UQ20lAXsAZIDxFXqpctZUoXMEwvfZIhfCcdWRRWKBpAMRk3KT9aHDvn680BNVo61whu52VEWHzeXnCqnnjKe2ZokcQxt9okwN5c4Mkgq5YYKEEntoCEiLAHJ2sW9FitjutUJJsIkCXGENUTkzcX2ykkKJlN107OaiUpqdHMS0BnQNQ8yn",
+                                  event="topup",
+                                  priority=8357,
+                                  ends_at="2024-12-03T20:28:00.000000Z",
+                                  starts_at="2026-08-17T19:00:52.000000Z",
+                                  name="O7nDWAmmXsETvex6EwUtMqxtCSMEZWLR3IYMZqZQp71KYV2dqAhSRH0jBaTj6CKr7da3Hc5MrDSrYQmTFD8MK4LhwIRladKEnUCUBMTsHjSLXQWZdqZHXOS9NchMxuvMOV5pE0ThIcNVnpd1n04FvafoOT5XflXygJfyBJl1nws6Ne3S7kdpHli9FCf9vj51iwXi5vVkai7fMidPllBkchJ2ELHNBkuEPtWGn6U1tk"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_13(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  point_expires_in_days=6368,
-                                  is_exclusive=True,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }],
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["31266dd8-8c8e-4b76-8a06-22fe1761271e", "bbac67b7-a169-45de-829e-af6a5ff28b70", "fde12f75-787a-4738-ab58-7766db9dc48a"],
                                   product_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
           "product_code": "4912345678904",
           "is_multiply_by_count": True,
           "required_count": 2
-        }],
-                                  applicable_days_of_week=[2, 3, 1, 0, 6],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
         }, {
-          "from": "12:00",
-          "to": "23:59"
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
         }],
-                                  applicable_shop_ids=["ba85e3dc-a2f8-4fb2-8f20-27bbe9d8381d", "4bfedff2-8599-49ac-a3d6-66af40877bcd", "6ac00018-4574-4828-8d51-2f700aa67acc", "6b50d850-fd85-4f07-83e5-5a2ee60eded0", "b9731fa4-16b9-4064-bacc-4ef8f2002096", "b3952eb5-d0f4-45ad-bcad-9332e57f556c", "776a97dc-03e7-4fd7-8e3d-042e66fe28a8", "1189a76f-23ca-4ed1-996f-7bcf4c73b215", "58223f53-902d-476d-85c1-7f6353efd375", "7489cb9d-67cc-48c0-a996-bbaf46e92b56"],
-                                  minimum_number_for_combination_purchase=4129,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=6898,
-                                  max_total_point_amount=5909,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=5416,
+                                  point_expires_at="2025-09-04T06:14:41.000000Z",
+                                  status="enabled",
+                                  description="tq7nYSMGg6A5q48d0VvhbqvZRxaI0AVDH5phIrM988xOpACBuWehCLI5Ithzpo1sbw0fi8Tfl4MiezYuuDN5NO2",
+                                  event="topup",
+                                  priority=520,
+                                  ends_at="2024-09-20T19:16:49.000000Z",
+                                  starts_at="2026-01-11T10:32:14.000000Z",
+                                  name="kiJUlQ4dKgR3uo3pyHQKCLEzAV2HW0T6wtgFowhjkpuax7inTCKJlAlkDX0z9k4WtlP60t1pGDCB7WpLioRLUylhwp3jB"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_14(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  point_expires_at="2023-05-22T05:15:36.000000+09:00",
-                                  point_expires_in_days=3881,
-                                  is_exclusive=False,
-                                  subject="all",
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["561e9379-e27d-422e-85ac-a82a72cb8fec", "10932917-b321-486d-9c07-ac6efc7de7fa", "92e97ea6-f4bc-4286-94c4-e6d9028228fe", "f9ba0851-3d81-4c10-8cd0-97bb385e3cfc", "1a161b82-fe2e-49d4-9113-b1453878133c", "ebe12968-3e45-4a2c-8b44-d7baa9d56370", "01d3897e-b6e9-46c9-bcaf-e18a21e5ac22", "a8301923-ea5c-4fad-ac38-7ab8714083db", "76935b13-57a4-4df5-985f-c87de2db515b"],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
                                   amount_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
@@ -4920,110 +9367,37 @@ class PokepayTest(unittest.TestCase):
           "point_amount_unit": "percent",
           "subject_more_than_or_equal": 1000,
           "subject_less_than": 5000
-        }],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
         }, {
           "point_amount": 5,
           "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }],
-                                  applicable_days_of_week=[4, 5, 5, 4, 6, 2],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["88681cdf-6e09-4707-8132-0c17b66b406f", "565b6044-d0b1-4eeb-a25c-3a32007ed679"],
-                                  minimum_number_for_combination_purchase=1053,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=1466,
-                                  max_total_point_amount=7987,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=4527,
+                                  point_expires_at="2025-02-28T02:29:08.000000Z",
+                                  status="enabled",
+                                  description="NaCFLhrW7Qg63LOoyDRk2frbKYDtHXRSpeSviFk4W1qsOLM",
+                                  event="external-transaction",
+                                  priority=4316,
+                                  ends_at="2020-08-25T00:59:35.000000Z",
+                                  starts_at="2025-08-26T15:37:28.000000Z",
+                                  name="KEeqmGGreSt"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_15(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  status="disabled",
-                                  point_expires_at="2023-06-17T16:10:08.000000+09:00",
-                                  point_expires_in_days=5145,
-                                  is_exclusive=True,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["e5bf98b4-a691-452d-ae74-2d0e3ab2cfb1", "ca7b98f9-1ce2-4b43-a0b0-00d9b264fe77", "be77f58f-5204-4f88-9020-588da69b79ed"],
+                                  applicable_days_of_week=[1, 0, 1, 1],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }],
                                   product_based_point_rules=[{
           "point_amount": 5,
@@ -5079,76 +9453,80 @@ class PokepayTest(unittest.TestCase):
           "product_code": "4912345678904",
           "is_multiply_by_count": True,
           "required_count": 2
-        }],
-                                  applicable_days_of_week=[3, 3, 0, 2, 1, 2, 6, 0],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
         }, {
-          "from": "12:00",
-          "to": "23:59"
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
         }],
-                                  applicable_shop_ids=["38f27d79-9a4c-4cbe-822a-8923a92e4c05", "0e5359b2-078e-41eb-bd8f-a6fce8406c6c", "ce4ca98b-ccdf-4e22-ac13-269a573e08fb", "9de2b62f-93c4-440a-8a40-42b12f355172", "4927d58c-c133-447b-8cbc-976a9079b05f", "458e0f26-f33e-4387-8393-c29a167b564c", "7e92cecf-4832-4782-b058-3f8747bd5619", "9af50069-7161-4390-8cdc-9e07d278e62b"],
-                                  minimum_number_for_combination_purchase=7549,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=9515,
-                                  max_total_point_amount=3722,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=34,
+                                  point_expires_at="2021-03-14T20:30:13.000000Z",
+                                  status="enabled",
+                                  description="zYlQVbUnnRBBQRDsGnvgO2bodBPeKpRFsQIE",
+                                  event="payment",
+                                  priority=3482,
+                                  ends_at="2020-07-12T22:13:33.000000Z",
+                                  starts_at="2023-10-01T19:41:43.000000Z",
+                                  name="MkEBFs4OKbpkXgOJ3P1nM9riBWugVW8sRaEhx8aJkSJHuUfzU3cxqLSG8S4aP0CNMNfb6Vow"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_16(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  description="c9g0DX8Wq75NNOSKErJuxzhPvCMr0kZtscw8OT2IAWVb28SeWG8Bm8n",
-                                  status="enabled",
-                                  point_expires_at="2020-03-08T15:19:02.000000+09:00",
-                                  point_expires_in_days=2385,
-                                  is_exclusive=True,
-                                  subject="all",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["eec73408-6d89-4cbe-9bd7-b61266627fdd"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 6, 2, 2, 3, 4, 4],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }],
                                   product_based_point_rules=[{
           "point_amount": 5,
@@ -5192,65 +9570,70 @@ class PokepayTest(unittest.TestCase):
           "product_code": "4912345678904",
           "is_multiply_by_count": True,
           "required_count": 2
-        }, {
+        }],
+                                  amount_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }],
-                                  applicable_days_of_week=[3, 0, 5, 4, 0],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["4785ea62-9c03-448a-9645-2e291505271a", "fd35045e-a535-405c-8fd8-2c3731993630", "f6b4f51b-db19-4027-b5d6-e180844c3a6d", "85a73b8f-4a5b-4135-9baf-1d8410889816", "d850eb24-c32c-47fd-be4a-89203d1b5d06"],
-                                  minimum_number_for_combination_purchase=7530,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=9498,
-                                  max_total_point_amount=7497,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3415,
+                                  point_expires_at="2021-09-16T17:32:37.000000Z",
+                                  status="disabled",
+                                  description="bcijLtVhmlM6kBu7DCNg4aU7BlWsNECFWA4hHlvtcjGtIPadSKiVX8t6IuP7AfSh1iSdnomWlXA8y2vwAsTNYaeLyV7CWdrmk7DRyx2nAdRh4U2Gnj6HilrfsKlPIExrXeCFOu5KxrV4xhz7DzBywKIciMlN",
+                                  event="topup",
+                                  priority=4113,
+                                  ends_at="2021-09-17T05:01:20.000000Z",
+                                  starts_at="2021-04-14T07:28:19.000000Z",
+                                  name="uBHj0xIlmI7crwjgi"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_17(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  event="external-transaction",
-                                  description="UPeHPDN",
-                                  status="disabled",
-                                  point_expires_at="2025-05-29T21:46:37.000000+09:00",
-                                  point_expires_in_days=5045,
-                                  is_exclusive=False,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["d3f6d171-1638-47db-86bd-d12799d89fac", "8c1fc6f8-54a7-4e32-82ac-0f9a90262810", "0ae637fe-a9cd-421d-afe9-cae5ed7d9d2a"],
+                                  applicable_shop_label_ids=["10e215ea-55d7-4c2e-9be0-ba7f0f93bc83", "e222939a-30ed-4b9f-9091-97590bc94305", "bf6be838-94f1-4177-8b06-0917157c0b12", "e0a4f929-5f43-4e46-87d7-30d2f100d529", "ecac11ab-f109-4340-8455-8a1cba5c2968", "2087b3be-533b-4bd4-8257-23123c0b191c"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 0, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }],
                                   product_based_point_rules=[{
           "point_amount": 5,
@@ -5276,113 +9659,58 @@ class PokepayTest(unittest.TestCase):
           "product_code": "4912345678904",
           "is_multiply_by_count": True,
           "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }, {
           "point_amount": 5,
           "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }],
-                                  applicable_days_of_week=[4, 5, 3, 3],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }],
-                                  applicable_shop_ids=["96ae2705-4f51-4145-94c6-106b3e3c9164", "5b409ab4-4bc2-4cb7-a019-0036035cb3f1", "1112f31d-cf60-43a8-bfd6-d8ecfa0aadb0", "1e070b62-06f6-4d73-89ce-df755d6e7387", "eadb72c6-fac8-4d30-bc38-cc405d22b424", "583f13e3-a1c8-4810-a569-5cb3e9a64b49", "ff8a4c72-0218-41fb-9a21-0600ef39329b"],
-                                  minimum_number_for_combination_purchase=2038,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=8326,
-                                  max_total_point_amount=9340,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=6028,
+                                  point_expires_at="2022-08-27T04:13:44.000000Z",
+                                  status="disabled",
+                                  description="vLeQXqJ7fOtRApW564YK0LvLN69VHlYJhXH6cUQL7XLfiXA0zUZ8WIiKSeWU9z6lAbD3wpFlmsWusC8RGaBKUJdHLf9kwaxRbmzAo5vzrqC43kvR5VzS4JSx7Qk5qYm8EJV1By6vGk0FuWZ3ptkSyNBcc9pa",
+                                  event="payment",
+                                  priority=5463,
+                                  ends_at="2021-05-10T07:44:33.000000Z",
+                                  starts_at="2023-03-26T08:39:58.000000Z",
+                                  name="cdvlF8sKq6M8TMch0t9MLsXgvG8EYKbsPpBkO0z5h9VDX3NEhsO0rjGagOIQ6x9sSfu0zX8zdCniT7rbp4RdF8jzLLX07kGwmRZR89QJDyeQCnprhi7qh3KP4T37Wi9g9nZZhOiq9TM1kLnMOaPoayQ1SL4LwXctk"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_18(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  priority=7432,
-                                  event="external-transaction",
-                                  description="bJYOhkdNc7P4FTTn7dkmZ79WHBWuUwmPiQWsAKL3kSTc0LPbfp9enQ4UqYgv1CZM",
-                                  status="enabled",
-                                  point_expires_at="2022-11-12T11:56:38.000000+09:00",
-                                  point_expires_in_days=1434,
-                                  is_exclusive=False,
-                                  subject="all",
-                                  amount_based_point_rules=[],
-                                  product_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "product_code": "4912345678904",
-          "is_multiply_by_count": True,
-          "required_count": 2
-        }],
-                                  applicable_days_of_week=[3, 4, 1, 4, 1],
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["d5f4173c-12f5-4307-b9f5-e4e18871f0fa", "41faf49e-f371-4912-a42b-68832100cca3", "2ccea4fa-d4c6-40ff-9df0-fbee3a16fe67"],
+                                  minimum_number_of_products=5037,
+                                  applicable_shop_label_ids=["37116a97-647c-494c-926b-d3923ffe6020"],
                                   applicable_time_ranges=[{
           "from": "12:00",
           "to": "23:59"
@@ -5407,51 +9735,129 @@ class PokepayTest(unittest.TestCase):
         }, {
           "from": "12:00",
           "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
         }],
-                                  applicable_shop_ids=["f00e0fc5-77c2-4e7c-ab7d-82633519f628", "7e83e342-eed7-41f7-a10f-5d847f2458b9", "1aca8293-9fa3-4d78-ab79-aa79626514dd", "e77f0932-34e2-42c3-bb8c-eba5f81f4a9c", "ff0f2ba6-c0c0-4c81-a9cc-dea8e9091b1d", "6ce84cb7-05a0-4210-9c85-d7b44490b8bc", "7e6ba3d1-d6b4-4b16-a083-b2fdda128675", "2328eab2-b3cf-4d98-be4d-be8a420f024d", "415b3c06-d04d-4730-93fc-54f8c7ac5f44", "63dd457f-d6a9-4edd-8584-1224584c2a32"],
-                                  minimum_number_for_combination_purchase=7333,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=3170,
-                                  max_total_point_amount=9517,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  applicable_days_of_week=[2, 5, 0, 0, 5, 0, 6, 2, 0, 2],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=5417,
+                                  point_expires_at="2025-10-30T17:24:11.000000Z",
+                                  status="disabled",
+                                  description="DIECbUavopCer6amUqWii2uDVrmTki6pqO0f8cnptMkBRjmpnn",
+                                  event="payment",
+                                  priority=7010,
+                                  ends_at="2023-04-27T09:37:41.000000Z",
+                                  starts_at="2021-02-08T02:38:59.000000Z",
+                                  name="g4xumOoxK0oT4F795unttA065Yr03Qzj1SYSblk7QSMdkkKPrtzfsCSKaR3OFn1WKJz5hhBZBCZgSERTDaoK9IqITw9RXh5VLaBXSS3EzsrMpj8GBIyJaRyweuGKy2nXN4UBPwGQ9mhvxLr7"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_19(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  ends_at="2025-01-18T13:32:03.000000+09:00",
-                                  priority=855,
-                                  event="external-transaction",
-                                  description="9LUbHMcMKbw9zDIEFEyvAvmcoCxU",
-                                  status="enabled",
-                                  point_expires_at="2025-06-30T22:44:26.000000+09:00",
-                                  point_expires_in_days=8640,
-                                  is_exclusive=False,
-                                  subject="money",
-                                  amount_based_point_rules=[{
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["5a26d382-0051-47a4-9cf8-0f077406ad43", "279728e9-a5d2-48a6-b4cc-f04a29fb7fb0"],
+                                  minimum_number_of_amount=6037,
+                                  minimum_number_of_products=9024,
+                                  applicable_shop_label_ids=["dd02cfc1-2396-42df-9ddb-4c474aa95b98", "0cdf5ed1-9930-4d00-951e-584c2dfb6992", "cea5e4fe-5e93-431e-a327-926b5183446e", "468f5699-2e10-4690-bfd8-54846b444b8d", "5b313142-d9a4-47fe-bdd6-c7d818c91e1e", "f7c7598b-ba9a-41d6-b649-b71c9d7131e5", "cac8b3a8-d613-4a7d-907a-a84dfdeea02e"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 1, 2, 0, 4, 2, 2, 1],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }],
                                   product_based_point_rules=[{
           "point_amount": 5,
@@ -5508,51 +9914,390 @@ class PokepayTest(unittest.TestCase):
           "is_multiply_by_count": True,
           "required_count": 2
         }],
-                                  applicable_days_of_week=[5, 3, 1, 1, 3, 3],
-                                  applicable_time_ranges=[{
-          "from": "12:00",
-          "to": "23:59"
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }, {
-          "from": "12:00",
-          "to": "23:59"
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
-        }, {
-          "from": "12:00",
-          "to": "23:59"
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
         }],
-                                  applicable_shop_ids=["c42e79c6-6bbb-4b65-b549-a915beb5df9a", "b93fa81a-2f42-4404-9528-ec7eef12246d", "fb3771ec-03b3-4968-849e-fd2eef5e87b3", "cbaebc36-7626-4b31-a78a-7988ab728475", "31664059-5548-4383-9d89-a601b32ac56a", "b328b3cf-2349-46ed-af90-46a56ab65fa2", "51b6e800-2f86-40da-95ab-1d90ad35ffbc", "13c634e8-e160-4223-8f53-fa8697722e4f", "20994828-6374-4638-9514-3940aa4bfdce"],
-                                  minimum_number_for_combination_purchase=6522,
-                                  exist_in_each_product_groups=False,
-                                  max_point_amount=8035,
-                                  max_total_point_amount=2578,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=8700,
+                                  point_expires_at="2023-11-26T21:41:23.000000Z",
+                                  status="disabled",
+                                  description="ImOpB9NJd0FGb0jOdIa2VbV1E7pIBf60ZOpXb0uUTjEzrW5FEq6VpVqu1DpFd0JaBsPBEjjxsN82R5bV74h6Mc",
+                                  event="topup",
+                                  priority=6982,
+                                  ends_at="2025-05-21T11:19:40.000000Z",
+                                  starts_at="2020-08-03T01:46:27.000000Z",
+                                  name="kpVJ"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_update_campaign_20(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  starts_at="2024-02-06T16:58:32.000000+09:00",
-                                  ends_at="2018-05-10T19:51:29.000000+09:00",
-                                  priority=6463,
-                                  event="payment",
-                                  description="Gme5CA27ltkwLNnQtyV2QJ",
-                                  status="disabled",
-                                  point_expires_at="2018-05-24T09:32:58.000000+09:00",
-                                  point_expires_in_days=1600,
-                                  is_exclusive=False,
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["9be0d646-180f-439e-9c38-2705593726cf", "08d282f6-bbe8-4ed7-8770-458a2a018d8c", "47fd5533-b695-4867-a93b-dad4decbee01", "728e93a2-b75a-4143-b60b-43b0807463d2", "bf18cb25-4fd4-4677-9bb4-a1e61c99cb7d", "1eb9b193-be5a-4ea9-aaa0-c02d7e0f24a0", "3ffa60b8-5c7a-4dbf-97c2-0c714bc54cd3", "ecd8f227-2143-4ca5-b39a-ed76b6818744", "8a625749-8704-469e-a50b-df268b3c89a4"],
+                                  minimum_number_for_combination_purchase=4224,
+                                  minimum_number_of_amount=894,
+                                  minimum_number_of_products=5104,
+                                  applicable_shop_label_ids=["aced0584-e79d-416f-a3a8-0955facdb6b2"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 1, 5, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
                                   subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=9153,
+                                  point_expires_at="2022-03-21T19:26:26.000000Z",
+                                  status="disabled",
+                                  description="7H4x70jy8CyXSjsNQfhm4JdiSR8LU0sAxVpKo9Pr8tnCR4b3VVcnR7ySaTJSLXaRbjFaOCY9HY0faJMcRsZ3tfn14pqdpY2gOVzxC2AMFcqtkzhdfPKiy9SERDVnpaYhO",
+                                  event="topup",
+                                  priority=7542,
+                                  ends_at="2022-07-18T09:18:14.000000Z",
+                                  starts_at="2024-11-16T03:58:59.000000Z",
+                                  name="8b8Y5rPTIoQafvlfkuyBchbjOVFfaAmwoPiUeFs2qGGZk77FXigkPx1NC7bcdhHDyq2"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_21(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["3b6fd06d-8565-4112-a785-870eae1de50c", "ef90f22d-7f6d-484e-a3ef-6b7b05c39a6f", "9a815ecf-20fa-4af3-8ede-3a2b96820156"],
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=2332,
+                                  minimum_number_of_amount=8284,
+                                  minimum_number_of_products=803,
+                                  applicable_shop_label_ids=["1e49709a-1200-4555-81ee-e3ab0da7ffbf", "0ce12cc6-a844-4fa6-9008-3b0de495a429", "7bd7f471-f432-4388-bbea-c41359a94e11", "847d4c1b-59fd-43b4-85b2-4119951492d8", "43ad0be2-907d-42ad-8092-b40adbacdf29", "285bb91e-ffcb-47d3-a68e-5f2127853aa1", "351f2a11-bafe-426a-97a0-009035a5f5d8", "3e164e60-83a5-4f1e-b008-d4ed0e393663"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 1, 3, 4, 2],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7622,
+                                  point_expires_at="2022-12-03T12:53:43.000000Z",
+                                  status="disabled",
+                                  description="6MviKhzgN1WE1E9QE8I1WOtKGTOoDsggK2zVvIrNmjPyMt7JZTknlcSLOAfgHki7iEUUEZsYB8I8w6YX9AjYRSoiU1BYQYTGkB",
+                                  event="payment",
+                                  priority=484,
+                                  ends_at="2025-10-16T21:55:38.000000Z",
+                                  starts_at="2022-01-26T19:57:45.000000Z",
+                                  name="gxwOlUDOeBSRiyqeameMaY0bgN8gTUkelv3hkGmk4iWQZAVafOlabiOcEnloh2DXft8ZR3ZIT5H8aSOl3MDXnG9yHqEAThwDuq1zewsMIx1hpzHiKxcCexEPrWNcD1BCJ2Q7A3yxMyBqUSnmfmyMf158jbodxUJxcIS6QwIFvAWCZsB1EYOxuNXsb8K4Xy"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_22(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["fa28d4a6-3936-4830-8dec-ebb6c441cf83", "3b525f6e-391b-435a-91c3-3919a52f3a86"],
+                                  max_point_amount=461,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=7622,
+                                  minimum_number_of_amount=2925,
+                                  minimum_number_of_products=8790,
+                                  applicable_shop_label_ids=["2b96af36-bee9-4b90-8a96-004895392bfc", "579ce91a-878f-47b1-9836-260566755136", "69a329c5-5830-497e-ae82-1271369bd342", "1fc33405-3a2d-48c2-92a8-a5dfbecb0284", "6fa83547-a418-4b0b-9eed-4c2352d3098f"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 0, 6, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
                                   amount_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
@@ -5569,8 +10314,285 @@ class PokepayTest(unittest.TestCase):
           "subject_more_than_or_equal": 1000,
           "subject_less_than": 5000
         }],
-                                  product_based_point_rules=[],
-                                  applicable_days_of_week=[5, 6, 5, 6, 5, 4, 5],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=4112,
+                                  point_expires_at="2023-06-09T21:52:02.000000Z",
+                                  status="disabled",
+                                  description="3",
+                                  event="external-transaction",
+                                  priority=9106,
+                                  ends_at="2026-05-23T17:05:45.000000Z",
+                                  starts_at="2021-12-18T23:27:26.000000Z",
+                                  name="uFQrrgeXzyNXNrNkeWa9hWsLSo6RhlRrNdmMatyDW12s5SKsd06fYHa9pHdUJ2NkpD9XRln1g4q1AmzenaBAIYsPX5BEVEkSwN7Jl7UfMqNeIWxDQ5mYkDBp76iPlz0WyF7I2Snzg"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_23(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["6651ef31-1760-4fb2-a3a3-ed0eb81bfc64", "fc5e1e30-0528-4aac-accd-fbe87f5ac20a", "c914233c-31c3-4548-86a5-b5ae1ee7e5c5", "dc357ab2-b6fb-437d-80e0-3bebc16875f7", "162010aa-53bd-471c-8227-1b3d30a4b590", "ad8357ba-e220-4f70-a58b-4c4842089598", "d7ae71a7-e7f2-4de9-89c9-68e18ecd8701", "9e224040-9cd8-4178-99ed-4bff0a0c3455", "cfb9bfe6-e4ff-4c84-a544-e226e54cb732"],
+                                  max_total_point_amount=7426,
+                                  max_point_amount=5028,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=2115,
+                                  minimum_number_of_amount=3148,
+                                  minimum_number_of_products=2704,
+                                  applicable_shop_label_ids=["7392e2c3-48bd-4e08-afda-af8f37dc1bd0", "46d5073f-99cb-42a2-a8ae-2ad2a5c03a9e", "cb0d776b-c0b3-4ff7-89b9-d2ab7d19b75f", "e1a58af2-d132-4992-8daa-442dfdcf9b86", "a4c6f900-0b53-49b5-b17b-b1dfebc8b85d"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 2, 5, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=1385,
+                                  point_expires_at="2026-02-22T19:02:26.000000Z",
+                                  status="disabled",
+                                  description="NKIGuoyWD3BHeU5bcdtREmG3PoPoUnVURoRDP0303M0EUzCR0XC7UBINwESq7hPy7a3F5MBC2C7VfANu3p62KDWO8TDrLXi",
+                                  event="topup",
+                                  priority=2872,
+                                  ends_at="2024-11-16T03:59:58.000000Z",
+                                  starts_at="2024-01-29T10:47:54.000000Z",
+                                  name="M4HpSJ7ezaoKVM6PG4nVxadlDXYh8F3jX5Rw62VEObOlMsiJRl1b2ESaJKCDCVaIjvXY9buv1PGDaqpxNAcB7XJ2PMH0HA7mMCxlziaJ1nphI9ySRxw6pdyrj7YEb5BIbPwZ"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_24(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["a4211b22-f41b-42f0-ae2d-cc8bc77bc224", "86918774-05cb-4dba-aba7-59e561ab90d7", "c7d14c1b-f882-49cd-a22e-aa1795ebbc8a", "d5ac08c1-7c2f-4b66-aa96-63d49ceed28f", "ab323b10-4afa-48e8-9325-d01a1f044c3c", "755272ea-20cf-4521-b124-ca17b0f59db0", "8c15a226-998a-4526-85c0-e0e20df226d1", "e774a30d-c277-4bfd-b9a6-efd4c1235e0f"],
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  max_total_point_amount=9736,
+                                  max_point_amount=5206,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=4151,
+                                  minimum_number_of_amount=2823,
+                                  minimum_number_of_products=2986,
+                                  applicable_shop_label_ids=["33439bda-78d5-471d-a815-d8249cd8d072", "ec5da292-cbff-47cf-a007-7f99d6254488", "f582f28a-2a01-49a0-8770-170e7b9bc58e", "7ec40e09-1a02-42b8-b0e1-91349e744a3b", "a6bf505f-18b7-417e-a44c-b659044ade28", "6dd3c723-0f49-4b63-8435-1e9c9eb33eb7", "c11a22b9-f448-41c8-a9f9-6764b6177959", "041bfbae-6ff7-4b59-bc21-cedd8f653d01", "2802947b-20e2-4fd3-9e0a-0e74ab86a2d1", "a09deb73-d049-4d83-bd9d-4e40221a210a"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 2, 2, 5, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=4726,
+                                  point_expires_at="2026-08-05T15:28:30.000000Z",
+                                  status="disabled",
+                                  description="Ofry8huKLaun9q8fRCMt2pzYekawpUouvYHKlj0GUL0Fcnz7fEngR6pF3m54VmwYrgFgT3RyUt1Kex",
+                                  event="payment",
+                                  priority=6882,
+                                  ends_at="2020-04-10T15:27:58.000000Z",
+                                  starts_at="2025-03-22T07:24:03.000000Z",
+                                  name="2ZIYN08OgDDQY"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_25(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["99460e55-276b-4382-b9fe-2d5175014008"],
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  max_total_point_amount=4388,
+                                  max_point_amount=9464,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=9975,
+                                  minimum_number_of_amount=2046,
+                                  minimum_number_of_products=4916,
+                                  applicable_shop_label_ids=["245b42a4-d558-4cfe-95b3-93661de20ad5", "d5896aa1-e4bf-4ef5-a651-fd904ad3d11e", "45a3e4fa-7a08-44a9-a67a-d578c5a1f432", "e5ed310e-a27f-4268-bae5-4c9399f0ffe2", "bc11a09c-d728-4c7b-9336-de9f6fc0022e", "fcd6325c-9883-4738-9370-c6ad38998116", "20cbec24-0fce-43c5-8783-2aebf66b2ae6", "98d65aed-222b-45d3-9c5d-fe96fc630d16", "966b5bb3-0112-4203-a055-5d8b83231620"],
                                   applicable_time_ranges=[{
           "from": "12:00",
           "to": "23:59"
@@ -5602,32 +10624,483 @@ class PokepayTest(unittest.TestCase):
           "from": "12:00",
           "to": "23:59"
         }],
-                                  applicable_shop_ids=["7be5fbfc-5121-4f11-9f8d-d92a2d365ba4", "f00a5657-9973-48c9-80a5-3e285cbc2b18", "5d876dd2-3a78-4a4c-89ab-c0a8747110a2"],
-                                  minimum_number_for_combination_purchase=8720,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=4840,
-                                  max_total_point_amount=9396,
-                                  applicable_account_metadata={
-          "key": "sex",
-          "value": "male"
-        }
+                                  applicable_days_of_week=[5, 4, 2, 6, 4, 1, 6, 4, 6, 2],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=6964,
+                                  point_expires_at="2024-03-14T15:40:44.000000Z",
+                                  status="enabled",
+                                  description="m1YNfeeKoLdFE8Hmt9R8Bv1AJsBz3l6W699PQnfTErfIkmiU4i2bFcYt3zvnnQAgg6WKGNaTc3A08bOic61u1yVQPNCQEFIkbwhO9RJiR7mxn7kY",
+                                  event="external-transaction",
+                                  priority=8775,
+                                  ends_at="2025-08-08T23:42:50.000000Z",
+                                  starts_at="2026-11-02T08:37:39.000000Z",
+                                  name="azSiZH6DDfNqfsVRi3zxzsVzVJLxpF9uCjOUSNMH9fWh27PiOpr3HMMXsb4Lh4b0Gko8iE0P3Cu0AOaTlKzyVFYYoK00acoGlEqYYGWZUMgU5LJ8nedbEkL6VCbZlYCZFu0YjXrvick1kbCzvMElblaTUskxDWTi4syFdijXYZ6Fkp0v2rObj5KP7CaX5R9O7hnOQMfDj4u8or1Z5ajnFBytvfCWU5lvasIan6Df8"
         ))
         self.assertNotEqual(response.status_code, 400)
 
-    def test_update_campaign_21(self):
+    def test_update_campaign_26(self):
         response = client.send(pp.UpdateCampaign(
-                                  "80db920c-14b6-4bd6-a117-8ca291a457ff",
-                                  name="3wnSfVCO7XYJmoO0uhcJraMmDaSEahfn300LCaHLSroJkepEoifMTQ44ocvwtomMfjQ73GX2yquqoxmpJQvrLat0xlnzVZch13fLL8IaybXOFsTe5kGdJyjn39kuUAVwNBecCVcfQFB6zhe4zCjHFhQi2UCzxxgdtQx1Yj4cppg0SxOu0ayiRvxTn",
-                                  starts_at="2018-07-10T01:18:26.000000+09:00",
-                                  ends_at="2023-09-30T01:33:44.000000+09:00",
-                                  priority=3482,
-                                  event="payment",
-                                  description="nHVMhD4r87dViYbNhwHBT9cSJc7HHGuapEaMsGd77SVXYGZA1EEVZp38NbYd6BPccNKfybJvzwpWAlSZO0eB2VJdZjjB0xRzUNUpofUOthUvaBWHSD95mCwqz0uQMfHDC0caZdfhivWlaI8SRhD29ZtnzslLBpLYCsl",
-                                  status="enabled",
-                                  point_expires_at="2021-10-12T07:37:22.000000+09:00",
-                                  point_expires_in_days=4790,
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  applicable_shop_ids=["bdb4b5f3-0df1-4432-9d9a-776bc5b40f33", "4726f102-1645-4f54-b175-0d7c6e1229cd"],
+                                  budget_caps_amount=444246444,
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  max_total_point_amount=6836,
+                                  max_point_amount=2388,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=1548,
+                                  minimum_number_of_amount=7378,
+                                  minimum_number_of_products=8950,
+                                  applicable_shop_label_ids=["f1b47057-a546-4997-9fc4-f39202b41e2b"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3, 1, 5, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
                                   is_exclusive=True,
+                                  point_expires_in_days=906,
+                                  point_expires_at="2020-08-09T06:59:03.000000Z",
+                                  status="enabled",
+                                  description="8gAIFr9zY1ABG4Q6S1AZ81ee9F1zaeUGprRtPpZgZzOhvmvIjVKe7aM7QiN4LuTtB8ZF5mN9",
+                                  event="external-transaction",
+                                  priority=9452,
+                                  ends_at="2020-06-26T14:51:05.000000Z",
+                                  starts_at="2024-12-08T05:32:11.000000Z",
+                                  name="yKl8cUsYw8CW8rHVcmWZsjKlFT0f7did2pSfVDN"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_27(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["ac4a90e5-d06b-4ea2-a8e1-a7d5e35f3ce1", "cfca26f1-20ba-404e-965a-0703f23f0085", "42a321dd-44cf-4e72-b92c-309faee01fdc", "c76ca2b7-b199-48a8-9e70-0692cda4c6d1", "34116a3a-aea8-4363-b793-84eb70783751", "2526fd76-eebb-471c-b6e0-29480777aa9f"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_28(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["69525354-b1da-4ad4-bb0e-9a90c6bfc53d", "3758bf55-92e9-4c61-8e7f-6bd342d6a79e", "a35470a9-f342-4206-ae2d-4ae949694dd4", "e543533d-09f6-49e7-a983-024679a88b63", "4e5cb1ab-6ce6-4846-9b20-7d5749b3ad8c", "c907ed66-5023-4b58-943b-336fefc1f708", "9a69708b-35fd-4bdc-846f-1de22aec7d94"],
+                                  name="W27D2zSsjxSJQCC2TKE3m70u0i2E7e3WCog3HknLhb4mGHjaX24jJAlJFQ82MhyQQoipgFNSux0jeobdQD1VXjUggH7qMtHhSfZdXUyjb1NxKa8yAWf3eI4rn2GKxT8MfsHveV8"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_29(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["597339b8-7e00-46b6-b23f-88a97dbd3bb7"],
+                                  starts_at="2025-06-13T00:37:15.000000Z",
+                                  name="lMJYf8MI0c9iCp3raZonaiDazAfoVN5ZcNoMxEFE11voG9m7gWIlidcsFhnnSlOPQSKVW980GqQVfPuvUPiEFV6mDyiAjmPC8FhIFplNkUQpOFZAAuAkdYYYV8q02r77ePIgPu4dPH7ImSF7bIQ97lNoNEqqi11P4GN23Eb6NlDd7BTwpYu4Valw5xiIJ7Q1Ci"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_30(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["e5b5a103-e496-4870-9cfb-783ec68c351b", "1f3899f0-1c85-477e-800d-3e81fb259514", "c68b8d32-a143-4550-8dd2-2be95635cc66", "ef28e18c-311c-4b0e-8562-93f2aa5e7bc8", "f44b0262-0ae4-4550-90eb-66b04f214d7a", "3df9a4b0-b82c-4c55-93b5-d0fe3325586e"],
+                                  ends_at="2024-09-11T22:19:28.000000Z",
+                                  starts_at="2023-08-12T03:57:28.000000Z",
+                                  name="zSSSsJChBCfGVrTTzFEA3cEkuniAENmbJtM74yoK3yNaovdjb7urlPo"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_31(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["2a45f7ee-5489-4ee4-a880-6dae87c1e55e"],
+                                  priority=8865,
+                                  ends_at="2020-02-07T23:27:03.000000Z",
+                                  starts_at="2024-03-08T16:24:55.000000Z",
+                                  name="EfVzKMwihh3UCJATPnnGfbSAjt8y1LpRX9w3aEMSDM7H6DKpMVCMs6AqPF1N4VGIihJYcZH1yqyLKdrb7VdvBferrdPPsgFTBp21GVpuNthlN8cTNxtClPPAh3ydu7juMaO7kqGjaASQkqyw2Q45"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_32(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["ffa9df99-eaf0-4a69-adb1-979849ba8fb6", "a3e12f94-fc90-4bbd-82a9-67a0c34a7cfb", "8d059f6a-fa8f-4885-9122-64574c4fd882", "7e957759-cfb8-4a4c-9d9f-188c819b251b"],
+                                  event="external-transaction",
+                                  priority=4670,
+                                  ends_at="2025-04-20T03:01:54.000000Z",
+                                  starts_at="2020-05-23T09:35:53.000000Z",
+                                  name="uAILC9WmiQzTAP0hsvYk94ECXfwyrT6FNWSeiPJDkaNGUUFy37fVBCxguWkgEaSRxikajDhky1e9MUM8ZY9eEBDTjFI18oRpgCoDiEOfsuO3LMtzPm5pmHiztzTLcjSeNyveotr1SbLY9f9RM3h2SXQaAm6iMSYVoPQWfV62UhTGJS1L9KLOsA2Q2Z23Mwd98ipOldTUQCX"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_33(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["9ff85ae3-b293-4201-8c3a-24da675603f4"],
+                                  description="LDZ6t1d7NhS",
+                                  event="topup",
+                                  priority=5501,
+                                  ends_at="2023-04-28T02:37:22.000000Z",
+                                  starts_at="2020-12-16T04:55:24.000000Z",
+                                  name="iaQ9UqJHQZFkEmVia7WMZwoONY9"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_34(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["15a4e1e3-696a-4ed5-8433-fc42d90374fc", "3b1cdc8e-46d7-47e6-8a14-b7ce29273ba9", "2921ce33-0868-4c27-b01f-d6cfefd976e2", "51329b42-255e-4b3d-a21b-3e2653c52bfe", "8620f464-07ba-4eb0-9706-a8d0dbc3a9c0", "ffb2e321-e58f-4f99-838c-de9605ec62f5", "f80ce571-0790-4068-b930-5600e454c19f", "84086a26-1d77-4a98-a7ee-39abe1cc1f55", "a7a2b290-8cc5-450b-821f-59659a3054e6", "f69cd221-0ce4-4ff6-b6aa-69fe3115a29c"],
+                                  status="disabled",
+                                  description="n56xgqcINC0MaOVTzOYUS4YiFzadS1dG4VhCAXdvLcusNkP92lEHAtBr5uMSg7mI2h9L5UgN",
+                                  event="external-transaction",
+                                  priority=7750,
+                                  ends_at="2026-05-09T17:32:22.000000Z",
+                                  starts_at="2020-03-07T18:55:53.000000Z",
+                                  name="pGXPoR6V6EH9oG2E8mJwg74tJdyJ5Llab29gfUQ"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_35(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["7cc45a68-7854-4895-bbd1-e5ccfd9972b3", "9d6a9c96-0405-401e-b087-d3b66fc722c7", "51f052e8-a583-4649-943a-08a23bd31fcd", "915580cc-1f08-4a2a-abfb-62c81029ab44", "dec4b76d-a2dc-4293-9f66-7dae4e1b04e2", "1298ab32-40a7-4eb9-b6b5-a483fd0c604b", "0ee648aa-389d-4016-a357-9e96076f54ef"],
+                                  point_expires_at="2020-09-27T00:33:51.000000Z",
+                                  status="enabled",
+                                  description="LAa0LofoeILq2j1JbokM11iel9SifEKQQKEl5jTOYEn550ChTMJy5Ri4zQipR66DYXbWwtCBK4yI7b7ruIn1DQefV0LKmn0D6u1aqXUgLXLPq2aRw08a",
+                                  event="payment",
+                                  priority=8112,
+                                  ends_at="2021-05-20T03:15:50.000000Z",
+                                  starts_at="2023-02-13T03:59:11.000000Z",
+                                  name="HosccmXhG1yeE5aq4GKVSCfP0aoPIG5NuiB"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_36(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["4bba9855-dbb7-4f72-bde6-1c2d3445394c"],
+                                  point_expires_in_days=9271,
+                                  point_expires_at="2024-04-07T06:51:49.000000Z",
+                                  status="enabled",
+                                  description="RYw57l88LjJn33RIRSOmlXSQfzzTwn3Dxt4Xew7YzDaZ1J9OdsQM2IVUV93tsgTE0JEew3ek7732woVp",
+                                  event="external-transaction",
+                                  priority=7393,
+                                  ends_at="2026-01-27T17:26:19.000000Z",
+                                  starts_at="2020-04-17T14:22:02.000000Z",
+                                  name="WAn4e207OnXy1NWRJfp7ZK3WimQaowti0F0S2aIOKkN5iwpVUwFU1amkd1FBZBysFgH8TiyAaF4dUSAbqyi68iyJ302sQl233vCftoqwC5tymvF1K23X2uYu46ypSW9PxtiaID1SUC"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_37(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["c9b94e66-1706-47fa-b91a-4bf90be3a0c5", "c91578ab-26e5-447b-ac4d-7994d450afa3", "00d8e498-faef-4790-87c6-baabe8618d39", "bd803961-a932-4c17-b62b-9727a64a530d", "b1bcfbbf-96a3-47e3-b252-9fa0669690cc", "2bbbb548-0bfa-4113-91d7-3bac3da5c4bb", "9213f68f-4c2c-47cf-8adc-d023c594914f"],
+                                  is_exclusive=True,
+                                  point_expires_in_days=53,
+                                  point_expires_at="2023-06-23T05:28:34.000000Z",
+                                  status="enabled",
+                                  description="2l0o0g8SXRzZ3pUKHHeXuuwg12Ygg3AsTOryINKyRmJ3gWCDcmsuvkMrJePtGFhv4aIw1aGtGR3fEQezBo8XnXONHGXDMcl8tuhVdB5KkP8PHvZEmmcBKkGsr9sdEDTBkey7pr4d2jpaf36YY6mrG9Y2ztoKUUUx5B1bSO8xEgno",
+                                  event="external-transaction",
+                                  priority=5724,
+                                  ends_at="2021-09-07T15:37:35.000000Z",
+                                  starts_at="2024-01-28T02:05:25.000000Z",
+                                  name="0dnWTCVmm3x115QsBZT6dCGgqZsePkl6iY0bdXM6Nza2rTctUJQmh0gNd3qkWY4lVW5zCUF3zWzIdrHm6OsiyHBxsWBtx4G7cLViMByCBNzcDCX5bbsPzVUGeD2BWp2XUNEsAtEjlivj0NhalsavWYZduuXynvh05rJdAnnKPkjJzRbGyuQYyb8"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_38(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["a5c74921-b6b4-4bae-b820-00892a27978b", "e9ae9074-45d0-4589-840e-519db4d330a6", "656bd222-1401-4936-80bc-4ad64dd2b7bc", "cc8ccc8e-a1a7-420a-ab12-4fbc3693ced2", "90808182-68e1-48ce-a1ce-55e49ae96100", "86d0856a-fe6d-4480-950e-78ebfed5785d", "9967bcff-a23c-4b32-b718-d5a1c3f11d5f", "96e67806-8ceb-4863-9f7e-ac29667bdd6c", "530369ad-7b07-40a3-a590-ed20a311adeb", "8dd1e19b-186a-4303-87ba-c649fb68dee4"],
                                   subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=7795,
+                                  point_expires_at="2021-04-07T15:45:02.000000Z",
+                                  status="enabled",
+                                  description="dF8qpLKYfd3JbJX5QcdKyJ1DmsToKu4w1tRUaP7awM87Mt7bWysOyzqkBrGaMjb1sugqjEeek3DeIDBfKsRBbYLkU2TfJXzuBqGFPReFsmxaxT8Xwuc649dznjsqwxML0aHpiMuFL917lUTrE8EACTMWkW53gnqE0TT1OD00WYy85d5RKAlbrPQ0st0t7yJcv8GqBqgG",
+                                  event="payment",
+                                  priority=8648,
+                                  ends_at="2021-05-29T07:36:01.000000Z",
+                                  starts_at="2026-08-31T09:09:58.000000Z",
+                                  name="l1jNP9k7uydClg9A7an27PrVxBqiE9YWo"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_39(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["fc2344ab-7f78-4f94-aaed-71bdaa3dddfa", "6befe942-a011-4840-9c5f-21c7739fedaa", "c0a6dbca-0a56-43a3-b7d4-c45438dc88db", "d5283de1-3da3-40be-aa5f-ee22b902f8dc", "dd1a9604-acaa-44dd-ae29-9c5bf0513ca7", "3afbeac1-5058-4d79-866a-de1f812cef17", "acfd3b40-728b-4ca6-8c8c-b32ca6364d61", "58dda3a4-262c-4f5b-a7b3-3fe76e7bfe1d", "6bf3b1d0-b6a7-4325-882f-8ad06632e70d"],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=8352,
+                                  point_expires_at="2023-11-13T21:28:57.000000Z",
+                                  status="enabled",
+                                  description="q0FFntKGY10p27NPGQTdAXKNGuLNgDO4Ma1ptA22IkyjkgPuZUMAq2NjJocNYKTrm",
+                                  event="payment",
+                                  priority=818,
+                                  ends_at="2024-12-01T07:47:41.000000Z",
+                                  starts_at="2023-10-09T14:13:25.000000Z",
+                                  name="ssPqyT3XyCFCrR8uZnHFgU1ZOwuoeukDxIIOg9CcbCgtxt4qQA"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_40(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["1a32fdd0-5025-4089-8b5e-dc90efb30aab", "90a2ee89-95fb-435c-bc90-9a30736b0ba1", "f129640a-2c36-47d4-9144-3e2f8e4ae9cc"],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
                                   amount_based_point_rules=[{
           "point_amount": 5,
           "point_amount_unit": "percent",
@@ -5673,11 +11146,28 @@ class PokepayTest(unittest.TestCase):
           "point_amount_unit": "percent",
           "subject_more_than_or_equal": 1000,
           "subject_less_than": 5000
-        }, {
-          "point_amount": 5,
-          "point_amount_unit": "percent",
-          "subject_more_than_or_equal": 1000,
-          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=4044,
+                                  point_expires_at="2024-12-09T21:06:37.000000Z",
+                                  status="disabled",
+                                  description="zPf6wToG8lTKcMPiFJX3LNKTomMc8wnROYRP673oHx5N3DOO7Ad",
+                                  event="topup",
+                                  priority=7160,
+                                  ends_at="2021-05-13T04:08:46.000000Z",
+                                  starts_at="2021-09-04T07:50:28.000000Z",
+                                  name="2ea2N2bsCqxQkk2AG5TTqX05IlCZ5tUdSwXVRIVCnlZj6NtOwX2FI8Wr1369uaTF42abkg"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_41(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["fcf7670f-d488-48ed-a224-08f495e2fffe", "57f85945-b807-48c8-aa5b-3641935c2757", "844963fa-d34b-4f3b-966d-c1f7f9110c6d", "15bb24f1-80ce-4734-a1f8-8601f0746860"],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
         }],
                                   product_based_point_rules=[{
           "point_amount": 5,
@@ -5692,7 +11182,902 @@ class PokepayTest(unittest.TestCase):
           "is_multiply_by_count": True,
           "required_count": 2
         }],
-                                  applicable_days_of_week=[5, 5, 0],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=733,
+                                  point_expires_at="2022-01-30T05:07:15.000000Z",
+                                  status="enabled",
+                                  description="ha0o1JxRbdO7sJMkOiIt9zNKCX0Vz",
+                                  event="payment",
+                                  priority=115,
+                                  ends_at="2022-02-06T07:03:25.000000Z",
+                                  starts_at="2023-12-31T17:23:53.000000Z",
+                                  name="LLiEpULitiIsW57odiOHhS8DsZfAQRFK6oTTeP8tTTuInowX2TMHi2vDKbmu86aUF4jypKaAY4yQaiw0JpUpNfjrU"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_42(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["fb214c55-20a1-4285-83a1-b3d51686a2db", "07fb0e98-54bf-4234-bc15-1802f084f663"],
+                                  applicable_days_of_week=[6, 0, 6, 3, 0, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3291,
+                                  point_expires_at="2021-03-31T09:33:17.000000Z",
+                                  status="disabled",
+                                  description="0vnz9vdHX3zI21M9POKUqkrXtAeLmERqX5bwDROtzb2hizqeaCyQXA4kt1s5IzgftNOC",
+                                  event="payment",
+                                  priority=6181,
+                                  ends_at="2024-10-09T14:57:41.000000Z",
+                                  starts_at="2026-02-13T11:13:45.000000Z",
+                                  name="OWbpouk4VaYSYsKX6oU3L46cfTNsJ74FdhPrGorQztiuURWZ5r1OnryKkdpmMzmoITgipjScgSjEKEvn9tkKJsfEeEirDJBvMOLUpWvpkfaBwAHAugbJ1KgmPImdwaTBcNwqaqeRCH16a6zzUqr"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_43(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["3819a4ba-a064-4b15-8103-7eef7fd57abd", "41a59bf3-8c48-4364-a26d-e8afb065b840", "dd4778cc-f7de-44a5-bf79-5c77813becf1", "0ed4dd75-e63a-479f-989b-462eef65c98b", "643ecaae-d16b-4ddc-88f6-2980ddd5c080", "ead24302-2b88-4d88-85de-030469f26755", "33a72bc4-64a4-4cdb-87d4-07f428054af5", "1891b11a-e375-4535-ad4c-34c838dadf68", "047f8ba1-07bf-47c7-91ae-f8b9fa8cd69e"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[4, 3, 5, 1, 1, 6],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=9893,
+                                  point_expires_at="2021-04-13T01:34:15.000000Z",
+                                  status="enabled",
+                                  description="Nq3rRMob2yqEgXsKX0DNjA5LloLW2ZGwTADg0EGo2tY0BvAArU4c3Hcr3rYtMZs1YhE",
+                                  event="payment",
+                                  priority=42,
+                                  ends_at="2022-11-17T13:52:19.000000Z",
+                                  starts_at="2023-11-29T10:27:39.000000Z",
+                                  name="Qlphw1DkmThPoIdPA7X1r8JTPyIk7mw82VAIRkHcNMgqN77FQwuiGtQW4pnFSkfz0ZAYuHKErS89ga8rAwXpAiqwTxt1HL4wWzmkMDA4SVfWD13Zj3L9DQPYajb0tVdWEdtL2ujHbA7"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_44(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["d20d77b7-fb81-42a9-b022-7081edb33963", "7f3f8004-22b9-455d-a958-66095b871b69", "2c16133d-b5a2-42b2-8851-59315140661f", "55b51496-b593-4056-9764-7b4037bef77a", "d73e936e-287b-42fc-8a09-a891ba7b6595", "8c9cbdfc-3319-466f-915c-6e22937bba88", "b0a9f476-e64c-4923-a8d4-e1305fdd98c2", "a71799aa-0cf2-4d48-8877-3113f5bf8b9c", "dce88133-7f22-4774-855e-1e875d8f15ff"],
+                                  applicable_shop_label_ids=["c6a543e4-893c-4329-829d-3b21b5b98a4f"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 1, 6, 2, 1, 6, 4],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3263,
+                                  point_expires_at="2025-10-28T07:31:28.000000Z",
+                                  status="disabled",
+                                  description="MpzVlOR0ZjHbJ4pIYeH1mIjK91BovJNiyan2Rg9xEgMUhIRyB0Lq7z8Ljil9JSMA7rA7mkLLtm",
+                                  event="external-transaction",
+                                  priority=1305,
+                                  ends_at="2022-04-29T15:44:11.000000Z",
+                                  starts_at="2026-08-19T19:31:25.000000Z",
+                                  name="guDK2IgQjODYIDOJbPEulQIvNSkQALktsxpQNr6y6a28m0nRuldHpSuEUpdPie9qQ2GFfC0at9jn8DwInc5YWbNc2E2NkkIcBn5byBG"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_45(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["84b859aa-f0d3-4f6c-a841-282e9f5ab662", "e70efbf1-7616-45f2-a670-84ba1a641a5f", "cedb3d3c-9512-47dd-af2f-9c3b6cee66f0", "cea679d5-5d7b-4f71-8764-b6f8599b794d", "4c650702-b7ef-426c-a07e-5efce3bdc1c5", "56901f4d-afe3-4965-8aae-a7878b300db2", "01cb378d-7e6f-48c9-976b-09fa43872d9c", "07176368-6d36-4278-a998-c4e80bd42b1b", "4312cbb3-5deb-4224-9123-af1ad1073e13"],
+                                  minimum_number_of_products=3752,
+                                  applicable_shop_label_ids=["53d047fb-73d8-4748-a516-dc75ebe9b404", "26261ec5-c9ec-44e9-b1ce-bf927edfcbe3", "03225145-c8e0-40bc-8e9b-1856ee8aabf9", "5bbf91d4-df9b-4104-b2a9-429d394cfda9", "16e3c9e2-eb64-4bae-b98e-62297308d14a", "7afcc82a-6f7f-4471-ad02-af6851996533", "2ccc1627-a106-46d7-9289-fc66a5ede6c7", "6a99bad4-c40e-4f91-b93f-daa4459c3fe4"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[2, 4, 6, 2, 4, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=3042,
+                                  point_expires_at="2025-11-24T17:38:04.000000Z",
+                                  status="enabled",
+                                  description="gbEqwtEhHNUjZJEl7H6aHeFVmJSAKrLNuNDUQhJfNq76RxAuxS",
+                                  event="external-transaction",
+                                  priority=1321,
+                                  ends_at="2023-10-17T20:31:40.000000Z",
+                                  starts_at="2023-10-30T23:07:16.000000Z",
+                                  name="Vrnur4Ju4ayidm5BuCe0yTSEIanUYTV2eUYLa0Qhqw2R1myjYzFL4j0HTXKtxMi6tvMf7GbuKVOo81owGN6i0XTT33lqYdKQ0h3ghVZk7eOE9tcwx8MOKl5MRsa1MFEYPOVzvPSXDUkbgX2oBshUtXGZ9"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_46(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["643bcd23-c523-493a-95e6-6c7000aa1c39", "2801530f-a5d4-4e77-a759-8f80530ba8d0", "0ea839cf-cbac-436d-a92a-e7f34eed72ed"],
+                                  minimum_number_of_amount=647,
+                                  minimum_number_of_products=4841,
+                                  applicable_shop_label_ids=["19d399d8-b281-4557-b906-b49988ef949a", "cfc1bc3a-f4f1-480a-8fdd-1de45c747d1a", "ad883308-b0e8-4671-86ef-a4bbed71f34d", "f1ba2b2c-fd52-49fc-ae36-9c12371dd43c", "42ad658a-8b05-422f-ba6f-ea415772ec64", "86c58abb-93d4-4010-8135-4179485e935d", "2f73080b-3a50-4873-90d2-f4d492a5db83", "2f5b8489-3f15-40ed-a392-9b953b3fe29d"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[5, 6, 4, 5, 2, 2, 4, 1, 5, 4],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=1221,
+                                  point_expires_at="2021-10-15T01:36:24.000000Z",
+                                  status="enabled",
+                                  description="uZn0XgqQIqTu14tSh13qLZDYdRTWbMgZiB4q5yXIKvcyeytZ",
+                                  event="payment",
+                                  priority=7348,
+                                  ends_at="2021-07-09T03:25:43.000000Z",
+                                  starts_at="2026-05-16T09:19:53.000000Z",
+                                  name="7e7CQ6mogsi4OQ6jQwMdVQzET3CTZR3naadmHoO937wRncWgLEMvwuXtyGneCNJhR9grzsET9HHziGJ2iqEYWh5QfKEnNvZa51B6RuNHWw3kkEIImb7878ag0GpEoXRZP9Tuo6ihkLtNpmjVgJl2arbhJouxWQ6FlBm7k1iTzlm9ILQGKVJoUCSY35cdkgvsbAYCbaEHjTHUmx8bpM"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_47(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["45ebed59-62db-4742-a3f9-b2a73ab77a4c", "ce13b8df-ebdf-48fa-afb0-69f834c71b3a", "d697eff3-484a-40d2-a852-7081db5b395c", "9f8afad6-49f3-4042-b9ab-a0c8bc4de5ea", "a0b44ffa-fa42-4a41-abae-d6da7252050e", "074b5309-9ae6-40bd-9bd7-42fac9ff7c15", "d6aec6cf-f9af-4b00-b735-c321829111bb", "dcc81882-2b09-4018-a5f9-945daeaafd48", "d4f73313-c10c-4d57-8b60-1a5256401eb5"],
+                                  minimum_number_for_combination_purchase=1735,
+                                  minimum_number_of_amount=4829,
+                                  minimum_number_of_products=2092,
+                                  applicable_shop_label_ids=["35c062ba-70cd-4697-bbe1-34fdf7c079ae", "e8737781-fb39-4343-9dcf-29b34a7104ba", "cbf066be-7a47-468f-ad8a-0771a6edb33b"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 5, 6, 3, 4, 0],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=8522,
+                                  point_expires_at="2023-08-24T20:14:42.000000Z",
+                                  status="enabled",
+                                  description="SDvLJkkZMMdEANfWVavAje3PJg4zkA5dwRQrAEDCEBzCTk0pNAGkxkj3y6QjLE9oTv9S3Zg4O5dK9OBTn3gY0HI",
+                                  event="external-transaction",
+                                  priority=5194,
+                                  ends_at="2022-05-08T22:04:34.000000Z",
+                                  starts_at="2024-12-22T18:52:45.000000Z",
+                                  name="5Xn6R9PIw5eC52tvIBnMyMg4CnT2dj7ORUTt4jEgn4792da7QYy7V605lzcBixerwgOsZo2yFQXiifPwyEPkMTjwK5UmBamQcUvvHD25XYGaGoRmlkWpVKSQYACWhdJgT5o"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_48(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["38e5c4bf-752b-46d8-8907-100976cbaa41"],
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=9138,
+                                  minimum_number_of_amount=2870,
+                                  minimum_number_of_products=4363,
+                                  applicable_shop_label_ids=["1f5ca9dc-3287-4f95-91b2-7101020a9676", "0db7c28d-9347-472e-9237-6b42650fff02", "8cc856f9-6f19-4db9-b14b-2a843ece2123", "b5f83fde-2e43-4921-9f3e-683fe033f693", "f84a1cb2-9478-41be-ab0a-33267515e5f7", "5c19320d-4c18-4a7f-947e-c691d5ad0462", "7ed39722-e04d-4076-9b81-512bd913f4d2", "c1171b1d-be4f-401e-97e6-9cd58b34c63b"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 6],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=367,
+                                  point_expires_at="2026-01-07T05:16:09.000000Z",
+                                  status="enabled",
+                                  description="0yJYgRGAM6oTzljbZYS9b6qm",
+                                  event="payment",
+                                  priority=7794,
+                                  ends_at="2020-11-02T16:31:15.000000Z",
+                                  starts_at="2024-09-26T20:23:28.000000Z",
+                                  name="aDiVxdn1z0TuA7dLQ8GnuuGnm3um0ZKYlqHYAPfacx4ba4pxXiFCicQd3QQrdtpp5IlW8KnTaroT8w3801ZxeZpTa0FFkkUFLVCDKp9TvCsVFg3Dy6t9FVfvRBKOl2QQeBI5NM6J7EhkzGk22yYle2ZOPXJOiEYcNwwBKhoxCdqw8SDS6L7O6ohLm8HBuYz7E9ZuYBA"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_49(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["4105b124-9e99-42fa-b0f6-1ec890a37fb4", "785588b5-9782-41f5-9834-5d530f4a8c48", "94298f16-a0a9-4480-a41b-23d818fb1b90", "97384ae0-d670-4de6-91d9-745f20407fe5", "f86a8ff1-3c01-4c4d-b45e-c0e30bc1822f", "96b4241b-9c3f-4e66-bb8f-8464ab493938", "d3ba8dbd-b477-4baa-9578-44e360def0f9", "1a4560e7-70af-48c9-9711-38b1a4b09a08", "c6e8b010-fe6b-465d-817a-6f5fa2a62df9"],
+                                  max_point_amount=1346,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=8555,
+                                  minimum_number_of_amount=7446,
+                                  minimum_number_of_products=5421,
+                                  applicable_shop_label_ids=["3fa72a16-ec84-44d7-973f-5b7cdb2bef03", "76274a30-cbe5-4ebe-aee0-6b46c1f1b2f3", "c120affb-7310-426c-a01d-a353278bd53d", "30d12e17-1c9c-40bd-a62e-7404a55d89bc", "6c24edb8-7fc0-49ce-a18c-3c422a4a595f", "0392af54-4502-45ae-9df9-a1d63b952008", "c0f1bab6-fac7-4742-959b-d954262041b8", "761abdf4-56c4-4411-9dc8-271b57bc9649", "29f93e30-f6fa-45d7-918e-fd8465d22e91", "6caaf427-75a5-4260-a372-8b1d019a3830"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=False,
+                                  point_expires_in_days=1488,
+                                  point_expires_at="2021-10-26T02:37:43.000000Z",
+                                  status="disabled",
+                                  description="l5xIQiAP4UplfuFUQK5yc0JqyEbk4xV1ElwOVpwOgCs3REJLXlOpH9qH3TntlxmPSv0sqeMHVeJGZnQaE4lp3S7TMyfZKpPybiZ1Lwce18e7Eq5OqWuTabdRaaHOyfGqVUncX",
+                                  event="external-transaction",
+                                  priority=1928,
+                                  ends_at="2024-03-13T09:20:00.000000Z",
+                                  starts_at="2025-08-17T22:54:52.000000Z",
+                                  name="jskeGyZxmbEy050"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_50(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["1f05bcbf-9ffb-42ec-b6bc-3e0c2973b7b3", "33758af4-357a-4f98-9ad6-1f725571abb8", "5086aee1-6f11-4554-a694-eed0a56acf25", "3a5f3f94-bbc4-49a1-b197-7313af11cdcd", "4f3e9c0c-644b-4a62-93f8-081986194a3c", "8c299c1c-1e53-47af-807b-04de462c1286"],
+                                  max_total_point_amount=5643,
+                                  max_point_amount=2993,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=8724,
+                                  minimum_number_of_amount=1367,
+                                  minimum_number_of_products=2430,
+                                  applicable_shop_label_ids=["80666c84-a47c-499c-b34f-cbbd22d4c47b", "ccab63ec-be49-4f72-a40e-600ebfe8ec6e", "3e79b59b-5696-4803-b8b7-bbf21ea4d91d", "a713b2d5-361e-429b-b95c-02a28937ef3b", "520dfe46-9f08-41a8-b465-d8b9ba4c6eda", "984244b9-7ac0-4f29-8a35-c786aa9d9539", "b85330ef-9f27-41c2-b9b1-ce2ef94cd8b3", "52ccb3aa-866d-4bf4-9e17-93e58f860588", "158fe36c-8833-41fe-a400-dd38d7b348d4"],
                                   applicable_time_ranges=[{
           "from": "12:00",
           "to": "23:59"
@@ -5715,22 +12100,2575 @@ class PokepayTest(unittest.TestCase):
           "from": "12:00",
           "to": "23:59"
         }],
-                                  applicable_shop_ids=["7872ece2-626e-48b9-a80c-0baeaffeb415", "8da393e4-bf8d-4758-9f39-cd4fe0b9a8c3"],
-                                  minimum_number_for_combination_purchase=4711,
-                                  exist_in_each_product_groups=True,
-                                  max_point_amount=6018,
-                                  max_total_point_amount=6105,
+                                  applicable_days_of_week=[3, 2, 3, 5, 4, 3, 3],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=3339,
+                                  point_expires_at="2024-12-29T02:10:18.000000Z",
+                                  status="enabled",
+                                  description="58jo0hnztlMdM7BVfn4iFYyJJXfrDUn2Z5dTBMhYMOaLFSQqsldJHk3l4cpZ7fJl29",
+                                  event="payment",
+                                  priority=207,
+                                  ends_at="2023-09-08T05:33:42.000000Z",
+                                  starts_at="2023-05-22T09:08:09.000000Z",
+                                  name="fQnXOgwkIth5yMWiTVYzb9YasuIp7v4EzACicWq4Ul0bBBFnJ"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_51(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["acb1548d-39ea-4bf2-90f5-21e68c71151d", "ed369772-e700-4cf7-8c35-abda6d2d15b4", "f92ec471-6aaa-4c3c-aebc-1a4d5ca752b5", "c7d19163-bff9-4d65-bca7-49665f3c62ba", "b87291de-8874-47cd-9ee2-6cda946ab428", "ca4f98df-f43b-4597-a968-0a4a5179bf75", "94b7bd4e-1df3-4843-a4f1-a25b79f91425", "f541f4db-1996-4dd6-a241-e0675d6721fe"],
                                   applicable_account_metadata={
           "key": "sex",
           "value": "male"
-        }
+        },
+                                  max_total_point_amount=64,
+                                  max_point_amount=5069,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=4818,
+                                  minimum_number_of_amount=4940,
+                                  minimum_number_of_products=3009,
+                                  applicable_shop_label_ids=["45fc8fd8-8c1d-4be2-bfec-7a0177677968", "37f699aa-c576-4b60-abe4-7fd1a9491f8a"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 4],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=True,
+                                  point_expires_in_days=9587,
+                                  point_expires_at="2022-08-16T12:49:17.000000Z",
+                                  status="disabled",
+                                  description="aKHSf5htPpycWdWsbduWBxtfg1K",
+                                  event="topup",
+                                  priority=7913,
+                                  ends_at="2025-03-24T06:32:21.000000Z",
+                                  starts_at="2026-06-16T13:58:27.000000Z",
+                                  name="7KITpvwbo61t0xPHohZAfXS5WAq97VI0kJjyO9S00lRKqhRSKyv4aeUNiX5kIXisF2lvLdWFAH9CECfmZyvOgcw2bcIoYI3B409EBsOM5mHn7CA1SM3xNEFCgQheyCbSnP7P0SqnjQBF0gNpyvaBHzjlAdXU9fbl4BElEfYJcTmiRof0lbldC"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_52(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["a2430c01-2c73-47bb-ac53-9528616ed353", "fb692c54-f67f-4292-bb67-62845b2ab26f", "ffe3b1f8-e386-419e-8218-2f8e2f29a3de"],
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  max_total_point_amount=6204,
+                                  max_point_amount=4713,
+                                  exist_in_each_product_groups=False,
+                                  minimum_number_for_combination_purchase=2684,
+                                  minimum_number_of_amount=8756,
+                                  minimum_number_of_products=1188,
+                                  applicable_shop_label_ids=["5acbe6a9-2012-45c3-aea9-12c4c591eb89", "275ed488-ac88-415f-9c51-2275a1e6e16d"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[0, 4, 0, 0, 5, 0, 3, 5],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="all",
+                                  is_exclusive=False,
+                                  point_expires_in_days=5153,
+                                  point_expires_at="2024-01-30T12:47:25.000000Z",
+                                  status="disabled",
+                                  description="gaH3XPjunt8NgffostplBJ13qPcXVXQ9E7OqefuC0zsB8aQbgel1VXLZNhM7VCGfzH0EqAidHGV4baZPNRUSJ9iQNhB3KMhlAuhO2DrrEN6v7h6DIeIXBVaS0Zi07XrJykFEWCqS7fI",
+                                  event="payment",
+                                  priority=9511,
+                                  ends_at="2021-06-06T18:20:51.000000Z",
+                                  starts_at="2026-08-19T14:10:45.000000Z",
+                                  name="vzhcyY8O4aW8dVGclxW2nJI1LDT3BhMLUADblZz6ydgd6gveWK49xDzlQxtC3xLL1ERUl6NhqKkDSvghab5bsImY7PcHPZH7mHIXsOqC2xcKBYhL1xCfn"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_campaign_53(self):
+        response = client.send(pp.UpdateCampaign(
+                                  "5c9f1923-f64a-4ff6-8405-dda8b0b4bb9b",
+                                  blacklisted_shop_ids=["72d2b6c5-e470-49ff-9ac0-4c8fabe9ceba", "694f2905-710e-4844-8c63-ea07cfaab8ce"],
+                                  budget_caps_amount=1184746088,
+                                  applicable_transaction_metadata={
+          "key": "rank",
+          "value": "bronze"
+        },
+                                  applicable_account_metadata={
+          "key": "sex",
+          "value": "male"
+        },
+                                  max_total_point_amount=9724,
+                                  max_point_amount=5658,
+                                  exist_in_each_product_groups=True,
+                                  minimum_number_for_combination_purchase=7687,
+                                  minimum_number_of_amount=752,
+                                  minimum_number_of_products=9716,
+                                  applicable_shop_label_ids=["9e612d9b-aba2-4775-a902-a8cb7e8e8ce1", "7e180525-6a6a-42f0-a17f-72e362eaddd1", "08398de6-9334-436e-b5aa-ea45259bf48c", "b5a15b43-a116-4966-a456-d3161fe54405", "20b5f6a1-185e-4d55-afdb-940b0ab779c1", "9adad60a-d054-415a-b0fe-c8f0f17f0e5b", "e65af35a-d731-4b89-86c5-897538c3603c", "3867d20a-8d1d-4097-b3eb-a7275f74887b", "77c5f07d-01b3-4e73-b6ad-c66490d7424f"],
+                                  applicable_time_ranges=[{
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }, {
+          "from": "12:00",
+          "to": "23:59"
+        }],
+                                  applicable_days_of_week=[6, 2, 6, 0, 3, 1],
+                                  blacklisted_product_rules=[{
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }, {
+          "product_code": "4912345678904",
+          "classification_code": "c123"
+        }],
+                                  product_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "product_code": "4912345678904",
+          "is_multiply_by_count": True,
+          "required_count": 2
+        }],
+                                  amount_based_point_rules=[{
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }, {
+          "point_amount": 5,
+          "point_amount_unit": "percent",
+          "subject_more_than_or_equal": 1000,
+          "subject_less_than": 5000
+        }],
+                                  subject="money",
+                                  is_exclusive=True,
+                                  point_expires_in_days=6545,
+                                  point_expires_at="2022-06-10T11:56:22.000000Z",
+                                  status="enabled",
+                                  description="M1EZPsd7jOCTvYgQYDODNTX3YU3qGQBWGDfb1wlkuiN7kKWKFoxKeA9tuL5",
+                                  event="topup",
+                                  priority=6088,
+                                  ends_at="2020-02-29T11:37:40.000000Z",
+                                  starts_at="2020-06-07T00:47:33.000000Z",
+                                  name="HPGJy8ZSoJ1krFHQyhzGXerHPOPDvrwRgeSOaGF6stofVWAQmmxPEjbZK4rVxAUW7FWHkK"
         ))
         self.assertNotEqual(response.status_code, 400)
 
     def test_request_user_stats_0(self):
         response = client.send(pp.RequestUserStats(
-                                  "2016-10-05T10:55:22.000000+09:00",
-                                  "2022-01-14T09:41:39.000000+09:00"
+                                  "2022-06-10T22:47:19.000000Z",
+                                  "2026-05-22T19:10:00.000000Z"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_terminate_user_stats_0(self):
+        response = client.send(pp.TerminateUserStats(
+                                  "38a46ae4-d320-40a6-a704-d4dc10b02c36"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_webhooks_0(self):
+        response = client.send(pp.ListWebhooks(
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_webhooks_1(self):
+        response = client.send(pp.ListWebhooks(
+                                  per_page=8760
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_webhooks_2(self):
+        response = client.send(pp.ListWebhooks(
+                                  page=7085,
+                                  per_page=6692
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_webhook_0(self):
+        response = client.send(pp.CreateWebhook(
+                                  "process_user_stats_operation",
+                                  "FNaTUuVqVN"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_delete_webhook_0(self):
+        response = client.send(pp.DeleteWebhook(
+                                  "72c43408-5df4-4af6-ba76-fb871ed575f8"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_webhook_0(self):
+        response = client.send(pp.UpdateWebhook(
+                                  "d0b9e3cd-3e09-4050-b994-d42a264d379c"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_webhook_1(self):
+        response = client.send(pp.UpdateWebhook(
+                                  "d0b9e3cd-3e09-4050-b994-d42a264d379c",
+                                  task="bulk_shops"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_webhook_2(self):
+        response = client.send(pp.UpdateWebhook(
+                                  "d0b9e3cd-3e09-4050-b994-d42a264d379c",
+                                  is_active=True,
+                                  task="bulk_shops"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_webhook_3(self):
+        response = client.send(pp.UpdateWebhook(
+                                  "d0b9e3cd-3e09-4050-b994-d42a264d379c",
+                                  url="YVQrlA",
+                                  is_active=True,
+                                  task="process_user_stats_operation"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_user_device_0(self):
+        response = client.send(pp.CreateUserDevice(
+                                  "2aca02f7-cd42-4b9d-ac54-3203ffc39ae0"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_user_device_1(self):
+        response = client.send(pp.CreateUserDevice(
+                                  "2aca02f7-cd42-4b9d-ac54-3203ffc39ae0",
+                                  metadata="{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_user_device_0(self):
+        response = client.send(pp.GetUserDevice(
+                                  "d71a364c-40c4-4a97-8748-139ff3b1e87e"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_activate_user_device_0(self):
+        response = client.send(pp.ActivateUserDevice(
+                                  "ca675482-e882-4379-8519-dcec507ddc10"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_delete_bank_0(self):
+        response = client.send(pp.DeleteBank(
+                                  "05966fd9-6756-466f-a1d5-7712a87fa930",
+                                  "e27345ff-8c10-475b-8c95-34a615ea3ff5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_banks_0(self):
+        response = client.send(pp.ListBanks(
+                                  "8f39a6e4-2539-401a-a235-bc26ca94524d"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_banks_1(self):
+        response = client.send(pp.ListBanks(
+                                  "8f39a6e4-2539-401a-a235-bc26ca94524d",
+                                  private_money_id="bb258cc8-4ee4-4381-bf4d-8db8a9c75c5b"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bank_0(self):
+        response = client.send(pp.CreateBank(
+                                  "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+                                  "29611482-532d-47f7-9160-dd20210d1b37",
+                                  "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+                                  "knsF"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bank_1(self):
+        response = client.send(pp.CreateBank(
+                                  "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+                                  "29611482-532d-47f7-9160-dd20210d1b37",
+                                  "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+                                  "knsF",
+                                  birthdate="uO"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bank_2(self):
+        response = client.send(pp.CreateBank(
+                                  "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+                                  "29611482-532d-47f7-9160-dd20210d1b37",
+                                  "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+                                  "knsF",
+                                  email="eDw3ETEoYb@DEhr.com",
+                                  birthdate="0AwKk"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bank_topup_transaction_0(self):
+        response = client.send(pp.CreateBankTopupTransaction(
+                                  "5f13e0e9-09dc-432a-914f-61c860f85484",
+                                  "ade0fe43-8e1a-4851-887d-bd3a0fa78743",
+                                  586,
+                                  "cd831749-3152-4428-929b-f5c43c155318",
+                                  "04e72f0a-5c69-444a-b545-dad7d373e8d3"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_bank_topup_transaction_1(self):
+        response = client.send(pp.CreateBankTopupTransaction(
+                                  "5f13e0e9-09dc-432a-914f-61c860f85484",
+                                  "ade0fe43-8e1a-4851-887d-bd3a0fa78743",
+                                  586,
+                                  "cd831749-3152-4428-929b-f5c43c155318",
+                                  "04e72f0a-5c69-444a-b545-dad7d373e8d3",
+                                  receiver_user_id="c0fd6611-d919-47f0-9ef3-54b1b7b324dd"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_0(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_1(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  per_page=5742
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_2(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  page=9525,
+                                  per_page=5572
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_3(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  available_to="2024-07-29T17:40:05.000000Z",
+                                  page=2237,
+                                  per_page=1327
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_4(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  available_from="2021-10-03T22:34:50.000000Z",
+                                  available_to="2023-02-15T02:39:49.000000Z",
+                                  page=1922,
+                                  per_page=6263
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_5(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  available_shop_name="iyaRPbQ",
+                                  available_from="2024-09-11T02:46:27.000000Z",
+                                  available_to="2023-03-28T14:38:44.000000Z",
+                                  page=9761,
+                                  per_page=8332
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_6(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  issued_shop_name="CSz",
+                                  available_shop_name="35Rx",
+                                  available_from="2021-02-15T14:53:10.000000Z",
+                                  available_to="2024-09-09T22:51:09.000000Z",
+                                  page=72,
+                                  per_page=9278
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_7(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  coupon_name="rM7sDhsRo",
+                                  issued_shop_name="5EZ",
+                                  available_shop_name="BgB",
+                                  available_from="2022-05-08T22:51:26.000000Z",
+                                  available_to="2025-09-21T07:25:11.000000Z",
+                                  page=9088,
+                                  per_page=357
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_list_coupons_8(self):
+        response = client.send(pp.ListCoupons(
+                                  "6a1cedfd-e81a-4a09-9f5b-2543358e793c",
+                                  coupon_id="pXW",
+                                  coupon_name="vXZA",
+                                  issued_shop_name="IGmx",
+                                  available_shop_name="3OdV3od",
+                                  available_from="2021-01-23T16:06:46.000000Z",
+                                  available_to="2022-11-03T04:30:36.000000Z",
+                                  page=4224,
+                                  per_page=8304
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_0(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=4151
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_1(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=4456,
+                                  num_recipients_cap=1123
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_2(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=8930,
+                                  storage_id="662b573a-909a-4b44-9476-f302773765bc",
+                                  num_recipients_cap=579
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_3(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=8754,
+                                  min_amount=3044,
+                                  storage_id="e44c9396-40eb-4818-913a-c2d73c75c707",
+                                  num_recipients_cap=6240
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_4(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=5849,
+                                  usage_limit=195,
+                                  min_amount=6934,
+                                  storage_id="f0e38bb4-1fa7-40d2-a59f-1da447c05d3f",
+                                  num_recipients_cap=6495
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_5(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=8195,
+                                  code="qJwsq2yT",
+                                  usage_limit=8871,
+                                  min_amount=6231,
+                                  storage_id="1f3d01f0-a3c3-4fa3-8484-ef6bbdb9ecf9",
+                                  num_recipients_cap=8603
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_6(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=5836,
+                                  is_public=False,
+                                  code="B",
+                                  usage_limit=3563,
+                                  min_amount=6745,
+                                  storage_id="5270c0a8-e23f-45fa-857d-665deeb8f041",
+                                  num_recipients_cap=1017
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_7(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=1253,
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="Ko",
+                                  usage_limit=2052,
+                                  min_amount=4341,
+                                  storage_id="e5f7963b-6807-4d55-8711-49c001cce1e6",
+                                  num_recipients_cap=6947
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_8(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=3045,
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="JI",
+                                  usage_limit=6285,
+                                  min_amount=7937,
+                                  storage_id="f2a3b405-98f5-4248-96e8-9dfb350491f8",
+                                  num_recipients_cap=4592
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_9(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=6128,
+                                  display_ends_at="2022-12-18T06:48:46.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="v6dLAyty2E",
+                                  usage_limit=4301,
+                                  min_amount=143,
+                                  storage_id="b1df95a2-99e7-47a3-9056-6be087fb9486",
+                                  num_recipients_cap=4717
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_10(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=6178,
+                                  display_starts_at="2024-08-30T21:53:37.000000Z",
+                                  display_ends_at="2022-05-05T21:02:32.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="dbEevpLkzd",
+                                  usage_limit=1170,
+                                  min_amount=412,
+                                  storage_id="5f84bfa5-fe55-487b-a0c6-a09da10363c3",
+                                  num_recipients_cap=766
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_11(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=2700,
+                                  discount_upper_limit=1978,
+                                  display_starts_at="2024-07-30T17:08:13.000000Z",
+                                  display_ends_at="2022-12-30T10:13:15.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="4QGOnpUX",
+                                  usage_limit=4008,
+                                  min_amount=8974,
+                                  storage_id="f99ffdf7-0684-4fe8-8d46-9f183af29104",
+                                  num_recipients_cap=1547
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_12(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=9707,
+                                  description="9ufFPOzF9Lvv7JJIkMwpNGlwPY7w3AePumXzLvyF75pQlwzsKLA3j0RsOTGgnfI7tlICoQDpnLAiZiYS",
+                                  discount_upper_limit=7131,
+                                  display_starts_at="2022-02-17T17:36:16.000000Z",
+                                  display_ends_at="2021-07-29T23:49:48.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="p",
+                                  usage_limit=8122,
+                                  min_amount=7234,
+                                  storage_id="0f7500d5-419f-4f0a-83c3-765388094c67",
+                                  num_recipients_cap=5999
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_13(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=5687,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["26a1c826-c150-492f-b6c5-b08b0b14dda2", "2f398eab-bab1-4537-acaa-ef030b8aa409", "c0ae2a6b-93ab-444d-a7d1-b772789535c1", "6faaf37e-f0b8-4138-9c79-c712853f30f5"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_14(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=8472,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["0eccf809-95b2-4220-9834-f14bf9efa952", "a5f4196c-20f0-4591-88de-b99abfbf6198", "ecf00e65-2df7-451b-8ca0-47db0a19bc15", "a00d85ef-da32-4cc3-be8e-70e768767ec6", "ceb9d060-ff03-4ad1-abfd-4ddddcfcbc64", "73059f58-8cd0-4696-809e-8746f7c39b27", "33ec1f34-11a3-4e1e-a1dd-5e8b9ccb8305", "4f376456-fe39-4ed8-88e2-824cc3194636"],
+                                  num_recipients_cap=6425
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_15(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=926,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["c2fad4be-92a2-4a18-b6fd-681fae9c68f6", "96efac88-e403-4571-b70e-a824e33036e7", "9d14eee3-d622-4d49-b759-221a8284c0d0", "54095ac5-2b5b-4850-885c-80674df51347", "0cf9d1ee-3d7c-4c45-a4dc-58818680db7a", "38f48f68-c9c7-41c1-8df4-e179d3cd6e7d", "d3181828-a733-4265-889d-a39166663b76", "c52fd888-00ff-403b-8af7-fbdf8ee29563", "41dacd3d-e3dc-465d-84e5-ca1104b4e374", "968292c9-2374-494a-b8cf-b4b9a099e9af"],
+                                  storage_id="869b3cb3-268f-4be3-8e8c-2bb035f4be6c",
+                                  num_recipients_cap=9687
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_16(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=2175,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["0c45f0c7-5f29-4430-9889-4d6c6c0ae577", "5278e9d4-bd47-457c-8c3b-353e7646d7db", "25f36352-9b38-4be3-a9ba-b91fda0c2932", "e3b105a2-a88a-4163-8389-92495d716fc9", "e07bb3bf-e606-4f45-beb6-7536754faf97"],
+                                  min_amount=6630,
+                                  storage_id="39341568-ca83-4aea-9f03-abfdadef7e32",
+                                  num_recipients_cap=9839
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_17(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=7322,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["062cc25a-8c0c-40b6-9413-84a64e283c34", "ac0a4a7d-d7c8-4c94-b022-af07219fc876", "8816e282-77a4-4e46-a647-f8be742bd6eb", "4dec42ca-e79d-4da1-b2b1-4d75c9863d8d", "a5f9cd6f-3d34-4add-8e9e-284c093ce3f3", "869ddef4-b1ee-46d3-8037-92c505c8e89c", "3c123798-f7c1-4912-87e2-b44481ba3b16", "30347f22-9a3b-4f03-a751-d2e1ac156dd9", "add2cf1c-006b-43d5-b211-46445fada0f3", "050ab451-cf25-43fb-a2f9-616bebf69010"],
+                                  usage_limit=8627,
+                                  min_amount=7200,
+                                  storage_id="c48860cf-9d7b-49e9-9df3-954e925f118e",
+                                  num_recipients_cap=1752
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_18(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=2105,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["f8f88a4d-7b99-41c8-a3be-9fae15f566c2", "a12d3856-389c-4eac-9a1b-6821fd851950", "4d76cc73-2cf2-42f3-bb03-95944f461a59", "613ea7db-9bc2-4fa3-bdee-094cfca512c7"],
+                                  code="XRYzu4no",
+                                  usage_limit=6532,
+                                  min_amount=9040,
+                                  storage_id="dafe1458-cbce-4e0f-90d7-6370523a3089",
+                                  num_recipients_cap=5279
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_19(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=9511,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["f3684688-e5ad-4f42-82bb-b27042af0ffc", "f26d347f-6a7c-45b2-8aba-57739318e975", "4fdac684-2356-4d25-bf9b-e9c9d7ca6794", "fe86ab13-b09c-428b-898b-ab3c047bea3f", "e6226509-501b-414e-83bd-422ccef84ed2", "52c9ce5e-1aba-4691-9670-c713a8ae4d7d", "3a2eb978-af8b-40ea-a114-d6373133bced"],
+                                  is_public=True,
+                                  code="e48LNXqp",
+                                  usage_limit=3185,
+                                  min_amount=1040,
+                                  storage_id="584ffd94-3f4a-4d98-a1af-0c74f790e26a",
+                                  num_recipients_cap=2523
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_20(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=6624,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["aae0f84a-f919-408b-812c-6049f58b6e4c", "373feff3-0df5-44d5-973a-36422a1293ed", "24dc5c38-1511-4a3f-8a5d-5c10562ae630", "75426f97-b19c-475d-b4f5-3a3256ba9e89", "a0964cf6-78b6-4f0a-857a-fcc4ea2cd615", "feabddaa-0005-442b-8bfe-f0704219333a", "f5f551b9-867d-4669-8f40-52b7d10a2541", "e531eb3e-5f72-4de9-bb83-b6a88f72aa18", "9325a7b3-4a92-4b9b-978d-50ae683f71d5"],
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="XPE5Oqy",
+                                  usage_limit=2737,
+                                  min_amount=6660,
+                                  storage_id="0ed70d44-e36c-4529-bdea-61d64de5299a",
+                                  num_recipients_cap=3500
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_21(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=4968,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["7ec3776e-b373-402f-98f1-777e37aeaa00", "789e4167-23fa-4cde-af2b-a3eea6ef6d0c", "f1a0e39a-5aff-4e67-bb4b-87e7b713effd", "9a29a6b5-efbd-40d3-ad5c-5b7f380f58bd", "e7bdfd5f-cb46-45d3-b0a4-40164aa9957b", "b2b0c3e3-a161-4e21-a90a-ca2ad89de9a2", "a4ba4c97-86fb-4c7c-8a0e-b50ef9c2881b", "c2673457-d071-415c-8d56-30ff1ab8095f", "70cb03c5-caa5-462c-a702-5479a7a8c611", "fca6245e-f6d8-410c-901a-cf6918bf35a7"],
+                                  is_disabled=True,
+                                  is_hidden=True,
+                                  is_public=True,
+                                  code="bD",
+                                  usage_limit=2340,
+                                  min_amount=6415,
+                                  storage_id="9cb01132-7466-4f04-906b-96f223db5910",
+                                  num_recipients_cap=2644
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_22(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=305,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["96b931d9-3889-4962-8e7e-c7edd0cdfdf7", "c8ebe1f5-dde3-4d87-a4a8-7312b7d505c0", "84cd0284-4e54-445d-90ea-7042024c31df", "af8c4905-1f04-4d7c-98ba-2714fce71fde", "e9baa3cf-d884-48cd-a0a1-31183ba45879", "ad779648-4d18-4dd6-8720-dfe55dba87de", "9dcdfe88-b125-4e46-81c7-fa96d9245a87"],
+                                  display_ends_at="2021-08-21T22:39:31.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="5v",
+                                  usage_limit=447,
+                                  min_amount=5047,
+                                  storage_id="96d01fbd-8367-4226-8922-43ddc694a6ff",
+                                  num_recipients_cap=7915
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_23(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=8389,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["2b8a2320-634a-43a2-9baa-e3828eed7633"],
+                                  display_starts_at="2025-06-13T10:01:22.000000Z",
+                                  display_ends_at="2024-11-07T19:58:51.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="Qge",
+                                  usage_limit=373,
+                                  min_amount=9599,
+                                  storage_id="3d3a8427-6457-4eb4-8e02-3e7298b1f3f7",
+                                  num_recipients_cap=3714
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_24(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=395,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["f4bf264f-6199-4fe2-b39b-7dd690e85455", "20d52991-95c9-4e57-a0e2-ff9868f1cffa", "0cdf0344-9414-457f-80ec-5224b2b1e5ea", "2cec824a-57b6-4240-9c83-e0eb56028808"],
+                                  discount_upper_limit=236,
+                                  display_starts_at="2021-02-12T13:27:26.000000Z",
+                                  display_ends_at="2025-04-23T18:26:06.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=True,
+                                  code="tciJU",
+                                  usage_limit=3855,
+                                  min_amount=305,
+                                  storage_id="f9206e8e-578e-4e77-9c69-c62732ebb28e",
+                                  num_recipients_cap=1035
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_25(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_amount=2655,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["7564c689-1715-4df2-98b4-f20fdfebd1aa"],
+                                  description="yYsQVBNqeXloDbzzGADkOfMAKTboQcaiYXr4rnNnjCoeQHMuXiGNUysmU86lvAOTbcLzXO1sbMRuBNUlL6K0ReLv75kg6qcs3cEpI1m3wABqtL3bdaVTKdkTjUxGpAh3awQssfAXqJYYr4ARYbJcmLujs894lRg4qB30GRMkbzDn742v8m6fDAksXCcjSnMwkyUVD7CNlqSrG8bUcu2404OwW2YlK",
+                                  discount_upper_limit=7023,
+                                  display_starts_at="2024-08-21T23:15:23.000000Z",
+                                  display_ends_at="2022-01-21T15:12:27.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="R7F9uqtTY",
+                                  usage_limit=8661,
+                                  min_amount=3094,
+                                  storage_id="60121665-6ab0-4763-b6d7-92cd03371642",
+                                  num_recipients_cap=6592
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_26(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=9264.0
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_27(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=2365.0,
+                                  num_recipients_cap=3487
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_28(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=118.0,
+                                  storage_id="03ab234d-0d08-4279-b28b-9ef2ff0b64bd",
+                                  num_recipients_cap=8883
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_29(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=7284.0,
+                                  min_amount=9635,
+                                  storage_id="875ab3e9-e56a-4f36-85e2-50dd688f167d",
+                                  num_recipients_cap=9287
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_30(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=4731.0,
+                                  usage_limit=7613,
+                                  min_amount=5901,
+                                  storage_id="38eead40-0411-47d7-a2ec-d7906add1a7d",
+                                  num_recipients_cap=3116
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_31(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=9454.0,
+                                  code="ouBhD3x",
+                                  usage_limit=6625,
+                                  min_amount=698,
+                                  storage_id="b950ea88-8079-4844-a292-7646231f317b",
+                                  num_recipients_cap=1850
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_32(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=8991.0,
+                                  is_public=True,
+                                  code="QAdVbI",
+                                  usage_limit=4238,
+                                  min_amount=1892,
+                                  storage_id="d693ab1b-dbcb-452e-8423-c16f17c04c1b",
+                                  num_recipients_cap=7397
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_33(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=6894.0,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="sg",
+                                  usage_limit=5054,
+                                  min_amount=7463,
+                                  storage_id="53e62f05-36b2-44e8-b7e6-bb439b6abc22",
+                                  num_recipients_cap=4020
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_34(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=1453.0,
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="rJLn",
+                                  usage_limit=3642,
+                                  min_amount=387,
+                                  storage_id="187a6f50-0684-40d3-8626-66e2e2df3bb5",
+                                  num_recipients_cap=4709
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_35(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=1597.0,
+                                  display_ends_at="2023-05-15T11:58:25.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=True,
+                                  code="vWNGGZp",
+                                  usage_limit=3784,
+                                  min_amount=4963,
+                                  storage_id="23101583-0651-4f2e-b5e2-0a37f5a0820f",
+                                  num_recipients_cap=1344
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_36(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=3225.0,
+                                  display_starts_at="2022-12-26T08:01:46.000000Z",
+                                  display_ends_at="2025-01-30T14:39:12.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="E",
+                                  usage_limit=6953,
+                                  min_amount=5545,
+                                  storage_id="641d987a-d91f-4b5e-8365-3ca668f22920",
+                                  num_recipients_cap=4413
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_37(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=7604.0,
+                                  discount_upper_limit=5861,
+                                  display_starts_at="2022-04-16T15:02:24.000000Z",
+                                  display_ends_at="2026-06-09T04:44:52.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="0kaj2",
+                                  usage_limit=6163,
+                                  min_amount=3120,
+                                  storage_id="3f269135-1692-48d1-94a7-96b9fe185e2e",
+                                  num_recipients_cap=1422
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_38(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=6118.0,
+                                  description="s0xgdWlEYjRqPOb8BVVabHLEG4agkq2G8IRGQBS0nchLLndRaY2NqmWOdlkO",
+                                  discount_upper_limit=8168,
+                                  display_starts_at="2025-02-12T09:01:08.000000Z",
+                                  display_ends_at="2025-07-31T03:31:10.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="7yWAbgI",
+                                  usage_limit=7081,
+                                  min_amount=8306,
+                                  storage_id="aed175fd-2111-463a-90f4-5438f6947535",
+                                  num_recipients_cap=4190
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_39(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=2940.0,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["f0b793c8-a966-48d6-9405-cb525bacfce1"]
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_40(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=9016.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["c38c0d58-8735-4906-9d11-da554e0ff13b", "ed8e42d0-fa22-4876-ab1c-77c39966c2b2", "c26605d2-d4cf-449f-80ba-f61c8a4a4f80", "951e5e9a-a430-41cb-9b61-a5bed0e9e014", "284f8db4-c46c-4859-8e98-fe194e95b202"],
+                                  num_recipients_cap=3194
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_41(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=9654.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["fe24aaa4-7cb8-403e-9d79-36e5267012d9", "d310aa61-2dc4-4caa-b4ec-5c1c58bd5e33", "841d8bf9-3084-4778-ade3-9c0cec49356c", "dcc9d9d7-9e92-45d3-a957-4aa2bcdc5d00", "e722ba7b-b041-48d6-b883-0f56681a0319", "0b497c6f-c35a-42b5-a9f1-0f054ad0d2a1", "b7114aaf-69aa-4034-a6a9-f1dcb00461b3"],
+                                  storage_id="dca7beec-832e-43fd-95b3-7ecfbbb5d4e6",
+                                  num_recipients_cap=6564
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_42(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=1454.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["4dcebefe-156d-4839-a9d9-ee5faf92bc74", "4625baf8-fd0f-4775-967b-4b0df917bdca"],
+                                  min_amount=6130,
+                                  storage_id="c3ee49c4-2e00-4a19-8686-520d5152cd19",
+                                  num_recipients_cap=3132
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_43(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=2662.0,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["3b34414f-90e1-4835-b895-a241cd79063f", "420f5668-d507-4fdd-8639-b2a94a3ad68d", "2eaf5da1-d9c6-41bd-973a-93dd6a80d99f", "4b8b60dd-a513-4997-94f3-7846707f58c4", "dccfecfa-433f-49d4-8909-b24117ab6f46", "1e9df584-c4a9-42c7-8450-cba2d407e2db", "816a8589-7ae8-41ff-98a7-ef70a555ba3e", "4c3e3a42-6899-49e7-9aa1-7c9e0c380dbb", "57fd0708-be14-439d-a2cb-9dcee1ad6ded", "9e59858c-a07a-4dad-85e0-a3c13c281ed2"],
+                                  usage_limit=3100,
+                                  min_amount=4886,
+                                  storage_id="bb9fe39b-7cca-4ab1-9887-1a7223a58976",
+                                  num_recipients_cap=6402
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_44(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=5696.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["337441c9-4931-4e93-a28f-46a5d00c7cd3", "06780ef3-ec52-4509-a3eb-bc278115616b"],
+                                  code="jQ",
+                                  usage_limit=8578,
+                                  min_amount=1961,
+                                  storage_id="d40b52d6-dc42-411c-b706-053c0a6b875f",
+                                  num_recipients_cap=7855
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_45(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=7504.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["cda5862b-d760-4442-a54e-42b49a64d54f", "1fd5e4fc-98d1-4daf-9fe5-ac0bd49cc966"],
+                                  is_public=False,
+                                  code="6ic8PJre",
+                                  usage_limit=8955,
+                                  min_amount=6068,
+                                  storage_id="2cdbf9e1-62eb-408f-b557-57a38a22bb2a",
+                                  num_recipients_cap=113
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_46(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=4260.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["f77c700b-ac20-44fc-a1b9-f01a264835bb", "bdb7811f-9840-4305-a0e1-641773a013e6", "80521768-b7d7-47ce-85b8-e767be4bdff0", "4d893959-f4e2-4fab-beeb-403108dee026", "88cafc94-f0a1-40d5-9251-492e97324252"],
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="GeT6q9Q",
+                                  usage_limit=8742,
+                                  min_amount=8203,
+                                  storage_id="3d55da8b-74ec-4f99-a123-558274a4fb93",
+                                  num_recipients_cap=4117
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_47(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=4093.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["4a23291a-cbc0-4753-b430-9b522155d468", "e20a07aa-7008-483f-8856-7b27a5ae05b6", "9c11a5cb-a8e4-4253-8f11-121698666a73", "94d6d54f-f11b-45b2-a6ae-8e27f6c5654b", "4e546709-3a19-4bd5-b84d-91db16d22284"],
+                                  is_disabled=True,
+                                  is_hidden=True,
+                                  is_public=True,
+                                  code="oBriyYb",
+                                  usage_limit=3126,
+                                  min_amount=9009,
+                                  storage_id="4ffd42a2-9b7d-4cfa-8881-d2760f8a643f",
+                                  num_recipients_cap=1430
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_48(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=6352.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["24f2641d-92ea-4cc2-9c3c-9027ed59833c", "8260e59a-7c9a-4d85-a3c9-b3484090fbd5", "569a5694-e2d9-4c38-92bd-efe5c44d956b"],
+                                  display_ends_at="2023-10-18T11:59:57.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=True,
+                                  code="hS",
+                                  usage_limit=9346,
+                                  min_amount=2125,
+                                  storage_id="b071c291-5d15-40b7-8729-ec0c97cfbf13",
+                                  num_recipients_cap=3568
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_49(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=769.0,
+                                  is_shop_specified=True,
+                                  available_shop_ids=["7dc99756-37ab-4c3a-8f75-5f07c0f4725a"],
+                                  display_starts_at="2020-05-30T14:05:03.000000Z",
+                                  display_ends_at="2020-12-22T09:40:52.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=False,
+                                  is_public=False,
+                                  code="kX9f",
+                                  usage_limit=9711,
+                                  min_amount=8683,
+                                  storage_id="e65791c9-7846-4192-ac7d-418c04b63904",
+                                  num_recipients_cap=9239
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_50(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=9681.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["3404552c-2d4f-4d8e-a87f-78ea13b8e8bd", "3864ee42-4122-45b0-bb86-c2d8c0d59ed4"],
+                                  discount_upper_limit=8101,
+                                  display_starts_at="2023-11-05T08:01:13.000000Z",
+                                  display_ends_at="2022-06-03T14:16:37.000000Z",
+                                  is_disabled=True,
+                                  is_hidden=False,
+                                  is_public=True,
+                                  code="f02Fg3NvwA",
+                                  usage_limit=2197,
+                                  min_amount=5902,
+                                  storage_id="413d3d68-fea1-4f97-8f94-9eecd91d3b9c",
+                                  num_recipients_cap=4119
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_create_coupon_51(self):
+        response = client.send(pp.CreateCoupon(
+                                  "5a983886-3499-4b4b-9d15-2d7e393187f6",
+                                  "u4lobeulXI7c3F9nyrjjRiAP0nDGe4yWdLt",
+                                  "2025-10-31T02:28:00.000000Z",
+                                  "2020-12-28T21:31:09.000000Z",
+                                  "f6bdab21-51a5-4fa3-8448-e634d38d05c0",
+                                  discount_percentage=7077.0,
+                                  is_shop_specified=False,
+                                  available_shop_ids=["f44c9a8a-7bbb-4de6-8746-eb4515303fd5", "54092dbd-d30e-4463-89cf-1a269eb76051", "32aa90ac-fcfe-4dcd-a4d8-f0c55f7445db"],
+                                  description="HzF8m9cIjwUyTMaVMoVAP5OP1CjryzsDN5Z0UkOPXKep1jFsPNeua1jB7iZEF7xhaxWIxTjjuPniB6yr4Okg2Udv9iXSqMQb8J3iQSJeJic2mGuJKmsKLeWViwh5Xh0Ohe1EHst26OluNAixs6BC1rh1DjTMJERyJtkUyg63OuNEg3mOoFwMhlx1RPa6KYFReAbXhU3xeAmdgIIk86pUwNP4PX",
+                                  discount_upper_limit=5718,
+                                  display_starts_at="2026-04-07T14:15:12.000000Z",
+                                  display_ends_at="2025-04-28T01:17:57.000000Z",
+                                  is_disabled=False,
+                                  is_hidden=True,
+                                  is_public=False,
+                                  code="P3yM",
+                                  usage_limit=9940,
+                                  min_amount=2742,
+                                  storage_id="5c11beed-3a0d-4113-b800-a4afb326814d",
+                                  num_recipients_cap=3253
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_coupon_0(self):
+        response = client.send(pp.GetCoupon(
+                                  "6987ee1e-f507-45f5-b5cb-18b67c3e612d"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_0(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=7744
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_1(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=4034,
+                                  name="GY71PucWuEB8iBjiFIbSubHrvAi7K4jyfS9dg15S1q6jH34UfMTbaogiuk2Hs0mRi4FH4wAH9Jfj7o054MsL4b1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_2(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=1437,
+                                  description="FFK6iXZLbDkWhxmVZQrN7vHF2MDKVtEIQupvmKHRwHKhrE1cew1CNfgi7sglFQ4wI7YctoKArmP",
+                                  name="X6ICAqae4Gsnk7CCks4Hk5SfM8qCg753Xc8sxEuuaOPh40uyY7zIQa1dLLxrHG1"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_3(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=1713,
+                                  discount_upper_limit=9089,
+                                  description="w1vq47MweLd7PEXecikrpiqy8sfzPeC95z6SUSQpi9Wzm3lpy1cb2RHdUOA0t8u9bgfw5lRkS6OP4v7xcpJRU1gAPOZCWBu1LN9FJ0cnlAGNGxl68QC9Lc8",
+                                  name="mXM6C7FzY"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_4(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=8255,
+                                  starts_at="2022-11-12T16:57:13.000000Z",
+                                  discount_upper_limit=8767,
+                                  description="Ibzm3gXQmkrBpe2Ig2RcyGTEKbRkheq6QL08QyyZhWxWZXOgJUUSaNEWIfPAbzyBHOjNPS",
+                                  name="cM2HIOB9HTAlispEbZ0nm2AG9fUViptAmbz3OlMcIwPiDhPvFVPSC9IO8Vx"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_5(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=4392,
+                                  ends_at="2023-04-18T07:46:41.000000Z",
+                                  starts_at="2021-05-21T21:25:26.000000Z",
+                                  discount_upper_limit=6773,
+                                  description="9a6CuuEqXlxnf5GR396SeNDqXXKEJV0JkE3TjLaqeZOsjEI7E22Wl6YSAD7vVGJBWjZfkSD8toOPMhnrU8KE3wpUrjUs8sizjd1z2FtADy5Q3C5jNeYsU9MpL2cFyrblmxyYFjVJ1ksDCEql83astJ4f63IhsEWYCV1aJM8EwjAmRBWR0",
+                                  name="6oBZVp6NIn0X9ZNmVTX8mLedIikedmC30IadhoI72wGGaOUhWf0bdfCQE42KbdvTX1CfA4ud9qfvPOSoxFI1UweO2XRdO2hY0pCC8FQpyDi"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_6(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=7854,
+                                  display_starts_at="2020-10-26T22:07:58.000000Z",
+                                  ends_at="2025-02-18T20:07:30.000000Z",
+                                  starts_at="2022-09-14T19:32:52.000000Z",
+                                  discount_upper_limit=8835,
+                                  description="n6ST7vY9DrqkrzPV",
+                                  name="8XVdQkJOO2v1m3AEScwYzlsFCHOKfiqVfddqZXHyl9FtM3B"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_7(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=317,
+                                  display_ends_at="2025-03-14T04:09:42.000000Z",
+                                  display_starts_at="2020-09-17T22:17:06.000000Z",
+                                  ends_at="2026-07-22T22:54:20.000000Z",
+                                  starts_at="2021-05-07T13:34:02.000000Z",
+                                  discount_upper_limit=3783,
+                                  description="RFalUDm4QOG36z0pAjeCTeiy225IXwhDEUvB4npxY9ubMTI7cGyil",
+                                  name="tc03UjxERdVoe6HFhJgKELPhJZ4V6jG807jn4ij0yxfSZTliY3BcoO0R3ofHxO79PyMPuNxlOm9TssUDzbSN"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_8(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2489,
+                                  is_disabled=False,
+                                  display_ends_at="2024-03-30T00:32:12.000000Z",
+                                  display_starts_at="2023-08-28T23:32:47.000000Z",
+                                  ends_at="2024-11-13T15:07:48.000000Z",
+                                  starts_at="2024-03-22T23:50:44.000000Z",
+                                  discount_upper_limit=8616,
+                                  description="qaXE9oVV6dzFzoMTL1nMwdKXWkN1V7WK5N3KEyrv8oYx3uFnGQ6ZUj",
+                                  name="vuDzL1kINhlYHLw7eGbmo6z2mwFW2G7CePrEb6qc1vzC0TUXZ7gJxmZbR4QIZxkVF44SiHUuKLea6KXKMTxnuRpjgiKiTeKThsCVHvt0Fegc"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_9(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=4829,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2020-09-15T12:26:45.000000Z",
+                                  display_starts_at="2021-04-23T11:27:35.000000Z",
+                                  ends_at="2022-06-11T01:14:16.000000Z",
+                                  starts_at="2020-11-17T08:29:14.000000Z",
+                                  discount_upper_limit=4174,
+                                  description="hoP3dbXW7imuFIarDCIG12cWukEiPRDcMrsI69et7tZGcxsWh3x4WMFG9JtXGOrRTCDsNsdOxykdQVM02fdP8dPWgv17gnjksnVKZ2Yg2XW7z7bqKh4VDMi81vkZfIvFF2aVGBrt4d4BQcmvC7IyShbMWHW8OrxkYJbesefuwz6QVslbgmox4sylqaj0m4NHRO5ZxO4O",
+                                  name="NjLEysHxuDJHz86s8rMyDwBbVQMVNIv43CsGJ1N1Ty1LpoGWtPPI"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_10(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=5882,
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2025-01-20T07:34:39.000000Z",
+                                  display_starts_at="2024-06-18T02:44:43.000000Z",
+                                  ends_at="2025-05-21T21:18:47.000000Z",
+                                  starts_at="2023-01-31T20:45:10.000000Z",
+                                  discount_upper_limit=9420,
+                                  description="bliCnClJEf5Qg177zO5rbJQyEpgsB3u1k6p1M3AaDCD8U2M3hy0vfxtwSmqJp6yKARh5ZRW3Kxq9vutz",
+                                  name="MeQNT"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_11(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=3674,
+                                  code="uVlFab",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2026-09-14T22:50:12.000000Z",
+                                  display_starts_at="2026-08-11T06:43:36.000000Z",
+                                  ends_at="2026-07-03T09:36:04.000000Z",
+                                  starts_at="2026-04-20T21:26:48.000000Z",
+                                  discount_upper_limit=8515,
+                                  description="qRikwgbBJfMhTrHTPQaRFRzLrLpSH0GqkthOAKJR8VBFpRQxxKQexm5F4TlRS3PsnDMFQKcrRJGtyzouTG0fNi1SBzVwDCpwO7mzwiIebwBbgsjluVjYrLryI60OsM6yKVZ1jPy1npNVd9AFxrpWfPQQvIa1xbdNYJvyC",
+                                  name="ZXCjbARIpuKvOzHCuCdyUUls75UdwXdZij"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_12(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=8596,
+                                  usage_limit=1013,
+                                  code="TLMB27QQHu",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2021-12-22T00:41:50.000000Z",
+                                  display_starts_at="2024-03-02T03:28:52.000000Z",
+                                  ends_at="2021-02-23T02:01:20.000000Z",
+                                  starts_at="2023-04-23T16:23:23.000000Z",
+                                  discount_upper_limit=2476,
+                                  description="PKSLh839k28z03zy6Qc9GYSlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqIc0ydT6mqiA8RNdj3UyTqHUrIwecpoFXApISgLQUaMJL6dBoxy3dS4rnSGnuDl1WGraodKKbLrRBGbYLtxgB5z5qrK2mXuD0UWS",
+                                  name="9ldTa29xEBfE4jaoCgaw81ksIPXpJoHnKZwzgtMuSjmXprQOJIDMtkxUA3CwMowYwsohy6o54EyGXhKAybq9i"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_13(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=1972,
+                                  min_amount=8200,
+                                  usage_limit=716,
+                                  code="00ec",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2024-07-30T05:50:59.000000Z",
+                                  display_starts_at="2025-06-27T08:20:54.000000Z",
+                                  ends_at="2026-02-21T04:29:42.000000Z",
+                                  starts_at="2024-03-07T17:01:27.000000Z",
+                                  discount_upper_limit=4538,
+                                  description="zcLUKbT5feGtXeOgCjHXo5HdhOmdyoXuDdYfk0Kl5lQobWMeUrTL0yrW2IFnoVrabBtuZMnnkajdAwZKazac8bckasxqrpu0M7pIUsW64iTD7nd9oi4jTu3F0HRYKCBEMlkDUnah6fkhvDARp5vX7MupP6FVnb6JjAKYX8HzepSQlFXs1g1p8h9cEw94TVm3QEXbRfQ4MBKBqC3S2iDFnRE3SwskPWs7mGvsLBFz2ikalm",
+                                  name="5QIcpZb2q5YnZ6axCoTTIbjOEPBaRli2lUAMJ7CyG5TMfzs"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_14(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2217,
+                                  is_shop_specified=False,
+                                  min_amount=2603,
+                                  usage_limit=5057,
+                                  code="C",
+                                  is_public=True,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2022-05-02T18:57:27.000000Z",
+                                  display_starts_at="2025-07-16T22:24:31.000000Z",
+                                  ends_at="2022-12-10T14:45:42.000000Z",
+                                  starts_at="2020-05-08T05:09:55.000000Z",
+                                  discount_upper_limit=1282,
+                                  description="Gei6FNa5iNHS8ae3s1VgKjc7Q8j7Z0SWMLPnzw7xhca7VuCPQn3tgDKKsPg1tK8tF9sjwQnBp1nMIeAnY6Xeri5tCJDZsGcVm09iZYX0jHs0ds3Y41lK02B8JXAbkOFKS",
+                                  name="aiDX11U4V4mzkiQ9KgdufJCOqQoqEQic9b7rjANNhMIW5uX0nomeRn6xi8YDAJH7HJXNF3Oy8"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_15(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=9430,
+                                  available_shop_ids=["f2d4940b-fc90-4813-a868-6dcbbc809a60", "b01cd0f9-c65c-4c7b-8c2e-62c74d61d8af", "6dd5bb9f-74f6-4f79-a523-fb725b82339a", "06920ebc-8d07-48ed-9c69-23921b087b62", "c7c4b16f-4288-471c-8f6a-e18c1452494b", "4010d5e8-66d6-4702-9049-5876cb547c7a", "0da07500-d931-43c9-b1c8-5ff69f1eef63", "cb8ad396-3be2-4def-ac79-aa0ac7d24353"],
+                                  is_shop_specified=False,
+                                  min_amount=7708,
+                                  usage_limit=8933,
+                                  code="AcLtwR11",
+                                  is_public=True,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2020-09-25T21:11:39.000000Z",
+                                  display_starts_at="2025-08-28T00:54:28.000000Z",
+                                  ends_at="2021-02-21T06:58:46.000000Z",
+                                  starts_at="2022-07-29T15:00:35.000000Z",
+                                  discount_upper_limit=8385,
+                                  description="Jrx0pv2XvsLcCeEcDmfq2CKw2F1KvbCjTFkaD9SEmE89oiZ9sjCAHNKHbkDV7xD9UgYkUYCn38T5jddntLP9wvyYD1qoSVwF6tpYAPGi6YnBQDM8MlLw6WNmhQ1XbNNNiRTERN1SPoqCbHjtLPWoEeyLYkaItEzRnlzKYkySdT2Gi04uqdwqTzZvD1PwMG5sUToLzAoDfdSJfprAXytppmaGjNfTvZeWlNcmFKOSukrPpaSteC08CcbsYxt96g",
+                                  name="v0VcOEBgxJasez0E3N0w4tVAdgt1xX1dSRHXsAmJyubVIv51Dnx9WEjtPQeVvIzNJybaWd5nDKgnWgGOF388caTufq1V8gMtPEUm5qxAkXQdgm"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_16(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=7516,
+                                  storage_id="6c0d40c1-9636-4a4f-9395-ba78e2f1f034",
+                                  available_shop_ids=["3db36628-ac43-437b-b25e-a7c05ee5dbb6", "719889b0-3342-4ba9-8f33-8a4bb460e2fc", "926c852f-e293-473f-b434-0ae16712c23b", "bbd02383-9130-47b1-b6df-28331f38046b", "adcc6242-7f0a-4679-924d-397b4a203a5d"],
+                                  is_shop_specified=True,
+                                  min_amount=7399,
+                                  usage_limit=4915,
+                                  code="LG1",
+                                  is_public=False,
+                                  is_hidden=False,
+                                  is_disabled=False,
+                                  display_ends_at="2025-04-23T16:12:07.000000Z",
+                                  display_starts_at="2024-09-18T11:32:12.000000Z",
+                                  ends_at="2025-03-08T02:52:41.000000Z",
+                                  starts_at="2025-01-29T22:30:04.000000Z",
+                                  discount_upper_limit=2087,
+                                  description="qXLUpztzpGIdluCdFeopAnKzAxtAmMd124CMe44VQ69lqvNuxrP4SroQtmwf2SR0athJ6w5HZkze23HnekgXpUMEHxZW0Tc6eMEIuVp5eKpdv05iSfHRA4",
+                                  name="MJeTWEJu4ZLaQXIwC"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_17(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=8292,
+                                  num_recipients_cap=8122,
+                                  storage_id="5d54910c-80e9-4a90-bb57-b82ac57051aa",
+                                  available_shop_ids=["f9e1961c-3239-475e-9784-fa2cce08d00b", "b0e42737-8e90-4dad-b35f-d33d26c1f8e8", "6960abf1-5e12-450f-9246-d6c06154b314", "9dd36bb2-a0ad-4d69-910e-9a14c7bfeda5", "86dc655e-c41d-48fb-9bbc-cac4997751ca", "6f28f9e7-6370-42bf-b31a-b7da6800c298", "3f790557-9e02-4383-8d2d-bfb8f810d953", "35ef21a4-93f0-4544-926e-ffa7748165b1"],
+                                  is_shop_specified=True,
+                                  min_amount=6873,
+                                  usage_limit=9757,
+                                  code="fYX3JU",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2022-08-27T22:59:16.000000Z",
+                                  display_starts_at="2022-10-18T18:10:03.000000Z",
+                                  ends_at="2024-01-27T12:46:16.000000Z",
+                                  starts_at="2021-06-09T03:25:05.000000Z",
+                                  discount_upper_limit=225,
+                                  description="rpojFdIy8Lev3F8En8XgQCp5V2i4zKRrop8yq1iTaMXh9J32aBIrleFDh2AVDnVQPI4cS2rMsWBfreBRQpW9vUd58fde96uK1qpkeDgc6Hbo3o2wSmfRoo5OKt3yV5Bzt1djpGomL7u0oZNCkYK3XxpWAlchemsnykqWhGOYpMimrLQy1efJIm6",
+                                  name="p2nFeDatBkmx"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_18(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2378,
+                                  discount_percentage=2645.0
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_19(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=7866,
+                                  discount_percentage=5244.0,
+                                  name="fJ8iWJ5x76ilzTFGw7NqxtlVIVfYnX2Qn7EnOChsUwktnh8VjRFve7MdNMBgFvJyEEmkecVySQ3ucJUKFqVhyrEcw3WNc5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_20(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=5245,
+                                  discount_percentage=200.0,
+                                  description="iI2Hhl1Ojg",
+                                  name="6fFukYqihBSq8D0896GNWlaYQ8akcWxDZkhOozkzesx2mnek2LIVGGp8Vx16M91diHUGfol8Mhj42rW"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_21(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=1804,
+                                  discount_percentage=219.0,
+                                  discount_upper_limit=8698,
+                                  description="Wjzvhmx48Q4mMZZBBUosSdONTSqEGwk1DyPJJ9VhetNR8hTecHZnx73cRhZIXdPCHq2mv2UAXAtqrIkbL0z4gSPzn4HTeyJUPoxQJ9n1IVWSFIGUqJ4N6z6sZDMXDGqemkORDDzJGZ9TM0TySjAlVWDrjsx0UNdOCeykFyfPkq8IYlCnIEfVjy",
+                                  name="hIzv"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_22(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2547,
+                                  discount_percentage=7415.0,
+                                  starts_at="2024-02-12T16:15:29.000000Z",
+                                  discount_upper_limit=4381,
+                                  description="fx06lwewFlBxBPgZymInLxkpSlp0CcXJpCFZzCR1WWP7a67366cHWhkYkA6trhbS9trPinjNzKWZdpxUSeeatx6TLoIfkctcu3TkkDZexmMtTyt289kas1F7Tkqoaqe1JDLI1WZ64tiSollupgL4JictCeDSHD3C2YnEIi9qrFhH",
+                                  name="4UChBktVJM6Ehoat5RskjtjMRgfY9KAojiVjkWGZfXbhOFvNY55OwkPTEUz8oSFQeGoSG3k81y4L7o3GM3UKBX"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_23(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=5908,
+                                  discount_percentage=8269.0,
+                                  ends_at="2021-04-16T18:55:43.000000Z",
+                                  starts_at="2024-09-05T12:00:10.000000Z",
+                                  discount_upper_limit=286,
+                                  description="oycpsy4LyLZFxRuuFLA4Ui8k1KypnJ8Uw7M1CvtXboHcAQ9ViIsvWqws3eBMzyIUtiNxNhmRynGWfznERPtN3LViJS1dpiuu6JWeysJ5UR27acols8OLFNhYvqrdgeoTKVw3QKHsut3xFubILPZVISKCKpUoBc7VjLNhPbQNBNhem8RljnuLcC94xG8sb1tOVm7p5XAwHfSXk3eOR6TecHTnhwvZs",
+                                  name="sT85OfQ8lzdmqxGSg8e3RhOb5BMcQPLOIjmc8VMDMHWqGdZh4akYykFCJxLZHGXI2AIAE5"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_24(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=9270,
+                                  discount_percentage=9159.0,
+                                  display_starts_at="2024-02-28T00:44:06.000000Z",
+                                  ends_at="2024-11-09T00:31:34.000000Z",
+                                  starts_at="2021-09-27T03:00:00.000000Z",
+                                  discount_upper_limit=7111,
+                                  description="7kmQ3kNPt7OvjdgkL3FTfLMcm3icBM39ZlgHnODxDuHCOV9jJuZqWToSer58JP7CddvYZG2P4sGsjZKQxe7fKpax0Uc45ft1nisEBoOyK7IWRvWeQ7WqJw3BcrA0ZJmOfUMnfydDiDxugYD9evfD1PJtdO3SdiMuiIPxXLPGXeapZ447jeLeg5dXfz8LlL819MpDMdbxSiedHtUdWqjwNZ6SqXcjRYXWjjppT0r9xvCuvBOfsidrDI9V",
+                                  name="lsfxLxW5axZvNGABU1Kq4dKF1bCFldqrEeXCX83UsZSPbix6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_25(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=7710,
+                                  discount_percentage=8497.0,
+                                  display_ends_at="2020-04-02T14:34:02.000000Z",
+                                  display_starts_at="2025-06-29T05:05:07.000000Z",
+                                  ends_at="2026-01-30T01:39:45.000000Z",
+                                  starts_at="2024-02-19T03:01:22.000000Z",
+                                  discount_upper_limit=557,
+                                  description="ly7V",
+                                  name="1xEBLXcDk2ABcz8aQVQ46LRceMuSvImd"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_26(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=1564,
+                                  discount_percentage=8160.0,
+                                  is_disabled=False,
+                                  display_ends_at="2024-12-14T02:59:45.000000Z",
+                                  display_starts_at="2021-09-25T16:13:56.000000Z",
+                                  ends_at="2020-09-16T00:56:09.000000Z",
+                                  starts_at="2024-04-16T03:37:21.000000Z",
+                                  discount_upper_limit=2178,
+                                  description="y3aEus7kZPbP6pY7uTyJAbvra0dcpr2XBaxBtLUqtpR4s1JU0lVQ2OypewcGn6EYrIoiJUtnz4tPDjzGeH1vMI9teS2D85S1UHA16vfzALVhDfzoJqhsy99eYUXwCEgrx3b6fZBGl5iNgWbOvie519sB5ATfDwJwr3eQ20YGcyYu0bMGv3vztYfqlx",
+                                  name="sbOENjEAJX3lDTAofzZK4Rxx8sLYfBb6BjvrBrNNM0rEDhKG45tzzgCXrxrouPH3hhI04AO4rgTAhQAt0OqjGLP0DBUnGxElSvEGfkoczpVf2XfhCesDbLNG0um3Y"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_27(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=3247,
+                                  discount_percentage=216.0,
+                                  is_hidden=False,
+                                  is_disabled=False,
+                                  display_ends_at="2021-03-22T01:04:42.000000Z",
+                                  display_starts_at="2021-02-22T03:37:49.000000Z",
+                                  ends_at="2020-09-06T08:17:56.000000Z",
+                                  starts_at="2022-07-26T09:48:21.000000Z",
+                                  discount_upper_limit=8831,
+                                  description="6SkSSSI0RCCs8xN6z62EIsVi251R9OVM6dJXfTSVkQAgLF0UCGkzWfvHQLNpl08zkirPvpqWe6LFMxqHgshQQxZyXH54xcjjzE4jf3bC1uhrBdvXqhm8jwzIEhcNYML2OSzpp2xgjGNFVHJxj8ajHmdLScmLSMjxtIdUuX8NpagwVisjQjWa0Ga7Mr0dbte93IwLTuppNmEhXnyUDrs0YSyLNNnFCcwr1avxTo",
+                                  name="BT4VEV6evoILJv7tTWIqRKgT33Bi9tzz6Ttxk7d6FPiA0lsYPm9uy3bOLitkN0KHj5fbn2v2B0UJuNrXCxgjdk6CWO"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_28(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2539,
+                                  discount_percentage=1239.0,
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2021-06-18T16:48:32.000000Z",
+                                  display_starts_at="2020-09-19T08:48:10.000000Z",
+                                  ends_at="2022-11-05T01:51:44.000000Z",
+                                  starts_at="2024-02-23T08:42:41.000000Z",
+                                  discount_upper_limit=3217,
+                                  description="Lot3toFslAl38fcibrdPRjjy3jeyeKg5ECx1SgJEpSlopBJNy3qmiwYmDuOlcchHpAG2gwwi3nOK6tJxpePLFHBs9kILByZGqDqm9YAgnobRajraam0rBpkfu82G",
+                                  name="Do8PtRb5vVt3TqmZrxia2ui6VWr3guQRAw5Cq4lwbs5G5iUu21d4ST7CuEydnlBtSyriuS9M5GXcqFt6wV9qfsP61uE"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_29(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2691,
+                                  discount_percentage=4233.0,
+                                  code="wZUrs",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2025-07-08T04:13:57.000000Z",
+                                  display_starts_at="2022-04-14T20:38:06.000000Z",
+                                  ends_at="2020-07-15T03:13:18.000000Z",
+                                  starts_at="2024-07-03T10:12:21.000000Z",
+                                  discount_upper_limit=7248,
+                                  description="rurgTCGgpfTuJZDkeCAQBkolLroUrTRKy1uTbc45m4YwxjxtGbA05zcwQ8eNnH7AYfIcNt7NKHBDT4zItl3ZAd6IFhkcz8jRzOJNYNTmAx0cRygrFZ66y9EQQUqakXyxFnuW2T4m1VyTa1OoANMT3g8KQuzrvKESksiTJQTVnHiOfPR4wy7f2LYwmiQU5GGwM5",
+                                  name="OvuPRHuaWsubCugQ2sjreB3py6MReMgsNKNI6WrDerxdbupVy8ATO6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_30(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=6380,
+                                  discount_percentage=5123.0,
+                                  usage_limit=9245,
+                                  code="exkb2",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2022-12-25T06:55:33.000000Z",
+                                  display_starts_at="2022-08-18T19:59:47.000000Z",
+                                  ends_at="2024-01-24T13:45:19.000000Z",
+                                  starts_at="2022-04-28T18:38:49.000000Z",
+                                  discount_upper_limit=4448,
+                                  description="ZDBIqGu38r7vCoqpH5QhZu1k2tSxqrr7YJPVhda0ziWsQtZ",
+                                  name="Rc6cmsvPcY7yThlkSXuhO9OLfbw29j7FyeDINdaRXM95lPwMwz9IKIn6wEZkPRJyErXa70KC1ZDBuFoL3t7T5TQkGNyZe8GBabvL25GC"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_31(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=2971,
+                                  discount_percentage=3844.0,
+                                  min_amount=2774,
+                                  usage_limit=8325,
+                                  code="wr2eoj",
+                                  is_public=True,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2021-07-08T15:49:30.000000Z",
+                                  display_starts_at="2023-12-02T18:35:58.000000Z",
+                                  ends_at="2026-05-25T22:49:35.000000Z",
+                                  starts_at="2022-06-16T14:00:01.000000Z",
+                                  discount_upper_limit=9745,
+                                  description="OXkEpypH",
+                                  name="4JrghAf67UGzd"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_32(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=6876,
+                                  discount_percentage=6034.0,
+                                  is_shop_specified=False,
+                                  min_amount=8692,
+                                  usage_limit=1050,
+                                  code="gboYq99",
+                                  is_public=False,
+                                  is_hidden=False,
+                                  is_disabled=False,
+                                  display_ends_at="2024-05-03T05:44:30.000000Z",
+                                  display_starts_at="2024-09-22T07:42:50.000000Z",
+                                  ends_at="2022-04-22T02:46:39.000000Z",
+                                  starts_at="2021-09-14T02:53:55.000000Z",
+                                  discount_upper_limit=6989,
+                                  description="Q97NziA5jLyP8dpSqy8Td0RORSjyvxfkjlz1SjQKzzKh9mzyFG6lnGeQBDP",
+                                  name="uxJ6IIDy8VE7WwBdF0msuDaOhM5oqV2xleoqU08aoK4SSRQxNI"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_33(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=574,
+                                  discount_percentage=5300.0,
+                                  available_shop_ids=["a468c3c8-fd2b-49d9-9a02-5909e292afad", "11b13916-72e1-41b4-a9ec-4cbbb2c95c4c", "59f396ff-9238-42f6-ac79-61d440647935", "8e8ddff6-15b2-48a3-ab0b-4be651b4e31c", "51fd3c88-1d57-4818-9a69-4c3b8abf0dce"],
+                                  is_shop_specified=False,
+                                  min_amount=431,
+                                  usage_limit=6798,
+                                  code="Hj",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2022-11-11T12:54:31.000000Z",
+                                  display_starts_at="2025-09-19T16:37:24.000000Z",
+                                  ends_at="2021-08-01T23:54:43.000000Z",
+                                  starts_at="2020-11-30T05:13:39.000000Z",
+                                  discount_upper_limit=8938,
+                                  description="TLI9kXm3rfByXFrnlgeqVtAvQ0rVDYOMHbm3FgLktaUhgEFTnEcwpkpUTSKxUsOoZPlM9KHj0LscW1P81Qy90jmz1sBL2rdIxI95Aq016ZjJCH7wtIwkByOxgZ1CmhlD7BVFzYE678HYgrDW8XfB04cuHe8uQqeJWnp68s54o",
+                                  name="N3JT7TlfvcjHRgsbjroXcf1fxLB1yf5dH6gwvhweVkrWRctnJ2TSLmfSkWFb6oLKvNkr7xERwVYEzuAq"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_34(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=3134,
+                                  discount_percentage=1875.0,
+                                  storage_id="1290d032-65d9-4071-b55a-8c782f25b237",
+                                  available_shop_ids=["0268f86c-5638-4855-b79e-60106e6ad462", "7693c69e-ce36-4564-be6a-a7e204a1aad1", "559a8b89-40c0-41c5-acaf-397cfaa4e9ab"],
+                                  is_shop_specified=True,
+                                  min_amount=4131,
+                                  usage_limit=3459,
+                                  code="EVuuBukUK",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2023-08-05T22:16:11.000000Z",
+                                  display_starts_at="2022-07-06T16:59:28.000000Z",
+                                  ends_at="2022-10-26T11:17:53.000000Z",
+                                  starts_at="2025-03-19T02:24:33.000000Z",
+                                  discount_upper_limit=70,
+                                  description="t",
+                                  name="oO5CUO2HA5dwLtiNF6M5qahAMFoXb9rmaZQXIsaxB2CgIcPvFHqcQFB1JdewR9buGPpBiWlh4drGbWvDfmVaNvPs9iu3XzEN"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_35(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_amount=3941,
+                                  discount_percentage=9678.0,
+                                  num_recipients_cap=1150,
+                                  storage_id="5d4b97ce-1968-47d7-820e-9a50fbac926a",
+                                  available_shop_ids=["2d7d5ab9-dad0-4eb6-a272-26c07abc152b", "1d98c58b-c1c1-4365-984c-2501f4ff7909", "1aeb5522-4329-467b-a7d7-76569ec2d08b", "abaeb960-234b-4f69-82de-598221ba7da9", "80b72ac0-0cbd-4ca7-9b61-897e4d37b316", "a5d533cd-be58-431e-a9c1-9bc2694aec8c", "ba910943-0a22-4e7a-aeac-ec6b8091cb6f", "94e3f0e0-7eec-4d9d-8c14-9b5a952ee090", "544562bc-4fc6-41a5-b058-043c2ba88cd6"],
+                                  is_shop_specified=False,
+                                  min_amount=4013,
+                                  usage_limit=6212,
+                                  code="umc3",
+                                  is_public=True,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2023-03-14T09:43:15.000000Z",
+                                  display_starts_at="2023-02-04T20:40:13.000000Z",
+                                  ends_at="2026-07-16T19:47:21.000000Z",
+                                  starts_at="2020-02-20T11:02:36.000000Z",
+                                  discount_upper_limit=1603,
+                                  description="Ivwae0oDTZVM9Vn0NHWZb8ZS9tjcczZ4Gwb0PhYqZgpZBJnGwbDDjtejOhy5TEcMRzowrgDb6GM4mHTaOBMMolvbDp36ZS9Ve1qo3bvmXucCaFZQN2ap2j3Mr8o8HkBWUUKfQKZC3BSMS3hsgpJcOAd6ocE4mBLmKXcPupi77r56oXCNc3dwl2FKTZG70JMbSmw5RMuvJN6cdbvg50QHlnDydR",
+                                  name="68KboUvDsNqKoorksWBQ398rR59EiVvlwAljCUfIeXX8HLaAA7O7c9AzboPOcXU3N4H4mDJiKqsHB9PJplqhMYaIBcQj7mL59HnlNHLuA0aOdVg"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_36(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=4202.0
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_37(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=2270.0,
+                                  name="K1GxL1yIWWOf6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_38(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=4374.0,
+                                  description="dacFLJTT1b61igwFwXc9Xw81AcLgJ7HUPLZ2JY3PzdziozZN0eUlnWAmEdaqY8pJTyG58WWoVkTIofZ63ZHIa2ZaoOg0V0uaqelttkE7ehROL4XrOdkUWUyHCGGZhBjhjuTKoJ3qmoFsOI4faRjWQ8gKOhK9uTt59dHqyzQZgDiWvj8etzcFhDXwcbaPJFYUtWSDUUOzA6JdRqRnPGGmxcvLiruhnUYA2evPNgfEtt9VoXY",
+                                  name="8Zbi4bO3aVrBDzVdWXtFy5mPY7A1qrS8dHstlQr"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_39(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=7524.0,
+                                  discount_upper_limit=474,
+                                  description="nteTqjTP7dz4M",
+                                  name="DySQpvknUff9KCWQcYJFvGq64qVmrZJcpFiWZH"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_40(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=2761.0,
+                                  starts_at="2021-11-16T04:05:57.000000Z",
+                                  discount_upper_limit=5762,
+                                  description="QdHdvs4v2aUitPGe5J3m0ryc2OEvFX8WzzwH3wIxddmLq7zZNIbWwSHwKCgXCSNnukUNKPot1qoYiOk2cFGGn09uTba138P32btAcZSker4bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs",
+                                  name="0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8tvWqvm0Qm"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_41(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=5460.0,
+                                  ends_at="2024-03-31T10:50:29.000000Z",
+                                  starts_at="2026-02-23T14:10:29.000000Z",
+                                  discount_upper_limit=5834,
+                                  description="qTxvEdTrlIkQGkGEpBmPu4HkqOfXEkl5C8v6PzPZ7WYdNdFH0K2AD1TKPyYWlsuXOaIHvkZ0hBxHL8DiEhh2VnZoTnDJVFMsrvforwTxS8CU7xfi8Z8k0xTZqtjlnCMFHx8TKGI2xE1BuKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEa",
+                                  name="R1q9tiLg6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_42(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=2952.0,
+                                  display_starts_at="2025-03-24T08:50:46.000000Z",
+                                  ends_at="2025-05-23T06:47:22.000000Z",
+                                  starts_at="2022-08-28T16:19:05.000000Z",
+                                  discount_upper_limit=1776,
+                                  description="rLRU7zHjv8AVBjeNyLKs5OWxHdcCIY8xfr6CL909VJsJvEEnV3jRZx4bL3mKFhR8vX2cSSl7ObxLVY39aP4hWiGuhuMVGxVP",
+                                  name="acjrslMZj02ZSvIS4FqKIGpu0MDWpiDvc0yH6ElFsXXAu1ggrDUCau2gnuJ4JjDHOBMd26S3mihK7Gc9ouBdfj9baUMO0QAZUEFS2Bt"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_43(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=1516.0,
+                                  display_ends_at="2020-10-11T06:12:34.000000Z",
+                                  display_starts_at="2025-06-21T15:22:38.000000Z",
+                                  ends_at="2022-04-23T19:53:36.000000Z",
+                                  starts_at="2024-02-25T06:42:17.000000Z",
+                                  discount_upper_limit=1750,
+                                  description="U2y1HqZTEweuiw2lLR54hFs",
+                                  name="TWRshdiadwR5IXzLVIyr3tVtLqZwSGR9AtSD9cOcCV2121oVkjkAmAursWmY8lU"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_44(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=9699.0,
+                                  is_disabled=True,
+                                  display_ends_at="2022-10-09T16:11:19.000000Z",
+                                  display_starts_at="2021-01-15T22:03:03.000000Z",
+                                  ends_at="2023-03-18T05:01:13.000000Z",
+                                  starts_at="2020-03-06T17:52:31.000000Z",
+                                  discount_upper_limit=3654,
+                                  description="FH8OBO0gTOPvALkgMJawdwCaYZ0f5A4WuoS1IAZgM9FDFzPlCr68wDPzP1uu5pUlr0e255o067YSY4rtLpQIhTsQtfNlHNUlxPCHvPHeZ4gCJRD87F5OLspmSpFUbvNXpSViDBWfAPmGsH08E",
+                                  name="BxCdTJypI42Inu56V"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_45(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=3947.0,
+                                  is_hidden=False,
+                                  is_disabled=True,
+                                  display_ends_at="2023-12-14T07:30:01.000000Z",
+                                  display_starts_at="2021-09-28T08:52:21.000000Z",
+                                  ends_at="2024-01-12T11:36:41.000000Z",
+                                  starts_at="2024-02-17T14:41:33.000000Z",
+                                  discount_upper_limit=9813,
+                                  description="lWSa6lZGo7PhTYTGs3X1TO4wzYkyXyy6lwP0N21ySbpkemDM3awKQy2zT4JKnzi5L8cpHHMwXcAIRcjNLk0u",
+                                  name="NWeNHUqo3XU"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_46(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=8206.0,
+                                  is_public=True,
+                                  is_hidden=False,
+                                  is_disabled=False,
+                                  display_ends_at="2025-05-29T02:08:47.000000Z",
+                                  display_starts_at="2026-07-13T04:38:53.000000Z",
+                                  ends_at="2022-10-17T02:39:15.000000Z",
+                                  starts_at="2020-09-14T13:36:19.000000Z",
+                                  discount_upper_limit=2994,
+                                  description="VsZS4Lj4GkDI0oXRDtBJxvb11fmeXANYMff4lfRrFSD2GU0U0YSAX1Q89ssC5bpXwoj13v0TL4xfkZtGKmcVmh1Ev4M51rbMFUU1jVlGa8RcO6wCBU9Eja3cVhwcSD6iDQwph5TUTM16YqrHAO8roW5GeUYrGDCf0i4xR1YeuarVLqK",
+                                  name="aajZ45lMb2EdpxyfZWbcSeQSSC89X69cCxk1lmjrE2LQn8WVW3m44epc5OJWLmTr626o4XX2rICXAhNDPHxc5nbxE6"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_47(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=4452.0,
+                                  code="OS7",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2021-07-27T09:42:54.000000Z",
+                                  display_starts_at="2023-11-09T19:56:12.000000Z",
+                                  ends_at="2023-11-26T00:32:13.000000Z",
+                                  starts_at="2021-07-06T01:16:34.000000Z",
+                                  discount_upper_limit=1409,
+                                  description="FRrdV1gQxduyB3Z9uLKn8CBvuRo159rPRsnfNPsYuS9nBNol3v7lVyt80jIUhEuqcVn523Q4baN0pPcQtGvFKDcSo8tIJSa9PEebkW1DkF2wmIfJ50Imwzo4spi93QyENqmwOx8YnV9T8kaR9yxVki0Ybh350uvTmXJ3taiP6zrMBCvrTp2KPzJXVVtSjH7KpG4W7WMlwVoyitMfaSwwyI0wlFPTcSqX1OcJJC",
+                                  name="H4abwAvDfIYbVEzwXEzeX76CubBULZ7mvZavHGIwQGFD3y3WQcOQ77GqTbykQNeXwfkirPrCHC6oGX762VWlOvBKRDnWwJ1RB1Xf0sJSNdUIy9UNP"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_48(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=3781.0,
+                                  usage_limit=5263,
+                                  code="n",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2025-07-03T14:17:48.000000Z",
+                                  display_starts_at="2022-08-10T11:09:24.000000Z",
+                                  ends_at="2022-07-10T18:29:44.000000Z",
+                                  starts_at="2024-01-25T17:42:49.000000Z",
+                                  discount_upper_limit=7863,
+                                  description="PVOwf2KxYZgpwkatfDXh6wjcpgPghclYC1sotThNzacMPGRW9XLUFYLKH2dLAXy2",
+                                  name="lAkroUr6KjPvdUwWdZh0L8qNK4Tq0PqVhzCkKROCStDoZvAY3OKa5oCE4xLFobA9UOrBeN520IjUnvAonmJrl0Qqm11RMoDMOSwDGwLJ7XtGOGgKQ"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_49(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=3336.0,
+                                  min_amount=5436,
+                                  usage_limit=806,
+                                  code="zAg5",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2025-12-04T11:58:35.000000Z",
+                                  display_starts_at="2022-10-11T01:16:30.000000Z",
+                                  ends_at="2026-09-02T23:49:17.000000Z",
+                                  starts_at="2020-01-22T14:02:31.000000Z",
+                                  discount_upper_limit=4650,
+                                  description="gdQyyCPmcszk1DSduCpdgUz5UizzupfDUVzOTa3MaAaf4kTfREjRbk7TIk1gephK43IsijpvrzedeO1cdtY9cqUS5AzQzHd",
+                                  name="GL1guEaRrfiOPX45f7SdsQcMHW7he8Z1qLepuyyE02MG8yUNtUKfprHpGaVcCOEeWb7TQI3q8qsl"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_50(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=9589.0,
+                                  is_shop_specified=True,
+                                  min_amount=8056,
+                                  usage_limit=838,
+                                  code="n4fR",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=True,
+                                  display_ends_at="2022-08-08T05:05:44.000000Z",
+                                  display_starts_at="2025-12-29T23:02:42.000000Z",
+                                  ends_at="2021-03-02T10:35:02.000000Z",
+                                  starts_at="2022-03-10T20:31:40.000000Z",
+                                  discount_upper_limit=9883,
+                                  description="fp3vRJLnSgiLPjnc4kQ0HdyTor536XOfVM3XXOQ3tGi0CJH7VMgkZVkFMaOxCQ0Il4LS1H9Rmh1BhIW8NFmlvrlMvNLwEsnbNKTS2h75GF8UpjoAlQvJzCU8IgWIQfnPgb4T4DEkgPLD0xZMd",
+                                  name="yjnHtiPzKYB9uBkIh8qvqswUq9MIMd1v50tEiK5VU8URPZftDXY7iH"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_51(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=3129.0,
+                                  available_shop_ids=["fa0cebdd-aa9f-4235-8fac-94328f029a1a", "6c36d2b1-f1ac-40af-baba-a89e32f57d3f"],
+                                  is_shop_specified=False,
+                                  min_amount=7500,
+                                  usage_limit=4665,
+                                  code="CZDgOHv8cc",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2023-03-23T08:18:09.000000Z",
+                                  display_starts_at="2022-08-16T01:07:07.000000Z",
+                                  ends_at="2021-05-04T08:15:40.000000Z",
+                                  starts_at="2026-01-19T02:38:38.000000Z",
+                                  discount_upper_limit=7707,
+                                  description="aXWInrPmgciqGxhGUs6ZnMyMQoClDSK7KRPQ6M6EMYtB6Ep2GnDZJdtjBh5VRBTfV5MJhYQTBRBM7G8j00YInJitv9WP6kwxoiXMMFgIG6MJKNbnVLomjuJJQI4",
+                                  name="ykecPid861BWO2utY6ykCTVCcIXTPlbcMZgCJ9BjKA9LvljTLcW71b8cClVacDr5l3x4FVfYiLUL8Bb8dzaB45kELqQHfqMF0cAfS47CSQOovJ8c1i3feNO1qJBn"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_52(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=8688.0,
+                                  storage_id="703edb5d-3270-4c33-9c1f-5f9fdeed04fd",
+                                  available_shop_ids=["cbe44d2a-409d-4d89-b912-b27dc6f45005", "7c79bf5e-4090-474b-85ea-9d5ada66b6fe", "5e996cd0-486a-4bd4-8173-74a9e1ac09a5", "84883eb6-ee9d-4fb5-a912-7f0cff96c399", "d896885d-1071-4616-897a-7aced0ecdea4"],
+                                  is_shop_specified=True,
+                                  min_amount=8433,
+                                  usage_limit=7444,
+                                  code="MvOUP7lDJ3",
+                                  is_public=True,
+                                  is_hidden=False,
+                                  is_disabled=True,
+                                  display_ends_at="2024-08-26T11:53:55.000000Z",
+                                  display_starts_at="2020-05-21T23:02:33.000000Z",
+                                  ends_at="2023-01-05T09:12:36.000000Z",
+                                  starts_at="2026-03-19T13:50:59.000000Z",
+                                  discount_upper_limit=7117,
+                                  description="XHu4UsQsifzmvmEGKnmcQWOqm2bxZSUNMN2LXvZ3UB0bY6L3973iqLKkGFIZmfuXhD9mm06njf2aXb7PnD9gNpMDYfCPceKjPow2YL1adnoZFEUP94ii4uT2NJ6DSRSGMdhjjWzKEnHt1GlWmv2y5j3kpGt0e4jNi92dahlnnkKHVszp",
+                                  name="YHPkZF0J60lUnUwRinT2la9EMVbGBQcWz4"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_update_coupon_53(self):
+        response = client.send(pp.UpdateCoupon(
+                                  "81b2e75f-688a-4247-8003-d0e40716aa3c",
+                                  discount_percentage=2117.0,
+                                  num_recipients_cap=825,
+                                  storage_id="cfed6ce6-1d55-4c5a-9c17-93872a5ec81b",
+                                  available_shop_ids=["3fe9ad87-78ee-49d7-8b0f-61e35e1db521"],
+                                  is_shop_specified=True,
+                                  min_amount=5610,
+                                  usage_limit=961,
+                                  code="k",
+                                  is_public=False,
+                                  is_hidden=True,
+                                  is_disabled=False,
+                                  display_ends_at="2024-02-19T05:15:31.000000Z",
+                                  display_starts_at="2024-03-24T03:20:57.000000Z",
+                                  ends_at="2026-05-07T03:33:03.000000Z",
+                                  starts_at="2023-07-17T20:42:27.000000Z",
+                                  discount_upper_limit=9937,
+                                  description="adAG14rJr7OIiIwKYtNBzp8nODkJL8EIU81Vy5zPsQOGlQlr06Jl9JLWCZ8neyUVmWBR3xve7r3YSLXQYTyvYaaI2qvRlrSNIrRDPa1eyCiQOxDTwWc9gws9XAU",
+                                  name="rux74v2ITxjA0Pgz"
+        ))
+        self.assertNotEqual(response.status_code, 400)
+
+    def test_get_seven_bank_atm_session_0(self):
+        response = client.send(pp.GetSevenBankAtmSession(
+                                  "ICgqeJVl"
         ))
         self.assertNotEqual(response.status_code, 400)
 
